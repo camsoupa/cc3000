@@ -1,0 +1,40 @@
+Synopsys Actel Technology Pre-mapping, Version mapact, Build 729R, Built Jun 20 2012 09:20:46
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version F-2012.03M-SP1 
+
+Mapper Startup Complete (Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 49MB)
+
+@L: C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga_scck.rpt 
+Printing clock  summary report in "C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga_scck.rpt" file 
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+@N: MF547 |Generated clock conversion disabled 
+
+Design Input Complete (Time elapsed 0h:00m:00s; Memory used current: 49MB peak: 50MB)
+
+
+Mapper Initialization Complete (Time elapsed 0h:00m:00s; Memory used current: 49MB peak: 50MB)
+
+
+
+Clock Summary
+**************
+
+Start      Requested     Requested     Clock      Clock          
+Clock      Frequency     Period        Type       Group          
+-----------------------------------------------------------------
+System     1.0 MHz       1000.000      system     system_clkgroup
+=================================================================
+
+
+Finished Pre Mapping Phase. (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+
+@N: BN225 |Writing default property annotation file C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap.
+Pre-mapping successful!
+
+At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 23MB peak: 57MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 24 21:56:39 2014
+
+###########################################################]

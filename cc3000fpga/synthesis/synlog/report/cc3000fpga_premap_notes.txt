@@ -1,0 +1,4 @@
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+@N: MF547 |Generated clock conversion disabled 
+@N: BN225 |Writing default property annotation file C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap.

@@ -1,0 +1,13 @@
+C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis  -part A2F200M3F  -package FBGA484  -grade -1   -globalthreshold 50 -maxfan 24 -opcond COMWC     -report_path 0       -summaryfile C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\report\cc3000fpga_premap.xml -top_level_module  cc3000fpga  -oedif  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.edn  -conchk_prepass  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga_cck_prepass.rpt  -freq 100.000  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs  -flow prepass  -gcc_prepass  -osrd  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd  -qsap  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap  -devicelib  C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v  -ologparam  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\syntmp\cc3000fpga.plg  -osyn  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd  -prjdir  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\  -prjname  cc3000fpga_syn  -log  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr 
+rc:0 success:1
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.edn|o|0|0
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga_cck_prepass.rpt|o|0|0
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs|i|1395719794|40959
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1395719799|20000
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap|o|1395719799|92
+C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v|i|1340041216|72817
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1395719798|0
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1395719799|20000
+C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr|o|1395719799|1849
+C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe|i|1340212048|13099520
+C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe|i|1340212062|15745024

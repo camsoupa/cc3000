@@ -1,0 +1,78 @@
+Actel Designer Software
+Version: 10.1.3.1
+Release: v10.1 SP3
+
+Info: The design cc3000fpga.adb was last modified by software version 10.1.3.1.
+Opened an existing Libero design cc3000fpga.adb.
+'BA_NAME' set to 'cc3000fpga_ba'
+'IDE_DESIGNERVIEW_NAME' set to 'Impl1'
+'IDE_DESIGNERVIEW_COUNT' set to '1'
+'IDE_DESIGNERVIEW_REV0' set to 'Impl1'
+'IDE_DESIGNERVIEW_REVNUM0' set to '1'
+'IDE_DESIGNERVIEW_ROOTDIR' set to 'C:\Users\Gnewt\Desktop\cc3000fpga\designer'
+'IDE_DESIGNERVIEW_LASTREV' set to '1'
+***** Layout Variables *********************************************
+
+Mode: TIMING_DRIVEN
+Power-driven Layout: OFF
+Incremental Placement: OFF
+Incremental Route: OFF
+
+
+Info: I/O Bank Assigner detected (1) out of (6) I/O Bank(s) with locked I/O technologies.
+
+Running I/O Bank Assigner.
+
+I/O Bank Assigner completed successfully.
+ 
+
+Planning global net placement...
+
+
+Global net placement completed successfully.
+
+                        o - o - o - o - o - o
+
+Timing-driven Placer Started: Mon Mar 24 21:57:02 2014
+
+Placer Finished: Mon Mar 24 21:57:05 2014
+Total Placer CPU Time:     00:00:03
+
+                        o - o - o - o - o - o
+
+
+Timing-driven Router 
+Design: cc3000fpga                      Started: Mon Mar 24 21:57:07 2014
+
+ 
+
+Timing-driven Router completed successfully.
+
+Design: cc3000fpga                      
+Finished: Mon Mar 24 21:57:12 2014
+Total CPU Time:     00:00:05            Total Elapsed Time: 00:00:05
+                        o - o - o - o - o - o
+
+Loading the Timing data for the design.
+Finished loading the Timing data.
+TIMER: Max delay timing requirements have been met.
+TIMER: Min delay timing requirements have been met.
+
+The Layout command succeeded ( 00:00:14 )
+Wrote status report to file: cc3000fpga_place_and_route_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Wrote globalnet report to file: cc3000fpga_globalnet_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Wrote globalusage report to file: cc3000fpga_globalusage_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Wrote iobank report to file: cc3000fpga_iobank_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Design saved to file C:\Users\Gnewt\Desktop\cc3000fpga\designer\impl1\cc3000fpga.adb.
+
+The Execute Script command succeeded ( 00:00:18 )
+Design closed.
+

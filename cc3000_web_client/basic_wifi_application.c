@@ -620,7 +620,7 @@ tCmdLineEntry g_psCmdTable[] =
     {"help",          CMD_help,
                   " : Display this list of commands." },
     {"matTest",       CMD_matt,
-                  " : Hi Ugly." },
+                  " : Connect, send GET request, recv page, and close socket" },
     {"smartconfig",   CMD_smartConfig,
                   " : First time simple configuration. Use app on smartphone\n"
 "                     to connect to network." },
@@ -1001,19 +1001,13 @@ int matt_send()
 	    uint8_t ui8IPBlock1, ui8IPBlock2, ui8IPBlock3, ui8IPBlock4;
 
 	    //char ipaddr[] = "67.215.65.132";  //weatherunderground
-
-	    //char ipaddr[] = "134.67.21.16"; //Airnow
-
+	    //char ipaddr[] = "134.67.21.16";   //Airnow
 	    //char ipaddr[] = "74.125.225.212"; // google
-
 	    //char ipaddr[] = "192.220.73.220"; // nice tutorial
+	    char ipaddr[] = "168.178.3.11"; 	// airquality.utah.gov
 
-	    //char ipaddr[] = "168.178.3.11"; 	// airquality.utah.gov
-
-	    char ipaddr[] = "67.215.65.132";
 	    i32Check = DotDecimalDecoder(ipaddr, &ui8IPBlock1, &ui8IPBlock2,
 	                                 &ui8IPBlock3, &ui8IPBlock4);
-
 	    //
 	    // Validate input.
 	    //
@@ -1035,25 +1029,8 @@ int matt_send()
 	    // Validate port is between 0 and 65535.
 	    //
 
-/*
-	    String sendString = "GET " + _requestString + " HTTP/1.0 \r\n" +
-	                        "Host: " + _target + "\r\n" +
-	                        "From: " + RegisterCF.getOurEmailAddress() + "\r\n" +
-	                        "\r\n";
+	    char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
 
-	                        GET /pageyouwant.html HTTP/1.1[CRLF]
-*/
-
-	    //char message[] = "GET http://api.wunderground.com/api/e98aad68f06df0f8/geolookup/conditions/q/ID/Lewiston.json";
-	    //  char message[] = "GET /api/e98aad68f06df0f8/geolookup/conditions/q/ID/Lewiston.json HTTP/1.1 \r\n";
-
-	    //char message[] = "GET /search?q=arduino\r\n"; // WORKS!!!
-	    //char message[] = "GET /index.cfm?action=airnow.local_city&cityid=186\r\n"; // KIND OF WORKS!
-	    //char message[] = "GET /easy/http/http_footnotes.html\r\n"; // WORKS Perfectly
-
-	    //char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nConnection: keep-alive\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36\r\nAccept-Encoding: gzip,deflate,sdch\r\nAccept-Language: en-US,en;q=0.8\r\n";
-	    //char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHost: www.airquality.utah.gov\r\nConnection: keep-alive\r\n";
-	    char message[] = "GET /key/value/one/two HTTP/1.1\n\rHost: echo.jsontest.com\n\r";
 	    //
 	    // Data pointer.
 	    //
@@ -1241,14 +1218,11 @@ int matt_recv()
 int
 CMD_matt(int argc, char **argv)
 {
-
-
     UARTprintf("\nHi There\n------------------\n\n");
 	matt_socket();
 	matt_bind();
 	matt_send();
     matt_recv();
-   // matt_recv();
 	matt_close();
 
 return 0;

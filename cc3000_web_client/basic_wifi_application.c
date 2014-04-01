@@ -23,34 +23,52 @@
 //*****************************************************************************
 #include <stdint.h>
 #include <stdbool.h>
-#include "inc/hw_types.h"
-#include "driverlib/timer.h"
-#include "driverlib/rom.h"
-#include "driverlib/rom_map.h"
-#include "driverlib/systick.h"
-#include "driverlib/fpu.h"
-#include "driverlib/debug.h"
-#include "utils/ustdlib.h"
-#include "utils/uartstdio.h"
-#include "utils/cmdline.h"
-#include "driverlib/uart.h"
-#include "driverlib/ssi.h"
+#include <stdio.h>
+#include <inttypes.h>
 
-#include "wlan.h"
-#include "evnt_handler.h"
-#include "nvmem.h"
-#include "socket.h"
-#include "netapp.h"
-#include "spi.h"
-#include "hci.h"
+//#include "inc/hw_types.h"
 
+//#include "driverlib/timer.h"
+#include   "drivers/mss_timer/mss_timer.h"
+
+//#include "driverlib/rom.h"
+//#include "driverlib/rom_map.h"
+//#include "driverlib/systick.h"
+//#include "driverlib/fpu.h"
+//#include "driverlib/debug.h"
+//#include "utils/ustdlib.h"
+//#include "utils/uartstdio.h"
+//#include "utils/cmdline.h"
+//#include "driverlib/ssi.h"
+
+//#include "driverlib/uart.h"
+#include   "drivers/mss_uart/mss_uart.h"
+
+#include   "drivers/mss_gpio/mss_gpio.h"
+#include   "drivers/mss_spi/mss_spi.h"
+#include   "drivers/mss_timer/mss_timer.h"
+#include   "drivers/board/board.h"
+
+#include "CC3000HostDriver/wlan.h"
+#include "CC3000HostDriver/evnt_handler.h"
+#include "CC3000HostDriver/nvmem.h"
+#include "CC3000HostDriver/socket.h"
+#include "CC3000HostDriver/netapp.h"
+#include "CC3000HostDriver/matt_spi.h"
+#include "CC3000HostDriver/hci.h"
+
+
+
+#include "application_commands.h"
+
+/*
 #include "dispatcher.h"
 #include "spi_version.h"
 #include "board.h"
 #include "application_version.h"
 #include "host_driver_version.h"
 #include "security.h"
-#include "application_commands.h"
+*/
 
 //*****************************************************************************
 //! \addtogroup example_list
@@ -156,7 +174,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
     //
     // Tell the user about the error reported.
     //
-    UARTprintf("Runtime error at line %d of file %s!\n", ui32Line, pcFilename);
+    printf("Runtime error at line %d of file %s!\n", ui32Line, pcFilename);
 
     while(1)
     {
@@ -262,24 +280,10 @@ const uint8_t g_pui8smartconfigkey[] = {0x73,0x6d,0x61,0x72,0x74,0x63,0x6f,
 //
 // Code Composer Studio pragmas.
 //
-#if defined(__CCS__) || defined(ccs)
+
 uint8_t g_pui8CC3000_Rx_Buffer[CC3000_APP_BUFFER_SIZE +
                                             CC3000_RX_BUFFER_OVERHEAD_SIZE];
 
-//
-// IAR Codebench, aka ewarm pragmas.
-//
-#elif defined(__IAR_SYSTEMS_ICC__) || (ewarm)
-__no_init uint8_t g_pui8CC3000_Rx_Buffer[CC3000_APP_BUFFER_SIZE +
-                                            CC3000_RX_BUFFER_OVERHEAD_SIZE];
-
-//
-// Code Sourcery, GCC, and Keil all use the same pragmas.
-//
-#else
-uint8_t g_pui8CC3000_Rx_Buffer[CC3000_APP_BUFFER_SIZE +
-                                            CC3000_RX_BUFFER_OVERHEAD_SIZE];
-#endif
 
 //*****************************************************************************
 //
@@ -339,7 +343,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     if(lEventType == HCI_EVNT_WLAN_ASYNC_SIMPLE_CONFIG_DONE)
     {
 
-        UARTprintf("\r    Received Asynchronous Simple Config Done Event "
+        printf("\r    Received Asynchronous Simple Config Done Event "
                          "from CC3000\n>",0x08);
 
         g_ui32SmartConfigFinished = 1;
@@ -362,7 +366,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     //
     if(lEventType == HCI_EVNT_WLAN_UNSOL_DISCONNECT)
     {
-        UARTprintf("\r    Received Unsolicited Disconnect from CC3000\n>");
+        printf("\r    Received Unsolicited Disconnect from CC3000\n>");
         g_ui32CC3000Connected = 0;
         g_ui32CC3000DHCP = 0;
         g_ui32CC3000DHCP_configured = 0;
@@ -370,12 +374,12 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         // Turn off the LED3 (Green)
         //
-        turnLedOff(GREEN_LED);
+        turnLedOff(LED_1);
 
         //
         // Turn back on the LED 1 (RED)
         //
-        turnLedOn(RED_LED);
+        turnLedOn(LED_0);
     }
 
     //
@@ -396,7 +400,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         if( *(pcData + NETAPP_IPCONFIG_MAC_OFFSET) == 0)
         {
-            UARTprintf("\r    DHCP Connected. IP: %d.%d.%d.%d\n",
+            printf("\r    DHCP Connected. IP: %d.%d.%d.%d\n",
                         pcData[3],pcData[2],pcData[1],pcData[0]);
 
             //
@@ -407,7 +411,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
             //
             // Turn on the LED3 (Green).
             //
-            turnLedOn(GREEN_LED);
+            turnLedOn(LED_1);
         }
         else
         {
@@ -428,12 +432,12 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         psPingData = (netapp_pingreport_args_t *)pcData;
 #ifdef DEBUG
-        UARTprintf("    Data Received='\n");
+        printf("    Data Received='\n");
         for(lEventType = 0; lEventType < ucLength; lEventType++)
         {
-            UARTprintf("%d,",pcData[lEventType]);
+            printf("%d,",pcData[lEventType]);
         }
-        UARTprintf("'\n");
+        printf("'\n");
 #endif
 
         //
@@ -441,12 +445,12 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         if(psPingData->min_round_time == -1)
         {
-            UARTprintf("\r    Ping Failed. Please check address and try "
+            printf("\r    Ping Failed. Please check address and try "
                        "again.\n>");
         }
         else
         {
-            UARTprintf("\r    Ping Results:\n"
+            printf("\r    Ping Results:\n"
                        "    sent: %d, received: %d, min time: %dms,"
                        " max time: %dms, avg time: %dms\n>",
                        psPingData->packets_sent, psPingData->packets_received,
@@ -508,7 +512,7 @@ initDriver(void)
     // Turn on the the red LED to indicate that we are active and initiated
     // WLAN successfully.
     //
-    turnLedOn(RED_LED);
+    turnLedOn(LED_0);
 
     //
     // Mask out all non-required events from CC3000.
@@ -524,10 +528,8 @@ initDriver(void)
     //
     // Print version string.
     //
-    UARTprintf("\n\n\rCC3000 Basic Wifi Application: driver version "
-                "%d.%d.%d.%d \n\r",PLATFORM_VERSION, APPLICATION_VERSION,
-                SPI_VERSION_NUMBER, DRIVER_VERSION_NUMBER );
-    UARTprintf("Type 'help' for a list of commands\n");
+    printf("\n\n\rCC3000 Basic Wifi Application!\n\r");
+    printf("Type 'help' for a list of commands\n\r");
 
     //
     // Set flag to stop smart config if running.
@@ -615,6 +617,7 @@ DotDecimalDecoder(char *pcString, uint8_t *pui8Val1, uint8_t *pui8Val2,
 // is used by the cmdline module.
 //
 //*****************************************************************************
+/*
 tCmdLineEntry g_psCmdTable[] =
 {
     {"help",          CMD_help,
@@ -655,7 +658,7 @@ tCmdLineEntry g_psCmdTable[] =
 "                     [3](optional) Timeout in ms."},
     { 0, 0, 0 }
 };
-
+*/
 //*****************************************************************************
 //
 // This function triggers smart configuration processing on the CC3000.
@@ -681,7 +684,7 @@ void StartSmartConfig(void)
     //
     // Inform user of status.
     //
-    UARTprintf("    Waiting on Smartphone Smart Config App...\n");
+    printf("    Waiting on Smartphone Smart Config App...\n");
 
     //
     // Wait until CC3000 is disconnected
@@ -695,7 +698,7 @@ void StartSmartConfig(void)
     //
     // Start blinking red LED during Smart Configuration process.
     //
-    turnLedOn(RED_LED);
+    turnLedOn(LED_0);
 
     //
     // Create new entry for AES encryption key.
@@ -712,29 +715,26 @@ void StartSmartConfig(void)
     // Set the prefix used for smart config.
     //
     wlan_smart_config_set_prefix((char *)g_pcCC3000_prefix);
-    turnLedOff(RED_LED);
-
-
-
+    turnLedOff(LED_0);
 
 
     //
     // Start the SmartConfig process.
     //
     wlan_smart_config_start(0); // matt edit was 1
-    turnLedOn(RED_LED);
+    turnLedOn(LED_0);
 
     //
     // Wait for Smart config to finish. Flash LED.
     //
     while(g_ui32SmartConfigFinished == 0)
     {
-        turnLedOff(RED_LED);
+        turnLedOff(LED_0);
         ROM_SysCtlDelay(16500000);
-        turnLedOn(RED_LED);
+        turnLedOn(LED_0);
         ROM_SysCtlDelay(16500000);
     }
-    turnLedOn(RED_LED);
+    turnLedOn(LED_0);
 
     //
     // Create new entry for AES encryption key.
@@ -765,7 +765,7 @@ void StartSmartConfig(void)
     //
     // Tell user we're done with smart config.
     //
-    UARTprintf("\r    Smart Config DONE\n");
+    printf("\r    Smart Config DONE\n");
 
     //
     // Mandatory delay between calls to wlan_stop and wlan_start.
@@ -789,6 +789,7 @@ void StartSmartConfig(void)
 // Print the help strings for all commands.
 //
 //*****************************************************************************
+/*
 int
 CMD_help(int argc, char **argv)
 {
@@ -805,7 +806,7 @@ CMD_help(int argc, char **argv)
     //
     // Get to the start of a clean line on the serial output.
     //
-    UARTprintf("\nAvailable Commands\n------------------\n\n");
+    printf("\nAvailable Commands\n------------------\n\n");
 
     //
     // Display strings until we run out of them.
@@ -815,7 +816,7 @@ CMD_help(int argc, char **argv)
         //
         // Display help information for a single command.
         //
-        UARTprintf("%17s %s\n", g_psCmdTable[i32Index].pcCmd,
+        printf("%17s %s\n", g_psCmdTable[i32Index].pcCmd,
                    g_psCmdTable[i32Index].pcHelp);
         i32Index++;
 
@@ -829,11 +830,11 @@ CMD_help(int argc, char **argv)
     //
     // Leave a blank line after the help strings.
     //
-    UARTprintf("\n");
+    printf("\n");
 
     return(0);
 }
-
+*/
 
 int matt_socket()
 {
@@ -853,8 +854,6 @@ int matt_socket()
            ROM_SysCtlDelay(1000);
        }
 
-
-
        //
        // Socket is of type TCP.
        //
@@ -871,26 +870,26 @@ int matt_socket()
            //
            // Inform user of the socket being opened.
            //
-           UARTprintf("    Socket is of type TCP\n");
+           printf("    Socket is of type TCP\n");
 
        //
        // Error checking.
        //
        if(i32Check >= 0)
        {
-           UARTprintf("    Socket Handle is '%d'\n",i32Check);
+           printf("    Socket Handle is '%d'\n",i32Check);
            g_ui32Socket = i32Check;
            //return(0);
        }
        else
        {
-           UARTprintf("    Socket Function returned an error."
+           printf("    Socket Function returned an error."
                        "   Socket not opened. Error code %d.\n",i32Check);
            g_ui32SocketType = 0;
-           return(0);
+           return(-1);
        }
 
-       UARTprintf("\n");
+       printf("\n");
 
        return(0);
 }
@@ -908,10 +907,9 @@ int matt_bind()
 
            if(g_ui32Socket == SENTINEL_EMPTY)
            {
-               UARTprintf("    Socket not open, please run socketopen.\n");
-               return(0);
+               printf("    Socket not open, please run socketopen.\n");
+               return(1);
            }
-
 
            //
            // Family is Always AF_INET on CC3000
@@ -937,7 +935,7 @@ int matt_bind()
 
            if(i8Check == 0)
            {
-               UARTprintf("    Bind Successful to port %d, 0x%x\n",
+               printf("    Bind Successful to port %d, 0x%x\n",
                           (g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1],
                           (g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1]);
 
@@ -948,7 +946,7 @@ int matt_bind()
            }
            else
            {
-               UARTprintf("    Bind Failed. bind() returned code '%d'\n",i8Check);
+               printf("    Bind Failed. bind() returned code '%d'\n",i8Check);
 
                //
                // Set global flag variable to indicate the socket is not bound.
@@ -957,7 +955,7 @@ int matt_bind()
            }
 
 
-           UARTprintf("\n");
+           printf("\n");
 
            return(0);
 }
@@ -979,16 +977,16 @@ int matt_close()
        //
        if(COMMAND_SUCCESS == ui32Check)
        {
-           UARTprintf("    Socket closed successfully.\n");
+           printf("    Socket closed successfully.\n");
            g_ui32Socket = SENTINEL_EMPTY;
            return(COMMAND_SUCCESS);
        }
        else
        {
-           UARTprintf("    Socket close Failed.\n");
+           printf("    Socket close Failed.\n");
        }
 
-    UARTprintf("\n");
+    printf("\n");
 
     return(0);
 }
@@ -1003,7 +1001,7 @@ int matt_send()
 	    //char ipaddr[] = "67.215.65.132";  //weatherunderground
 	    //char ipaddr[] = "134.67.21.16";   //Airnow
 	    //char ipaddr[] = "74.125.225.212"; // google
-	    //char ipaddr[] = "192.220.73.220"; // nice tutorial
+	    //char ipaddr[] = "192.220.73.220"; // nice http tutorial
 	    char ipaddr[] = "168.178.3.11"; 	// airquality.utah.gov
 
 	    i32Check = DotDecimalDecoder(ipaddr, &ui8IPBlock1, &ui8IPBlock2,
@@ -1013,17 +1011,18 @@ int matt_send()
 	    //
 	    if(g_ui32Socket == SENTINEL_EMPTY)
 	    {
-	        UARTprintf("    Please Open a socket before tying this command.\n");
-	        return(CMDLINE_INVALID_ARG);
+	        printf("    Please Open a socket before tying this command.\n");
+	        return(1);
 	    }
 
+	    // Matt - might want to add this back in
 	    //
 	    // Validate message size, between 1 and 1460 bytes.
 	    //
 	    //else if((strlen(argv[3]) > 1460) || (strlen(argv[3]) < 1) )
 	    //{
-	    //    UARTprintf("Invalid Message, must send 1-1460 bytes\n");
-	    //    return(CMDLINE_INVALID_ARG);
+	    //    printf("Invalid Message, must send 1-1460 bytes\n");
+	    //    return(1);
 	    //}
 	    //
 	    // Validate port is between 0 and 65535.
@@ -1072,12 +1071,12 @@ int matt_send()
 	        //
 	        if(g_bSocketConnected == false)
 	        {
-	            UARTprintf("    Connecting to TCP Socket on Server...\n");
+	            printf("    Connecting to TCP Socket on Server...\n");
 	            i32Check = connect(g_ui32Socket, &g_tSocketAddr, sizeof(sockaddr));
 	            if(i32Check != 0)
 	            {
-	                UARTprintf("    Connect failed with error code '%d'\n", i32Check);
-	                UARTprintf("    Please make sure there is a server with the "
+	                printf("    Connect failed with error code '%d'\n", i32Check);
+	                printf("    Please make sure there is a server with the "
 	                           "specified socket open to connect to\n");
 	                return(0);
 	            }
@@ -1092,7 +1091,7 @@ int matt_send()
 	        //
 	        // Send TCP Packet.
 	        //
-	        UARTprintf("    Sending TCP Packet...\n");
+	        printf("    Sending TCP Packet...\n");
 	        i32Check = send(g_ui32Socket, pui8Data, ui32DataLength, 0);
 	    }
 
@@ -1101,20 +1100,18 @@ int matt_send()
 	    //
 	    if(i32Check == -1)
 	    {
-	        UARTprintf("    Send Data Failed with code '%d'\n",i32Check);
+	        printf("    Send Data Failed with code '%d'\n",i32Check);
 	    }
 	    else
 	    {
-	        UARTprintf("    Send Data Success: sent %d bytes.\n", i32Check);
+	        printf("    Send Data Success: sent %d bytes.\n", i32Check);
 	    }
 
 	    return(0);
-
 }
 
 int matt_recv()
 {
-
     int32_t i32ReturnValue;
     uint32_t ui32x = 0, ui32Count = 0;
     volatile int count = 0;
@@ -1124,9 +1121,9 @@ int matt_recv()
     //
     if((g_ui32Socket == SENTINEL_EMPTY) || (g_ui32BindFlag == SENTINEL_EMPTY))
     {
-        UARTprintf("    Please Open a socket and Bind it to a port before "
+        printf("    Please Open a socket and Bind it to a port before "
                    "receiving data.\n");
-        return(CMDLINE_BAD_CMD);
+        return(1);
     }
 
     //
@@ -1137,7 +1134,7 @@ int matt_recv()
         //
         // We've been asked to receive a TCP packet.
         //
-        UARTprintf("    Looking for TCP Packets...\n");
+        printf("    Looking for TCP Packets...\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -1152,9 +1149,9 @@ int matt_recv()
             i32ReturnValue = recv(g_ui32Socket, g_pui8CC3000_Rx_Buffer,
                                 CC3000_APP_BUFFER_SIZE, 0);
 
-            //UARTprintf("Before wait\n");
+            //printf("Before wait\n");
             ROM_SysCtlDelay(10000000);
-            //UARTprintf("After wait\n");
+            //printf("After wait\n");
             //
             // Check Data Validity
             //
@@ -1163,14 +1160,14 @@ int matt_recv()
                 //
                 // No data received on first try
                 //
-                UARTprintf("    No data received: %d.\n", i32ReturnValue);
+                printf("    No data received: %d.\n", i32ReturnValue);
                 return(0);
             }
 
             //
             // Print data to screen
             //
-                UARTprintf("    Received %d bytes of data. %d time\n",
+                printf("    Received %d bytes of data. %d time\n",
                             i32ReturnValue, count);
 
                 count++;
@@ -1182,21 +1179,22 @@ int matt_recv()
                 //
                 if( ((ui32Count % 60) == 0) && (ui32Count > 0))
                 {
-                    UARTprintf("\n    ");
+                    printf("\n    ");
                 }
 
-                //
-                // Print text to screen
-                //
+                // Look for PM in the text. TODO Change this to capture what comes after PM and temperature.
             	if(g_pui8CC3000_Rx_Buffer[ui32x] == 'P' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
             	{
-            		UARTprintf("GOT ONE!\r\n");
-            		UARTprintf("%c%c%c%c%c" ,g_pui8CC3000_Rx_Buffer[ui32x], g_pui8CC3000_Rx_Buffer[ui32x+1], g_pui8CC3000_Rx_Buffer[ui32x+2],
+            		printf("GOT ONE!\r\n");
+            		printf("%c%c%c%c%c" ,g_pui8CC3000_Rx_Buffer[ui32x], g_pui8CC3000_Rx_Buffer[ui32x+1], g_pui8CC3000_Rx_Buffer[ui32x+2],
             				g_pui8CC3000_Rx_Buffer[ui32x+3] ,g_pui8CC3000_Rx_Buffer[ui32x+4] );
 
             	}
 
-                 UARTprintf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
+                //
+                // Print text to screen
+                //
+                 printf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
             }
 
             UARTFlushTx(false);
@@ -1204,7 +1202,7 @@ int matt_recv()
         }while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0); //while(i32ReturnValue == CC3000_APP_BUFFER_SIZE);
     }
 
-    UARTprintf("'\n\n");
+    printf("'\n\n");
 
     return(0);
 
@@ -1212,17 +1210,21 @@ int matt_recv()
 
 //*****************************************************************************
 //
-// Do my stuff.
+//
 //
 //*****************************************************************************
 int
 CMD_matt(int argc, char **argv)
 {
-    UARTprintf("\nHi There\n------------------\n\n");
+    printf("\Calling socket()\n\n");
 	matt_socket();
+    printf("\Calling bind()\n\n");
 	matt_bind();
+    printf("\Calling send() to send HTTP GET\n\n");
 	matt_send();
+    printf("\Calling recv()\n\n");
     matt_recv();
+    printf("\Calling close() to close connection and free socket\n\n");
 	matt_close();
 
 return 0;
@@ -1236,6 +1238,7 @@ return 0;
 // network.
 //
 //*****************************************************************************
+/* Now directly calling StartSmartConfig from main
 int
 CMD_smartConfig(int argc, char **argv)
 {
@@ -1243,7 +1246,7 @@ CMD_smartConfig(int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Manually connect to an open network. For advanced users.
@@ -1251,6 +1254,7 @@ CMD_smartConfig(int argc, char **argv)
 // [1]SSID
 //
 //*****************************************************************************
+/* use smart config instead
 int
 CMD_connect(int argc, char **argv)
 {
@@ -1270,7 +1274,7 @@ CMD_connect(int argc, char **argv)
     }
     else if(strlen(argv[1]) >= 255)
     {
-        UARTprintf("Length of SSID must be less than 255\n");
+        printf("Length of SSID must be less than 255\n");
         return(CMDLINE_INVALID_ARG);
     }
 
@@ -1293,7 +1297,7 @@ CMD_connect(int argc, char **argv)
     //
     // Tell user what we're doing.
     //
-    UARTprintf("    Attempting to connect (5 second timeout)...\n");
+    printf("    Attempting to connect (5 second timeout)...\n");
 
     //
     // Wait for connect message for 5 seconds,
@@ -1313,11 +1317,11 @@ CMD_connect(int argc, char **argv)
         //
         ROM_SysCtlDelay(ROM_SysCtlClockGet() / 3000);
     }
-    UARTprintf("    Connection Failed. Please check the network name.\n");
+    printf("    Connection Failed. Please check the network name.\n");
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Open a UDP or TCP socket.
@@ -1325,6 +1329,7 @@ CMD_connect(int argc, char **argv)
 // [1] 'TCP' or 'UDP' to specify socket type
 //
 //*****************************************************************************
+/* matt_socket is based off this
 int
 CMD_socketOpen (int argc, char **argv)
 {
@@ -1335,7 +1340,7 @@ CMD_socketOpen (int argc, char **argv)
     //
     if(argc < 2)
     {
-        UARTprintf("    Please specify socket type, 'TCP' or 'UDP'\n");
+        printf("    Please specify socket type, 'TCP' or 'UDP'\n");
         return(CMDLINE_TOO_FEW_ARGS);
     }
     else if(argc > 2)
@@ -1347,7 +1352,7 @@ CMD_socketOpen (int argc, char **argv)
         if((argv[1][0] != 'u') && (argv[1][0] != 'U') &&
            (argv[1][0] != 't') && (argv[1][0] != 'T'))
         {
-            UARTprintf("    Please provide Type of Socket 'UDP' or 'TCP' .\n");
+            printf("    Please provide Type of Socket 'UDP' or 'TCP' .\n");
             return(CMDLINE_INVALID_ARG);
         }
     }
@@ -1386,7 +1391,7 @@ CMD_socketOpen (int argc, char **argv)
         //
         // Inform user of the socket being opened.
         //
-        UARTprintf("    Socket is of type UDP\n");
+        printf("    Socket is of type UDP\n");
     }
 
     //
@@ -1407,7 +1412,7 @@ CMD_socketOpen (int argc, char **argv)
         //
         // Inform user of the socket being opened.
         //
-        UARTprintf("    Socket is of type TCP\n");
+        printf("    Socket is of type TCP\n");
     }
 
     //
@@ -1415,25 +1420,26 @@ CMD_socketOpen (int argc, char **argv)
     //
     if(i32Check >= 0)
     {
-        UARTprintf("    Socket Handle is '%d'\n",i32Check);
+        printf("    Socket Handle is '%d'\n",i32Check);
         g_ui32Socket = i32Check;
         return(0);
     }
     else
     {
-        UARTprintf("    Socket Function returned an error."
+        printf("    Socket Function returned an error."
                     "   Socket not opened. Error code %d.\n",i32Check);
         g_ui32SocketType = 0;
         return(0);
     }
 }
-
+*/
 //*****************************************************************************
 //
 // Close the open socket.
 // Arguments: None
 //
 //*****************************************************************************
+/* matt_close is based off this
 int
 CMD_socketClose (int argc, char **argv)
 {
@@ -1454,17 +1460,17 @@ CMD_socketClose (int argc, char **argv)
     //
     if(COMMAND_SUCCESS == ui32Check)
     {
-        UARTprintf("    Socket closed successfully.\n");
+        printf("    Socket closed successfully.\n");
         g_ui32Socket = SENTINEL_EMPTY;
         return(COMMAND_SUCCESS);
     }
     else
     {
-        UARTprintf("    Socket close Failed.\n");
+        printf("    Socket close Failed.\n");
     }
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Send Data to a destination port at a given IP Address.
@@ -1474,6 +1480,7 @@ CMD_socketClose (int argc, char **argv)
 // [3] Data to send as a string, < 255 bytes, no spaces
 //
 //*****************************************************************************
+/* matt_send is based off this
 int
 CMD_sendData (int argc, char **argv)
 {
@@ -1493,7 +1500,7 @@ CMD_sendData (int argc, char **argv)
     //
     if(g_ui32Socket == SENTINEL_EMPTY)
     {
-        UARTprintf("    Please Open a socket before tying this command.\n");
+        printf("    Please Open a socket before tying this command.\n");
         return(CMDLINE_INVALID_ARG);
     }
     else if(argc < 4)
@@ -1509,7 +1516,7 @@ CMD_sendData (int argc, char **argv)
     //
     else if((strlen(argv[3]) > 1460) || (strlen(argv[3]) < 1) )
     {
-        UARTprintf("Invalid Message, must send 1-1460 bytes\n");
+        printf("Invalid Message, must send 1-1460 bytes\n");
         return(CMDLINE_INVALID_ARG);
     }
     //
@@ -1517,7 +1524,7 @@ CMD_sendData (int argc, char **argv)
     //
     else if( ustrtoul(argv[2],0,10) > 65536)
     {
-        UARTprintf("    Port must be between 0 and  65535.\n");
+        printf("    Port must be between 0 and  65535.\n");
         return(CMDLINE_INVALID_ARG);
     }
     //
@@ -1525,7 +1532,7 @@ CMD_sendData (int argc, char **argv)
     //
     else if(i32Check == COMMAND_FAIL)
     {
-        UARTprintf("    Invalid IP Address. Valid IP is 0.0.0.0 -> "
+        printf("    Invalid IP Address. Valid IP is 0.0.0.0 -> "
                     "255.255.255.255\n");
         return(CMDLINE_INVALID_ARG);
     }
@@ -1568,7 +1575,7 @@ CMD_sendData (int argc, char **argv)
         //
         // Send UDP packet.
         //
-        UARTprintf("    Sending UDP Packet...\n");
+        printf("    Sending UDP Packet...\n");
         i32Check = sendto(g_ui32Socket, pui8Data, ui32DataLength, 0,
                           &g_tSocketAddr,sizeof(sockaddr));
     }
@@ -1579,12 +1586,12 @@ CMD_sendData (int argc, char **argv)
         //
         if(g_bSocketConnected == false)
         {
-            UARTprintf("    Connecting to TCP Socket on Server...\n");
+            printf("    Connecting to TCP Socket on Server...\n");
             i32Check = connect(g_ui32Socket, &g_tSocketAddr, sizeof(sockaddr));
             if(i32Check != 0)
             {
-                UARTprintf("    Connect failed with error code '%d'\n", i32Check);
-                UARTprintf("    Please make sure there is a server with the "
+                printf("    Connect failed with error code '%d'\n", i32Check);
+                printf("    Please make sure there is a server with the "
                            "specified socket open to connect to\n");
                 return(0);
             }
@@ -1599,7 +1606,7 @@ CMD_sendData (int argc, char **argv)
         //
         // Send TCP Packet.
         //
-        UARTprintf("    Sending TCP Packet...\n");
+        printf("    Sending TCP Packet...\n");
         i32Check = send(g_ui32Socket, pui8Data, ui32DataLength, 0);
     }
 
@@ -1608,16 +1615,16 @@ CMD_sendData (int argc, char **argv)
     //
     if(i32Check == -1)
     {
-        UARTprintf("    Send Data Failed with code '%d'\n",i32Check);
+        printf("    Send Data Failed with code '%d'\n",i32Check);
     }
     else
     {
-        UARTprintf("    Send Data Success: sent %d bytes.\n", i32Check);
+        printf("    Send Data Success: sent %d bytes.\n", i32Check);
     }
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Receives data from the opened socket on the binded port. Prints received
@@ -1628,6 +1635,7 @@ CMD_sendData (int argc, char **argv)
 // Requires SocketOpen and Bind to have been previously called.
 //
 //*****************************************************************************
+/*
 int
 CMD_receiveData (int argc, char **argv)
 {
@@ -1641,7 +1649,7 @@ CMD_receiveData (int argc, char **argv)
     //
     if((g_ui32Socket == SENTINEL_EMPTY) || (g_ui32BindFlag == SENTINEL_EMPTY))
     {
-        UARTprintf("    Please Open a socket and Bind it to a port before "
+        printf("    Please Open a socket and Bind it to a port before "
                    "receiving data.\n");
         return(CMDLINE_BAD_CMD);
     }
@@ -1654,7 +1662,7 @@ CMD_receiveData (int argc, char **argv)
         //
         // Tell user what we're doing.
         //
-        UARTprintf("    Looking for UDP Packets...\n");
+        printf("    Looking for UDP Packets...\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -1676,7 +1684,7 @@ CMD_receiveData (int argc, char **argv)
                 //
                 // No data received on first try
                 //
-                UARTprintf("    No data received.\n");
+                printf("    No data received.\n");
                 return(0);
             }
 
@@ -1685,7 +1693,7 @@ CMD_receiveData (int argc, char **argv)
             //
             if(bRunOnce)
             {
-                UARTprintf("    Received %d bytes of data: \n    '",
+                printf("    Received %d bytes of data: \n    '",
                             i32ReturnValue);
             }
             for(ui32x = 0; ui32x < i32ReturnValue; ui32x++, ui32Count++)
@@ -1695,13 +1703,13 @@ CMD_receiveData (int argc, char **argv)
                 //
                 if( ((ui32Count % 60) == 0) && (ui32Count > 0))
                 {
-                    UARTprintf("\n    ");
+                    printf("\n    ");
                 }
 
                 //
                 // Print text to screen
                 //
-                UARTprintf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
+                printf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
             }
             bRunOnce = false;
 
@@ -1715,7 +1723,7 @@ CMD_receiveData (int argc, char **argv)
         //
         // We've been asked to receive a TCP packet.
         //
-        UARTprintf("    Looking for TCP Packets...\n");
+        printf("    Looking for TCP Packets...\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -1736,7 +1744,7 @@ CMD_receiveData (int argc, char **argv)
                 //
                 // No data received on first try
                 //
-                UARTprintf("    No data received.\n");
+                printf("    No data received.\n");
                 return(0);
             }
 
@@ -1745,7 +1753,7 @@ CMD_receiveData (int argc, char **argv)
             //
             if(bRunOnce)
             {
-                UARTprintf("    Received %d bytes of data: \n    '",
+                printf("    Received %d bytes of data: \n    '",
                             i32ReturnValue);
             }
             for(ui32x = 0; ui32x < i32ReturnValue; ui32x++, ui32Count++)
@@ -1755,24 +1763,24 @@ CMD_receiveData (int argc, char **argv)
                 //
                 if( ((ui32Count % 60) == 0) && (ui32Count > 0))
                 {
-                    UARTprintf("\n    ");
+                    printf("\n    ");
                 }
 
                 //
                 // Print text to screen
                 //
-                UARTprintf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
+                printf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
             }
             bRunOnce = false;
 
         }while(i32ReturnValue == CC3000_APP_BUFFER_SIZE);
     }
 
-    UARTprintf("'\n\n");
+    printf("'\n\n");
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Bind the open socket to a selected port.
@@ -1782,6 +1790,7 @@ CMD_receiveData (int argc, char **argv)
 // Requires Socket Open before running.
 //
 //*****************************************************************************
+/*
 int
 CMD_bind (int argc, char **argv)
 {
@@ -1793,12 +1802,12 @@ CMD_bind (int argc, char **argv)
     //
     if( (ustrtoul(argv[1],0,10)) > (65536) )
     {
-        UARTprintf("    Invalid Port, must be 0->65536\n");
+        printf("    Invalid Port, must be 0->65536\n");
         return(CMDLINE_INVALID_ARG);
     }
     else if(g_ui32Socket == SENTINEL_EMPTY)
     {
-        UARTprintf("    Socket not open, please run socketopen.\n");
+        printf("    Socket not open, please run socketopen.\n");
         return(0);
     }
     else if( argc < 2 )
@@ -1834,7 +1843,7 @@ CMD_bind (int argc, char **argv)
 
     if(i8Check == 0)
     {
-        UARTprintf("    Bind Successful to port %d, 0x%x\n",
+        printf("    Bind Successful to port %d, 0x%x\n",
                    (g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1],
                    (g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1]);
 
@@ -1845,7 +1854,7 @@ CMD_bind (int argc, char **argv)
     }
     else
     {
-        UARTprintf("    Bind Failed. bind() returned code '%d'\n",i8Check);
+        printf("    Bind Failed. bind() returned code '%d'\n",i8Check);
 
         //
         // Set global flag variable to indicate the socket is not bound.
@@ -1855,7 +1864,7 @@ CMD_bind (int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // This command configures the IP address for the CC3000.
@@ -1870,6 +1879,7 @@ CMD_bind (int argc, char **argv)
 // To test connectivity ping the address from a computer.
 //
 //*****************************************************************************
+/* use DHCP instead
 int
 CMD_ipConfig (int argc, char **argv)
 {
@@ -1917,7 +1927,7 @@ CMD_ipConfig (int argc, char **argv)
                                      &ui8IP[3]);
         if(i32Check == COMMAND_FAIL)
         {
-            UARTprintf("    Invalid IP Address\n");
+            printf("    Invalid IP Address\n");
             return(CMDLINE_INVALID_ARG);
         }
 
@@ -1928,7 +1938,7 @@ CMD_ipConfig (int argc, char **argv)
                                      &ui8Gateway[2], &ui8Gateway[3]);
         if(i32Check == COMMAND_FAIL)
         {
-            UARTprintf("    Invalid Gateway Address\n");
+            printf("    Invalid Gateway Address\n");
             return(CMDLINE_INVALID_ARG);
         }
 
@@ -1946,7 +1956,7 @@ CMD_ipConfig (int argc, char **argv)
 
             if(i32Check == COMMAND_FAIL)
             {
-                UARTprintf("    Invalid Network Mask\n");
+                printf("    Invalid Network Mask\n");
                 return(CMDLINE_INVALID_ARG);
             }
         }
@@ -1987,17 +1997,17 @@ CMD_ipConfig (int argc, char **argv)
     //
     if(i32Check == COMMAND_SUCCESS)
     {
-        UARTprintf("    IPConfig completed successfully.\n");
+        printf("    IPConfig completed successfully.\n");
     }
     else
     {
-        UARTprintf("    IPConfig Failed. netapp_dhcp() returned code '%d'\n",
+        printf("    IPConfig Failed. netapp_dhcp() returned code '%d'\n",
                    i32Check);
     }
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Disconnect from Access Point.
@@ -2019,21 +2029,21 @@ CMD_disconnect (int argc, char **argv)
     //
     if(i32Check == COMMAND_SUCCESS)
     {
-        UARTprintf("    CC3000 Disconnected Successfully.\n");
+        printf("    CC3000 Disconnected Successfully.\n");
 
         //
         // Set LED to Red
         //
-        turnLedOn(RED_LED);
+        turnLedOn(LED_0);
     }
     else
     {
-        UARTprintf("    CC3000 already disconnected.\n");
+        printf("    CC3000 already disconnected.\n");
 
         //
         // Set LED to Red, just in case it wasn't already
         //
-        turnLedOn(RED_LED);
+        turnLedOn(LED_0);
     }
 
     return(0);
@@ -2058,11 +2068,11 @@ CMD_deletePolicy (int argc, char **argv)
 
     if(i32Check == COMMAND_SUCCESS)
     {
-        UARTprintf("    Policy Deleted Successfully.\n");
+        printf("    Policy Deleted Successfully.\n");
     }
     else
     {
-        UARTprintf("    Delete Policy failed with error code '%d'\n",i32Check);
+        printf("    Delete Policy failed with error code '%d'\n",i32Check);
     }
 
     return(0);
@@ -2089,11 +2099,11 @@ CMD_mdnsadvertise (int argc, char **argv)
     //
     if(argc < 1)
     {
-        return(CMDLINE_TOO_FEW_ARGS);
+        return(-1);
     }
     else if(argc > 2)
     {
-        return(CMDLINE_TOO_MANY_ARGS);
+        return(-1);
     }
 
     //
@@ -2104,7 +2114,7 @@ CMD_mdnsadvertise (int argc, char **argv)
         //
         // Use hard coded name
         //
-        UARTprintf("    mdns advertising as: '%s'...\n",g_pcdevice_name);
+        printf("    mdns advertising as: '%s'...\n",g_pcdevice_name);
         for(ui32x = 0; ((ui32x < 100) && (i32Check != 0)); ui32x++)
         {
             i32Check = mdnsAdvertiser(1, g_pcdevice_name,
@@ -2116,7 +2126,7 @@ CMD_mdnsadvertise (int argc, char **argv)
         //
         // Use argument as name
         //
-        UARTprintf("    mdns advertising as: '%s'...\n",argv[1]);
+        printf("    mdns advertising as: '%s'...\n",argv[1]);
         for(ui32x = 0; ((ui32x < 100) && (i32Check != 0)); ui32x++)
         {
             i32Check = mdnsAdvertiser(1, argv[1], strlen(argv[1]));
@@ -2128,11 +2138,11 @@ CMD_mdnsadvertise (int argc, char **argv)
     //
     if(i32Check == COMMAND_SUCCESS)
     {
-        UARTprintf("    mDNS Advertised successfully.\n");
+        printf("    mDNS Advertised successfully.\n");
     }
     else
     {
-        UARTprintf("    mDNS Advertising failed with error code '%d'\n",
+        printf("    mDNS Advertising failed with error code '%d'\n",
                    i32Check);
     }
 
@@ -2168,8 +2178,8 @@ CMD_cc3000reset(int argc, char **argv)
     //
     // Turn off Green LED, set to Red
     //
-    turnLedOff(GREEN_LED);
-    turnLedOn(RED_LED);
+    turnLedOff(LED_1);
+    turnLedOn(LED_0);
 
     //
     // Restart the CC3000.
@@ -2200,11 +2210,11 @@ CMD_ping(int argc, char **argv)
     //
     if(argc <= 1)
     {
-        return(CMDLINE_TOO_FEW_ARGS);
+        return(-1);
     }
     else if(argc > 4)
     {
-        return(CMDLINE_TOO_MANY_ARGS);
+        return(-1);
     }
 
     //
@@ -2218,8 +2228,8 @@ CMD_ping(int argc, char **argv)
     //
     if(i32Check == COMMAND_FAIL)
     {
-        UARTprintf("    Invalid IP Address, Please try again.\n");
-        return(CMDLINE_INVALID_ARG);
+        printf("    Invalid IP Address, Please try again.\n");
+        return(-1);
     }
     else
     {
@@ -2257,7 +2267,7 @@ CMD_ping(int argc, char **argv)
     //
     // Notify user of settings.
     //
-    UARTprintf("    Pinging %d.%d.%d.%d, 0x%x, Max Tries: %d, Timeout: %dms...",
+    printf("    Pinging %d.%d.%d.%d, 0x%x, Max Tries: %d, Timeout: %dms...",
                ui8IPBlock1, ui8IPBlock2, ui8IPBlock3, ui8IPBlock4, ui32IP,
                ui32Tries, ui32Timeout);
 
@@ -2272,7 +2282,7 @@ CMD_ping(int argc, char **argv)
     //
     if(i32Check != 0)
     {
-        UARTprintf("    Ping request failed with error code: '%d'\n",i32Check);
+        printf("    Ping request failed with error code: '%d'\n",i32Check);
     }
 
     return(0);
@@ -2287,6 +2297,9 @@ int
 main(void)
 {
     int32_t i32CommandStatus;
+    int32_t webConnected = 0;
+    int32_t num_msg_sent = 0;
+    int32_t num_msg_to_send = 1;
 
     g_ui32CC3000DHCP = 0;
     g_ui32CC3000Connected = 0;
@@ -2294,71 +2307,27 @@ main(void)
     g_ui32BindFlag = SENTINEL_EMPTY;
     g_ui32SmartConfigFinished = 0;
 
+
     //
     // Initialize all board specific components.
     //
     initDriver();
+
+
+    // Matt - Removing CLI in favor of starting smartConfig then running
+    //       the GET request over and over
+
+
+    // Block on SmartConfig until app has allowed connection
+    StartSmartConfig();
+
+
 
     //
     // Loop forever waiting  for commands from PC...
     //
     while(1)
     {
-        //
-        // Print prompt for user.
-        //
-        UARTprintf("\n>");
-
-        //
-        // Peek to see if a full command is ready for processing.
-        //
-        while(UARTPeek('\r') == -1)
-        {
-            //
-            // Approximately 1 millisecond delay.
-            //
-            ROM_SysCtlDelay(ROM_SysCtlClockGet() / 3000);
-        }
-
-        //
-        // A '\r' was detected so get the line of text from the receive buffer.
-        //
-        UARTgets(g_cInput,sizeof(g_cInput));
-
-        //
-        // Pass the line from the user to the command processor.
-        // It will be parsed and valid commands executed.
-        //
-        i32CommandStatus = CmdLineProcess(g_cInput);
-
-        //
-        // Handle the case of bad command.
-        //
-        if(i32CommandStatus == CMDLINE_BAD_CMD)
-        {
-            UARTprintf("    Bad command. Try again.\n");
-        }
-        //
-        // Handle the case of too many arguments.
-        //
-        else if(i32CommandStatus == CMDLINE_TOO_MANY_ARGS)
-        {
-            UARTprintf("    Too many arguments for command. Try again.\n");
-        }
-        //
-        // Handle the case of too few arguments.
-        //
-        else if(i32CommandStatus == CMDLINE_TOO_FEW_ARGS)
-        {
-            UARTprintf("    Too few arguments for command. Try again.\n");
-        }
-        //
-        // Handle the case of too few arguments.
-        //
-        else if(i32CommandStatus == CMDLINE_INVALID_ARG)
-        {
-            UARTprintf("    Invalid command argument(s). Try again.\n");
-        }
 
         //
         // Complete smart config process:
@@ -2380,5 +2349,51 @@ main(void)
 
             g_ui8StopSmartConfig = 0;
         }
-    }
-}
+
+        // If smartConfig worked make connection with webserver
+        if(g_ui32SmartConfigFinished == 1)
+        {
+        	if(webConnected == 0)
+        	{
+        		// Open a TCP socket
+        		printf("Calling socket()\n\n");
+        		if(matt_socket() < 0)
+					exit(1);
+
+        		// Bind to hard coded port
+        		printf("Calling bind()\n\n");
+        		if(matt_bind() < 0)
+        			exit(1);
+
+        		webConnected = 1;
+        	}
+
+        	// If we're connected to web and haven't sent num_msg_to_send yet send a http get
+        	if(webConnected && (num_msg_sent < num_msg_to_send))
+        	{
+        	    // Send hard coded http request
+				printf("Calling send() to send HTTP GET\n\n");
+				matt_send();
+				num_msg_sent++;
+
+				// recv reply
+				// TODO remove the sleeps in recv. Currently the sleeps are there so every tcp packet the
+				// server sends in reply arrives before the buffer is empty. As long as buffer isn't
+				// empty recv will keep pulling in data but returns once buff it is empty. Change to recv the
+				// page's size
+				printf("Calling recv()\n\n");
+				matt_recv();
+        	}
+
+        }
+
+        if(num_msg_sent == num_msg_to_send)
+        {
+        	// Close socket and thus connection
+        	printf("Calling close() to close connection and free socket\n\n");
+        	matt_close();
+        	return 0;
+        }
+
+    } //end while(1)
+} // end main

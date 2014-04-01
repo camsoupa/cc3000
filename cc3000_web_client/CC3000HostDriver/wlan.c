@@ -42,7 +42,7 @@
 #include <string.h>
 #include "wlan.h"
 #include "hci.h"
-#include "spi.h"
+#include "matt_spi.h"
 #include "socket.h"
 #include "evnt_handler.h"
 #include "os.h"

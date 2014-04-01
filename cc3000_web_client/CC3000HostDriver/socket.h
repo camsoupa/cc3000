@@ -141,7 +141,7 @@ typedef struct
 {
     __fd_mask fds_bits[__FD_SETSIZE / __NFDBITS];
 #define __FDS_BITS(set)        ((set)->fds_bits)
-} fd_set;
+} fd1_set; // matt changed from fd_set to fd1_set to avoid some unknown confilict
 
 // We don't use `memset' because this would require a prototype and
 //   the array isn't too big.
@@ -409,8 +409,8 @@ extern long connect(long sd, const sockaddr *addr, long addrlen);
  *  
  * \warning
  */
-extern int select(long nfds, fd_set *readsds, fd_set *writesds,
-                  fd_set *exceptsds, struct timeval *timeout);
+extern int select(long nfds, fd1_set *readsds, fd1_set *writesds,
+                  fd1_set *exceptsds, struct timeval *timeout);
 
 /**
  * \brief set socket options

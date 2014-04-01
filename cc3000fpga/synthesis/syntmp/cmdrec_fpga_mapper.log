@@ -1,15 +1,15 @@
-C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis  -part A2F200M3F  -package FBGA484  -grade -1   -globalthreshold 50 -maxfan 24 -opcond COMWC     -report_path 0       -summaryfile C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\report\cc3000fpga_fpga_mapper.xml -top_level_module  cc3000fpga  -flow mapping  -mp 1 -prjfile  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\scratchproject.prs  -implementation synthesis -licensetype  synplifypro_actel  -oedif  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.edn  -freq 100.000  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd  -sap  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap  -otap  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.tap  -omap  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.map  -devicelib  C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v  -sap  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap  -ologparam  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\syntmp\cc3000fpga.plg  -osyn  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.srm  -prjdir  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\  -prjname  cc3000fpga_syn  -log  C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\cc3000fpga_fpga_mapper.srr 
+C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis  -part A2F200M3F  -package FBGA484  -grade -1   -globalthreshold 50 -maxfan 24 -opcond COMWC     -report_path 0       -summaryfile C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_fpga_mapper.xml -top_level_module  cc3000fpga  -flow mapping  -mp 1 -prjfile  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\scratchproject.prs  -implementation synthesis -licensetype  synplifypro_actel  -oedif  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn  -freq 100.000  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd  -sap  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap  -otap  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.tap  -omap  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.map  -devicelib  C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v  -sap  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap  -ologparam  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg  -osyn  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm  -prjdir  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\  -prjname  cc3000fpga_syn  -log  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_fpga_mapper.srr 
 rc:1 success:1
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\scratchproject.prs|o|1395719793|2007
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.edn|o|1395719800|153299
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|i|1395719799|20000
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap|o|1395719799|92
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.tap|o|0|0
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.map|o|1395719800|28
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\scratchproject.prs|o|1396374752|2167
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn|o|1396374891|109108
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|i|1396374890|14564
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap|o|1396374890|92
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.tap|o|0|0
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.map|o|1396374891|28
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v|i|1340041216|72817
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.sap|o|1395719799|92
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1395719800|664
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.srm|o|1395719800|244435
-C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\cc3000fpga_fpga_mapper.srr|o|1395719800|12621
-C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe|i|1340212048|13099520
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap|o|1396374890|92
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1396374891|664
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm|o|1396374891|212132
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_fpga_mapper.srr|o|1396374891|13576
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe|i|1340212062|15745024
+C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe|i|1340212048|13099520

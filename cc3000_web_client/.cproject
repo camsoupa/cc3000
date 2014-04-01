@@ -21,11 +21,12 @@
 <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.cross.cortexm3.exe.debug.293454697" name="Debug Platform" osList="all" superClass="cdt.managedbuild.target.gnu.platform.cross.cortexm3.exe.debug"/>
 <builder buildPath="${workspace_loc:/cc3000_web_client/Debug}" id="cdt.managedbuild.target.gnu.builder.cross.cortexm3.exe.debug.1921225079" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.cross.cortexm3.exe.debug"/>
 <tool id="cdt.managedbuild.tool.gnu.c.compiler.cross.cortexm3.exe.debug.1422951911" name="GNU C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cross.cortexm3.exe.debug">
-<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cross.cortexm3.exe.debug.option.optimization.level.804940991" name="Optimization Level" superClass="gnu.c.compiler.cross.cortexm3.exe.debug.option.optimization.level" valueType="enumerated"/>
+<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cross.cortexm3.exe.debug.option.optimization.level.804940991" name="Optimization Level" superClass="gnu.c.compiler.cross.cortexm3.exe.debug.option.optimization.level" value="gnu.c.optimization.level.none" valueType="enumerated"/>
 <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cross.cortexm3.exe.debug.option.debugging.level.169992790" name="Debug Level" superClass="gnu.c.compiler.cross.cortexm3.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-<option id="gnu.c.compiler.option.preprocessor.def.symbols.1298253454" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+<option id="gnu.c.compiler.option.preprocessor.def.symbols.1298253454" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 <listOptionValue builtIn="false" value="ACTEL_STDIO_THRU_UART"/>
 </option>
+<option id="gnu.c.compiler.option.optimization.flags.1467398885" superClass="gnu.c.compiler.option.optimization.flags" value="-Os" valueType="string"/>
 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1684367327" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cross.cortexm3.exe.debug.1330648987" name="GNU C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cross.cortexm3.exe.debug">
@@ -49,6 +50,9 @@
 <tool id="cdt.managedbuild.tool.gnu.objdump.cross.cortexm3.lst.debug.563720560" name="GNU Listing Generator" superClass="cdt.managedbuild.tool.gnu.objdump.cross.cortexm3.lst.debug"/>
 </toolChain>
 </folderInfo>
+<sourceEntries>
+<entry excluding="hal" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+</sourceEntries>
 </configuration>
 </storageModule>
 <storageModule moduleId="scannerConfiguration">
@@ -456,6 +460,9 @@
 <tool id="cdt.managedbuild.tool.gnu.objdump.cross.cortexm3.lst.release.164724326" name="GNU Listing Generator" superClass="cdt.managedbuild.tool.gnu.objdump.cross.cortexm3.lst.release"/>
 </toolChain>
 </folderInfo>
+<sourceEntries>
+<entry excluding="hal" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+</sourceEntries>
 </configuration>
 </storageModule>
 <storageModule moduleId="scannerConfiguration">

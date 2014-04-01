@@ -129,9 +129,12 @@ void pio_init()
     //MAP_GPIOPadConfigSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPD );
 
     //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
-    SysCtlDelay(600000);
-    SysCtlDelay(600000);
-    SysCtlDelay(600000);
+    //SysCtlDelay(600000);
+    //SysCtlDelay(600000);
+    //SysCtlDelay(600000);
+    delay(600000);
+    delay(600000);
+    delay(600000);
 
     //
     // Disable WLAN CS with pull up Resistor
@@ -245,9 +248,11 @@ InitSysTick(void)
     //
     // Configure SysTick to occur 10 times per second and enable its interrupt.
     //
-    SysTickPeriodSet(SysCtlClockGet() / SYSTICK_PER_SECOND);
-    SysTickIntEnable();
-    SysTickEnable();
+
+	//TODO implement these?
+    //SysTickPeriodSet(SysCtlClockGet() / SYSTICK_PER_SECOND);
+    //SysTickIntEnable();
+    //SysTickEnable();
 }
 
 //*****************************************************************************

@@ -17,11 +17,8 @@ EXECUTABLE :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-hal/CortexM3 \
-hal/CortexM3/GNU \
 drivers/mss_uart \
 drivers/mss_spi \
-drivers/mss_i2c \
 drivers/mss_gpio \
 drivers/board \
 . \

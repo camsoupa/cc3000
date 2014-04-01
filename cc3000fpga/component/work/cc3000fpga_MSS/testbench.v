@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by Actel SmartDesign Mon Mar 24 21:56:13 2014
+// Created by Actel SmartDesign Tue Apr 01 11:54:33 2014
 // Testbench Template
 // This is a basic testbench that instantiates your design with basic 
 // clock and reset pins connected.  If your design has special
@@ -48,39 +48,22 @@ cc3000fpga_MSS cc3000fpga_MSS_0 (
     .UART_1_RXD({1{1'b0}}),
     .SPI_0_DI({1{1'b0}}),
     .SPI_1_DI({1{1'b0}}),
-    .MAC_RXD({2{1'b0}}),
-    .MAC_CRSDV({1{1'b0}}),
-    .MAC_RXER({1{1'b0}}),
     .MSS_RESET_N(NSYSRESET),
 
     // Outputs
+    .M2F_GPO_2( ),
+    .M2F_GPO_1( ),
+    .M2F_GPO_0( ),
     .UART_0_TXD( ),
     .UART_1_TXD( ),
     .SPI_0_DO( ),
     .SPI_1_DO( ),
-    .EMC_AB( ),
-    .EMC_BYTEN( ),
-    .EMC_CS0_N( ),
-    .EMC_CS1_N( ),
-    .EMC_OEN0_N( ),
-    .EMC_OEN1_N( ),
-    .EMC_CLK( ),
-    .EMC_RW_N( ),
-    .MAC_TXD( ),
-    .MAC_TXEN( ),
-    .MAC_MDC( ),
 
     // Inouts
     .SPI_0_CLK( ),
     .SPI_0_SS( ),
     .SPI_1_CLK( ),
-    .SPI_1_SS( ),
-    .I2C_0_SDA( ),
-    .I2C_0_SCL( ),
-    .I2C_1_SDA( ),
-    .I2C_1_SCL( ),
-    .EMC_DB( ),
-    .MAC_MDIO( )
+    .SPI_1_SS( )
 
 );
 

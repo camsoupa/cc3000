@@ -9,11 +9,8 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
--include hal/CortexM3/subdir.mk
--include hal/CortexM3/GNU/subdir.mk
 -include drivers/mss_uart/subdir.mk
 -include drivers/mss_spi/subdir.mk
--include drivers/mss_i2c/subdir.mk
 -include drivers/mss_gpio/subdir.mk
 -include drivers/board/subdir.mk
 -include CMSIS/subdir.mk

@@ -469,7 +469,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
 //*****************************************************************************
 //
 // This function initializes a CC3000 device and triggers it to start
-// operation TODO implement
+// operation
 //
 //*****************************************************************************
 int
@@ -2140,7 +2140,7 @@ CMD_mdnsadvertise (int argc, char **argv)
         for(ui32x = 0; ((ui32x < 100) && (i32Check != 0)); ui32x++)
         {
             //i32Check = mdnsAdvertiser(1, g_pcdevice_name,
-            //                          sizeof(g_pcdevice_name));    // TODO implement this
+            //                          sizeof(g_pcdevice_name));
         }
     }
     else
@@ -2151,7 +2151,7 @@ CMD_mdnsadvertise (int argc, char **argv)
         printf("    mdns advertising as: '%s'...\n",argv[1]);
         for(ui32x = 0; ((ui32x < 100) && (i32Check != 0)); ui32x++)
         {
-            //i32Check = mdnsAdvertiser(1, argv[1], strlen(argv[1])); // TODO implement this
+            //i32Check = mdnsAdvertiser(1, argv[1], strlen(argv[1]));
         }
 
     }

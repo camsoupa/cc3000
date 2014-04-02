@@ -96,7 +96,7 @@ void pio_init()
     //
     initClk();
 
-    //TODO Implement all this
+    //matt - TODO Implement all this or go about init some other way
 
     //
     // Configure the system peripheral bus that IRQ & EN pin are mapped to.
@@ -314,7 +314,7 @@ void initClk(void)
 void initLEDs()
 {
 
-
+// TODO
     //
     // Loop through each of the configured LEDs
     //
@@ -343,7 +343,7 @@ void initLEDs()
 //*****************************************************************************
 void turnLedOn(tBoardLED eLED)
 {
-
+// TODO
 
 
 }
@@ -355,6 +355,6 @@ void turnLedOn(tBoardLED eLED)
 //*****************************************************************************
 void turnLedOff(tBoardLED eLED)
 {
-
+//TODO
 
 }

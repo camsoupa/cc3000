@@ -168,7 +168,7 @@ ustrncpy(char * s1, const char * s2, size_t n)
 //! buffer.
 //
 //*****************************************************************************
-/*
+/* We don't need this
 int
 uvsnprintf(char *s, size_t n, const char * format,
            va_list arg)
@@ -742,7 +742,7 @@ convert:
 //! buffer, not including the NULL termination character.
 //
 //*****************************************************************************
-/*
+/* We don't need this
 int
 usprintf(char * s, const char *format, ...)
 {
@@ -821,7 +821,7 @@ usprintf(char * s, const char *format, ...)
 //! buffer.
 //
 //*****************************************************************************
-/*
+/*We don't need this
 int
 usnprintf(char * s, size_t n, const char * format, ...)
 {
@@ -855,7 +855,7 @@ usnprintf(char * s, size_t n, const char * format, ...)
 // month of the year, in a non-leap year.
 //
 //*****************************************************************************
-/*
+/*We don't need this
 static const time_t g_psDaysToMonth[12] =
 {
     0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334
@@ -876,7 +876,7 @@ static const time_t g_psDaysToMonth[12] =
 //! \return None.
 //
 //*****************************************************************************
-/*
+/*We don't need this
 void
 ulocaltime(time_t timer, struct tm *tm)
 {
@@ -969,7 +969,7 @@ ulocaltime(time_t timer, struct tm *tm)
 //! than \e t2, and -1 if \e t1 is less than \e t2.
 //
 //*****************************************************************************
-/*
+/*We don't need this
 static int
 ucmptime(struct tm *t1, struct tm *t2)
 {
@@ -1050,7 +1050,7 @@ ucmptime(struct tm *t1, struct tm *t2)
 //! was not possible then the function returns (uint32_t)(-1).
 //
 //*****************************************************************************
-/*
+/*We don't need this
 time_t
 umktime(struct tm *timeptr)
 {
@@ -1331,7 +1331,7 @@ static const float g_pfExponents[] =
 //! \return Returns the result of the conversion.
 //
 //*****************************************************************************
-/*
+/* We don't need this
 float
 ustrtof(const char *nptr, const char **endptr)
 {
@@ -1623,7 +1623,7 @@ ustrstr(const char *s1, const char *s2)
 //! than \e s2 and 1 if \e s1 is greater than \e s2.
 //
 //*****************************************************************************
-/*
+/*We don't need this
 int
 ustrncasecmp(const char *s1, const char *s2, size_t n)
 {
@@ -1828,7 +1828,7 @@ usrand(unsigned int seed)
 //! \return A pseudo-random number will be returned.
 //
 //*****************************************************************************
-/*
+/*We don't need this
 int
 urand(void)
 {

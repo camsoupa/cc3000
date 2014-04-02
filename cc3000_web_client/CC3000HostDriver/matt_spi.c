@@ -208,7 +208,7 @@ static void SpiDisableInterrupts(void);
 void
 SpiConfigureHwMapping(void)
 {
-	/*
+	/* TODO
     sSpiInformation.sHwSettings.ui32PioPortAddress = SYSCTL_PERIPH_SPI_PORT;
     sSpiInformation.sHwSettings.ui32PioSpiCs   = SPI_CS_PIN;
     sSpiInformation.sHwSettings.ui32PioSpiPort = SPI_PORT;
@@ -233,7 +233,7 @@ SpiConfigureHwMapping(void)
 uint32_t
 SpiCleanGPIOISR(void)
 {
-	/*
+	/* TODO
     uint32_t ui32Status;
 
     //
@@ -264,7 +264,7 @@ SpiCleanGPIOISR(void)
 void
 SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
-	/*
+	/* TODO
     //
     // Enable required SSI and GPIO peripherals.
     //
@@ -411,7 +411,7 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 void
 SpiClose(void)
 {
-/*
+/* TODO
     if (sSpiInformation.pRxPacket)
     {
         sSpiInformation.pRxPacket = 0;
@@ -440,7 +440,7 @@ SpiClose(void)
 void
 SpiOpen(tSpiHandleRx pfnRxHandler)
 {
-/*
+/* TODO
     //
     // Parameter sanity check.
     //
@@ -511,7 +511,7 @@ int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 static uint32_t
 SpiCheckDMAStatus(uint32_t ui32Channel)
 {
-	/*
+	/* TODO
     uint32_t ui32Chan;
 
     //
@@ -538,7 +538,7 @@ SpiCheckDMAStatus(uint32_t ui32Channel)
 static bool
 SpiIsDMAStopped(uint32_t ui32Channel)
 {
-	/*
+	/* TODO
     uint32_t ui32Mode;
     uint32_t ui32Enable;
 
@@ -562,7 +562,7 @@ SpiIsDMAStopped(uint32_t ui32Channel)
 static void
 SpiFlushRxFifo(void)
 {
-	/*
+	/* TODO
     uint32_t ui32Idx;
 
     while(MAP_SSIDataGetNonBlocking(sSpiInformation.sHwSettings.ui32SsiPort,
@@ -597,7 +597,7 @@ SpiFlushRxFifo(void)
 uint32_t
 SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 {
-	/*
+	/* TODO
     //
     // Assert the chip select to CC3000.
     //
@@ -680,7 +680,7 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 long
 SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 {
-	/*
+	/* TODO
     uint8_t ui8Pad = 0;
 
     //
@@ -763,7 +763,7 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 void
 SpiDisableSSIDMAChannels()
 {
-	/*
+	/* TODO
     MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMATxChannel);
     MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMARxChannel);
     */
@@ -777,7 +777,7 @@ SpiDisableSSIDMAChannels()
 void
 SpiEnableSSIDMAChannels()
 {
-	/*
+	/* TODO
     MAP_uDMAChannelEnable(sSpiInformation.sHwSettings.ui32DMATxChannel);
     MAP_uDMAChannelEnable(sSpiInformation.sHwSettings.ui32DMARxChannel);
     */
@@ -800,7 +800,7 @@ SpiEnableSSIDMAChannels()
 static void
 SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 {
-	/*
+	/* TODO
     //
     // Disable both the transmit and receive DMA channels before we mess with
     // their setup.
@@ -887,7 +887,7 @@ SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 {
-	/*
+	/* TODO
     //
     // The uDMA channels must be disabled.
     //
@@ -966,7 +966,7 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteDataSynchronous(const uint8_t *pui8Data, uint16_t ui16Size)
 {
-	/*
+	/* TODO
     //
     // This is a synchronous, polled write so we disable all SSI-related
     // interrupts.
@@ -1045,7 +1045,7 @@ SpiReadHeader(void)
 long
 SpiReadDataCont(bool *pbError)
 {
-/*
+/* TODO
     uint32_t ui32Count;
     uint8_t *pui8Buff;
     uint8_t ui8Type;
@@ -1233,7 +1233,7 @@ SpiReadDataCont(bool *pbError)
 static void
 SpiDisableInterrupts(void)
 {
-	/*
+	/* TODO
     MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
     MAP_IntDisable(sSpiInformation.sHwSettings.ui32PortInt);
     */
@@ -1247,7 +1247,7 @@ SpiDisableInterrupts(void)
 void
 SpiResumeSpi(void)
 {
-	/*
+	/* TODO
     MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
     MAP_IntEnable(sSpiInformation.sHwSettings.ui32PortInt);
     */
@@ -1265,7 +1265,7 @@ SpiResumeSpi(void)
 void
 SpiTriggerRxProcessing(bool bBadPacket)
 {
-	/*
+	/* TODO
     //
     // Tidy up at the end of receiving a packet.
     //
@@ -1344,7 +1344,7 @@ SpiContReadOperation(void)
 void
 IntSpiGPIOHandler(void)
 {
-	/*
+	/* TODO
     uint32_t ui32Status;
 
     //
@@ -1414,7 +1414,7 @@ IntSpiGPIOHandler(void)
 void
 SpiIntHandler(void)
 {
-	/*
+	/* TODO
     bool bTxFinished, bRxFinished;
     uint16_t ui16Count;
     uint8_t *pui8Buff;

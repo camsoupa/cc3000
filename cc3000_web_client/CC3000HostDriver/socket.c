@@ -1050,7 +1050,7 @@ simple_link_send(long sd, const void *buf, long len, long flags,
     //
     // Check the bsd_arguments
     //
-    // TODO - need add checking of flags ...
+    // TODO - need add checking of flags ... not a matt TODO
     if (0 != (res = HostFlowControlConsumeBuff(sd)))
 	{
         return res;

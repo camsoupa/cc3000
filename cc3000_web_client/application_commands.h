@@ -93,7 +93,8 @@
 extern int CMD_help (int argc, char **argv);
 extern int CMD_matt (int argc, char **argv);
 extern int CMD_smartConfig (int argc, char **argv);
-extern int CMD_connect (int argc, char **argv);
+//extern int CMD_connect (int argc, char **argv);
+extern int CMD_connect(char *ssid);
 extern int CMD_socketOpen (int argc, char **argv);
 extern int CMD_sendData (int argc, char **argv);
 extern int CMD_receiveData (int argc, char **argv);

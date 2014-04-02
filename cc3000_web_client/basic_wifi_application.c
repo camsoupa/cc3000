@@ -1254,9 +1254,9 @@ CMD_smartConfig(int argc, char **argv)
 // [1]SSID
 //
 //*****************************************************************************
-/* use smart config instead
 int
-CMD_connect(int argc, char **argv)
+//CMD_connect(int argc, char **argv)
+CMD_connect(char *ssid)
 {
     uint32_t ui32SsidLen, ui32x;
     char *pui8Ssid;
@@ -1264,6 +1264,7 @@ CMD_connect(int argc, char **argv)
     //
     // Validate input.
     //
+    /*
     if(argc < 2)
     {
         return(CMDLINE_TOO_FEW_ARGS);
@@ -1272,18 +1273,22 @@ CMD_connect(int argc, char **argv)
     {
         return(CMDLINE_TOO_MANY_ARGS);
     }
-    else if(strlen(argv[1]) >= 255)
+    */
+
+    if(strlen(ssid) >= 255)
     {
         printf("Length of SSID must be less than 255\n");
-        return(CMDLINE_INVALID_ARG);
+        return(-1);
     }
 
     //
     // Extract the SSID from the input parameters and determine the string
     // length.
     //
-    pui8Ssid = argv[1];
-    ui32SsidLen = ustrlen(argv[1]);
+    //pui8Ssid = argv[1];
+    pui8Ssid = ssid;
+    //ui32SsidLen = ustrlen(argv[1]);
+    ui32SsidLen = ustrnlen(ssid);
 
     //
     // Call low level connect function. See documentation for more information.
@@ -1321,7 +1326,7 @@ CMD_connect(int argc, char **argv)
 
     return(0);
 }
-*/
+
 //*****************************************************************************
 //
 // Open a UDP or TCP socket.
@@ -2314,13 +2319,14 @@ main(void)
     initDriver();
 
 
-    // Matt - Removing CLI in favor of starting smartConfig then running
+    // Matt - Removing CLI in favor of starting using CMD_connect then running
     //       the GET request over and over
 
 
     // Block on SmartConfig until app has allowed connection
-    StartSmartConfig();
-
+    //StartSmartConfig();
+    if(CMD_connect("dd-wrt") < 0)
+    	printf("Connect Failed\n");
 
 
     //
@@ -2329,29 +2335,8 @@ main(void)
     while(1)
     {
 
-        //
-        // Complete smart config process:
-        // 1. if smart config is done
-        // 2. CC3000 established AP connection
-        // 3. DHCP IP is configured
-        // then send mDNS packet to stop external SmartConfig application
-        //
-        if((g_ui8StopSmartConfig == 1) && (g_ui32CC3000DHCP == 1) &&
-           (g_ui32CC3000Connected == 1))
-        {
-            unsigned char loop_index = 0;
-
-            while(loop_index < 3)
-            {
-                mdnsAdvertiser(1, g_pcdevice_name, sizeof(g_pcdevice_name));
-                loop_index++;
-            }
-
-            g_ui8StopSmartConfig = 0;
-        }
-
-        // If smartConfig worked make connection with webserver
-        if(g_ui32SmartConfigFinished == 1)
+        // If wlan connect worked make connection with web server
+        if(g_ui32CC3000DHCP == 1)
         {
         	if(webConnected == 0)
         	{

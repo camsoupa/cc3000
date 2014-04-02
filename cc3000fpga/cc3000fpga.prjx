@@ -150,12 +150,12 @@ PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396374878"
+TIME="1396374885"
 SIZE="7576"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
 STATE="utd"
-TIME="1396374876"
+TIME="1396374883"
 SIZE="8860"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 BEGIN_USE_CONSTRAINT
@@ -166,14 +166,14 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.v,hdl"
 STATE="utd"
-TIME="1396374876"
+TIME="1396374883"
 SIZE="3699"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
 STATE="utd"
-TIME="1396374876"
+TIME="1396374883"
 SIZE="1759"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 IS_READONLY="TRUE"
@@ -257,8 +257,13 @@ STATE="utd"
 TIME="1396369740"
 SIZE="413"
 ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga.adb,adb"
+STATE="utd"
+TIME="1396374920"
+SIZE="273920"
+ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.fdb,fdb"
-STATE="ood"
+STATE="utd"
 TIME="1396369740"
 SIZE="42756"
 ENDFILE
@@ -267,15 +272,45 @@ STATE="utd"
 TIME="1396369740"
 SIZE="1054"
 ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_compile_log.rpt,log"
+STATE="utd"
+TIME="1396374920"
+SIZE="32471"
+ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb,pdb"
+STATE="utd"
+TIME="1396375361"
+SIZE="52224"
+ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pro,pro"
+STATE="utd"
+TIME="1396375401"
+SIZE="2046"
+ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_fp\projectData\cc3000fpga.pdb,pdb"
+STATE="utd"
+TIME="1396375401"
+SIZE="52224"
+ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_MSS.ide_des,ide_des"
 STATE="utd"
 TIME="1396374026"
 SIZE="335"
 ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_placeroute_log.rpt,log"
+STATE="utd"
+TIME="1396375325"
+SIZE="2419"
+ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_prgdata_log.rpt,log"
 STATE="utd"
 TIME="1396369740"
 SIZE="655"
+ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_verifytiming_log.rpt,log"
+STATE="utd"
+TIME="1396375329"
+SIZE="1200"
 ENDFILE
 VALUE "<project>\designer\impl1\MSS_XTLOSC.ide_des,ide_des"
 STATE="utd"
@@ -290,7 +325,7 @@ PARENT="<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\MSS.cxf"
 ENDFILE
 VALUE "<project>\simulation\subsystem.bfm,sim"
 STATE="utd"
-TIME="1396374876"
+TIME="1396374883"
 SIZE="598"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
@@ -307,7 +342,7 @@ SIZE="670"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.edn,syn_edn"
-STATE="ood"
+STATE="utd"
 TIME="1396369740"
 SIZE="153299"
 ENDFILE
@@ -342,7 +377,10 @@ VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
 ENDLIST
 LIST ProjectState5.1
 LIST Impl1
+LiberoState=Post_Layout
+ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
 ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -480,7 +518,10 @@ ENDLIST
 LIST ProjectState5.1
 LIST "cc3000fpga::work"
 LIST Impl1
+LiberoState=Post_Layout
+ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
 ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -515,7 +556,7 @@ LIST OpenedFileList
 SmartDesign;cc3000fpga
 SmartDesign;cc3000fpga_MSS
 Reports;Reports
-ACTIVEVIEW;cc3000fpga
+ACTIVEVIEW;cc3000fpga_MSS
 ENDLIST
 LIST ModuleSubBlockList
 LIST "BIBUF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"

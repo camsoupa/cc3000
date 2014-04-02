@@ -344,7 +344,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     {
 
         printf("\r    Received Asynchronous Simple Config Done Event "
-                         "from CC3000\n>",0x08);
+                         "from CC3000\n>");
 
         g_ui32SmartConfigFinished = 1;
         g_ui8StopSmartConfig = 1;
@@ -475,7 +475,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
 //*****************************************************************************
 //
 // This function initializes a CC3000 device and triggers it to start
-// operation
+// operation TODO implement
 //
 //*****************************************************************************
 int
@@ -489,12 +489,12 @@ initDriver(void)
     //
     // Initialize and configure the SPI.
     //
-    init_spi(1000000, SysCtlClockGet());
+    //init_spi(1000000, SysCtlClockGet());
 
     //
     // Enable processor interrupts.
     //
-    MAP_IntMasterEnable();
+    //MAP_IntMasterEnable();
 
     //
     // Initialize and enable WiFi on the CC3000.
@@ -522,14 +522,13 @@ initDriver(void)
     //
     // Initialize UART.
     //
-    DispatcherUARTConfigure(SysCtlClockGet());
-    ROM_SysCtlDelay(1000000);
+    //DispatcherUARTConfigure(SysCtlClockGet()); // I think our UART is already set up
+    //ROM_SysCtlDelay(1000000);
 
     //
     // Print version string.
     //
     printf("\n\n\rCC3000 Basic Wifi Application!\n\r");
-    printf("Type 'help' for a list of commands\n\r");
 
     //
     // Set flag to stop smart config if running.
@@ -564,29 +563,29 @@ DotDecimalDecoder(char *pcString, uint8_t *pui8Val1, uint8_t *pui8Val2,
     // Extract 1st octet of address.
     //
     pcStartData = pcString;
-    pcEndData = ustrstr(pcStartData,".");
-    ui32Block1 = ustrtoul(pcStartData, 0,10);
+    //pcEndData = ustrstr(pcStartData,".");     //TODO copy these functions from TI
+    //ui32Block1 = ustrtoul(pcStartData, 0,10);
 
     //
     // Extract 2nd octet of address.
     //
     pcStartData = pcEndData +1;
-    pcEndData = ustrstr(pcStartData,".");
-    ui32Block2 = ustrtoul(pcStartData, 0,10);
+    //pcEndData = ustrstr(pcStartData,".");
+    //ui32Block2 = ustrtoul(pcStartData, 0,10);
 
     //
     // Extract 3rd octet of address.
     //
     pcStartData = pcEndData +1;
-    pcEndData = ustrstr(pcStartData,".");
-    ui32Block3 = ustrtoul(pcStartData, 0,10);
+    //pcEndData = ustrstr(pcStartData,".");
+    //ui32Block3 = ustrtoul(pcStartData, 0,10);
 
     //
     // Extract 4th octet of address.
     //
     pcStartData = pcEndData +1;
-    pcEndData = ustrstr(pcStartData,".");
-    ui32Block4 = ustrtoul(pcStartData, 0,10);
+    //pcEndData = ustrstr(pcStartData,".");
+    //ui32Block4 = ustrtoul(pcStartData, 0,10);
 
     //
     // Validate data. Valid values are between 0->255.
@@ -659,6 +658,20 @@ tCmdLineEntry g_psCmdTable[] =
     { 0, 0, 0 }
 };
 */
+
+/* Function for delay taken from our lab 6
+ * trying to replace  ROM_SysCtlDelay(100);*/
+int delay ( volatile uint32_t n)
+{
+    while(n!=0)
+    {
+    	n--;
+    }
+    return 0;
+}
+
+
+
 //*****************************************************************************
 //
 // This function triggers smart configuration processing on the CC3000.
@@ -691,7 +704,8 @@ void StartSmartConfig(void)
     //
     while(g_ui32CC3000Connected == 1)
     {
-        ROM_SysCtlDelay(100);
+        //ROM_SysCtlDelay(100);
+    	delay(100);
         hci_unsolicited_event_handler();
     }
 
@@ -714,14 +728,14 @@ void StartSmartConfig(void)
     //
     // Set the prefix used for smart config.
     //
-    wlan_smart_config_set_prefix((char *)g_pcCC3000_prefix);
+    //wlan_smart_config_set_prefix((char *)g_pcCC3000_prefix); //TODO implement this
     turnLedOff(LED_0);
 
 
     //
     // Start the SmartConfig process.
     //
-    wlan_smart_config_start(0); // matt edit was 1
+    //wlan_smart_config_start(0); // matt edit was 1 //TODO implement this
     turnLedOn(LED_0);
 
     //
@@ -730,9 +744,11 @@ void StartSmartConfig(void)
     while(g_ui32SmartConfigFinished == 0)
     {
         turnLedOff(LED_0);
-        ROM_SysCtlDelay(16500000);
+        //ROM_SysCtlDelay(16500000);
+        delay(16500000);
         turnLedOn(LED_0);
-        ROM_SysCtlDelay(16500000);
+        //ROM_SysCtlDelay(16500000);
+        delay(16500000);
     }
     turnLedOn(LED_0);
 
@@ -770,7 +786,8 @@ void StartSmartConfig(void)
     //
     // Mandatory delay between calls to wlan_stop and wlan_start.
     //
-    ROM_SysCtlDelay(100000);
+    //ROM_SysCtlDelay(100000);
+    delay(100000);
 
     //
     // Start up the CC3000 again.
@@ -851,7 +868,8 @@ int matt_socket()
        {
            hci_unsolicited_event_handler();
 
-           ROM_SysCtlDelay(1000);
+           //ROM_SysCtlDelay(1000);
+           delay(1000);
        }
 
        //
@@ -1150,7 +1168,8 @@ int matt_recv()
                                 CC3000_APP_BUFFER_SIZE, 0);
 
             //printf("Before wait\n");
-            ROM_SysCtlDelay(10000000);
+            //ROM_SysCtlDelay(10000000);
+            delay(10000000);
             //printf("After wait\n");
             //
             // Check Data Validity
@@ -1197,7 +1216,7 @@ int matt_recv()
                  printf("%c",g_pui8CC3000_Rx_Buffer[ui32x]);
             }
 
-            UARTFlushTx(false);
+            //UARTFlushTx(false);  //TODO we did not have a flush in our driver but we're probably fine without it
 
         }while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0); //while(i32ReturnValue == CC3000_APP_BUFFER_SIZE);
     }
@@ -1216,15 +1235,15 @@ int matt_recv()
 int
 CMD_matt(int argc, char **argv)
 {
-    printf("\Calling socket()\n\n");
+    printf("Calling socket()\n\n");
 	matt_socket();
-    printf("\Calling bind()\n\n");
+    printf("Calling bind()\n\n");
 	matt_bind();
-    printf("\Calling send() to send HTTP GET\n\n");
+    printf("Calling send() to send HTTP GET\n\n");
 	matt_send();
-    printf("\Calling recv()\n\n");
+    printf("Calling recv()\n\n");
     matt_recv();
-    printf("\Calling close() to close connection and free socket\n\n");
+    printf("Calling close() to close connection and free socket\n\n");
 	matt_close();
 
 return 0;
@@ -2122,8 +2141,8 @@ CMD_mdnsadvertise (int argc, char **argv)
         printf("    mdns advertising as: '%s'...\n",g_pcdevice_name);
         for(ui32x = 0; ((ui32x < 100) && (i32Check != 0)); ui32x++)
         {
-            i32Check = mdnsAdvertiser(1, g_pcdevice_name,
-                                      sizeof(g_pcdevice_name));
+            //i32Check = mdnsAdvertiser(1, g_pcdevice_name,
+            //                          sizeof(g_pcdevice_name));    // TODO implement this
         }
     }
     else
@@ -2134,7 +2153,7 @@ CMD_mdnsadvertise (int argc, char **argv)
         printf("    mdns advertising as: '%s'...\n",argv[1]);
         for(ui32x = 0; ((ui32x < 100) && (i32Check != 0)); ui32x++)
         {
-            i32Check = mdnsAdvertiser(1, argv[1], strlen(argv[1]));
+            //i32Check = mdnsAdvertiser(1, argv[1], strlen(argv[1])); // TODO implement this
         }
 
     }
@@ -2178,8 +2197,8 @@ CMD_cc3000reset(int argc, char **argv)
     //
     // Wait a bit.
     //
-    ROM_SysCtlDelay(100000);
-
+    //ROM_SysCtlDelay(100000);
+    delay(100000);
     //
     // Turn off Green LED, set to Red
     //
@@ -2250,7 +2269,8 @@ CMD_ping(int argc, char **argv)
     //
     if(argc >= 3)
     {
-        ui32Tries = ustrtoul(argv[2], 0,10);
+        //ui32Tries = ustrtoul(argv[2], 0,10);
+        ui32Tries = 4;
     }
     else
     {
@@ -2262,7 +2282,8 @@ CMD_ping(int argc, char **argv)
     //
     if(argc == 4)
     {
-        ui32Timeout = ustrtoul(argv[3], 0,10);
+        //ui32Timeout = ustrtoul(argv[3], 0,10);
+        ui32Timeout = 500;
     }
     else
     {
@@ -2335,8 +2356,34 @@ main(void)
     while(1)
     {
 
+<<<<<<< HEAD
         // If wlan connect worked make connection with web server
         if(g_ui32CC3000DHCP == 1)
+=======
+        //
+        // Complete smart config process:
+        // 1. if smart config is done
+        // 2. CC3000 established AP connection
+        // 3. DHCP IP is configured
+        // then send mDNS packet to stop external SmartConfig application
+        //
+        if((g_ui8StopSmartConfig == 1) && (g_ui32CC3000DHCP == 1) &&
+           (g_ui32CC3000Connected == 1))
+        {
+            unsigned char loop_index = 0;
+
+            while(loop_index < 3)
+            {
+                //mdnsAdvertiser(1, g_pcdevice_name, sizeof(g_pcdevice_name));  //TODO implement this
+                loop_index++;
+            }
+
+            g_ui8StopSmartConfig = 0;
+        }
+
+        // If smartConfig worked make connection with webserver
+        if(g_ui32SmartConfigFinished == 1)
+>>>>>>> 90d0ba6a1dc3172dfdb325277b410d6c1eae90ce
         {
         	if(webConnected == 0)
         	{

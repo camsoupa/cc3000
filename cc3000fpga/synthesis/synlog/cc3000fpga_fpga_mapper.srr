@@ -1,58 +1,58 @@
-Synopsys Actel Technology Mapper, Version mapact, Build 729R, Built Jun 20 2012 09:20:46
+Synopsys Actel Technology Mapper, Version mapact, Build 729R, Built Jun 20 2012 09:47:40
 Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
 Product Version F-2012.03M-SP1 
 
-Mapper Startup Complete (Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 49MB)
+Mapper Startup Complete (Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
 
-@N: MF249 |Running in 32-bit mode.
+@N: MF248 |Running in 64-bit mode.
 @N: MF258 |Gated clock conversion disabled 
 @N: MF547 |Generated clock conversion disabled 
 
-Design Input Complete (Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 49MB)
+Design Input Complete (Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
 
 
-Mapper Initialization Complete (Time elapsed 0h:00m:00s; Memory used current: 48MB peak: 49MB)
+Mapper Initialization Complete (Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
 
 
 
-Starting Optimization and Mapping (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Starting Optimization and Mapping (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
-@W: MO111 :"c:\users\gnewt\desktop\cc3000fpga\component\work\cc3000fpga_mss\mss_ccc_0\cc3000fpga_mss_tmp_mss_ccc_0_mss_ccc.v":64:7:64:18|Tristate driver LPXIN_CLKOUT on net LPXIN_CLKOUT has its enable tied to GND (module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC) 
-@W: MO111 :"c:\users\gnewt\desktop\cc3000fpga\component\work\cc3000fpga_mss\mss_ccc_0\cc3000fpga_mss_tmp_mss_ccc_0_mss_ccc.v":63:7:63:20|Tristate driver MAINXIN_CLKOUT on net MAINXIN_CLKOUT has its enable tied to GND (module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC) 
-@W: MO111 :"c:\users\gnewt\desktop\cc3000fpga\component\work\cc3000fpga_mss\mss_ccc_0\cc3000fpga_mss_tmp_mss_ccc_0_mss_ccc.v":62:7:62:18|Tristate driver RCOSC_CLKOUT on net RCOSC_CLKOUT has its enable tied to GND (module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\mss_ccc_0\cc3000fpga_mss_tmp_mss_ccc_0_mss_ccc.v":64:7:64:18|Tristate driver LPXIN_CLKOUT on net LPXIN_CLKOUT has its enable tied to GND (module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\mss_ccc_0\cc3000fpga_mss_tmp_mss_ccc_0_mss_ccc.v":63:7:63:20|Tristate driver MAINXIN_CLKOUT on net MAINXIN_CLKOUT has its enable tied to GND (module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\mss_ccc_0\cc3000fpga_mss_tmp_mss_ccc_0_mss_ccc.v":62:7:62:18|Tristate driver RCOSC_CLKOUT on net RCOSC_CLKOUT has its enable tied to GND (module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC) 
 
 Available hyper_sources - for debug and ip models
 	None Found
 
 
-Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Finished preparing to map (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished preparing to map (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 
-Finished technology mapping (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished technology mapping (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
-Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
 
 Added 0 Buffers
@@ -60,22 +60,23 @@ Added 0 Cells via replication
 	Added 0 Sequential Cells via replication
 	Added 0 Combinational Cells via replication
 
-Finished restoring hierarchy (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished restoring hierarchy (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 102MB)
 
-Writing Analyst data base C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.srm
+Writing Analyst data base C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm
 
-Finished Writing Netlist Databases (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 57MB)
+Finished Writing Netlist Databases (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
 Writing EDIF Netlist and constraint files
 F-2012.03M-SP1 
 
-Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 57MB)
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 102MB)
 
-@W: MT246 :"c:\users\gnewt\desktop\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":1589:0:1589:11|Blackbox TRIBUFF_MSS is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":603:7:603:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":520:0:520:11|Blackbox TRIBUFF_MSS is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Mon Mar 24 21:56:40 2014
+# Timing Report written on Tue Apr 01 11:54:51 2014
 #
 
 
@@ -97,12 +98,12 @@ Performance Summary
 *******************
 
 
-Worst slack in design: 5.038
+Worst slack in design: 5.312
 
                    Requested     Estimated     Requested     Estimated               Clock      Clock          
 Starting Clock     Frequency     Frequency     Period        Period        Slack     Type       Group          
 ---------------------------------------------------------------------------------------------------------------
-System             100.0 MHz     201.5 MHz     10.000        4.962         5.038     system     system_clkgroup
+System             100.0 MHz     213.3 MHz     10.000        4.688         5.312     system     system_clkgroup
 ===============================================================================================================
 
 
@@ -116,7 +117,7 @@ Clocks            |    rise  to  rise   |    fall  to  fall   |    rise  to  fal
 --------------------------------------------------------------------------------------------------------
 Starting  Ending  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
 --------------------------------------------------------------------------------------------------------
-System    System  |  10.000      5.038  |  No paths    -      |  No paths    -      |  No paths    -    
+System    System  |  10.000      5.312  |  No paths    -      |  No paths    -      |  No paths    -    
 ========================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -139,35 +140,39 @@ Detailed Report for Clock: System
 Starting Points with Worst Slack
 ********************************
 
-                                       Starting                                                  Arrival          
-Instance                               Reference     Type        Pin         Net                 Time        Slack
-                                       Clock                                                                      
-------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_CCC_0.I_RCOSC     System        RCOSC       CLKOUT      N_CLKA_RCOSC        0.000       5.038
-cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     EMCCLK      MSS_EMI_0_CLK_D     0.000       9.672
-cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI0DO      MSS_SPI_0_DO_D      0.000       9.726
-cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI0DOE     MSS_SPI_0_DO_E      0.000       9.726
-cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI1DO      MSS_SPI_1_DO_D      0.000       9.726
-cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI1DOE     MSS_SPI_1_DO_E      0.000       9.726
-==================================================================================================================
+                                       Starting                                                        Arrival          
+Instance                               Reference     Type        Pin         Net                       Time        Slack
+                                       Clock                                                                            
+------------------------------------------------------------------------------------------------------------------------
+cc3000fpga_MSS_0.MSS_CCC_0.I_RCOSC     System        RCOSC       CLKOUT      N_CLKA_RCOSC              0.000       5.312
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     EMCCLK      MSS_ADLIB_INST_EMCCLK     0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     GPO[0]      GPO_net_0[0]              0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     GPO[1]      GPO_net_0[1]              0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     GPO[2]      GPO_net_0[2]              0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI0DO      MSS_SPI_0_DO_D            0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI0DOE     MSS_SPI_0_DO_E            0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI1DO      MSS_SPI_1_DO_D            0.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST        System        MSS_APB     SPI1DOE     MSS_SPI_1_DO_E            0.000       9.726
+========================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                    Starting                                                                 Required          
-Instance                            Reference     Type            Pin           Net                          Time         Slack
-                                    Clock                                                                                      
--------------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB         PLLLOCK       MSS_ADLIB_INST_PLLLOCK       10.000       5.038
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB         FCLK          MSS_ADLIB_INST_FCLK          10.000       5.312
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB         MACCLKCCC     MSS_ADLIB_INST_MACCLKCCC     10.000       5.312
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB         EMCCLKRTN     MSS_EMI_0_CLK_D              10.000       9.672
-cc3000fpga_MSS_0.MSS_SPI_0_DO       System        TRIBUFF_MSS     D             MSS_SPI_0_DO_D               10.000       9.726
-cc3000fpga_MSS_0.MSS_SPI_0_DO       System        TRIBUFF_MSS     E             MSS_SPI_0_DO_E               10.000       9.726
-cc3000fpga_MSS_0.MSS_SPI_1_DO       System        TRIBUFF_MSS     D             MSS_SPI_1_DO_D               10.000       9.726
-cc3000fpga_MSS_0.MSS_SPI_1_DO       System        TRIBUFF_MSS     E             MSS_SPI_1_DO_E               10.000       9.726
-===============================================================================================================================
+                                    Starting                                                              Required          
+Instance                            Reference     Type            Pin           Net                       Time         Slack
+                                    Clock                                                                                   
+----------------------------------------------------------------------------------------------------------------------------
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB         FCLK          MSS_ADLIB_INST_FCLK       10.000       5.312
+cc3000fpga_MSS_0.MSSINT_GPO_0       System        MSSINT          A             GPO_net_0[0]              10.000       9.726
+cc3000fpga_MSS_0.MSSINT_GPO_1       System        MSSINT          A             GPO_net_0[1]              10.000       9.726
+cc3000fpga_MSS_0.MSSINT_GPO_2       System        MSSINT          A             GPO_net_0[2]              10.000       9.726
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB         EMCCLKRTN     MSS_ADLIB_INST_EMCCLK     10.000       9.726
+cc3000fpga_MSS_0.MSS_SPI_0_DO       System        TRIBUFF_MSS     D             MSS_SPI_0_DO_D            10.000       9.726
+cc3000fpga_MSS_0.MSS_SPI_0_DO       System        TRIBUFF_MSS     E             MSS_SPI_0_DO_E            10.000       9.726
+cc3000fpga_MSS_0.MSS_SPI_1_DO       System        TRIBUFF_MSS     D             MSS_SPI_1_DO_D            10.000       9.726
+cc3000fpga_MSS_0.MSS_SPI_1_DO       System        TRIBUFF_MSS     E             MSS_SPI_1_DO_E            10.000       9.726
+============================================================================================================================
 
 
 
@@ -182,28 +187,28 @@ Path information for path number 1:
     + Estimated clock delay at ending point: 0.000
     = Required time:                         10.000
 
-    - Propagation time:                      4.962
+    - Propagation time:                      4.688
     - Clock delay at starting point:         0.000 (ideal)
     - Estimated clock delay at start point:  -0.000
-    = Slack (critical) :                     5.038
+    = Slack (critical) :                     5.312
 
     Number of logic level(s):                1
     Starting point:                          cc3000fpga_MSS_0.MSS_CCC_0.I_RCOSC / CLKOUT
-    Ending point:                            cc3000fpga_MSS_0.MSS_ADLIB_INST / PLLLOCK
+    Ending point:                            cc3000fpga_MSS_0.MSS_ADLIB_INST / FCLK
     The start point is clocked by            System [rising]
     The end   point is clocked by            System [rising]
 
-Instance / Net                                      Pin         Pin               Arrival     No. of    
-Name                                    Type        Name        Dir     Delay     Time        Fan Out(s)
---------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_CCC_0.I_RCOSC      RCOSC       CLKOUT      Out     0.000     0.000       -         
-N_CLKA_RCOSC                            Net         -           -       0.274     -           1         
-cc3000fpga_MSS_0.MSS_CCC_0.I_MSSCCC     MSS_CCC     CLKA        In      -         0.274       -         
-cc3000fpga_MSS_0.MSS_CCC_0.I_MSSCCC     MSS_CCC     LOCKMSS     Out     4.415     4.688       -         
-MSS_ADLIB_INST_PLLLOCK                  Net         -           -       0.274     -           1         
-cc3000fpga_MSS_0.MSS_ADLIB_INST         MSS_APB     PLLLOCK     In      -         4.962       -         
-========================================================================================================
-Total path delay (propagation time + setup) of 4.962 is 4.415(89.0%) logic and 0.547(11.0%) route.
+Instance / Net                                      Pin        Pin               Arrival     No. of    
+Name                                    Type        Name       Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------------
+cc3000fpga_MSS_0.MSS_CCC_0.I_RCOSC      RCOSC       CLKOUT     Out     0.000     0.000       -         
+N_CLKA_RCOSC                            Net         -          -       0.274     -           1         
+cc3000fpga_MSS_0.MSS_CCC_0.I_MSSCCC     MSS_CCC     CLKA       In      -         0.274       -         
+cc3000fpga_MSS_0.MSS_CCC_0.I_MSSCCC     MSS_CCC     GLAMSS     Out     4.141     4.415       -         
+MSS_ADLIB_INST_FCLK                     Net         -          -       0.274     -           1         
+cc3000fpga_MSS_0.MSS_ADLIB_INST         MSS_APB     FCLK       In      -         4.688       -         
+=======================================================================================================
+Total path delay (propagation time + setup) of 4.688 is 4.141(88.3%) logic and 0.547(11.7%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -216,6 +221,7 @@ Report for cell cc3000fpga.verilog
   Core Cell usage:
               cell count     area count*area
                GND     3      0.0        0.0
+            MSSINT     3      0.0        0.0
            MSS_APB     1      0.0        0.0
            MSS_CCC     1      0.0        0.0
              RCOSC     1      0.0        0.0
@@ -223,31 +229,31 @@ Report for cell cc3000fpga.verilog
 
 
                    -----          ----------
-             TOTAL     9                 0.0
+             TOTAL    12                 0.0
 
 
   IO Cell usage:
               cell count
-         BIBUF_MSS    21
-   BIBUF_OPEND_MSS     4
-         INBUF_MSS     9
-        OUTBUF_MSS    40
+         BIBUF_MSS     4
+         INBUF_MSS     5
+            OUTBUF     3
+        OUTBUF_MSS     2
        TRIBUFF_MSS     2
                    -----
-             TOTAL    76
+             TOTAL    16
 
 
 Core Cells         : 0 of 4608 (0%)
-IO Cells           : 76
+IO Cells           : 16
 
   RAM/ROM Usage Summary
 Block Rams : 0 of 8 (0%)
 
 Mapper successful!
 
-At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 24MB peak: 57MB)
+At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 39MB peak: 102MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 24 21:56:40 2014
+# Tue Apr 01 11:54:51 2014
 
 ###########################################################]

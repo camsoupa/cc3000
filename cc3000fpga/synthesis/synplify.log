@@ -1,14 +1,14 @@
 
-Starting:    C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\mbin\synbatch.exe
+Starting:    C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\win64\mbin\synbatch.exe
 Install:     C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1
-Date:        Mon Mar 24 21:56:33 2014
+Date:        Tue Apr 01 11:54:48 2014
 Version:     F-2012.03M-SP1 
 
 Arguments:   -product synplify_pro  -licensetype synplifypro_actel -batch -log synplify.log cc3000fpga_syn.tcl
 ProductType: synplify_pro
 
 License checkout: synplifypro_actel
-License: synplifypro_actel node-locked 
+License: synplifypro_actel from server winlic-b.eng.utah.edu 
 Licensed Vendor: actel
 License Feature: actel_oem
 
@@ -16,7 +16,7 @@ Running in Vendor Mode
 
 
 
-log file: "C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.srr"
+log file: "C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srr"
 
 
 Running cc3000fpga_syn|synthesis
@@ -27,11 +27,11 @@ Running Compile Process on cc3000fpga_syn|synthesis
 
 Running Compile Input on cc3000fpga_syn|synthesis
 
-Copied C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs to C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.srs
+Copied C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs to C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srs
 
 compiler Completed with warnings
 Return Code: 1
-Run Time:0h:00m:03s
+Run Time:0h:00m:02s
 
 
 Job Compile Process completed on cc3000fpga_syn|synthesis
@@ -40,7 +40,7 @@ Running Premap on cc3000fpga_syn|synthesis
 
 premap Completed
 Return Code: 0
-Run Time:0h:00m:04s
+Run Time:0h:00m:00s
 
 
 Job Compile completed on cc3000fpga_syn|synthesis
@@ -57,8 +57,6 @@ Run Time:0h:00m:01s
 Job Map completed on cc3000fpga_syn|synthesis
 
 Job Logic Synthesis completed on cc3000fpga_syn|synthesis
-
-Copied C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.srr to C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\backup\cc3000fpga.srr
 
 TCL script complete: "cc3000fpga_syn.tcl"
 

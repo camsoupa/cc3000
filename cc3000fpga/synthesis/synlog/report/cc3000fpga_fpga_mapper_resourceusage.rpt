@@ -3,6 +3,7 @@ Report for cell cc3000fpga.verilog
   Core Cell usage:
               cell count     area count*area
                GND     3      0.0        0.0
+            MSSINT     3      0.0        0.0
            MSS_APB     1      0.0        0.0
            MSS_CCC     1      0.0        0.0
              RCOSC     1      0.0        0.0
@@ -10,22 +11,22 @@ Report for cell cc3000fpga.verilog
 
 
                    -----          ----------
-             TOTAL     9                 0.0
+             TOTAL    12                 0.0
 
 
   IO Cell usage:
               cell count
-         BIBUF_MSS    21
-   BIBUF_OPEND_MSS     4
-         INBUF_MSS     9
-        OUTBUF_MSS    40
+         BIBUF_MSS     4
+         INBUF_MSS     5
+            OUTBUF     3
+        OUTBUF_MSS     2
        TRIBUFF_MSS     2
                    -----
-             TOTAL    76
+             TOTAL    16
 
 
 Core Cells         : 0 of 4608 (0%)
-IO Cells           : 76
+IO Cells           : 16
 
   RAM/ROM Usage Summary
 Block Rams : 0 of 8 (0%)

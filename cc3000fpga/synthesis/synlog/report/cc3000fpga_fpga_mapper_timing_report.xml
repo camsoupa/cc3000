@@ -5,7 +5,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 *******************************************************************************************-->
 <report_table display_priority="2" name="Timing Summary">
 <report_link name="Detailed report">
-<data>C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\synlog\cc3000fpga_fpga_mapper.srr</data>
+<data>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_fpga_mapper.srr</data>
 <title>##### START OF TIMING REPORT #####[</title>
 </report_link>
 <row>
@@ -17,7 +17,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <row>
 <data>System</data>
 <data>100.0 MHz</data>
-<data>201.5 MHz</data>
-<data>5.038</data>
+<data>213.3 MHz</data>
+<data>5.312</data>
 </row>
 </report_table>

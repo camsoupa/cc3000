@@ -1,13 +1,13 @@
 ***************************************************************************
                                Status Report
-                          Mon Mar 24 21:56:58 2014 ***************************************************************************
+                          Tue Apr 01 11:55:20 2014 ***************************************************************************
 
 Product: Designer
 Release: v10.1 SP3
 Version: 10.1.3.1
-File Name: C:\Users\Gnewt\Desktop\cc3000fpga\designer\impl1\cc3000fpga.adb
+File Name: C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb
 Design Name: cc3000fpga  Design State: compile
-Last Saved: Mon Mar 24 21:56:55 2014
+Last Saved: Tue Apr 01 11:55:12 2014
 
 ***** Device Data **************************************************
 
@@ -22,9 +22,9 @@ Voltage Range:   COM
 
 ***** Import Variables *********************************************
 
-Source File(s) Imported on Mon Mar 24 21:56:53 2014:
-        C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.edn
-        C:\Users\Gnewt\Desktop\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
+Source File(s) Imported on Tue Apr 01 11:55:04 2014:
+        C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn
+        C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
 
 
 ***** CAE Variables ************************************************
@@ -50,8 +50,9 @@ Parameters used to run compile:
 Family      : SmartFusion
 Device      : A2F200M3F
 Package     : 484 FBGA
-Source      : C:\Users\Gnewt\Desktop\cc3000fpga\synthesis\cc3000fpga.edn
-              C:\Users\Gnewt\Desktop\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
+Source      : C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn
+
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
 Format      : EDIF
 Topcell     : cc3000fpga
 Speed grade : -1
@@ -78,6 +79,8 @@ report_high_fanout_nets_limit      : 10
 =====================================================================
 Compile starts ...
 
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCRWn drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCDBOE drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_CALIBOUT drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_WDINT drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_M2FRESETn drives no load.
@@ -92,6 +95,14 @@ Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C0SMBUSNO drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C1SMBUSNO drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C0SMBALERTNO drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C1SMBALERTNO drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C0SDAO drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C0SCLO drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C1SDAO drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_I2C1SCLO drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACTXEN drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACMDO drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACMDEN drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACMDC drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACM2FTXD[0] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACM2FTXD[1] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACM2FTXEN drives no load.
@@ -134,6 +145,54 @@ Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MSSPENABLE drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MSSPWRITE drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_VCC15GOOD drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_VCC33GOOD drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCBYTEN[0] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCBYTEN[1] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[0] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[1] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[2] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[3] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[4] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[5] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[6] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[7] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[8] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[9] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[10] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[11] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[12] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[13] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[14] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[15] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[16] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[17] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[18] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[19] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[20] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[21] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[22] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[23] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[24] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCAB[25] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCOEN0n drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCOEN1n drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[0] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[1] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[2] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[3] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[4] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[5] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[6] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[7] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[8] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[9] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[10] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[11] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[12] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[13] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[14] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCWDB[15] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCCS0n drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_EMCCS1n drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[0] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[1] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[2] drives no load.
@@ -166,38 +225,35 @@ Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[28] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[29] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[30] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPOE[31] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[0] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[1] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[2] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[3] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[4] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[5] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[6] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[7] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[8] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[9] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[10] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[11] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[12] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[13] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[14] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[15] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[16] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[17] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[18] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[19] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[20] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[21] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[22] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[23] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[24] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[25] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[26] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[27] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[28] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[29] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[30] drives no load.
-Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_GPO[31] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[3] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[4] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[5] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[6] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[7] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[8] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[9] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[10] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[11] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[12] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[13] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[14] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[15] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[16] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[17] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[18] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[19] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[20] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[21] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[22] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[23] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[24] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[25] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[26] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[27] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[28] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[29] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[30] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/GPO_net_0[31] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MSSINT[0] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MSSINT[1] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MSSINT[2] drives no load.
@@ -220,6 +276,8 @@ Warning: CMP201: Net cc3000fpga_MSS_0/SPI1SSO_net_0[4] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/SPI1SSO_net_0[5] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/SPI1SSO_net_0[6] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/SPI1SSO_net_0[7] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACTXD[0] drives no load.
+Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_MACTXD[1] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_ACEFLAGS[0] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_ACEFLAGS[1] drives no load.
 Warning: CMP201: Net cc3000fpga_MSS_0/MSS_ADLIB_INST_ACEFLAGS[2] drives no load.
@@ -348,14 +406,14 @@ Netlist Optimization Report
 
 Optimized macros:
   - Dangling net drivers:   0
-  - Buffers:                0
+  - Buffers:                3
   - Inverters:              0
   - Tieoff:                 0
   - Logic combining:        0
 
-    Total macros optimized  0
+    Total macros optimized  3
 
-There were 0 error(s) and 264 warning(s) in this design.
+There were 0 error(s) and 321 warning(s) in this design.
 =====================================================================
 
 Reading user pdc (Physical Design Constraints) file(s) postcompile
@@ -369,10 +427,10 @@ Compile report:
 
     Microcontroller Subsystem  Used:      1  Total:      1   (100.00%)
     Fabric                     Used:      0  Total:   4608   (0.00%)
-    Fabric IO (W/ clocks)      Used:     50  Total:     94   (53.19%)
+    Fabric IO (W/ clocks)      Used:      3  Total:     94   (3.19%)
     Fabric Differential IO     Used:      0  Total:     47   (0.00%)
     Dedicated Analog IO        Used:      0  Total:     32   (0.00%)
-    Dedicated MSS IO           Used:     26  Total:     43   (60.47%)
+    Dedicated MSS IO           Used:     13  Total:     43   (30.23%)
     GLOBAL (Chip+Quadrant)     Used:      0  Total:     15   (0.00%)
     MSS GLOBAL                 Used:      3  Total:      3   (100.00%)
     On-chip RC oscillator      Used:      1  Total:      1   (100.00%)
@@ -405,7 +463,7 @@ I/O Function:
     Type                          | w/o register  | w/ register  | w/ DDR register
     ------------------------------|---------------|--------------|----------------
     Input I/O                     | 0             | 0            | 0
-    Output I/O                    | 0             | 0            | 0
+    Output I/O                    | 3             | 0            | 0
     Bidirectional I/O             | 0             | 0            | 0
     Differential Input I/O Pairs  | 0             | 0            | 0
     Differential Output I/O Pairs | 0             | 0            | 0
@@ -416,8 +474,35 @@ I/O Technology:
     --------------------------------|-------|-------|-------|--------|--------------
     I/O Standard(s)                 | Vcci  | Vref  | Input | Output | Bidirectional
     --------------------------------|-------|-------|-------|--------|--------------
+    LVTTL                           | 3.30v | N/A   | 0     | 3      | 0
+
+I/O Placement:
+
+    Locked  :   0
+    Placed  :   0
+    UnPlaced:   3 ( 100.00% )
 
 Net information report:
 =======================
+
+High fanout nets in the post compile netlist:
+    Fanout  Type          Name
+    --------------------------
+    1       INT_NET       Net   : cc3000fpga_MSS_0/GPO_net_0[2]
+                          Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST
+    1       INT_NET       Net   : cc3000fpga_MSS_0/GPO_net_0[1]
+                          Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST
+    1       INT_NET       Net   : cc3000fpga_MSS_0/GPO_net_0[0]
+                          Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST
+
+Nets that are candidates for clock assignment and the resulting fanout:
+    Fanout  Type          Name
+    --------------------------
+    1       INT_NET       Net   : cc3000fpga_MSS_0/GPO_net_0[2]
+                          Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST
+    1       INT_NET       Net   : cc3000fpga_MSS_0/GPO_net_0[1]
+                          Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST
+    1       INT_NET       Net   : cc3000fpga_MSS_0/GPO_net_0[0]
+                          Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST
 
 

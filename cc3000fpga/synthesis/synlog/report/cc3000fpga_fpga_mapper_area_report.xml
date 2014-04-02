@@ -8,10 +8,10 @@ The file contains the area information from mapper to be displayed as part of th
 <data>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_fpga_mapper_resourceusage.rpt</data>
 </report_link>
 <parameter tooltip="Total Core Cells used" name="Core Cells">
-<data>0</data>
+<data>690</data>
 </parameter>
 <parameter tooltip="Total IO Cells used" name="IO Cells">
-<data>16</data>
+<data>21</data>
 </parameter>
 <parameter tooltip="Total Block RAMs used" name="Block RAMs">
 <data>0</data>

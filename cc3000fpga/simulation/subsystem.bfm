@@ -1,5 +1,5 @@
 #===========================================================
-# Created by Actel SmartDesign Tue Apr 01 11:54:43 2014
+# Created by Actel SmartDesign Wed Apr 02 17:09:20 2014
 #
 # Syntax: 
 # ------- 
@@ -17,3 +17,4 @@
 # Define name and base address of each resource.
 #-----------------------------------------------------------
 
+memmap CORESPI_0 0x40050000;

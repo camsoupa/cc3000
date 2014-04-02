@@ -1,0 +1,1288 @@
+
+memmap master  0x10000000
+memmap slave   0x11000000;
+
+constant R_control   0x00
+constant R_intclear  0x04
+constant R_rxdata    0x08
+constant R_txdata    0x0C
+constant R_intmask   0x10
+constant R_intraw    0x10
+constant R_control2  0x18
+constant R_command   0x1C
+constant R_stat      0x20
+constant R_ssel      0x24
+constant R_txdatal   0x28
+	 
+# R_control bits
+constant B_enable       0x00000001
+constant B_master       0x00000002
+constant B_slave        0x00000000
+constant B_intenrx      0x00000004
+constant B_intentx      0x00000008
+constant B_intentxov    0x00000010
+constant B_intenrxov    0x00000020
+constant B_intenurun    0x00000040
+constant B_oenoff       0x00000080
+
+# R_control2 bits
+constant B_intencmd     0x00000010
+constant B_intentssend  0x00000020
+
+# R_command bits (write-only)
+constant B_rxfiforst  0x00000001
+constant B_txfiforst  0x00000002
+
+# R_intclear/raw/mask bits
+constant B_txint      0x00000001
+constant B_rxint      0x00000002
+constant B_rovint     0x00000004
+constant B_turint     0x00000008
+constant B_cmdint     0x00000010
+constant B_ssendint   0x00000020
+
+# R_status
+constant B_firstframe 0x00000001
+constant B_done       0x00000002
+constant B_rxempty    0x00000004
+constant B_txfull     0x00000008
+constant B_rxoverflow 0x00000010
+constant B_txunderrun 0x00000020
+constant B_ssel       0x00000040
+constant B_active     0x00000080
+
+procedure main
+
+ print "CoreSPI v4.2 User testbench"
+ debug 1
+ setup 7 1	  # execute $stop at end
+ timeout 10000
+
+  # Readback reset values
+  call read_reg
+ 
+  # Master -> Slave
+  call test_slave_rx
+  
+  reset
+  
+  # Slave -> Master
+  call test_master_rx  
+
+
+  print "Tests Complete"
+
+return
+
+procedure test_master_rx
+  int i j
+  int x y
+  int tbsetup
+  
+  
+  
+return
+
+procedure read_reg
+  int i
+  int x
+  
+  loop i 0x00 0x28 4
+    readstore b slave i x
+    print "Read from %08x: %08x" i x
+  endloop
+  
+return
+
+procedure test_slave_rx
+  int i j
+  int x y
+  int tbsetup
+  
+  # setup testbench
+  #set  tbsetup 0x02
+  #set  tbsetup 256 * 0 + tbsetup
+  #set  tbsetup 0x400 + tbsetup          // Connect slave to master
+  #print "tbsetup %02x" tbsetup
+  #iowrite tbsetup
+  
+  # Setup slave with TX data
+  Print "Set Slave Up with TX data"
+  
+  write w slave R_control (B_slave | B_enable)
+  loop i 1 4
+    write w slave R_txdata i
+  endloop  
+  
+  # Setup master to to TX/RX data
+  Print "Set Master to Tx"
+  write w master R_ssel 1                         # select slave 1 (tb slave)
+  write w master R_control (B_master | B_enable | B_intentx)
+  
+  loop i 0x00 0x02
+    write w master R_txdata i
+  endloop
+  write w master R_txdatal 0x03
+  
+  wait 1000
+
+  # check slave
+  loop i 0x00 0x03
+    readstore w slave R_rxdata x
+    print "Read %08x" x
+    compare x i    
+  endloop
+
+  loop i 0x04 0x06
+    write w master R_txdata i
+  endloop
+  write w master R_txdatal 0x07
+  
+  wait 1000
+  
+  # check master interrupt
+  iotstbit 0 1
+  readstore b master R_intmask x
+  print "Masked Interrupt Register read as: %08x" x
+  
+  # clear interrupt
+  write b master R_intclear 0x01
+  
+  wait 100
+  
+  # check clear
+  iotstbit 0 0
+  
+  
+  
+  
+  
+  # check slave
+  loop i 0x04 0x07
+    readstore w slave R_rxdata x
+    print "Read %08x" x
+    compare x i    
+  endloop
+  
+return
+
+##procedure test_orginal
+## int i
+## int x
+## int tbsetup
+##
+## print "Doing SPI Flash Read"
+##
+##
+## set  tbsetup 0x02
+## set  tbsetup 256 * 0 + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+##
+## Print "Set Slave Up with TX data"
+## write w slave R_framesize 8
+## write w slave R_control ( B_SPH | B_SPO | B_motorola | B_slave | B_32 | B_enable) 
+## loop i 1 4
+##   write w slave R_txdata i
+## endloop
+##	 
+##	 
+## Print "Set Master to Txt/Rcv 8 Frames"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control ( B_SPH | B_SPO | B_motorola | B_master | B_8 | B_enable) 
+## 
+## loop i 0x10 0x13
+##   write w master R_txdata i 
+## endloop
+##
+## wait 1000
+##
+## # check slave
+## loop i 0x10 0x13
+##   readstore w slave R_rxdata x
+##   print "Read %08x" x
+##   compare x i    
+## endloop
+##
+##
+## loop i 0x14 0x17
+##   write w master R_txdata i 
+## endloop
+##
+## wait 1000
+##
+## # check slave
+## loop i 0x14 0x17
+##   readstore w slave R_rxdata x
+##   print "Read %08x" x
+##   compare x i    
+## endloop
+##
+##return
+##procedure test_all
+##
+##  call test_orginal
+##  reset
+##  call test_fifo16
+##  reset
+##  call test_autofill
+##  reset
+##  call test_autoboth
+##  reset
+##  call test_autoempty
+##  reset
+##  call test_protocol
+##  reset
+##  call test_interrupt_rxcnt
+##  reset
+##  call test_first_marker
+##  reset
+##  call test_autostall
+##  reset
+##  call test_nsc 
+##  reset
+##
+##return
+##
+##
+###########################################################################################
+##
+##
+##
+#########################################################################################
+##
+##procedure test_fifo16
+## int i
+## int x
+## int tbsetup
+##
+## set  tbsetup 0x02
+## set  tbsetup 256 * 0 + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+## print "Doing SPI Flash Read emulation of 32 byte FIFO"
+##
+## Print "Set Slave Up with TX data"
+## write w slave R_framesize 8
+## write w slave R_control (   B_FIFOSIZE | B_SPS | B_SPH |  B_SPO | B_motorola | B_slave | B_32 | B_enable) 
+##	 
+## Print "Set Master to Txt/Rcv 32 Frames"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control (  B_FIFOSIZE | B_SPS | B_SPH | B_SPO | B_motorola | B_master | B_32 | B_enable) 
+## 
+## loop i 0x10 0x2f
+##   write w master R_txdata i 
+## endloop
+##
+## wait 4000
+##
+## # check slave
+## loop i 0x10 0x2f
+##   readstore w slave R_rxdata x
+##   print "Read %08x" x
+##   compare x i    
+##   endif
+## endloop
+##
+## # Second set of bytes
+##
+## loop i 0x40 0x5f
+##   write w master R_txdata i 
+## endloop
+##
+## wait 4000
+##
+## # check slave
+## loop i 0x40 0x5f
+##   readstore w slave R_rxdata x
+##   print "Read %08x" x
+##   compare x i    
+## endloop
+##
+##
+##
+##return
+##
+##
+#########################################################################################
+##
+##procedure test_autofill
+## int i
+## int x
+## int status
+## int datain
+## int dataout
+## int incvalue
+## int tbsetup
+##
+## print "Doing SPI Auto fill"
+##
+## set  tbsetup 0x02
+## set  tbsetup 256 * 0 + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+## Print "Set Slave Up with TX data"
+## write w slave R_framesize 8
+## write w slave R_control (   B_FIFOSIZE + B_SPS + B_SPH +  B_SPO + B_motorola + B_slave + B_100 +B_enable) 
+##	 
+## Print "Set Master to Txt/Rcv 100 Frames"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control (  B_FIFOSIZE + B_SPS + B_SPH + B_SPO + B_motorola + B_master + B_100 + B_enable) 
+## 
+## #Put First 3 words into master to start transfer
+## loop i 0x10 0x12
+##   write w master R_txdata i 
+## endloop
+##
+## set datain   10
+## set dataout  10
+## set incvalue 3
+## loop i 1 4						   
+##   write w slave R_txdata datain
+##   set datain datain + incvalue and 0xff
+## endloop
+##
+## write w master R_command B_AUTOFILL
+##
+## # Get RX data from Master and keep data in slave
+## loop i 1 100
+##   call  getrxdatamaster
+##   print "Slave data %02x" $RETVALUE
+##   compare $RETVALUE dataout
+##   set dataout dataout + incvalue and 0xff
+##   # Keep slave FIFO Full
+##   readstore w slave R_status status
+##   set status status and 0x0100
+##   if status == 0 
+##     write w slave R_txdata datain
+##	 set datain datain + incvalue  and 0xff
+##   endif
+##   #Throw away data received at slave
+##   readstore w slave R_status status
+##   set status status and 0x0010
+##   if status != 0 
+##     read w slave R_rxdata 
+##   endif
+##
+## endloop
+## wait 400
+##
+## readstore w master R_status status
+## print "Master Status %04x", status
+##
+## readstore w slave R_status status
+## print "Slave Status %04x", status
+##
+## wait 2000
+##
+##return
+##
+##
+#########################################################################################
+##
+##procedure test_autoempty
+## int i
+## int x
+## int status
+##
+## print "Doing SPI Auto Empty"
+##
+## Print "Set Slave Up with TX data"
+## write w slave R_framesize 8
+## write w slave R_control ( B_FIFOSIZE + B_SPH +  B_SPO + B_motorola + B_slave + B_14 + B_enable) 
+## loop i 1 14	  # Set up slave to tx data
+##   write w slave R_txdata 0xff
+## endloop
+## 	 
+##	 
+## Print "Set Master to Txt/Rcv 14 Frames"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control (  B_FIFOSIZE + B_SPS + B_SPH + B_SPO + B_motorola + B_master + B_14 + B_enable) 
+##
+## write w master R_command B_AUTOEMPTY
+##
+## wait 100
+##
+## loop i 1 13	 # should cause TX and RX data
+##   write w master R_txdata 0x55
+## endloop
+## write w master R_txdata 0xff
+## wait 10000		 # allow time to transmit
+##
+## readstore w master R_status status
+## print "resultant Status %08x", status 
+##
+##return
+##
+#########################################################################################
+##
+##procedure test_autostall
+## int i
+## int x
+## int status
+##
+## print "Doing SPI Auto Stall"
+##
+## 	 
+##	 
+## Print "Set Master to Txt/Rcv  Frames"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control (   B_FIFOSIZE + B_SPS + B_SPH + B_SPO + B_motorola + B_master + B_100 + B_enable) 
+## write w master R_pktsize 4
+##
+## wait 100
+##
+## write w master R_command B_AUTOSTALL
+## loop i 1 4	 # should cause TX and RX data
+##   write w master R_txdata 0x55
+##   wait 150
+## endloop
+##
+##  wait 2000
+##
+## write w master R_command B_AUTOSTALL
+## loop i 1 4	 # should cause TX and RX data
+##   write w master R_txdata 0x55
+##   wait 300
+## endloop
+##
+##  wait 2000
+##
+## write w master R_command B_AUTOSTALL
+## loop i 1 4	 # should cause TX and RX data
+##   write w master R_txdata 0x55
+##   wait 10
+## endloop
+##
+##  wait 2000
+##
+## readstore w master R_status status
+## print "resultant Status %08x", status 
+##
+##return
+##
+##
+#########################################################################################
+##
+##procedure test_autoboth
+## int i
+## int x
+## int status
+##
+## print "Doing SPI Auto Fill and Empty"
+##
+## Print "Set Slave Up with TX data"
+## write w slave R_framesize 8
+## write w slave R_control2 ( B_FIFOSIZE )
+## write w slave R_control (  B_SPH +  B_SPO + B_motorola + B_slave + B_14 + B_enable) 
+## loop i 1 14	  # Set up slave to tx data
+##   write w slave R_txdata 0xff
+## endloop
+## 	 
+##	 
+## Print "Set Master to Txt/Rcv 14 Frames"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control2 ( B_FIFOSIZE + B_SPS )	 
+## write w master R_control ( B_SPH + B_SPO + B_motorola + B_master + B_14 + B_enable) 
+##
+## write w master R_txdata 0x55
+## write w master R_command ( B_AUTOEMPTY + B_AUTOFILL)
+##
+## 
+## wait 10000		 # allow time to transmit
+##
+## readstore w master R_status status
+## print "resultant Status %08x", status 
+##
+##return
+##
+##
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+##
+##procedure test_protocol
+## int i
+## int x
+## int status
+## int pcstatus
+## int cmd
+## int tbsetup
+##
+## header "Testing Protocol Logic"
+##
+## set  tbsetup 0x02
+## set  tbsetup 256 * 0 + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+##
+## Print "Set Slave up in protocol mode"
+## write w slave R_framesize 8
+## write w slave R_control2 ( B_AUTOPOLL + B_AUTOSTAT )	 
+## write w slave R_control  ( B_AUTOURUN + B_SPS + B_FIFOSIZE + B_SPH +  B_SPO + B_motorola + B_slave + B_20 + B_enable) 
+## write w slave R_pktsize 17
+## write w slave R_cmdsize 1
+## 	 
+## Print "Master Setup"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen 0x2
+## write w master R_control  (B_FIFOSIZE +  B_SPH + B_SPO + B_motorola + B_master + B_1000 + B_enable) 
+## 
+##
+## print "Getting Status 0"
+## write w master R_txdata 0xff
+## call dopoll
+## compare $RETVALUE 0x02			  # 1 CW queued
+##
+##
+## print "Load in 15 Commands"
+## loop  i 1 15
+##   write w master R_txdata i
+##   call checkrxdatapoll 0x02	     # Should have returned 0x02
+## endloop
+##
+## call dopoll					 # Do a poll
+## compare $RETVALUE 0x02	   
+##
+## print "Load in 16th command - should accept and go busy"
+## write w master R_txdata 16
+## call waitmasterdone			      
+## call checkrxdatapoll 0x02	         # Should have returned 0x02
+##
+## call dopoll					 # should now be busy
+## compare $RETVALUE 0x03	   
+##
+## print "Checking Commands at slave"
+## loop i 1 2			  		     # Only Remove 2 commands for now
+##     call getrxdataslave				       
+##     compare $RETVALUE i			     
+## endloop
+##
+## print "Sending command and 16 data bytes"
+## write w master R_txdata 0x55
+## loop i 0x20 0x2f
+##   write w master R_txdata i
+## endloop
+##
+## print "Getting Status 2"
+## call getrxdatamaster				  # status send as command received
+## set pcstatus $RETVALUE & 0x0f
+## compare pcstatus 0x02			      # when SW send there were 17+ free bytes
+## call waitmasterdone			      # allow to transmit all data
+##
+## print "Getting Status 3"		      # All done, Slave should have command and data
+## call dopoll						  # Will reset master fifos
+## compare $RETVALUE 0x03 			  # should now be busy and cant accept 17 words data
+##
+## #Check data at slave
+## # first removing queued commands
+## print "Removing queued commands from slave"
+## loop i 3 16					      # Remove commands
+##     call getrxdataslave				      	     
+##     compare $RETVALUE i			     
+## endloop
+##
+## print "The Command with data"
+## call getrxdataslave				      	     
+## compare $RETVALUE 0x55	
+## print "Now the data bytes"		     
+## loop i 0x20 0x2f
+##   call getrxdataslave				      	     
+##   print "Data %02x", $RETVALUE
+##   #compare $RETVALUE i	
+## endloop
+##
+## print "Getting Status 4"
+## call dopoll
+## compare $RETVALUE 0x02 			  # should now be busy and ready for data
+## 
+## 
+## print "Getting Status 5"
+## call dopoll
+## compare $RETVALUE 0x02 			  # should now be ready and ready for data
+##  
+## #-------------------------------------------------------
+## # Try Slave to TXT Data
+## wait 10000
+##
+## print "Put 15 words in Slave Fifo"
+## loop i  1 15
+##   write w slave R_txdata i
+## endloop
+## call dopoll
+## compare $RETVALUE 0x02 			  # should now be ready and ready for data
+##
+## print "Put last words in Fifo"
+## loop i 16 16
+##   write w slave R_txdata i
+## endloop
+## call dopoll					     
+## compare $RETVALUE 0x00 			  # should have flicked TXBusy bit
+##
+## print "Fetching Data"
+## write w master R_txdata 0x66         # Dummy Read command
+## loop i 1 16
+##   write w master R_txdata 0	      # TX data to cause slave to transmit
+## endloop
+## call waitmasterdone			      # allow to transmit all data
+##
+## # Check Data
+## call getrxdatamaster
+## compare $RETVALUE     0x00          # At start of slave transmit all TX and RX ready
+## print "Fetching data values"
+## loop i 1 16
+##   call getrxdatamaster				      	     
+##   Print "Data %02x" $RETVALUE
+##   # compare $RETVALUE i	
+## endloop
+##
+## call dopoll
+## compare $RETVALUE 0x03 	          # should now be fully busy again 
+##
+## write w slave R_command B_fiforstrx  # clear incoming fifo
+## call dopoll
+## set pcstatus $RETVALUE
+## compare pcstatus 0x02 			  # should now be not busy and ready
+##
+## 
+## return
+##
+##
+#########################################################################################
+##
+##
+#########################################################################################
+##
+##procedure test_interrupt_rxcnt
+## int tbsetup
+## int status
+## int intraw
+##
+## print "Test Interrupt RXCNT"
+## 
+## set  tbsetup 0x02
+## set  tbsetup 256 * 0 + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+##
+##
+## Print "Set Slave up"
+## write w slave R_framesize 8
+## write w slave R_control (  B_SPS + B_FIFOSIZE  +  B_SPH +  B_SPO + B_motorola + B_slave + B_8 + B_enable) 
+## write w slave R_cmdsize 4
+##	 
+## Print "Master"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control  ( B_SPS + B_FIFOSIZE + B_SPH + B_SPO + B_motorola + B_master + B_8 + B_enable) 
+## write w master R_cmdsize 4
+## print "M Con %08x",  (B_SPS + B_FIFOSIZE  +  B_SPH + B_SPO + B_motorola + B_master + B_8 + B_enable)
+## 
+## readstore w slave R_status status
+## readstore w slave R_intraw intraw
+## print "Slave Status %04x Interrupt %04x" status intraw
+## readmask w slave R_intraw   0x0000	0x0010	 # should not have triggered?
+##
+## write w master R_txdata 0x66
+## write w master R_txdata 0x66
+## write w master R_txdata 0x66
+## wait 500
+##
+## readstore w slave R_status status				# bit 4 is cmdsize
+## readstore w slave R_intraw intraw
+## print "Slave Status %04x Interrupt %04x" status intraw
+## readmask w slave R_intraw   0x0000	0x0010	 # should not have triggered?
+## 
+## write w master R_txdata 0x66
+## wait 500
+## readmask w slave R_intraw   0x0010	0x0010
+## readmask w slave R_intstat  0x0000	0x0010	 # Interrupt dissabled
+## readmask w slave R_intraw   0x0010	0x0010
+## write    w slave R_control2 B_INTENCMD
+## readmask w slave R_intstat  0x0010	0x0010
+## write    w slave R_intclear 0x0010
+## readmask w slave R_intraw   0x0000	0x0010
+## readmask w slave R_intstat  0x0000	0x0010
+## 
+## wait 500
+##
+## # Have send 4 frames send 3 more
+## write w master R_txdata 0x66
+## write w master R_txdata 0x66
+## write w master R_txdata 0x66
+## wait 500
+## readmask w slave R_intraw   0x0000 0x0010	  # no interrupts
+## 
+## #SSEND should be set next
+## write w master R_txdata 0x66
+## wait 500
+## readmask w slave R_intraw   0x0020	0x0020
+## readmask w slave R_intstat  0x0000	0x0020
+## write    w slave R_control2 B_INTENSSEL
+## readmask w slave R_intstat  0x0020	0x0020
+## write    w slave R_intclear   0x0020
+## readmask w slave R_intraw   0x0000	0x0020
+## readmask w slave R_intstat  0x0000	0x0020
+##
+##return 
+##
+##
+#########################################################################################
+##
+##procedure test_first_marker
+## int i
+## int status data
+## int tbsetup
+##
+##
+## print "Test First Byte marker"
+## set  tbsetup 0x02
+## set  tbsetup 256 * 0 + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+## 
+## Print "Set Slave up"
+## write w slave R_framesize 8
+## write w slave R_control (  B_SPS + B_FIFOSIZE  +  B_SPH +  B_SPO + B_motorola + B_slave + B_20 + B_enable) 
+## loop i 1 16
+##   write w slave R_txdata 0xff
+## endloop
+##	 
+## Print "Master"
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen   0x2
+## write w master R_control  (B_SPS + B_FIFOSIZE  +  B_SPH + B_SPO + B_motorola + B_master + B_8 + B_enable) 
+##
+## loop i 0x10 0x13
+##   write w master R_txdata i
+## endloop
+## wait 5000
+## loop i 0x14 0x17 
+##   write w master R_txdata i
+## endloop
+## wait 5000
+## loop i 0x18 0x1b
+##   write w master R_txdata i
+## endloop
+## wait 5000
+##
+## loop i 1 12
+##  readstore w  slave R_stat8 status
+##  readstore w  slave R_rxdata data
+##  set status status & 0x01
+##  print "Slave Status %02x Data %04x"	 status data
+## endloop
+##
+## loop i 1 12
+##  readstore w  master R_stat8 status
+##  readstore w  master R_rxdata data
+##  set status status & 0x01
+##  print "Master Status %02x Data %04x"	 status data
+## endloop
+##
+##return 
+##
+##
+#########################################################################################
+##
+##
+##procedure waitrxdata
+## int pcstatus
+## 
+## set pcstatus 	0
+## while pcstatus == 0
+##   call dopoll
+##   set pcstatus $RETVALUE
+##   set pcstatus pcstatus & 0x4
+## endwhile
+##return
+##
+##
+##
+##procedure dopoll
+##  int x;
+##
+##  write w master R_command  B_fiforst   # Throw away data in both FIFOs
+##  write w master R_txdata 0xff
+##  set x 1
+##  while x != 0
+##    readstore w master R_status x
+##	set x x and 0x40			      # wait for not rxempty
+##  endwhile
+##  readstore w master R_rxdata x
+##  set x x and 0x0f                    # only lowest four bits valid
+##  print "POLL RETURN %02x" x
+##return x
+##
+##procedure getrxdataslave
+##  int x;
+##
+##  set x 1
+##  while x != 0
+##    readstore w slave R_status x
+##	set x x and 0x40				# check for not rxempty
+##  endwhile
+##  readstore w slave R_rxdata x
+##return x
+##
+##
+##procedure getrxdatamaster
+##  int x;
+##
+##  set x 1
+##  while x != 0
+##    readstore w master R_status x
+##	set x x and 0x40				# check for not rxempty
+##  endwhile
+##  readstore w master R_rxdata x
+##return x
+##
+##procedure checkrxdatamaster expected
+##  call getrxdatamaster
+##  compare $RETVALUE expected
+##return
+##
+##procedure checkrxdatapoll expected
+## int x
+##  call getrxdatamaster
+##  set x $RETVALUE & 0x0f
+##  compare x expected
+##return
+##
+##procedure waitmasterdone
+##  int x;
+##
+##  set x 1
+##  while x != 0
+##    readstore w master R_status x
+##	# print "MS %04x", x
+##	set x x xor 0x0400
+##	set x x and 0x4400
+##	# print "MSX %04x", x
+##  endwhile
+##return
+##
+##
+## 
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+##
+##
+##
+##procedure test_regress speed mode spo sph sps delay
+## int i
+## int x
+## int control
+## int controls
+## int frames
+## int data
+## int xdelay
+## int status
+## int tbsetup
+## int temp
+## int d0 d1 d2
+## int ed0 ed1 ed2
+##
+## reset
+## wait 20
+## header "MASTER ONLY Speed:%0d Mode:%0d SPO:%0d SPH:%0d SPS:%0d Delay:%0d" speed mode spo sph sps delay
+## set xdelay  delay
+##
+## set frames 3
+## set control           0x00000003
+## set control mode    * 0x00000004 + control
+## set control frames  * 0x00000100 + control
+## set control spo     * 0x01000000 + control
+## set control sph     * 0x02000000 + control
+## set control sps     * 0x04000000 + control
+## print "Control Register %08x" control
+## 
+## set  tbsetup speed
+## set  tbsetup 256 * mode + tbsetup
+## iowrite tbsetup
+##
+##
+## # Transmit 3 frames											  
+## if mode != 2
+##   write w master R_framesize 8
+##   set ed0   0xa5
+##   set ed1   0x5a
+##   set ed2   0x7e
+##   set d0  ed0
+##   set d1  ed1
+##   set d2  ed2
+## else
+##   write w master R_framesize 17
+##   set ed0   0xa5
+##   set ed1   0x5a
+##   set ed2   0x7e
+##   set d0  ed0 << 9
+##   set d1  ed1 << 9
+##   set d2  ed2 << 9
+## endif
+##
+###write w master R_framesize 9
+###set d0   0x145
+###set ed0   0x145
+##
+## write w master R_select 1
+## write w master R_clkgen speed
+## write w master R_control control 
+## write w master R_txdata d0
+## wait xdelay
+## write w master R_txdata d1
+## write w master R_txdata d2
+##
+## wait 2
+## #Poll Till done
+## set status 0x00
+## while status != 0x03 
+##   readstore w master R_status status
+##   set status status & 0x03
+## endwhile
+##
+## readstore w master R_rxdata data
+## print "Data 1 %02x" data
+## set data data & 0xff
+## compare data ed0
+## readstore w master R_rxdata data
+## print "Data 2 %02x" data
+## set data data & 0xff
+## compare data ed1
+## readstore w master R_rxdata data
+## print "Data 3 %02x" data
+## set data data & 0xff
+## compare data ed2
+## wait 5
+##
+##return
+##
+##
+##
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+##
+##
+##
+##procedure test_quick 
+##int delay
+##
+##
+##  call regress_master
+##
+##  call regress_slave
+##
+##
+##return
+##
+##
+##
+##procedure regress_master
+##
+##int mode
+##int speed
+##int delay
+##
+## header "SPI transmission Regressions"
+##
+## loop mode  0 2				# 0 2
+##   loop speed 4 0			# 4 0
+##     loop delay 10 150		# 10 100
+##       call test_regress speed mode  0 0 0 delay
+##	   if mode == 0
+##         call test_regress  speed mode  0 1 0 delay
+##         call test_regress  speed mode  1 0 0 delay
+##         call test_regress  speed mode  1 1 0 delay
+##         call test_regress  speed mode  0 0 1 delay
+##         call test_regress  speed mode  0 1 1 delay
+##         call test_regress  speed mode  1 0 1 delay
+##         call test_regress  speed mode  1 1 1 delay
+##	   endif
+##	   if mode == 2
+##         call test_regress  speed mode  1 0 0 delay
+##         call test_regress  speed mode  0 1 0 delay
+##        # call test_regress  speed mode  1 0 1 4
+##	   endif
+##     endloop
+##   endloop
+## endloop
+##
+##
+##return
+##
+##
+##procedure regress_slave
+##
+##int mode
+##int speed
+##int delay
+##
+## header "SPI transmission Regressions"
+##
+## loop mode  0 2				# 0 2
+##   loop speed 4 0			# 4 0
+##     loop delay 10 150		# 10 100
+##       call test_slave speed mode  0 0 0 delay
+##	   if mode == 0
+##         call test_slave  speed mode  0 1 0 delay
+##         call test_slave  speed mode  1 0 0 delay
+##         call test_slave  speed mode  1 1 0 delay
+##	   endif
+##	   if mode == 2
+##         call test_slave  speed mode  1 0 0 delay
+##	   endif
+##     endloop
+##   endloop
+## endloop
+##
+##
+##return
+##
+##
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#########################################################################################
+##
+##
+##
+##
+##
+##procedure test_slave speed mode spo sph sps delay
+## int i
+## int x
+## int control
+## int controls
+## int frames
+## int data
+## int tbsetup
+## int framesize
+## int d0 d1 d2
+## int ed0 ed1 ed2
+## int status
+##
+## reset
+## wait 20
+##	 
+## header "MASTER & SLAVE Speed:%0d Mode:%0d SPO:%0d SPH:%0d " speed mode spo sph 
+## 
+## set  tbsetup speed
+## set  tbsetup 256 * mode + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+## set frames 3
+## set control  0x00000000
+## set control mode    * 4 + control
+## set control frames  * 0x00000100 + control
+## set control spo     * 0x01000000 + control
+## set control sph     * 0x02000000 + control
+##
+## set framesize 8
+## # Transmit 3 frames											  
+## if mode != 2
+##   set framesize 8
+##   set ed0   0xa5
+##   set ed1   0x5a
+##   set ed2   0x7e
+##   set d0  ed0
+##   set d1  ed1
+##   set d2  ed2
+## else
+##   set framesize 17
+##   set ed0   0xa5
+##   set ed1   0x5a
+##   set ed2   0x7e
+##   set d0  ed0 
+##   set d1  ed1 
+##   set d2  ed2 
+## endif
+##
+## #  set framesize 8
+## #  set d0   0x145
+## #  set ed0   0x145
+## 
+## write w master R_framesize framesize
+## write w master R_select 1
+## write w master R_clkgen speed
+## write w slave  R_framesize framesize
+##
+## print "Control Registers %08x" control
+## set control control + 0x00000001
+## write w slave R_control control
+## set control control + 0x00000002
+## write w master R_control control
+##
+## # Put Data in Slave
+## write w slave R_txdata d0 
+## write w slave R_txdata d1
+## write w slave R_txdata d2
+##
+## #Transmit two words
+## write w master R_txdata d0 
+## wait delay
+## write w master R_txdata d1
+## write w master R_txdata d2
+## wait 2
+##
+## #check slave ready
+## #Poll Till done
+## set status 0x00
+## while status != 0x03 
+##   readstore w slave R_status status
+##   set status status & 0x03
+## endwhile
+##
+## readstore w master R_rxdata data
+## print "Got Word1 %02x" data
+## compare data ed0
+## readstore w master R_rxdata data
+## print "Got Word2 %02x" data
+## compare data ed1
+## readstore w master R_rxdata data
+## print "Got Word3 %02x" data
+## compare data ed2
+## wait 180
+##
+##return
+##
+##
+##################################################
+### test NSC compaction
+##
+##procedure test_nsc 
+## int i
+## int x
+## int control
+## int controls
+## int frames
+## int data
+## int tbsetup
+## int framesize
+## int d0 d1 d2
+## int ed0 ed1 ed2
+## int speed mode spo sph sps delay
+##
+## reset
+##	 
+## header "NSC tests"
+##
+## set speed 2
+## set mode  2
+## set spo   0
+## set sph   0
+## set sps   1
+## set delay 0
+## 
+## set  tbsetup speed
+## set  tbsetup 256 * mode + tbsetup
+## set  tbsetup 0x400 + tbsetup          // Connect slave to master
+## print "tbsetup %02x" tbsetup
+## iowrite tbsetup
+##
+## set frames 2
+## set control  0x00000000	       # NSC Alignment on
+## set control mode    * 4 + control
+## set control frames  * 0x00000100 + control
+## set control spo     * 0x01000000 + control
+## set control sph     * 0x02000000 + control
+## set control sps     * 0x04000000 + control
+##
+## set ed0   0xa5
+## set ed1   0x5a
+## set ed2   0x7e
+## set d0  ed0
+## set d1  ed1
+## set d2  ed2
+##
+##
+## write w master R_framesize 8
+## write w master R_select 1
+## write w master R_clkgen speed
+## 
+## write w slave  R_framesize 16
+##
+##
+## set control control + 0x00000001
+## set control control | B_NSCALIGN
+## print "Slave Control Registers %08x" control
+## write w slave R_control control
+##
+## set control control + 0x00000002 
+## print "Master Control Registers %08x" control
+## write w master R_control control
+##
+## # Put Data in Slave
+## write w slave R_txdata 0x00005678 
+## write w slave R_txdata 0x0000DEAD
+##
+## #Transmit two words
+## write w master R_txdata d0 
+## write w master R_txdata d1
+## write w master R_txdata d0 
+## write w master R_txdata d1
+## wait 1000
+## 
+## set ed0   0x56
+## set ed1   0x78
+##
+## readstore w master R_rxdata data
+## print "Got Word1 %02x" data
+## compare data ed0
+## readstore w master R_rxdata data
+## print "Got Word2 %02x" data
+## compare data ed1
+## wait 180
+##
+## wait 400
+##
+## set ed0   0xde
+## set ed1   0xad
+##
+## readstore w master R_rxdata data
+## print "Got Word1 %02x" data
+## compare data ed0
+## readstore w master R_rxdata data
+## print "Got Word2 %02x" data
+## compare data ed1
+## wait 180
+##
+##return
+
+
+
+
+##################################################################################

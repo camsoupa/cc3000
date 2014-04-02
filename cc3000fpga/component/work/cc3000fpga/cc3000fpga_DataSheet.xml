@@ -12,13 +12,23 @@
     <project-description>
     </project-description>
     <location>C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga</location>
-    <state>GENERATED ( Tue Apr 01 11:54:44 2014 )</state>
+    <state>GENERATED ( Wed Apr 02 17:09:23 2014 )</state>
     <swide-toolchain>SoftConsole workspace generated to C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
   </project-settings>
   <site-map>
   </site-map>
   <fileset>
     <name>HDL File(s)</name>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v</file>
     <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v</file>
     <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.v</file>
     <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v</file>
@@ -29,24 +39,6 @@
     <name>Flash Memory File(s)</name>
     <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
   </fileset>
-  <io>
-    <port-name>SPI_0_DO</port-name>
-    <direction>OUT</direction>
-    <pin-number>U17</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>SPI_0_CLK</port-name>
-    <direction>INOUT</direction>
-    <pin-number>W19</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>UART_0_TXD</port-name>
-    <direction>OUT</direction>
-    <pin-number>Y22</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
   <io>
     <port-name>LED_2</port-name>
     <direction>OUT</direction>
@@ -60,37 +52,7 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPI_1_DI</port-name>
-    <direction>IN</direction>
-    <pin-number>V19</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>UART_1_RXD</port-name>
-    <direction>IN</direction>
-    <pin-number>W22</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>MSS_RESET_N</port-name>
-    <direction>IN</direction>
-    <pin-number>R1</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>SPI_1_CLK</port-name>
-    <direction>INOUT</direction>
-    <pin-number>AA22</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>SPI_0_DI</port-name>
-    <direction>IN</direction>
-    <pin-number>V18</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>LED_0</port-name>
+    <port-name>SPISS[6]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -102,9 +64,15 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPI_1_SS</port-name>
-    <direction>INOUT</direction>
-    <pin-number>W21</pin-number>
+    <port-name>SPISS[4]</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>M_MISO</port-name>
+    <direction>IN</direction>
+    <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
@@ -114,15 +82,87 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPI_1_DO</port-name>
+    <port-name>SPISS[5]</port-name>
     <direction>OUT</direction>
-    <pin-number>T17</pin-number>
+    <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPI_0_SS</port-name>
-    <direction>INOUT</direction>
-    <pin-number>Y20</pin-number>
+    <port-name>SPIOEN</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>UART_1_RXD</port-name>
+    <direction>IN</direction>
+    <pin-number>W22</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>UART_0_TXD</port-name>
+    <direction>OUT</direction>
+    <pin-number>Y22</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPISS[1]</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPISS[0]</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>M_MOSI</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>INT_CC3000</port-name>
+    <direction>IN</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPISS[7]</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>LED_0</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPISS[2]</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPISS[3]</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>MSS_RESET_N</port-name>
+    <direction>IN</direction>
+    <pin-number>R1</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>MSTRCLKOUT</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <core type="ComponentModule">
@@ -130,6 +170,347 @@
     <core-exttype>HierSpiritDesign</core-exttype>
     <core-location>C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS</core-location>
     <core-name>cc3000fpga_MSS_0</core-name>
+  </core>
+  <core type="SpiritModule">
+    <core-exttype>IP</core-exttype>
+    <core-type>SpiritModule</core-type>
+    <core-vendor>Actel</core-vendor>
+    <core-lib>DirectCore</core-lib>
+    <core-intname>CoreAPB3</core-intname>
+    <core-ver>4.0.100</core-ver>
+    <core-desc>
+The CoreAPB3 component implements an APB3 (AMBA3 APB) fabric, which is backwards compatible with APB2 slave peripherals.
+
+There is one APB3 Master interface.
+
+        </core-desc>
+    <core-param>
+      <param-name>APB Master Data Bus Width</param-name>
+      <param-value>32-bit</param-value>
+      <param-hdlname>APB_DWIDTH</param-hdlname>
+      <param-hdlvalue>32</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 0:</param-name>
+      <param-value>true</param-value>
+      <param-hdlname>APBSLOT0ENABLE</param-hdlname>
+      <param-hdlvalue>1</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 1:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT1ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 2:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT2ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 3:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT3ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 4:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT4ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 5:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT5ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 6:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT6ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 7:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT7ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 8:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT8ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 9:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT9ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 10:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT10ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 11:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT11ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 12:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT12ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 13:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT13ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 14:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT14ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 15:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>APBSLOT15ENABLE</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Indirect Addressing:</param-name>
+      <param-value>Not in use</param-value>
+      <param-hdlname>IADDR_OPTION</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Number of address bits driven by master:</param-name>
+      <param-value>12</param-value>
+      <param-hdlname>MADDR_BITS</param-hdlname>
+      <param-hdlvalue>12</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 0:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_0</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 1:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_1</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 2:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_2</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 3:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_3</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 4:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_4</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 5:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_5</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 6:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_6</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 7:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_7</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 8:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_8</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 9:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_9</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 10:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_10</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 11:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_11</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 12:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_12</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 13:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_13</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 14:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_14</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Slot 15:</param-name>
+      <param-value>false</param-value>
+      <param-hdlname>SC_15</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Position in slave address of upper 4 bits of master address:</param-name>
+      <param-value>[27:24] (Ignored if master address width >= 32 bits)</param-value>
+      <param-hdlname>UPR_NIBBLE_POSN</param-hdlname>
+      <param-hdlvalue>6</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-name>CoreAPB3_0</core-name>
+  </core>
+  <core type="SpiritModule">
+    <core-exttype>IP</core-exttype>
+    <core-type>SpiritModule</core-type>
+    <core-vendor>Actel</core-vendor>
+    <core-lib>DirectCore</core-lib>
+    <core-intname>CORESPI</core-intname>
+    <core-ver>4.2.116</core-ver>
+    <core-desc>CoreSPI is a controller core designed for synchronous serial communication using the Motorola, TI, or NSC Serial Peripheral Interface (SPI).  The core is parameterized to allow user specification of clock phase, clock polarity, slave select behavior, FIFO depth, frame width, and mode.  Operation is fully synchronous and operates on the system clock as well as the external SPI clock for slave mode.
+</core-desc>
+    <core-param>
+      <param-name>APB Data Width:</param-name>
+      <param-value>8</param-value>
+      <param-hdlname>APB_DWIDTH</param-hdlname>
+      <param-hdlvalue>8</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Clock Rate (0-255):</param-name>
+      <param-value>7</param-value>
+      <param-hdlname>CFG_CLK</param-hdlname>
+      <param-hdlvalue>7</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Frame Size (4-32):</param-name>
+      <param-value>4</param-value>
+      <param-hdlname>CFG_FRAME_SIZE</param-hdlname>
+      <param-hdlvalue>4</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>Mode:</param-name>
+      <param-value>TI Mode</param-value>
+      <param-hdlname>CFG_MODE</param-hdlname>
+      <param-hdlvalue>1</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>SPH:</param-name>
+      <param-value>0</param-value>
+      <param-hdlname>CFG_SPH</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>SPO:</param-name>
+      <param-value>0</param-value>
+      <param-hdlname>CFG_SPO</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>SPS:</param-name>
+      <param-value>0</param-value>
+      <param-hdlname>CFG_SPS</param-hdlname>
+      <param-hdlvalue>0</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>FPGA Family:</param-name>
+      <param-value>SmartFusion</param-value>
+      <param-hdlname>FAMILY</param-hdlname>
+      <param-hdlvalue>18</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-param>
+      <param-name>FIFO Depth (1-32):</param-name>
+      <param-value>4</param-value>
+      <param-hdlname>FIFO_DEPTH</param-hdlname>
+      <param-hdlvalue>4</param-hdlvalue>
+      <param-tag>spirit:hwParameter</param-tag>
+    </core-param>
+    <core-name>CORESPI_0</core-name>
   </core>
   <firmware_core type="FirmWareModule">
     <core-exttype>IP</core-exttype>
@@ -209,30 +590,6 @@ This driver requires the SmartFusion CMSIS-PAL to build correctly.</core-desc>
 
 This driver requires the SmartFusion CMSIS-PAL to build correctly.</core-desc>
     <core-name>MSS_RTC_Driver_0</core-name>
-  </firmware_core>
-  <firmware_core type="FirmWareModule">
-    <core-exttype>IP</core-exttype>
-    <core-type>FirmWareModule</core-type>
-    <core-vendor>Actel</core-vendor>
-    <core-lib>Firmware</core-lib>
-    <core-intname>MSS_SPI_Driver</core-intname>
-    <core-ver>2.1.100</core-ver>
-    <core-desc>SmartFusion microcontroller subsystem (MSS) SPI bare metal software driver.
-
-This driver requires the SmartFusion CMSIS-PAL to build correctly.</core-desc>
-    <core-name>MSS_SPI_Driver_0</core-name>
-  </firmware_core>
-  <firmware_core type="FirmWareModule">
-    <core-exttype>IP</core-exttype>
-    <core-type>FirmWareModule</core-type>
-    <core-vendor>Actel</core-vendor>
-    <core-lib>Firmware</core-lib>
-    <core-intname>MSS_SPI_Driver</core-intname>
-    <core-ver>2.1.100</core-ver>
-    <core-desc>SmartFusion microcontroller subsystem (MSS) SPI bare metal software driver.
-
-This driver requires the SmartFusion CMSIS-PAL to build correctly.</core-desc>
-    <core-name>MSS_SPI_Driver_1</core-name>
   </firmware_core>
   <firmware_core type="FirmWareModule">
     <core-exttype>IP</core-exttype>
@@ -2178,6 +2535,12 @@ These files are required by the SmartFusion bare metal peripheral drivers to bui
           <range>0x80000</range>
         </slave>
         <slave>
+          <name>CORESPI_0</name>
+          <remapAddress>0x40050000</remapAddress>
+          <fullAddressSpace>0x40050000 - 0x400500FF</fullAddressSpace>
+          <range>0x00000100</range>
+        </slave>
+        <slave>
           <name>FPGA_FABRIC_BACKDOOR</name>
           <remapAddress>0x40040000</remapAddress>
           <fullAddressSpace>0x40040000 - 0x4004FFFF</fullAddressSpace>
@@ -3912,373 +4275,6 @@ These files are required by the SmartFusion bare metal peripheral drivers to bui
                 <field>
                   <name>OUTPUT</name>
                   <bitNumber>30:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-            </addressBlock>
-          </memoryMap>
-        </slave>
-        <slave>
-          <name>SPI_1</name>
-          <remapAddress>0x40011000</remapAddress>
-          <fullAddressSpace>0x40011000 - 0x40011FFF</fullAddressSpace>
-          <range>0x1000</range>
-          <memoryMap>
-            <name>RegisterMap</name>
-            <addressBlock>
-              <baseAddress>0x0</baseAddress>
-              <range format="long">0x1000</range>
-              <width format="long" id="width">32</width>
-              <register>
-                <name>CONTROL</name>
-                <addressOffset>0x0</addressOffset>
-                <absoluteAddress>0x40010000</absoluteAddress>
-                <size>32</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>SPH</name>
-                  <bitNumber>25</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>SPO</name>
-                  <bitNumber>24</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TXRXDFCOUNT</name>
-                  <bitNumber>23:8</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_UNDERRUN_INTERRUPT</name>
-                  <bitNumber>7</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW_INTERRUPT</name>
-                  <bitNumber>6</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_INTERRUPT</name>
-                  <bitNumber>5</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_INTERRUPT</name>
-                  <bitNumber>4</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TRANSFER_PROTOCOL</name>
-                  <bitNumber>3:2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>MODE</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>ENABLE</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>TXRXDFSIZE</name>
-                <addressOffset>0x4</addressOffset>
-                <absoluteAddress>0x40010004</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TXRXDFSIZE</name>
-                  <bitNumber>5:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>STATUS</name>
-                <addressOffset>0x8</addressOffset>
-                <absoluteAddress>0x40010008</absoluteAddress>
-                <size>16</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_FIFO_EMPTY_NEXT</name>
-                  <bitNumber>11</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_FIFO_EMPTY</name>
-                  <bitNumber>10</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_FIFO_FULL_NEXT</name>
-                  <bitNumber>9</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_FIFO_FULL</name>
-                  <bitNumber>8</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_EMPTY_NEXT</name>
-                  <bitNumber>7</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_EMPTY</name>
-                  <bitNumber>6</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_FULL_NEXT</name>
-                  <bitNumber>5</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_FULL</name>
-                  <bitNumber>4</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_DATA_RECEIVED</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DATA_SENT</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>INTERRUPT_CLEAR</name>
-                <addressOffset>0xC</addressOffset>
-                <absoluteAddress>0x4001000C</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_RDY</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DONE</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>RXDATA</name>
-                <addressOffset>0x10</addressOffset>
-                <absoluteAddress>0x40010010</absoluteAddress>
-                <size>32</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>RXDATA</name>
-                  <bitNumber>31:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>TXDATA</name>
-                <addressOffset>0x14</addressOffset>
-                <absoluteAddress>0x40010014</absoluteAddress>
-                <size>32</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TXDATA</name>
-                  <bitNumber>31:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>SCLKO_GEN</name>
-                <addressOffset>0x18</addressOffset>
-                <absoluteAddress>0x40010018</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>SCLKO_GEN</name>
-                  <bitNumber>3:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>SLAVE_SELECT</name>
-                <addressOffset>0x1C</addressOffset>
-                <absoluteAddress>0x4001001C</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>SLAVE_SELECT</name>
-                  <bitNumber>7:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>MASKED_INTERRUPT_STATUS</name>
-                <addressOffset>0x20</addressOffset>
-                <absoluteAddress>0x40010020</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_RDY</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DONE</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>RAW_INTERRUPT_STATUS</name>
-                <addressOffset>0x24</addressOffset>
-                <absoluteAddress>0x40010024</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_RDY</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DONE</name>
-                  <bitNumber>0</bitNumber>
                   <access>R/W</access>
                   <description>
                   </description>
@@ -7726,373 +7722,6 @@ These files are required by the SmartFusion bare metal peripheral drivers to bui
                 <field>
                   <name>ch7BufBTransferCount</name>
                   <bitNumber>15:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-            </addressBlock>
-          </memoryMap>
-        </slave>
-        <slave>
-          <name>SPI_0</name>
-          <remapAddress>0x40001000</remapAddress>
-          <fullAddressSpace>0x40001000 - 0x40001FFF</fullAddressSpace>
-          <range>0x1000</range>
-          <memoryMap>
-            <name>RegisterMap</name>
-            <addressBlock>
-              <baseAddress>0x0</baseAddress>
-              <range format="long">0x1000</range>
-              <width format="long" id="width">32</width>
-              <register>
-                <name>CONTROL</name>
-                <addressOffset>0x0</addressOffset>
-                <absoluteAddress>0x40000000</absoluteAddress>
-                <size>32</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>SPH</name>
-                  <bitNumber>25</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>SPO</name>
-                  <bitNumber>24</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TXRXDFCOUNT</name>
-                  <bitNumber>23:8</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_UNDERRUN_INTERRUPT</name>
-                  <bitNumber>7</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW_INTERRUPT</name>
-                  <bitNumber>6</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_INTERRUPT</name>
-                  <bitNumber>5</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_INTERRUPT</name>
-                  <bitNumber>4</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TRANSFER_PROTOCOL</name>
-                  <bitNumber>3:2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>MODE</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>ENABLE</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>TXRXDFSIZE</name>
-                <addressOffset>0x4</addressOffset>
-                <absoluteAddress>0x40000004</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TXRXDFSIZE</name>
-                  <bitNumber>5:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>STATUS</name>
-                <addressOffset>0x8</addressOffset>
-                <absoluteAddress>0x40000008</absoluteAddress>
-                <size>16</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_FIFO_EMPTY_NEXT</name>
-                  <bitNumber>11</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_FIFO_EMPTY</name>
-                  <bitNumber>10</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_FIFO_FULL_NEXT</name>
-                  <bitNumber>9</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_FIFO_FULL</name>
-                  <bitNumber>8</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_EMPTY_NEXT</name>
-                  <bitNumber>7</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_EMPTY</name>
-                  <bitNumber>6</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_FULL_NEXT</name>
-                  <bitNumber>5</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_FIFO_FULL</name>
-                  <bitNumber>4</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_DATA_RECEIVED</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DATA_SENT</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>INTERRUPT_CLEAR</name>
-                <addressOffset>0xC</addressOffset>
-                <absoluteAddress>0x4000000C</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_RDY</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DONE</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>RXDATA</name>
-                <addressOffset>0x10</addressOffset>
-                <absoluteAddress>0x40000010</absoluteAddress>
-                <size>32</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>RXDATA</name>
-                  <bitNumber>31:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>TXDATA</name>
-                <addressOffset>0x14</addressOffset>
-                <absoluteAddress>0x40000014</absoluteAddress>
-                <size>32</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TXDATA</name>
-                  <bitNumber>31:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>SCLKO_GEN</name>
-                <addressOffset>0x18</addressOffset>
-                <absoluteAddress>0x40000018</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>SCLKO_GEN</name>
-                  <bitNumber>3:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>SLAVE_SELECT</name>
-                <addressOffset>0x1C</addressOffset>
-                <absoluteAddress>0x4000001C</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>SLAVE_SELECT</name>
-                  <bitNumber>7:0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>MASKED_INTERRUPT_STATUS</name>
-                <addressOffset>0x20</addressOffset>
-                <absoluteAddress>0x40000020</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_RDY</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DONE</name>
-                  <bitNumber>0</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-              </register>
-              <register>
-                <name>RAW_INTERRUPT_STATUS</name>
-                <addressOffset>0x24</addressOffset>
-                <absoluteAddress>0x40000024</absoluteAddress>
-                <size>8</size>
-                <access>R/W</access>
-                <resetValue>0x0</resetValue>
-                <field>
-                  <name>TX_UNDERRUN</name>
-                  <bitNumber>3</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_OVERFLOW</name>
-                  <bitNumber>2</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>RX_RDY</name>
-                  <bitNumber>1</bitNumber>
-                  <access>R/W</access>
-                  <description>
-                  </description>
-                </field>
-                <field>
-                  <name>TX_DONE</name>
-                  <bitNumber>0</bitNumber>
                   <access>R/W</access>
                   <description>
                   </description>

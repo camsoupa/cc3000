@@ -2,31 +2,80 @@ Target Part: A2F200M3F_FBGA484_-1
 Report for cell cc3000fpga.verilog
   Core Cell usage:
               cell count     area count*area
-               GND     3      0.0        0.0
-            MSSINT     3      0.0        0.0
+              AND2    11      1.0       11.0
+               AO1    40      1.0       40.0
+              AO1A     6      1.0        6.0
+              AO1B     3      1.0        3.0
+              AO1C     6      1.0        6.0
+              AO1D     1      1.0        1.0
+              AOI1     2      1.0        2.0
+             AOI1B     5      1.0        5.0
+              AX1D     5      1.0        5.0
+              AX1E     1      1.0        1.0
+             AXOI5     1      1.0        1.0
+            CLKINT     1      0.0        0.0
+               GND    13      0.0        0.0
+               INV     5      1.0        5.0
+              MAJ3     2      1.0        2.0
+            MSSINT     6      0.0        0.0
            MSS_APB     1      0.0        0.0
            MSS_CCC     1      0.0        0.0
+               MX2    45      1.0       45.0
+              MX2A     1      1.0        1.0
+              MX2C     1      1.0        1.0
+              NOR2    18      1.0       18.0
+             NOR2A    33      1.0       33.0
+             NOR2B    57      1.0       57.0
+              NOR3     7      1.0        7.0
+             NOR3A    50      1.0       50.0
+             NOR3B    32      1.0       32.0
+             NOR3C    33      1.0       33.0
+               OA1     9      1.0        9.0
+              OA1A     2      1.0        2.0
+              OA1B     2      1.0        2.0
+              OA1C     4      1.0        4.0
+              OAI1     2      1.0        2.0
+               OR2    20      1.0       20.0
+              OR2A     7      1.0        7.0
+              OR2B     7      1.0        7.0
+               OR3    21      1.0       21.0
+              OR3A     5      1.0        5.0
+              OR3B     1      1.0        1.0
              RCOSC     1      0.0        0.0
-               VCC     3      0.0        0.0
+               VCC    13      0.0        0.0
+               XA1     2      1.0        2.0
+              XA1A     4      1.0        4.0
+              XA1B     7      1.0        7.0
+              XA1C     3      1.0        3.0
+             XNOR2     1      1.0        1.0
+               XO1     2      1.0        2.0
+              XO1A     6      1.0        6.0
+              XOR2    32      1.0       32.0
+              XOR3     2      1.0        2.0
 
 
+            DFN1C0    80      1.0       80.0
+          DFN1E0C0     8      1.0        8.0
+            DFN1E1    40      1.0       40.0
+          DFN1E1C0    33      1.0       33.0
+          DFN1E1P0     3      1.0        3.0
+            DFN1P0    22      1.0       22.0
                    -----          ----------
-             TOTAL    12                 0.0
+             TOTAL   726               690.0
 
 
   IO Cell usage:
               cell count
-         BIBUF_MSS     4
-         INBUF_MSS     5
-            OUTBUF     3
+             INBUF     2
+         INBUF_MSS     3
+            OUTBUF    14
         OUTBUF_MSS     2
-       TRIBUFF_MSS     2
                    -----
-             TOTAL    16
+             TOTAL    21
 
 
-Core Cells         : 0 of 4608 (0%)
-IO Cells           : 16
+Core Cells         : 690 of 4608 (15%)
+IO Cells           : 21
 
   RAM/ROM Usage Summary
 Block Rams : 0 of 8 (0%)

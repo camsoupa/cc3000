@@ -3,7 +3,7 @@
 
 # Version: 10.1 SP3 10.1.3.1
 # Family: SmartFusion , Die: A2F200M3F , Package: 484 FBGA
-# Date generated: Tue Apr 01 11:54:26 2014 
+# Date generated: Wed Apr 02 17:22:35 2014 
 
 
 # 
@@ -15,58 +15,22 @@
 # I/O constraints
 # 
 
+set_io IO_2_PADIN     \
+    -pinname W1       \
+    -fixed yes        \
+    -DIRECTION Input
+
+
+set_io IO_4_PADOUT     \
+    -pinname AA1       \
+    -fixed yes         \
+    -DIRECTION Output
+
+
 set_io MSS_RESET_N    \
     -pinname R1       \
     -fixed yes        \
     -DIRECTION Input
-
-
-set_io SPI_0_CLK      \
-    -pinname W19      \
-    -fixed yes        \
-    -DIRECTION Inout
-
-
-set_io SPI_0_DI       \
-    -pinname V18      \
-    -fixed yes        \
-    -DIRECTION Input
-
-
-set_io SPI_0_DO        \
-    -pinname U17       \
-    -fixed yes         \
-    -DIRECTION Output
-
-
-set_io SPI_0_SS       \
-    -pinname Y20      \
-    -fixed yes        \
-    -DIRECTION Inout
-
-
-set_io SPI_1_CLK      \
-    -pinname AA22     \
-    -fixed yes        \
-    -DIRECTION Inout
-
-
-set_io SPI_1_DI       \
-    -pinname V19      \
-    -fixed yes        \
-    -DIRECTION Input
-
-
-set_io SPI_1_DO        \
-    -pinname T17       \
-    -fixed yes         \
-    -DIRECTION Output
-
-
-set_io SPI_1_SS       \
-    -pinname W21      \
-    -fixed yes        \
-    -DIRECTION Inout
 
 
 set_io UART_0_RXD     \

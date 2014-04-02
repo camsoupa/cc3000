@@ -4,37 +4,40 @@ Product Version F-2012.03M-SP1
 
 Mapper Startup Complete (Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
 
+Reading constraint file: C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc
 @L: C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga_scck.rpt 
 Printing clock  summary report in "C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga_scck.rpt" file 
 @N: MF248 |Running in 64-bit mode.
 @N: MF258 |Gated clock conversion disabled 
 @N: MF547 |Generated clock conversion disabled 
 
-Design Input Complete (Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+Design Input Complete (Time elapsed 0h:00m:00s; Memory used current: 94MB peak: 95MB)
 
 
-Mapper Initialization Complete (Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+Mapper Initialization Complete (Time elapsed 0h:00m:00s; Memory used current: 94MB peak: 95MB)
 
 
 
 Clock Summary
 **************
 
-Start      Requested     Requested     Clock      Clock          
-Clock      Frequency     Period        Type       Group          
------------------------------------------------------------------
-System     1.0 MHz       1000.000      system     system_clkgroup
-=================================================================
+Start       Requested     Requested     Clock        Clock          
+Clock       Frequency     Period        Type         Group          
+--------------------------------------------------------------------
+System      1.0 MHz       1000.000      system       system_clkgroup
+FAB_CLK     100.0 MHz     10.000        declared     clk_group_0    
+FCLK        100.0 MHz     10.000        declared     clk_group_0    
+====================================================================
 
 
-Finished Pre Mapping Phase. (Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 103MB)
+Finished Pre Mapping Phase. (Time elapsed 0h:00m:00s; Memory used current: 102MB peak: 105MB)
 
 @N: BN225 |Writing default property annotation file C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 38MB peak: 103MB)
+At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 40MB peak: 105MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Apr 01 11:54:50 2014
+# Wed Apr 02 17:09:37 2014
 
 ###########################################################]

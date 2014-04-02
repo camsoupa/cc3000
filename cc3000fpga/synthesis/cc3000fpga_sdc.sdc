@@ -2,6 +2,8 @@
 
 # Clocks
 
+create_clock -name {FAB_CLK} -period 10.000000 -waveform {0.000000 5.000000} cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC:GLA
+create_clock -name {FCLK} -period 10.000000 -waveform {0.000000 5.000000} cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC:GLAMSS
 
 # False Paths Between Clocks
 

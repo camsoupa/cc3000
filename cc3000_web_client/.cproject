@@ -26,7 +26,7 @@
 <option id="gnu.c.compiler.option.preprocessor.def.symbols.1298253454" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 <listOptionValue builtIn="false" value="ACTEL_STDIO_THRU_UART"/>
 </option>
-<option id="gnu.c.compiler.option.optimization.flags.1467398885" superClass="gnu.c.compiler.option.optimization.flags" value="-Os" valueType="string"/>
+<option id="gnu.c.compiler.option.optimization.flags.1467398885" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" value="-Os" valueType="string"/>
 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1684367327" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cross.cortexm3.exe.debug.1330648987" name="GNU C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cross.cortexm3.exe.debug">

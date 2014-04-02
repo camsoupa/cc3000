@@ -27,10 +27,7 @@
 #include <inttypes.h>
 
 //#include "inc/hw_types.h"
-
 //#include "driverlib/timer.h"
-#include   "drivers/mss_timer/mss_timer.h"
-
 //#include "driverlib/rom.h"
 //#include "driverlib/rom_map.h"
 //#include "driverlib/systick.h"
@@ -40,15 +37,14 @@
 //#include "utils/uartstdio.h"
 //#include "utils/cmdline.h"
 //#include "driverlib/ssi.h"
-
 //#include "driverlib/uart.h"
-#include   "drivers/mss_uart/mss_uart.h"
 
-#include   "drivers/mss_gpio/mss_gpio.h"
-#include   "drivers/mss_spi/mss_spi.h"
-#include   "drivers/mss_timer/mss_timer.h"
-#include   "drivers/board/board.h"
-
+#include "drivers/mss_timer/mss_timer.h"
+#include "drivers/mss_uart/mss_uart.h"
+#include "drivers/mss_gpio/mss_gpio.h"
+#include "drivers/mss_spi/mss_spi.h"
+#include "drivers/mss_timer/mss_timer.h"
+#include "drivers/board/board.h"
 #include "CC3000HostDriver/wlan.h"
 #include "CC3000HostDriver/evnt_handler.h"
 #include "CC3000HostDriver/nvmem.h"
@@ -56,9 +52,6 @@
 #include "CC3000HostDriver/netapp.h"
 #include "CC3000HostDriver/matt_spi.h"
 #include "CC3000HostDriver/hci.h"
-
-
-
 #include "application_commands.h"
 
 /*
@@ -248,7 +241,7 @@ char g_pcCC3000_prefix[] = {'T', 'T', 'T'};
 // Input buffer for the command line interpreter.
 //
 //*****************************************************************************
-static char g_cInput[MAX_COMMAND_SIZE];
+//static char g_cInput[MAX_COMMAND_SIZE]; //matt-not used anymore
 
 //*****************************************************************************
 //
@@ -262,10 +255,11 @@ char g_pcdevice_name[] = "home_assistant";
 // AES key "smartconfigAES16"
 //
 //*****************************************************************************
+/* matt- not using this
 const uint8_t g_pui8smartconfigkey[] = {0x73,0x6d,0x61,0x72,0x74,0x63,0x6f,
                                         0x6e,0x66,0x69,0x67,0x41,0x45,0x53,
                                         0x31,0x36};
-
+*/
 //*****************************************************************************
 //__no_init is used to prevent the buffer initialization in order to
 // prevent hardware WDT expiration  before entering 'main()'.
@@ -374,12 +368,12 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         // Turn off the LED3 (Green)
         //
-        turnLedOff(LED_1);
+        turnLedOff(LED_1); // TODO
 
         //
         // Turn back on the LED 1 (RED)
         //
-        turnLedOn(LED_0);
+        turnLedOn(LED_0); // TODO
     }
 
     //
@@ -411,7 +405,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
             //
             // Turn on the LED3 (Green).
             //
-            turnLedOn(LED_1);
+            turnLedOn(LED_1); // TODO
         }
         else
         {
@@ -489,12 +483,12 @@ initDriver(void)
     //
     // Initialize and configure the SPI.
     //
-    //init_spi(1000000, SysCtlClockGet());
+    //init_spi(1000000, SysCtlClockGet()); //TODO figure out this sysctlclockget stuff
 
     //
     // Enable processor interrupts.
     //
-    //MAP_IntMasterEnable();
+    //MAP_IntMasterEnable(); // TODO
 
     //
     // Initialize and enable WiFi on the CC3000.
@@ -523,7 +517,7 @@ initDriver(void)
     // Initialize UART.
     //
     //DispatcherUARTConfigure(SysCtlClockGet()); // I think our UART is already set up
-    //ROM_SysCtlDelay(1000000);
+    //ROM_SysCtlDelay(1000000); // So we don't need this either
 
     //
     // Print version string.
@@ -563,29 +557,29 @@ DotDecimalDecoder(char *pcString, uint8_t *pui8Val1, uint8_t *pui8Val2,
     // Extract 1st octet of address.
     //
     pcStartData = pcString;
-    //pcEndData = ustrstr(pcStartData,".");     //TODO copy these functions from TI
-    //ui32Block1 = ustrtoul(pcStartData, 0,10);
+    pcEndData = ustrstr(pcStartData,".");
+    ui32Block1 = ustrtoul(pcStartData, 0,10);
 
     //
     // Extract 2nd octet of address.
     //
     pcStartData = pcEndData +1;
-    //pcEndData = ustrstr(pcStartData,".");
-    //ui32Block2 = ustrtoul(pcStartData, 0,10);
+    pcEndData = ustrstr(pcStartData,".");
+    ui32Block2 = ustrtoul(pcStartData, 0,10);
 
     //
     // Extract 3rd octet of address.
     //
     pcStartData = pcEndData +1;
-    //pcEndData = ustrstr(pcStartData,".");
-    //ui32Block3 = ustrtoul(pcStartData, 0,10);
+    pcEndData = ustrstr(pcStartData,".");
+    ui32Block3 = ustrtoul(pcStartData, 0,10);
 
     //
     // Extract 4th octet of address.
     //
     pcStartData = pcEndData +1;
-    //pcEndData = ustrstr(pcStartData,".");
-    //ui32Block4 = ustrtoul(pcStartData, 0,10);
+    pcEndData = ustrstr(pcStartData,".");
+    ui32Block4 = ustrtoul(pcStartData, 0,10);
 
     //
     // Validate data. Valid values are between 0->255.
@@ -616,7 +610,7 @@ DotDecimalDecoder(char *pcString, uint8_t *pui8Val1, uint8_t *pui8Val2,
 // is used by the cmdline module.
 //
 //*****************************************************************************
-/*
+/* matt - not used anymore
 tCmdLineEntry g_psCmdTable[] =
 {
     {"help",          CMD_help,
@@ -660,7 +654,7 @@ tCmdLineEntry g_psCmdTable[] =
 */
 
 /* Function for delay taken from our lab 6
- * trying to replace  ROM_SysCtlDelay(100);*/
+ * trying to replace  ROM_SysCtlDelay(100); not sure if this will do it*/
 int delay ( volatile uint32_t n)
 {
     while(n!=0)
@@ -670,13 +664,12 @@ int delay ( volatile uint32_t n)
     return 0;
 }
 
-
-
 //*****************************************************************************
 //
 // This function triggers smart configuration processing on the CC3000.
 //
 //*****************************************************************************
+/* matt - not doing smartconif at the moment
 void StartSmartConfig(void)
 {
     g_ui32SmartConfigFinished = 0;
@@ -800,13 +793,13 @@ void StartSmartConfig(void)
     //
     wlan_set_event_mask(HCI_EVNT_WLAN_KEEPALIVE | HCI_EVNT_WLAN_UNSOL_INIT);
 }
-
+*/
 //*****************************************************************************
 //
 // Print the help strings for all commands.
 //
 //*****************************************************************************
-/*
+/* matt - not used anymore
 int
 CMD_help(int argc, char **argv)
 {
@@ -1033,7 +1026,7 @@ int matt_send()
 	        return(1);
 	    }
 
-	    // Matt - might want to add this back in
+	    // matt - might want to add this back in if we start sending different messages
 	    //
 	    // Validate message size, between 1 and 1460 bytes.
 	    //
@@ -1042,10 +1035,8 @@ int matt_send()
 	    //    printf("Invalid Message, must send 1-1460 bytes\n");
 	    //    return(1);
 	    //}
-	    //
-	    // Validate port is between 0 and 65535.
-	    //
 
+	    // The data we want to send to the connected server
 	    char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
 
 	    //
@@ -1066,7 +1057,7 @@ int matt_send()
 	    //
 	    // The destination port.
 	    //
-	    ui32Port = 80;
+	    ui32Port = 80; // matt hard coded to 80
 	    g_tSocketAddr.sa_data[0] = (ui32Port & 0xFF00) >> 8;
 	    g_tSocketAddr.sa_data[1] = (ui32Port & 0x00FF) >> 0;
 
@@ -1167,10 +1158,10 @@ int matt_recv()
             i32ReturnValue = recv(g_ui32Socket, g_pui8CC3000_Rx_Buffer,
                                 CC3000_APP_BUFFER_SIZE, 0);
 
-            //printf("Before wait\n");
-            //ROM_SysCtlDelay(10000000);
-            delay(10000000);
-            //printf("After wait\n");
+
+            //ROM_SysCtlDelay(10000000);     // TODO not urgent but change receive so it does not need to wait
+            delay(10000000);				 // or so it waits until the whole http request is sent
+
             //
             // Check Data Validity
             //
@@ -1201,7 +1192,8 @@ int matt_recv()
                     printf("\n    ");
                 }
 
-                // Look for PM in the text. TODO Change this to capture what comes after PM and temperature.
+                // Look for PM in the text. TODO Change this to capture what comes after PM and temperature. There are nice
+                // functions in the utils.c to compare strings
             	if(g_pui8CC3000_Rx_Buffer[ui32x] == 'P' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
             	{
             		printf("GOT ONE!\r\n");
@@ -1232,6 +1224,7 @@ int matt_recv()
 //
 //
 //*****************************************************************************
+/*
 int
 CMD_matt(int argc, char **argv)
 {
@@ -1248,6 +1241,7 @@ CMD_matt(int argc, char **argv)
 
 return 0;
 }
+*/
 //*****************************************************************************
 //
 // This function runs the Smart Configuration process.
@@ -1257,7 +1251,7 @@ return 0;
 // network.
 //
 //*****************************************************************************
-/* Now directly calling StartSmartConfig from main
+/* Now directly calling connect from main
 int
 CMD_smartConfig(int argc, char **argv)
 {
@@ -1307,7 +1301,7 @@ CMD_connect(char *ssid)
     //pui8Ssid = argv[1];
     pui8Ssid = ssid;
     //ui32SsidLen = ustrlen(argv[1]);
-    ui32SsidLen = ustrnlen(ssid);
+    ui32SsidLen = ustrlen(ssid);
 
     //
     // Call low level connect function. See documentation for more information.
@@ -1339,7 +1333,8 @@ CMD_connect(char *ssid)
         //
         // Delay 1ms
         //
-        ROM_SysCtlDelay(ROM_SysCtlClockGet() / 3000);
+        //ROM_SysCtlDelay(ROM_SysCtlClockGet() / 3000);
+    	delay(1000);
     }
     printf("    Connection Failed. Please check the network name.\n");
 
@@ -2038,6 +2033,7 @@ CMD_ipConfig (int argc, char **argv)
 // Arguments: None
 //
 //*****************************************************************************
+/*
 int
 CMD_disconnect (int argc, char **argv)
 {
@@ -2072,7 +2068,7 @@ CMD_disconnect (int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Remove the automatic connection policy from the CC3000. On reset it will no
@@ -2080,6 +2076,7 @@ CMD_disconnect (int argc, char **argv)
 // Arguments: None
 //
 //*****************************************************************************
+/*
 int
 CMD_deletePolicy (int argc, char **argv)
 {
@@ -2101,7 +2098,7 @@ CMD_deletePolicy (int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Send a mDNS query packet.
@@ -2109,6 +2106,7 @@ CMD_deletePolicy (int argc, char **argv)
 // [1] (Optional) specify the name to advertise with.
 //
 //*****************************************************************************
+/*
 int
 CMD_mdnsadvertise (int argc, char **argv)
 {
@@ -2172,13 +2170,14 @@ CMD_mdnsadvertise (int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Stops and then starts the CC3000 unit. Necessary to apply profiles. Useful
 // for restarting sockets and other things.
 //
 //*****************************************************************************
+/*
 int
 CMD_cc3000reset(int argc, char **argv)
 {
@@ -2212,7 +2211,7 @@ CMD_cc3000reset(int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // Ping an IP Address
@@ -2222,6 +2221,7 @@ CMD_cc3000reset(int argc, char **argv)
 //  [3] (optional) timeout in milliseconds
 //
 //*****************************************************************************
+/*
 int
 CMD_ping(int argc, char **argv)
 {
@@ -2313,7 +2313,7 @@ CMD_ping(int argc, char **argv)
 
     return(0);
 }
-
+*/
 //*****************************************************************************
 //
 // main loop
@@ -2322,7 +2322,6 @@ CMD_ping(int argc, char **argv)
 int
 main(void)
 {
-    int32_t i32CommandStatus;
     int32_t webConnected = 0;
     int32_t num_msg_sent = 0;
     int32_t num_msg_to_send = 1;
@@ -2355,35 +2354,9 @@ main(void)
     //
     while(1)
     {
-
-<<<<<<< HEAD
         // If wlan connect worked make connection with web server
         if(g_ui32CC3000DHCP == 1)
-=======
-        //
-        // Complete smart config process:
-        // 1. if smart config is done
-        // 2. CC3000 established AP connection
-        // 3. DHCP IP is configured
-        // then send mDNS packet to stop external SmartConfig application
-        //
-        if((g_ui8StopSmartConfig == 1) && (g_ui32CC3000DHCP == 1) &&
-           (g_ui32CC3000Connected == 1))
-        {
-            unsigned char loop_index = 0;
 
-            while(loop_index < 3)
-            {
-                //mdnsAdvertiser(1, g_pcdevice_name, sizeof(g_pcdevice_name));  //TODO implement this
-                loop_index++;
-            }
-
-            g_ui8StopSmartConfig = 0;
-        }
-
-        // If smartConfig worked make connection with webserver
-        if(g_ui32SmartConfigFinished == 1)
->>>>>>> 90d0ba6a1dc3172dfdb325277b410d6c1eae90ce
         {
         	if(webConnected == 0)
         	{

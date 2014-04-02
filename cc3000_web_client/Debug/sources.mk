@@ -17,6 +17,7 @@ EXECUTABLE :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+utils \
 drivers/mss_uart \
 drivers/mss_spi \
 drivers/mss_gpio \

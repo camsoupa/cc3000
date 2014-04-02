@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include utils/subdir.mk
 -include drivers/mss_uart/subdir.mk
 -include drivers/mss_spi/subdir.mk
 -include drivers/mss_gpio/subdir.mk

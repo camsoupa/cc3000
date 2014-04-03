@@ -1,14 +1,14 @@
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis  -part A2F200M3F  -package FBGA484  -grade -1   -globalthreshold 50 -maxfan 24 -opcond COMWC     -report_path 0       -summaryfile C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_premap.xml -top_level_module  cc3000fpga  -oedif  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn  -conchk_prepass  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga_cck_prepass.rpt  -freq 100.000  -tcl  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs  -flow prepass  -gcc_prepass  -osrd  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd  -qsap  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap  -devicelib  C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v  -ologparam  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg  -osyn  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd  -prjdir  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\  -prjname  cc3000fpga_syn  -log  C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr 
 rc:0 success:1
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn|o|1396479027|511190
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn|o|1396555650|511189
 C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga_cck_prepass.rpt|o|0|0
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc|i|1396480127|200
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs|i|1396480175|80352
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396480177|78408
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap|o|1396480177|21439
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc|i|1396557848|200
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs|i|1396557883|80800
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396557886|76688
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap|o|1396557886|21439
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v|i|1340041216|72817
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1396480177|0
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396480177|78408
-C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr|o|1396480177|2196
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1396557885|0
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396557886|76688
+C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr|o|1396557886|2196
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe|i|1340212062|15745024
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe|i|1340212048|13099520

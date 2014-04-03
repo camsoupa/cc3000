@@ -1,0 +1,1507 @@
+Timing Report Max Delay Analysis
+
+SmartTime Version v10.1 SP3
+Actel Corporation - Actel Designer Software Release v10.1 SP3 (Version 10.1.3.1)
+Copyright (c) 1989-2013
+Date: Thu Apr 03 14:53:49 2014
+
+
+Design: cc3000fpga
+Family: SmartFusion
+Die: A2F200M3F
+Package: 484 FBGA
+Temperature: COM
+Voltage: COM
+Speed Grade: -1
+Design State: Post-Layout
+Data source: Silicon verified
+Min Operating Condition: BEST
+Max Operating Condition: WORST
+Using Enhanced Min Delay Analysis
+Scenario for Timing Analysis: Primary
+
+
+-----------------------------------------------------
+SUMMARY
+
+Clock Domain:               mss_aclk
+Period (ns):                N/A
+Frequency (MHz):            N/A
+Required Period (ns):       10.000
+Required Frequency (MHz):   100.000
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               mss_fabric_interface_clock
+Period (ns):                11.028
+Frequency (MHz):            90.678
+Required Period (ns):       10.000
+Required Frequency (MHz):   100.000
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               mss_pclk1
+Period (ns):                N/A
+Frequency (MHz):            N/A
+Required Period (ns):       10.000
+Required Frequency (MHz):   100.000
+External Setup (ns):        -2.246
+External Hold (ns):         2.907
+Min Clock-To-Out (ns):      7.682
+Max Clock-To-Out (ns):      13.154
+
+Clock Domain:               mss_ccc_gla1
+Period (ns):                8.665
+Frequency (MHz):            115.407
+Required Period (ns):       10.000
+Required Frequency (MHz):   100.000
+External Setup (ns):        -1.248
+External Hold (ns):         2.924
+Min Clock-To-Out (ns):      6.152
+Max Clock-To-Out (ns):      14.946
+
+Clock Domain:               mss_ccc_gla0
+Period (ns):                10.000
+Frequency (MHz):            100.000
+Required Period (ns):       10.000
+Required Frequency (MHz):   100.000
+External Setup (ns):        -4.499
+External Hold (ns):         3.696
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               cc3000fpga_MSS_0/MSS_CCC_0/I_RCOSC:CLKOUT
+Period (ns):                N/A
+Frequency (MHz):            N/A
+Required Period (ns):       10.000
+Required Frequency (MHz):   100.000
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+                            Input to Output
+Min Delay (ns):             N/A
+Max Delay (ns):             N/A
+
+END SUMMARY
+-----------------------------------------------------
+
+Clock Domain mss_aclk
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Setup
+
+No Path
+
+END SET External Setup
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Recovery
+
+No Path
+
+END SET External Recovery
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain mss_fabric_interface_clock
+
+SET Register to Register
+
+Path 1
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[2]
+  Delay (ns):                  12.874
+  Slack (ns):                  -1.028
+  Arrival (ns):                16.324
+  Required (ns):               15.296
+  Setup (ns):                  -1.846
+  Minimum Period (ns):         11.028
+
+Path 2
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  Delay (ns):                  12.860
+  Slack (ns):                  -1.014
+  Arrival (ns):                16.310
+  Required (ns):               15.296
+  Setup (ns):                  -1.846
+  Minimum Period (ns):         11.014
+
+Path 3
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[1]
+  Delay (ns):                  12.642
+  Slack (ns):                  -0.789
+  Arrival (ns):                16.092
+  Required (ns):               15.303
+  Setup (ns):                  -1.853
+  Minimum Period (ns):         10.789
+
+Path 4
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[3]
+  Delay (ns):                  12.499
+  Slack (ns):                  -0.649
+  Arrival (ns):                15.949
+  Required (ns):               15.300
+  Setup (ns):                  -1.850
+  Minimum Period (ns):         10.649
+
+Path 5
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[7]
+  Delay (ns):                  12.213
+  Slack (ns):                  -0.357
+  Arrival (ns):                15.663
+  Required (ns):               15.306
+  Setup (ns):                  -1.856
+  Minimum Period (ns):         10.357
+
+
+Expanded Path 1
+  From: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[2]
+  data required time                             15.296
+  data arrival time                          -   16.324
+  slack                                          -1.028
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_fabric_interface_clock
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB (r)
+               +     3.450          Clock generation
+  3.450
+               +     2.484          cell: ADLIB:MSS_APB_IP
+  5.934                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPSEL (r)
+               +     0.103          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/MSSPSELINT_NET
+  6.037                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_42:PIN1INT (r)
+               +     0.074          cell: ADLIB:MSS_IF
+  6.111                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_42:PIN1 (r)
+               +     0.982          net: cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx
+  7.093                        CoreAPB3_0/CAPB3O0OI_2[0]:A (r)
+               +     0.504          cell: ADLIB:NOR3A
+  7.597                        CoreAPB3_0/CAPB3O0OI_2[0]:Y (r)
+               +     0.308          net: CoreAPB3_0_CAPB3O0OI_2[0]
+  7.905                        CORESPI_0/USPI/UCON/tx_fifo_last_0_a2_2_0:B (r)
+               +     0.473          cell: ADLIB:NOR3C
+  8.378                        CORESPI_0/USPI/UCON/tx_fifo_last_0_a2_2_0:Y (r)
+               +     0.840          net: CORESPI_0/USPI/tx_fifo_last_0_a2_2_0
+  9.218                        CORESPI_0/USPI/URF/rdata_0_sqmuxa_0_o2:A (r)
+               +     0.398          cell: ADLIB:OR3A
+  9.616                        CORESPI_0/USPI/URF/rdata_0_sqmuxa_0_o2:Y (f)
+               +     0.904          net: CORESPI_0/USPI/URF/N_58
+  10.520                       CORESPI_0/USPI/URF/rdata_4_sqmuxa_0_a8:B (f)
+               +     0.473          cell: ADLIB:NOR3
+  10.993                       CORESPI_0/USPI/URF/rdata_4_sqmuxa_0_a8:Y (r)
+               +     0.364          net: CORESPI_0/USPI/URF/rdata_4_sqmuxa
+  11.357                       CORESPI_0/USPI/URF/control2_RNIVF5S4[3]:B (r)
+               +     0.392          cell: ADLIB:NOR2B
+  11.749                       CORESPI_0/USPI/URF/control2_RNIVF5S4[3]:Y (r)
+               +     0.247          net: CORESPI_0/USPI/URF/control2_m[3]
+  11.996                       CORESPI_0/USPI/URF/int_raw_RNIEDGF9[2]:C (r)
+               +     0.581          cell: ADLIB:AO1
+  12.577                       CORESPI_0/USPI/URF/int_raw_RNIEDGF9[2]:Y (r)
+               +     0.255          net: CORESPI_0/USPI/URF/prdata_0_iv_2[2]
+  12.832                       CORESPI_0/USPI/URF/int_raw_RNIG1THS[2]:C (r)
+               +     0.518          cell: ADLIB:OR3
+  13.350                       CORESPI_0/USPI/URF/int_raw_RNIG1THS[2]:Y (r)
+               +     0.247          net: CORESPI_0/USPI/prdata_regs[2]
+  13.597                       CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0__RNIQJIIV[2]:A (r)
+               +     0.505          cell: ADLIB:MX2
+  14.102                       CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0__RNIQJIIV[2]:Y (r)
+               +     1.053          net: CoreAPB3_0_APBmslave0_PRDATA[2]
+  15.155                       CoreAPB3_0/CAPB3lOII/PRDATA_2:C (r)
+               +     0.505          cell: ADLIB:NOR3C
+  15.660                       CoreAPB3_0/CAPB3lOII/PRDATA_2:Y (r)
+               +     0.232          net: cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[2]
+  15.892                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_37:PIN4 (r)
+               +     0.065          cell: ADLIB:MSS_IF
+  15.957                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_37:PIN4INT (r)
+               +     0.367          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/MSSPRDATA[2]INT_NET
+  16.324                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[2] (r)
+                                    
+  16.324                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_fabric_interface_clock
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB (r)
+               +     3.450          Clock generation
+  13.450
+               -    -1.846          Library setup time: ADLIB:MSS_APB_IP
+  15.296                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[2]
+                                    
+  15.296                       data required time
+
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Setup
+
+No Path
+
+END SET External Setup
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Recovery
+
+No Path
+
+END SET External Recovery
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+SET mss_ccc_gla1 to mss_fabric_interface_clock
+
+Path 1
+  From:                        CORESPI_0/USPI/URXF/rd_pointer_q[0]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  Delay (ns):                  9.079
+  Slack (ns):                  1.048
+  Arrival (ns):                14.248
+  Required (ns):               15.296
+  Setup (ns):                  -1.846
+
+Path 2
+  From:                        CORESPI_0/USPI/URXF/rd_pointer_q[1]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  Delay (ns):                  8.534
+  Slack (ns):                  1.647
+  Arrival (ns):                13.649
+  Required (ns):               15.296
+  Setup (ns):                  -1.846
+
+Path 3
+  From:                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram1_[0]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  Delay (ns):                  8.471
+  Slack (ns):                  1.675
+  Arrival (ns):                13.639
+  Required (ns):               15.314
+  Setup (ns):                  -1.864
+
+Path 4
+  From:                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0_[0]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  Delay (ns):                  8.468
+  Slack (ns):                  1.698
+  Arrival (ns):                13.616
+  Required (ns):               15.314
+  Setup (ns):                  -1.864
+
+Path 5
+  From:                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram3_[0]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  Delay (ns):                  8.439
+  Slack (ns):                  1.706
+  Arrival (ns):                13.608
+  Required (ns):               15.314
+  Setup (ns):                  -1.864
+
+
+Expanded Path 1
+  From: CORESPI_0/USPI/URXF/rd_pointer_q[0]:CLK
+  To: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+  data required time                             15.296
+  data arrival time                          -   14.248
+  slack                                          1.048
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_gla1
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  4.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.539          net: FAB_CLK
+  5.169                        CORESPI_0/USPI/URXF/rd_pointer_q[0]:CLK (r)
+               +     0.559          cell: ADLIB:DFN1C0
+  5.728                        CORESPI_0/USPI/URXF/rd_pointer_q[0]:Q (f)
+               +     1.006          net: CORESPI_0/USPI/URXF/rd_pointer_q[0]
+  6.734                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0__RNID87C[0]:S (f)
+               +     0.364          cell: ADLIB:MX2
+  7.098                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0__RNID87C[0]:Y (r)
+               +     0.279          net: CORESPI_0/USPI/URXF/N_117
+  7.377                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0__RNIRR601[0]:A (r)
+               +     0.431          cell: ADLIB:MX2
+  7.808                        CORESPI_0/USPI/URXF/fifo_mem_q_fifo_mem_q_ram0__RNIRR601[0]:Y (r)
+               +     0.255          net: CORESPI_0/USPI/N_119
+  8.063                        CORESPI_0/USPI/URF/first_frame_m_0:A (r)
+               +     0.392          cell: ADLIB:NOR2A
+  8.455                        CORESPI_0/USPI/URF/first_frame_m_0:Y (r)
+               +     1.728          net: CORESPI_0/USPI/URF/first_frame_m_0
+  10.183                       CORESPI_0/USPI/URF/cfg_ssel_RNIT1M4A[0]:A (r)
+               +     0.364          cell: ADLIB:AO1
+  10.547                       CORESPI_0/USPI/URF/cfg_ssel_RNIT1M4A[0]:Y (r)
+               +     0.255          net: CORESPI_0/USPI/URF/prdata_0_iv_0[0]
+  10.802                       CORESPI_0/USPI/URF/int_raw_RNI013IT[0]:B (r)
+               +     0.486          cell: ADLIB:OR3
+  11.288                       CORESPI_0/USPI/URF/int_raw_RNI013IT[0]:Y (r)
+               +     0.283          net: CORESPI_0/USPI/URF/prdata_regs[0]
+  11.571                       CORESPI_0/USPI/URF/int_raw_RNIEIN621[0]:A (r)
+               +     0.505          cell: ADLIB:MX2
+  12.076                       CORESPI_0/USPI/URF/int_raw_RNIEIN621[0]:Y (r)
+               +     0.991          net: CoreAPB3_0_APBmslave0_PRDATA[0]
+  13.067                       CoreAPB3_0/CAPB3lOII/PRDATA_0:C (r)
+               +     0.505          cell: ADLIB:NOR3C
+  13.572                       CoreAPB3_0/CAPB3lOII/PRDATA_0:Y (r)
+               +     0.242          net: cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[0]
+  13.814                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_36:PIN6 (r)
+               +     0.063          cell: ADLIB:MSS_IF
+  13.877                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_36:PIN6INT (r)
+               +     0.371          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/MSSPRDATA[0]INT_NET
+  14.248                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0] (r)
+                                    
+  14.248                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_fabric_interface_clock
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB (r)
+               +     3.450          Clock generation
+  13.450
+               -    -1.846          Library setup time: ADLIB:MSS_APB_IP
+  15.296                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[0]
+                                    
+  15.296                       data required time
+
+
+END SET mss_ccc_gla1 to mss_fabric_interface_clock
+
+----------------------------------------------------
+
+Clock Domain mss_pclk1
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Setup
+
+Path 1
+  From:                        WL_SPI_IRQ
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[2]
+  Delay (ns):                  1.361
+  Slack (ns):
+  Arrival (ns):                1.361
+  Required (ns):
+  Setup (ns):                  -0.157
+  External Setup (ns):         -2.246
+
+
+Expanded Path 1
+  From: WL_SPI_IRQ
+  To: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[2]
+  data required time                             N/C
+  data arrival time                          -   1.361
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        WL_SPI_IRQ (r)
+               +     0.000          net: WL_SPI_IRQ
+  0.000                        cc3000fpga_MSS_0/MSS_GPIO_0_GPIO_2_IN:PAD (r)
+               +     0.781          cell: ADLIB:IOPAD_IN
+  0.781                        cc3000fpga_MSS_0/MSS_GPIO_0_GPIO_2_IN:Y (r)
+               +     0.580          net: cc3000fpga_MSS_0/MSS_GPIO_0_GPIO_2_IN_Y
+  1.361                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[2] (r)
+                                    
+  1.361                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_pclk1
+               +     0.000          Clock source
+  N/C                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+               +     3.450          Clock generation
+  N/C
+               -    -0.157          Library setup time: ADLIB:MSS_APB_IP
+  N/C                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[2]
+
+
+END SET External Setup
+
+----------------------------------------------------
+
+SET Clock to Output
+
+Path 1
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1
+  To:                          LED_1
+  Delay (ns):                  9.704
+  Slack (ns):
+  Arrival (ns):                13.154
+  Required (ns):
+  Clock to Out (ns):           13.154
+
+Path 2
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1
+  To:                          LED_0
+  Delay (ns):                  9.653
+  Slack (ns):
+  Arrival (ns):                13.103
+  Required (ns):
+  Clock to Out (ns):           13.103
+
+Path 3
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1
+  To:                          LED_2
+  Delay (ns):                  9.635
+  Slack (ns):
+  Arrival (ns):                13.085
+  Required (ns):
+  Clock to Out (ns):           13.085
+
+
+Expanded Path 1
+  From: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1
+  To: LED_1
+  data required time                             N/C
+  data arrival time                          -   13.154
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_pclk1
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+               +     3.450          Clock generation
+  3.450
+               +     3.506          cell: ADLIB:MSS_APB_IP
+  6.956                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPO[1] (f)
+               +     0.000          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/GPO[1]INT_NET
+  6.956                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_21:PIN1INT (f)
+               +     0.073          cell: ADLIB:MSS_IF
+  7.029                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_21:PIN1 (f)
+               +     2.817          net: cc3000fpga_MSS_0/GPO_net_0[1]
+  9.846                        LED_1_pad/U0/U1:D (f)
+               +     0.500          cell: ADLIB:IOTRI_OB_EB
+  10.346                       LED_1_pad/U0/U1:DOUT (f)
+               +     0.000          net: LED_1_pad/U0/NET1
+  10.346                       LED_1_pad/U0/U0:D (f)
+               +     2.808          cell: ADLIB:IOPAD_TRI
+  13.154                       LED_1_pad/U0/U0:PAD (f)
+               +     0.000          net: LED_1
+  13.154                       LED_1 (f)
+                                    
+  13.154                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_pclk1
+               +     0.000          Clock source
+  N/C                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+               +     3.450          Clock generation
+  N/C
+                                    
+  N/C                          LED_1 (f)
+
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Recovery
+
+No Path
+
+END SET External Recovery
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+SET mss_ccc_gla1 to mss_pclk1
+
+Path 1
+  From:                        CORESPI_0/USPI/URXF/empty_out:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[31]
+  Delay (ns):                  2.844
+  Slack (ns):                  5.050
+  Arrival (ns):                7.999
+  Required (ns):               13.049
+  Setup (ns):                  0.401
+
+Path 2
+  From:                        CORESPI_0/USPI/UTXF/full_out:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[30]
+  Delay (ns):                  2.579
+  Slack (ns):                  5.556
+  Arrival (ns):                7.754
+  Required (ns):               13.310
+  Setup (ns):                  0.140
+
+
+Expanded Path 1
+  From: CORESPI_0/USPI/URXF/empty_out:CLK
+  To: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[31]
+  data required time                             13.049
+  data arrival time                          -   7.999
+  slack                                          5.050
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_gla1
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  4.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.525          net: FAB_CLK
+  5.155                        CORESPI_0/USPI/URXF/empty_out:CLK (r)
+               +     0.559          cell: ADLIB:DFN1P0
+  5.714                        CORESPI_0/USPI/URXF/empty_out:Q (f)
+               +     1.483          net: CORESPI_0/USPI/rx_fifo_empty
+  7.197                        cc3000fpga_MSS_0/MSSINT_GPI_31:A (f)
+               +     0.407          cell: ADLIB:INV
+  7.604                        cc3000fpga_MSS_0/MSSINT_GPI_31:Y (r)
+               +     0.230          net: cc3000fpga_MSS_0/MSSINT_GPI_31_Y
+  7.834                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_7:PIN5 (r)
+               +     0.066          cell: ADLIB:MSS_IF
+  7.900                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_7:PIN5INT (r)
+               +     0.099          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/GPI[31]INT_NET
+  7.999                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[31] (r)
+                                    
+  7.999                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_pclk1
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+               +     3.450          Clock generation
+  13.450
+               -     0.401          Library setup time: ADLIB:MSS_APB_IP
+  13.049                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GPI[31]
+                                    
+  13.049                       data required time
+
+
+END SET mss_ccc_gla1 to mss_pclk1
+
+----------------------------------------------------
+
+Clock Domain mss_ccc_gla1
+
+SET Register to Register
+
+Path 1
+  From:                        CORESPI_0/USPI/UCC/mtx_fiforead:CLK
+  To:                          CORESPI_0/USPI/UTXF/full_out:D
+  Delay (ns):                  8.282
+  Slack (ns):                  1.335
+  Arrival (ns):                13.431
+  Required (ns):               14.766
+  Setup (ns):                  0.409
+  Minimum Period (ns):         8.665
+
+Path 2
+  From:                        CORESPI_0/USPI/UTXF/full_out:CLK
+  To:                          CORESPI_0/USPI/UTXF/full_out:D
+  Delay (ns):                  8.061
+  Slack (ns):                  1.530
+  Arrival (ns):                13.236
+  Required (ns):               14.766
+  Setup (ns):                  0.409
+  Minimum Period (ns):         8.470
+
+Path 3
+  From:                        CORESPI_0/USPI/URXF/empty_out:CLK
+  To:                          CORESPI_0/USPI/URXF/empty_out:D
+  Delay (ns):                  8.058
+  Slack (ns):                  1.533
+  Arrival (ns):                13.213
+  Required (ns):               14.746
+  Setup (ns):                  0.409
+  Minimum Period (ns):         8.467
+
+Path 4
+  From:                        CORESPI_0/USPI/URXF/counter_q[0]:CLK
+  To:                          CORESPI_0/USPI/URXF/empty_out:D
+  Delay (ns):                  7.901
+  Slack (ns):                  1.681
+  Arrival (ns):                13.065
+  Required (ns):               14.746
+  Setup (ns):                  0.409
+  Minimum Period (ns):         8.319
+
+Path 5
+  From:                        CORESPI_0/USPI/UCC/mtx_fiforead:CLK
+  To:                          CORESPI_0/USPI/UTXF/counter_q[5]:D
+  Delay (ns):                  7.746
+  Slack (ns):                  1.824
+  Arrival (ns):                12.895
+  Required (ns):               14.719
+  Setup (ns):                  0.409
+  Minimum Period (ns):         8.176
+
+
+Expanded Path 1
+  From: CORESPI_0/USPI/UCC/mtx_fiforead:CLK
+  To: CORESPI_0/USPI/UTXF/full_out:D
+  data required time                             14.766
+  data arrival time                          -   13.431
+  slack                                          1.335
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_gla1
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  4.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.519          net: FAB_CLK
+  5.149                        CORESPI_0/USPI/UCC/mtx_fiforead:CLK (r)
+               +     0.440          cell: ADLIB:DFN1C0
+  5.589                        CORESPI_0/USPI/UCC/mtx_fiforead:Q (r)
+               +     1.515          net: CORESPI_0/USPI/mtx_fiforead
+  7.104                        CORESPI_0/USPI/UTXF/counter_d_0_sqmuxa_1_0_a2_m2_e_0:C (r)
+               +     0.302          cell: ADLIB:AOI1B
+  7.406                        CORESPI_0/USPI/UTXF/counter_d_0_sqmuxa_1_0_a2_m2_e_0:Y (r)
+               +     0.255          net: CORESPI_0/USPI/UTXF/counter_d_0_sqmuxa_1_0_a2_m2_e_0
+  7.661                        CORESPI_0/USPI/UTXF/empty_out_RNIVESK5:A (r)
+               +     0.505          cell: ADLIB:NOR3B
+  8.166                        CORESPI_0/USPI/UTXF/empty_out_RNIVESK5:Y (r)
+               +     0.972          net: CORESPI_0/USPI/UTXF/un1_counter_d_0_sqmuxa[1]
+  9.138                        CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I4_P0N:B (r)
+               +     0.390          cell: ADLIB:OR2
+  9.528                        CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I4_P0N:Y (r)
+               +     0.247          net: CORESPI_0/USPI/UTXF/N107
+  9.775                        CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I20_un1_Y_1:C (r)
+               +     0.570          cell: ADLIB:NOR3C
+  10.345                       CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I20_un1_Y_1:Y (r)
+               +     0.245          net: CORESPI_0/USPI/UTXF/ADD_6x6_fast_I20_un1_Y_1
+  10.590                       CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I20_un1_Y:C (r)
+               +     0.302          cell: ADLIB:OA1
+  10.892                       CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I20_un1_Y:Y (r)
+               +     0.255          net: CORESPI_0/USPI/UTXF/I20_un1_Y
+  11.147                       CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I29_Y:A (r)
+               +     0.759          cell: ADLIB:AX1D
+  11.906                       CORESPI_0/USPI/UTXF/un1_counter_q_ADD_6x6_fast_I29_Y:Y (f)
+               +     0.872          net: CORESPI_0/USPI/UTXF/un1_counter_q[5]
+  12.778                       CORESPI_0/USPI/UTXF/full_out_RNO:C (f)
+               +     0.398          cell: ADLIB:NOR3B
+  13.176                       CORESPI_0/USPI/UTXF/full_out_RNO:Y (r)
+               +     0.255          net: CORESPI_0/USPI/UTXF/full_out_2
+  13.431                       CORESPI_0/USPI/UTXF/full_out:D (r)
+                                    
+  13.431                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_ccc_gla1
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  14.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  14.630                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  14.630                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.545          net: FAB_CLK
+  15.175                       CORESPI_0/USPI/UTXF/full_out:CLK (r)
+               -     0.409          Library setup time: ADLIB:DFN1C0
+  14.766                       CORESPI_0/USPI/UTXF/full_out:D
+                                    
+  14.766                       data required time
+
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Setup
+
+Path 1
+  From:                        M_MISO
+  To:                          CORESPI_0/USPI/UCC/msrxs_shiftreg[0]:D
+  Delay (ns):                  3.498
+  Slack (ns):
+  Arrival (ns):                3.498
+  Required (ns):
+  Setup (ns):                  0.409
+  External Setup (ns):         -1.248
+
+Path 2
+  From:                        M_MISO
+  To:                          CORESPI_0/USPI/UCC/msrxs_datain[0]:D
+  Delay (ns):                  2.739
+  Slack (ns):
+  Arrival (ns):                2.739
+  Required (ns):
+  Setup (ns):                  0.409
+  External Setup (ns):         -2.007
+
+Path 3
+  From:                        M_MISO
+  To:                          CORESPI_0/USPI/UCC/data_rx_q1:D
+  Delay (ns):                  1.917
+  Slack (ns):
+  Arrival (ns):                1.917
+  Required (ns):
+  Setup (ns):                  0.435
+  External Setup (ns):         -2.803
+
+
+Expanded Path 1
+  From: M_MISO
+  To: CORESPI_0/USPI/UCC/msrxs_shiftreg[0]:D
+  data required time                             N/C
+  data arrival time                          -   3.498
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        M_MISO (r)
+               +     0.000          net: M_MISO
+  0.000                        M_MISO_pad/U0/U0:PAD (r)
+               +     0.806          cell: ADLIB:IOPAD_IN
+  0.806                        M_MISO_pad/U0/U0:Y (r)
+               +     0.000          net: M_MISO_pad/U0/NET1
+  0.806                        M_MISO_pad/U0/U1:YIN (r)
+               +     0.033          cell: ADLIB:IOIN_IB
+  0.839                        M_MISO_pad/U0/U1:Y (r)
+               +     1.078          net: M_MISO_c
+  1.917                        CORESPI_0/USPI/UCC/data_rx_q2_RNI88F31:B (r)
+               +     0.514          cell: ADLIB:MX2
+  2.431                        CORESPI_0/USPI/UCC/data_rx_q2_RNI88F31:Y (r)
+               +     0.308          net: CORESPI_0/USPI/UCC/N_201
+  2.739                        CORESPI_0/USPI/UCC/msrxs_shiftreg_RNO[0]:A (r)
+               +     0.504          cell: ADLIB:NOR3A
+  3.243                        CORESPI_0/USPI/UCC/msrxs_shiftreg_RNO[0]:Y (r)
+               +     0.255          net: CORESPI_0/USPI/UCC/N_135
+  3.498                        CORESPI_0/USPI/UCC/msrxs_shiftreg[0]:D (r)
+                                    
+  3.498                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_gla1
+               +     0.000          Clock source
+  N/C                          cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  N/C
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  N/C                          cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  N/C                          cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.525          net: FAB_CLK
+  N/C                          CORESPI_0/USPI/UCC/msrxs_shiftreg[0]:CLK (r)
+               -     0.409          Library setup time: ADLIB:DFN1E1C0
+  N/C                          CORESPI_0/USPI/UCC/msrxs_shiftreg[0]:D
+
+
+END SET External Setup
+
+----------------------------------------------------
+
+SET Clock to Output
+
+Path 1
+  From:                        CORESPI_0/USPI/URF/control1[1]:CLK
+  To:                          SPISS[5]
+  Delay (ns):                  9.787
+  Slack (ns):
+  Arrival (ns):                14.946
+  Required (ns):
+  Clock to Out (ns):           14.946
+
+Path 2
+  From:                        CORESPI_0/USPI/URF/control1[1]:CLK
+  To:                          SPISS[1]
+  Delay (ns):                  8.976
+  Slack (ns):
+  Arrival (ns):                14.135
+  Required (ns):
+  Clock to Out (ns):           14.135
+
+Path 3
+  From:                        CORESPI_0/USPI/URF/control1[1]:CLK
+  To:                          SPISS[0]
+  Delay (ns):                  8.705
+  Slack (ns):
+  Arrival (ns):                13.864
+  Required (ns):
+  Clock to Out (ns):           13.864
+
+Path 4
+  From:                        CORESPI_0/USPI/UCC/spi_ssel_pos:CLK
+  To:                          SPISS[5]
+  Delay (ns):                  8.405
+  Slack (ns):
+  Arrival (ns):                13.550
+  Required (ns):
+  Clock to Out (ns):           13.550
+
+Path 5
+  From:                        CORESPI_0/USPI/URF/control1[1]:CLK
+  To:                          SPISS[7]
+  Delay (ns):                  8.390
+  Slack (ns):
+  Arrival (ns):                13.549
+  Required (ns):
+  Clock to Out (ns):           13.549
+
+
+Expanded Path 1
+  From: CORESPI_0/USPI/URF/control1[1]:CLK
+  To: SPISS[5]
+  data required time                             N/C
+  data arrival time                          -   14.946
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_gla1
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  4.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.529          net: FAB_CLK
+  5.159                        CORESPI_0/USPI/URF/control1[1]:CLK (r)
+               +     0.559          cell: ADLIB:DFN1E1C0
+  5.718                        CORESPI_0/USPI/URF/control1[1]:Q (f)
+               +     1.444          net: CORESPI_0/USPI/MSTR
+  7.162                        CORESPI_0/USPI/UCC/spi_ssel_pos_RNIMSTK:B (f)
+               +     0.476          cell: ADLIB:NOR2B
+  7.638                        CORESPI_0/USPI/UCC/spi_ssel_pos_RNIMSTK:Y (f)
+               +     2.592          net: CORESPI_0/USPI/N_273
+  10.230                       CORESPI_0/USPI/URF/cfg_ssel_RNIJ3AB1[5]:B (f)
+               +     0.486          cell: ADLIB:NOR3C
+  10.716                       CORESPI_0/USPI/URF/cfg_ssel_RNIJ3AB1[5]:Y (f)
+               +     0.922          net: SPISS_c[5]
+  11.638                       SPISS_pad[5]/U0/U1:D (f)
+               +     0.500          cell: ADLIB:IOTRI_OB_EB
+  12.138                       SPISS_pad[5]/U0/U1:DOUT (f)
+               +     0.000          net: SPISS_pad[5]/U0/NET1
+  12.138                       SPISS_pad[5]/U0/U0:D (f)
+               +     2.808          cell: ADLIB:IOPAD_TRI
+  14.946                       SPISS_pad[5]/U0/U0:PAD (f)
+               +     0.000          net: SPISS[5]
+  14.946                       SPISS[5] (f)
+                                    
+  14.946                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_gla1
+               +     0.000          Clock source
+  N/C                          cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  N/C
+                                    
+  N/C                          SPISS[5] (f)
+
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Recovery
+
+No Path
+
+END SET External Recovery
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+SET mss_fabric_interface_clock to mss_ccc_gla1
+
+Path 1
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          CORESPI_0/USPI/URXF/empty_out:D
+  Delay (ns):                  14.334
+  Slack (ns):                  -3.038
+  Arrival (ns):                17.784
+  Required (ns):               14.746
+  Setup (ns):                  0.409
+
+Path 2
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          CORESPI_0/USPI/URXF/full_out:D
+  Delay (ns):                  13.955
+  Slack (ns):                  -2.676
+  Arrival (ns):                17.405
+  Required (ns):               14.729
+  Setup (ns):                  0.435
+
+Path 3
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          CORESPI_0/USPI/UTXF/full_out:D
+  Delay (ns):                  13.674
+  Slack (ns):                  -2.358
+  Arrival (ns):                17.124
+  Required (ns):               14.766
+  Setup (ns):                  0.409
+
+Path 4
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          CORESPI_0/USPI/URXF/counter_q[3]:D
+  Delay (ns):                  13.598
+  Slack (ns):                  -2.293
+  Arrival (ns):                17.048
+  Required (ns):               14.755
+  Setup (ns):                  0.409
+
+Path 5
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          CORESPI_0/USPI/URXF/rd_pointer_q[2]:D
+  Delay (ns):                  13.341
+  Slack (ns):                  -2.098
+  Arrival (ns):                16.791
+  Required (ns):               14.693
+  Setup (ns):                  0.435
+
+
+Expanded Path 1
+  From: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB
+  To: CORESPI_0/USPI/URXF/empty_out:D
+  data required time                             14.746
+  data arrival time                          -   17.784
+  slack                                          -3.038
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_fabric_interface_clock
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:GLB (r)
+               +     3.450          Clock generation
+  3.450
+               +     2.484          cell: ADLIB:MSS_APB_IP
+  5.934                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSPSEL (r)
+               +     0.103          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/MSSPSELINT_NET
+  6.037                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_42:PIN1INT (r)
+               +     0.074          cell: ADLIB:MSS_IF
+  6.111                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_42:PIN1 (r)
+               +     0.982          net: cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx
+  7.093                        CoreAPB3_0/CAPB3O0OI_2[0]:A (r)
+               +     0.504          cell: ADLIB:NOR3A
+  7.597                        CoreAPB3_0/CAPB3O0OI_2[0]:Y (r)
+               +     0.308          net: CoreAPB3_0_CAPB3O0OI_2[0]
+  7.905                        CORESPI_0/USPI/UCON/tx_fifo_last_0_a2_2_0:B (r)
+               +     0.473          cell: ADLIB:NOR3C
+  8.378                        CORESPI_0/USPI/UCON/tx_fifo_last_0_a2_2_0:Y (r)
+               +     0.596          net: CORESPI_0/USPI/tx_fifo_last_0_a2_2_0
+  8.974                        CORESPI_0/USPI/UCON/tx_fifo_last_0_a2_1:A (r)
+               +     0.505          cell: ADLIB:NOR3B
+  9.479                        CORESPI_0/USPI/UCON/tx_fifo_last_0_a2_1:Y (r)
+               +     0.814          net: CORESPI_0/USPI/N_18
+  10.293                       CORESPI_0/USPI/UCON/rx_fifo_read_0_a2:A (r)
+               +     0.505          cell: ADLIB:NOR3B
+  10.798                       CORESPI_0/USPI/UCON/rx_fifo_read_0_a2:Y (r)
+               +     0.816          net: CORESPI_0/USPI/rx_fifo_read
+  11.614                       CORESPI_0/USPI/URXF/empty_out_RNIC3LR4:A (r)
+               +     0.392          cell: ADLIB:NOR2A
+  12.006                       CORESPI_0/USPI/URXF/empty_out_RNIC3LR4:Y (r)
+               +     0.266          net: CORESPI_0/USPI/URXF/N_103
+  12.272                       CORESPI_0/USPI/URXF/empty_out_RNI2VL65:A (r)
+               +     0.448          cell: ADLIB:NOR2A
+  12.720                       CORESPI_0/USPI/URXF/empty_out_RNI2VL65:Y (r)
+               +     0.798          net: CORESPI_0/USPI/URXF/un1_counter_d_0_sqmuxa[1]
+  13.518                       CORESPI_0/USPI/URXF/un1_counter_q_ADD_6x6_fast_I10_Y:C (r)
+               +     0.398          cell: ADLIB:OA1
+  13.916                       CORESPI_0/USPI/URXF/un1_counter_q_ADD_6x6_fast_I10_Y:Y (r)
+               +     0.306          net: CORESPI_0/USPI/URXF/N115
+  14.222                       CORESPI_0/USPI/URXF/un1_counter_q_ADD_6x6_fast_I17_Y:C (r)
+               +     0.497          cell: ADLIB:AO1
+  14.719                       CORESPI_0/USPI/URXF/un1_counter_q_ADD_6x6_fast_I17_Y:Y (r)
+               +     0.255          net: CORESPI_0/USPI/URXF/N139
+  14.974                       CORESPI_0/USPI/URXF/un1_counter_q_ADD_6x6_fast_I27_Y:C (r)
+               +     0.747          cell: ADLIB:XOR3
+  15.721                       CORESPI_0/USPI/URXF/un1_counter_q_ADD_6x6_fast_I27_Y:Y (f)
+               +     0.748          net: CORESPI_0/USPI/URXF/un1_counter_q[3]
+  16.469                       CORESPI_0/USPI/URXF/empty_out_RNO_0:B (f)
+               +     0.308          cell: ADLIB:NOR2A
+  16.777                       CORESPI_0/USPI/URXF/empty_out_RNO_0:Y (r)
+               +     0.247          net: CORESPI_0/USPI/URXF/N_3_1
+  17.024                       CORESPI_0/USPI/URXF/empty_out_RNO:A (r)
+               +     0.505          cell: ADLIB:MX2
+  17.529                       CORESPI_0/USPI/URXF/empty_out_RNO:Y (r)
+               +     0.255          net: CORESPI_0/USPI/URXF/empty_out_2
+  17.784                       CORESPI_0/USPI/URXF/empty_out:D (r)
+                                    
+  17.784                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_ccc_gla1
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  14.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  14.630                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  14.630                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.525          net: FAB_CLK
+  15.155                       CORESPI_0/USPI/URXF/empty_out:CLK (r)
+               -     0.409          Library setup time: ADLIB:DFN1P0
+  14.746                       CORESPI_0/USPI/URXF/empty_out:D
+                                    
+  14.746                       data required time
+
+
+END SET mss_fabric_interface_clock to mss_ccc_gla1
+
+----------------------------------------------------
+
+SET mss_ccc_gla0 to mss_ccc_gla1
+
+Path 1
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+  To:                          CORESPI_0/USPI/UCC/spi_clk_out:CLR
+  Delay (ns):                  6.476
+  Slack (ns):                  4.972
+  Arrival (ns):                9.926
+  Required (ns):               14.898
+  Setup (ns):
+
+Path 2
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+  To:                          CORESPI_0/USPI/URXF/rd_pointer_q[4]:CLR
+  Delay (ns):                  6.463
+  Slack (ns):                  4.975
+  Arrival (ns):                9.913
+  Required (ns):               14.888
+  Setup (ns):
+
+Path 3
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+  To:                          CORESPI_0/USPI/UCC/mtx_re:CLR
+  Delay (ns):                  6.464
+  Slack (ns):                  4.976
+  Arrival (ns):                9.914
+  Required (ns):               14.890
+  Setup (ns):
+
+Path 4
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+  To:                          CORESPI_0/USPI/UCC/mtx_re_q2:PRE
+  Delay (ns):                  6.464
+  Slack (ns):                  4.976
+  Arrival (ns):                9.914
+  Required (ns):               14.890
+  Setup (ns):
+
+Path 5
+  From:                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+  To:                          CORESPI_0/USPI/URXF/wr_pointer_q[1]:CLR
+  Delay (ns):                  6.464
+  Slack (ns):                  4.976
+  Arrival (ns):                9.914
+  Required (ns):               14.890
+  Setup (ns):
+
+
+Expanded Path 1
+  From: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+  To: CORESPI_0/USPI/UCC/spi_clk_out:CLR
+  data required time                             14.898
+  data arrival time                          -   9.926
+  slack                                          4.972
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_gla0
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLAMSS (r)
+               +     2.925          Clock generation
+  2.925
+               +     0.525          net: cc3000fpga_MSS_0/GLA0
+  3.450                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK (r)
+               +     3.027          cell: ADLIB:MSS_APB_IP
+  6.477                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:M2FRESETn (r)
+               +     0.102          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/M2FRESETnINT_NET
+  6.579                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_46:PIN2INT (r)
+               +     0.079          cell: ADLIB:MSS_IF
+  6.658                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_46:PIN2 (r)
+               +     2.187          net: cc3000fpga_MSS_0/MSS_ADLIB_INST_M2FRESETn
+  8.845                        cc3000fpga_MSS_0/MSS_ADLIB_INST_RNIRASC/U_CLKSRC:A (r)
+               +     0.583          cell: ADLIB:CLKSRC
+  9.428                        cc3000fpga_MSS_0/MSS_ADLIB_INST_RNIRASC/U_CLKSRC:Y (r)
+               +     0.498          net: cc3000fpga_MSS_0_M2F_RESET_N
+  9.926                        CORESPI_0/USPI/UCC/spi_clk_out:CLR (r)
+                                    
+  9.926                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_ccc_gla1
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  14.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  14.630                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  14.630                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.493          net: FAB_CLK
+  15.123                       CORESPI_0/USPI/UCC/spi_clk_out:CLK (r)
+               -     0.225          Library recovery time: ADLIB:DFN1C0
+  14.898                       CORESPI_0/USPI/UCC/spi_clk_out:CLR
+                                    
+  14.898                       data required time
+
+
+END SET mss_ccc_gla0 to mss_ccc_gla1
+
+----------------------------------------------------
+
+Clock Domain mss_ccc_gla0
+
+Info: The maximum frequency of this clock domain is limited by the period of pin cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Setup
+
+Path 1
+  From:                        MSS_RESET_N
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSRESETn
+  Delay (ns):                  0.781
+  Slack (ns):
+  Arrival (ns):                0.781
+  Required (ns):
+  Setup (ns):                  -1.830
+  External Setup (ns):         -4.499
+
+
+Expanded Path 1
+  From: MSS_RESET_N
+  To: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSRESETn
+  data required time                             N/C
+  data arrival time                          -   0.781
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        MSS_RESET_N (r)
+               +     0.000          net: MSS_RESET_N
+  0.000                        cc3000fpga_MSS_0/MSS_RESET_0_MSS_RESET_N:PAD (r)
+               +     0.781          cell: ADLIB:IOPAD_IN
+  0.781                        cc3000fpga_MSS_0/MSS_RESET_0_MSS_RESET_N:Y (r)
+               +     0.000          net: cc3000fpga_MSS_0/MSS_RESET_0_MSS_RESET_N_Y
+  0.781                        cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSRESETn (r)
+                                    
+  0.781                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_gla0
+               +     0.000          Clock source
+  N/C                          cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLAMSS (r)
+               +     2.925          Clock generation
+  N/C
+               +     0.525          net: cc3000fpga_MSS_0/GLA0
+  N/C                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK (r)
+               -    -1.830          Library setup time: ADLIB:MSS_APB_IP
+  N/C                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:MSSRESETn
+
+
+END SET External Setup
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Recovery
+
+No Path
+
+END SET External Recovery
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+SET mss_ccc_gla1 to mss_ccc_gla0
+
+Path 1
+  From:                        CORESPI_0/USPI/URF/int_raw[5]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+  Delay (ns):                  6.753
+  Slack (ns):                  1.044
+  Arrival (ns):                11.886
+  Required (ns):               12.930
+  Setup (ns):                  0.520
+
+Path 2
+  From:                        CORESPI_0/USPI/URF/int_raw[3]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+  Delay (ns):                  6.580
+  Slack (ns):                  1.199
+  Arrival (ns):                11.731
+  Required (ns):               12.930
+  Setup (ns):                  0.520
+
+Path 3
+  From:                        CORESPI_0/USPI/URF/int_raw[0]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+  Delay (ns):                  6.457
+  Slack (ns):                  1.298
+  Arrival (ns):                11.632
+  Required (ns):               12.930
+  Setup (ns):                  0.520
+
+Path 4
+  From:                        CORESPI_0/USPI/URF/control2[5]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+  Delay (ns):                  6.265
+  Slack (ns):                  1.528
+  Arrival (ns):                11.402
+  Required (ns):               12.930
+  Setup (ns):                  0.520
+
+Path 5
+  From:                        CORESPI_0/USPI/URF/control2[7]:CLK
+  To:                          cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+  Delay (ns):                  6.011
+  Slack (ns):                  1.764
+  Arrival (ns):                11.166
+  Required (ns):               12.930
+  Setup (ns):                  0.520
+
+
+Expanded Path 1
+  From: CORESPI_0/USPI/URF/int_raw[5]:CLK
+  To: cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+  data required time                             12.930
+  data arrival time                          -   11.886
+  slack                                          1.044
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_gla1
+               +     0.000          Clock source
+  0.000                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLA (r)
+               +     4.630          Clock generation
+  4.630
+               +     0.000          net: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/GLA_INT
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  4.630                        cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1:PIN5 (r)
+               +     0.503          net: FAB_CLK
+  5.133                        CORESPI_0/USPI/URF/int_raw[5]:CLK (r)
+               +     0.559          cell: ADLIB:DFN1C0
+  5.692                        CORESPI_0/USPI/URF/int_raw[5]:Q (f)
+               +     0.911          net: CORESPI_0/USPI/URF/int_raw[5]
+  6.603                        CORESPI_0/USPI/URF/int_raw_RNI171K[5]:A (f)
+               +     0.390          cell: ADLIB:NOR2B
+  6.993                        CORESPI_0/USPI/URF/int_raw_RNI171K[5]:Y (f)
+               +     1.540          net: CORESPI_0/USPI/URF/int_masked[5]
+  8.533                        CORESPI_0/USPI/URF/int_raw_RNI4I281[5]:A (f)
+               +     0.407          cell: ADLIB:OR2
+  8.940                        CORESPI_0/USPI/URF/int_raw_RNI4I281[5]:Y (f)
+               +     0.255          net: CORESPI_0/USPI/URF/interrupt_0_1
+  9.195                        CORESPI_0/USPI/URF/int_raw_RNILS6C4[4]:B (f)
+               +     0.473          cell: ADLIB:OR3
+  9.668                        CORESPI_0/USPI/URF/int_raw_RNILS6C4[4]:Y (f)
+               +     1.719          net: Interrupt
+  11.387                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_60:PIN5 (f)
+               +     0.158          cell: ADLIB:MSS_IF
+  11.545                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_60:PIN5INT (f)
+               +     0.341          net: cc3000fpga_MSS_0/MSS_ADLIB_INST/FABINTINT_NET
+  11.886                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT (f)
+                                    
+  11.886                       data arrival time
+  ________________________________________________________
+  Data required time calculation
+  10.000                       mss_ccc_gla0
+               +     0.000          Clock source
+  10.000                       cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLAMSS (r)
+               +     2.925          Clock generation
+  12.925
+               +     0.525          net: cc3000fpga_MSS_0/GLA0
+  13.450                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FCLK (r)
+               -     0.520          Library setup time: ADLIB:MSS_APB_IP
+  12.930                       cc3000fpga_MSS_0/MSS_ADLIB_INST/U_CORE:FABINT
+                                    
+  12.930                       data required time
+
+
+END SET mss_ccc_gla1 to mss_ccc_gla0
+
+----------------------------------------------------
+
+Clock Domain cc3000fpga_MSS_0/MSS_CCC_0/I_RCOSC:CLKOUT
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Setup
+
+No Path
+
+END SET External Setup
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Recovery
+
+No Path
+
+END SET External Recovery
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Path set Pin to Pin
+
+SET Input to Output
+
+No Path
+
+END SET Input to Output
+
+----------------------------------------------------
+
+Path set User Sets
+

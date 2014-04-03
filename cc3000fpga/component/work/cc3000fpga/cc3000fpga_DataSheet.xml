@@ -12,7 +12,7 @@
     <project-description>
     </project-description>
     <location>C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga</location>
-    <state>GENERATED ( Wed Apr 02 17:09:23 2014 )</state>
+    <state>GENERATED ( Thu Apr 03 14:44:30 2014 )</state>
     <swide-toolchain>SoftConsole workspace generated to C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
   </project-settings>
   <site-map>
@@ -40,21 +40,21 @@
     <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
   </fileset>
   <io>
-    <port-name>LED_2</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
     <port-name>LED_1</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[6]</port-name>
+    <port-name>SPISS[5]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>WL_SPI_IRQ</port-name>
+    <direction>IN</direction>
+    <pin-number>W1</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
@@ -64,7 +64,7 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[4]</port-name>
+    <port-name>SPISS[3]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -82,15 +82,21 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[5]</port-name>
+    <port-name>SPISS[4]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPIOEN</port-name>
+    <port-name>LED_2</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>IO_4_PADOUT</port-name>
+    <direction>OUT</direction>
+    <pin-number>AA1</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
@@ -106,12 +112,6 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[1]</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
     <port-name>SPISS[0]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
@@ -124,13 +124,13 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>INT_CC3000</port-name>
-    <direction>IN</direction>
+    <port-name>SPISS[7]</port-name>
+    <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[7]</port-name>
+    <port-name>SPISS[6]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -142,13 +142,13 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[2]</port-name>
+    <port-name>SPISS[1]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPISS[3]</port-name>
+    <port-name>SPISS[2]</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>

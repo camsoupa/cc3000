@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2014 4 2 17 9 40)
+      (timeStamp 2014 4 3 14 44 51)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "F-2012.03M-SP1 , mapper mapact, Build 729R"))
      )
@@ -7899,19 +7899,21 @@
            (port CoreAPB3_0_APBmslave0_PADDR_4 (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PADDR_3 (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PADDR_2 (direction OUTPUT))
+           (port N_145 (direction INPUT))
+           (port IO_4_PADOUT (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PWRITE (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PENABLE (direction OUTPUT))
            (port cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx (direction OUTPUT))
            (port Interrupt (direction INPUT))
-           (port cc3000fpga_MSS_GND (direction INPUT))
            (port FAB_CLK (direction OUTPUT))
            (port cc3000fpga_MSS_VCC (direction INPUT))
+           (port WL_SPI_IRQ (direction INPUT))
            (port MSS_RESET_N (direction INPUT))
            (port UART_0_RXD (direction INPUT))
            (port UART_0_TXD (direction OUTPUT))
            (port UART_1_RXD (direction INPUT))
            (port UART_1_TXD (direction OUTPUT))
-           (port INT_CC3000_c (direction INPUT))
+           (port cc3000fpga_MSS_GND (direction INPUT))
            (port tx_fifo_full_i (direction INPUT))
            (port rx_fifo_empty_i (direction INPUT))
            (port LED_0_c (direction OUTPUT))
@@ -7959,12 +7961,22 @@
            (property ACT_CONFIG (integer 0))
            (property ACT_PIN (string "R1"))
           )
+          (instance MSS_GPIO_0_GPIO_2_IN (viewRef prim (cellRef INBUF_MSS (libraryRef smartfusion)))
+           (property is_instantiated (integer 1))
+           (property ACT_CONFIG (integer 0))
+           (property ACT_PIN (string "W1"))
+          )
           (instance MSS_ADLIB_INST (viewRef prim (cellRef MSS_APB (libraryRef smartfusion)))
            (property is_instantiated (integer 1))
            (property ACT_CONFIG (integer 0))
            (property ACT_DIE (string "IP4X3M1"))
            (property ACT_FCLK (integer 100000000))
            (property ACT_PKG (string "fg484"))
+          )
+          (instance FIO_OUTBUF_4 (viewRef prim (cellRef OUTBUF_MSS (libraryRef smartfusion)))
+           (property is_instantiated (integer 1))
+           (property ACT_CONFIG (integer 1073741824))
+           (property ACT_PIN (string "AA1"))
           )
           (instance MSS_CCC_0 (viewRef netlist (cellRef cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC))
           )
@@ -8024,10 +8036,6 @@
            (portRef Y (instanceRef MSSINT_GPI_29))
            (portRef (member gpi 2) (instanceRef MSS_ADLIB_INST))
           ))
-          (net INT_CC3000_c (joined
-           (portRef INT_CC3000_c)
-           (portRef A (instanceRef MSSINT_GPI_29))
-          ))
           (net UART_1_TXD (joined
            (portRef PAD (instanceRef MSS_UART_1_TXD))
            (portRef UART_1_TXD)
@@ -8068,6 +8076,14 @@
            (portRef MSS_RESET_N)
            (portRef PAD (instanceRef MSS_RESET_0_MSS_RESET_N))
           ))
+          (net MSS_GPIO_0_GPIO_2_IN_Y (joined
+           (portRef Y (instanceRef MSS_GPIO_0_GPIO_2_IN))
+           (portRef (member gpi 29) (instanceRef MSS_ADLIB_INST))
+          ))
+          (net WL_SPI_IRQ (joined
+           (portRef WL_SPI_IRQ)
+           (portRef PAD (instanceRef MSS_GPIO_0_GPIO_2_IN))
+          ))
           (net MSS_ADLIB_INST_EMCRWn (joined
            (portRef EMCRWn (instanceRef MSS_ADLIB_INST))
           ))
@@ -8080,13 +8096,6 @@
           ))
           (net MSS_ADLIB_INST_CALIBOUT (joined
            (portRef CALIBOUT (instanceRef MSS_ADLIB_INST))
-          ))
-          (net Interrupt (joined
-           (portRef Interrupt)
-           (portRef FABINT (instanceRef MSS_ADLIB_INST))
-          ))
-          (net MSS_ADLIB_INST_WDINT (joined
-           (portRef WDINT (instanceRef MSS_ADLIB_INST))
           ))
           (net cc3000fpga_MSS_GND (joined
            (portRef cc3000fpga_MSS_GND)
@@ -8209,7 +8218,6 @@
            (portRef (member gpi 26) (instanceRef MSS_ADLIB_INST))
            (portRef (member gpi 27) (instanceRef MSS_ADLIB_INST))
            (portRef (member gpi 28) (instanceRef MSS_ADLIB_INST))
-           (portRef (member gpi 29) (instanceRef MSS_ADLIB_INST))
            (portRef (member gpi 30) (instanceRef MSS_ADLIB_INST))
            (portRef (member gpi 31) (instanceRef MSS_ADLIB_INST))
            (portRef (member emcrdb 0) (instanceRef MSS_ADLIB_INST))
@@ -8334,6 +8342,14 @@
            (portRef VRON (instanceRef MSS_ADLIB_INST))
            (portRef RXEV (instanceRef MSS_ADLIB_INST))
            (portRef CALIBIN (instanceRef MSS_ADLIB_INST))
+           (portRef A (instanceRef MSSINT_GPI_29))
+          ))
+          (net Interrupt (joined
+           (portRef Interrupt)
+           (portRef FABINT (instanceRef MSS_ADLIB_INST))
+          ))
+          (net MSS_ADLIB_INST_WDINT (joined
+           (portRef WDINT (instanceRef MSS_ADLIB_INST))
           ))
           (net MSS_ADLIB_INST_DEEPSLEEP (joined
            (portRef DEEPSLEEP (instanceRef MSS_ADLIB_INST))
@@ -9358,6 +9374,14 @@
            (portRef (member cc3000fpga_mss_0_mss_master_apb_prdata 0))
            (portRef (member mssprdata 24) (instanceRef MSS_ADLIB_INST))
           ))
+          (net IO_4_PADOUT (joined
+           (portRef PAD (instanceRef FIO_OUTBUF_4))
+           (portRef IO_4_PADOUT)
+          ))
+          (net N_145 (joined
+           (portRef N_145)
+           (portRef D (instanceRef FIO_OUTBUF_4))
+          ))
           (net FAB_CLK (joined
            (portRef FAB_CLK (instanceRef MSS_CCC_0))
            (portRef SYNCCLKFDBK (instanceRef MSS_ADLIB_INST))
@@ -9381,17 +9405,17 @@
     (cell cc3000fpga (cellType GENERIC)
        (view verilog (viewType NETLIST)
          (interface
-           (port INT_CC3000 (direction INPUT))
            (port MSS_RESET_N (direction INPUT))
            (port M_MISO (direction INPUT))
            (port UART_0_RXD (direction INPUT))
            (port UART_1_RXD (direction INPUT))
+           (port WL_SPI_IRQ (direction INPUT))
+           (port IO_4_PADOUT (direction OUTPUT))
            (port LED_0 (direction OUTPUT))
            (port LED_1 (direction OUTPUT))
            (port LED_2 (direction OUTPUT))
            (port MSTRCLKOUT (direction OUTPUT))
            (port M_MOSI (direction OUTPUT))
-           (port SPIOEN (direction OUTPUT))
            (port (array (rename spiss "SPISS[7:0]") 8) (direction OUTPUT))
            (port UART_0_TXD (direction OUTPUT))
            (port UART_1_TXD (direction OUTPUT))
@@ -9413,8 +9437,6 @@
           )
           (instance (rename SPISS_pad_0 "SPISS_pad[0]") (viewRef prim (cellRef OUTBUF (libraryRef smartfusion)))
           )
-          (instance SPIOEN_pad (viewRef prim (cellRef OUTBUF (libraryRef smartfusion)))
-          )
           (instance M_MOSI_pad (viewRef prim (cellRef OUTBUF (libraryRef smartfusion)))
           )
           (instance MSTRCLKOUT_pad (viewRef prim (cellRef OUTBUF (libraryRef smartfusion)))
@@ -9426,8 +9448,6 @@
           (instance LED_0_pad (viewRef prim (cellRef OUTBUF (libraryRef smartfusion)))
           )
           (instance M_MISO_pad (viewRef prim (cellRef INBUF (libraryRef smartfusion)))
-          )
-          (instance INT_CC3000_pad (viewRef prim (cellRef INBUF (libraryRef smartfusion)))
           )
           (instance cc3000fpga_MSS_0 (viewRef netlist (cellRef cc3000fpga_MSS))
           )
@@ -9495,6 +9515,14 @@
           (net UART_1_RXD (joined
            (portRef UART_1_RXD)
            (portRef UART_1_RXD (instanceRef cc3000fpga_MSS_0))
+          ))
+          (net WL_SPI_IRQ (joined
+           (portRef WL_SPI_IRQ)
+           (portRef WL_SPI_IRQ (instanceRef cc3000fpga_MSS_0))
+          ))
+          (net IO_4_PADOUT (joined
+           (portRef IO_4_PADOUT (instanceRef cc3000fpga_MSS_0))
+           (portRef IO_4_PADOUT)
           ))
           (net UART_0_TXD (joined
            (portRef UART_0_TXD (instanceRef cc3000fpga_MSS_0))
@@ -9639,15 +9667,7 @@
           ))
           (net (rename CORESPI_0_USPI_UCC_N_145 "CORESPI_0.USPI.UCC.N_145") (joined
            (portRef N_145 (instanceRef CORESPI_0))
-           (portRef D (instanceRef SPIOEN_pad))
-          ))
-          (net INT_CC3000_c (joined
-           (portRef Y (instanceRef INT_CC3000_pad))
-           (portRef INT_CC3000_c (instanceRef cc3000fpga_MSS_0))
-          ))
-          (net INT_CC3000 (joined
-           (portRef INT_CC3000)
-           (portRef PAD (instanceRef INT_CC3000_pad))
+           (portRef N_145 (instanceRef cc3000fpga_MSS_0))
           ))
           (net M_MISO_c (joined
            (portRef Y (instanceRef M_MISO_pad))
@@ -9696,10 +9716,6 @@
           (net M_MOSI (joined
            (portRef PAD (instanceRef M_MOSI_pad))
            (portRef M_MOSI)
-          ))
-          (net SPIOEN (joined
-           (portRef PAD (instanceRef SPIOEN_pad))
-           (portRef SPIOEN)
           ))
           (net (rename SPISS_c_0 "SPISS_c[0]") (joined
            (portRef (member spiss_c 7) (instanceRef CORESPI_0))

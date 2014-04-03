@@ -3,12 +3,17 @@ Version: 10.1.3.1
 Release: v10.1 SP3
 
 Software Version: 10.1.3.1
+PDB file
+'C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga_fp\cc3000fpga.\
+pdb' has been loaded successfully.
+DESIGN : cc3000fpga;  CHECKSUM : C077;  PDB_VERSION : 1.7
 Driver : 3.0.0 build 1
 programmer '61369' : FlashPro3
-Created new project
-'C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp\cc3000fpga.\
+Opened
+'C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp/cc3000fpga.\
 pro'
-The 'new_project' command succeeded.
+The 'open_project' command succeeded.
+The 'set_programming_file' command succeeded.
 The 'set_device_type' command succeeded.
 The 'set_device_package' command succeeded.
 Info: Adding Flash Memory data from file
@@ -19,7 +24,7 @@ Info: Adding FPGA Array data from file
 PDB file
 'C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga_fp\cc3000fpga.\
 pdb' has been loaded successfully.
-DESIGN : cc3000fpga;  CHECKSUM : C077;  PDB_VERSION : 1.7
+DESIGN : cc3000fpga;  CHECKSUM : 9E94;  PDB_VERSION : 1.7
 The 'update_programming_file' command succeeded.
 The 'set_programming_action' command succeeded.
 programmer '61369' : Scan Chain...
@@ -35,7 +40,7 @@ programmer '61369' : Verifying FPGA Array
 programmer '61369' :         Verifying FPGA Array -- pass
 programmer '61369' : Program System Init and Boot Clients...
 programmer '61369' : Verify System Init and Boot Clients...
-programmer '61369' : Finished: Tue Apr 01 12:03:19 2014 (Elapsed time 00:00:37)
+programmer '61369' : Finished: Thu Apr 03 14:55:07 2014 (Elapsed time 00:00:37)
 programmer '61369' : Executing action PROGRAM PASSED.
 
                         o - o - o - o - o - o

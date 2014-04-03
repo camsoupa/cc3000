@@ -5,12 +5,12 @@ Report for cell cc3000fpga.verilog
           CORESPI_18s_8s_4s_4s_7s_0s_0s_0s_1s         1     684.0      684.0
                         CoreAPB3_Z1         1       6.0        6.0
                                 GND         1       0.0        0.0
-                              INBUF         2       0.0        0.0
-                             OUTBUF        14       0.0        0.0
+                              INBUF         1       0.0        0.0
+                             OUTBUF        13       0.0        0.0
                                 VCC         1       0.0        0.0
                      cc3000fpga_MSS         1       0.0        0.0
                             
-                         TOTAL             21                690.0
+                         TOTAL             19                690.0
 ----------------------------------------------------------------------
 Report for cell CORESPI_18s_8s_4s_4s_7s_0s_0s_0s_1s.netlist
      Instance path:  CORESPI_0
@@ -238,14 +238,14 @@ Report for cell cc3000fpga_MSS.netlist
                                cell       count     area    count*area
                              CLKINT         1       0.0        0.0
                                 GND         1       0.0        0.0
-                          INBUF_MSS         3       0.0        0.0
+                          INBUF_MSS         4       0.0        0.0
                              MSSINT         6       0.0        0.0
                             MSS_APB         1       0.0        0.0
-                         OUTBUF_MSS         2       0.0        0.0
+                         OUTBUF_MSS         3       0.0        0.0
                                 VCC         1       0.0        0.0
           cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC         1       0.0        0.0
                             
-                         TOTAL             16                  0.0
+                         TOTAL             18                  0.0
 ----------------------------------------------------------------------
 Report for cell cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.netlist
      Instance path:  cc3000fpga_MSS_0.MSS_CCC_0

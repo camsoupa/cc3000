@@ -110,20 +110,20 @@ Finished restoring hierarchy (Time elapsed 0h:00m:01s; Memory used current: 111M
 
 Writing Analyst data base C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm
 
-Finished Writing Netlist Databases (Time elapsed 0h:00m:01s; Memory used current: 110MB peak: 111MB)
+Finished Writing Netlist Databases (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
 
 Writing EDIF Netlist and constraint files
 F-2012.03M-SP1 
 
-Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:01s; Memory used current: 110MB peak: 111MB)
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
 
-@W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":537:7:537:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":572:7:572:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 Found clock FAB_CLK with period 10.00ns 
 Found clock FCLK with period 10.00ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Wed Apr 02 17:09:40 2014
+# Timing Report written on Thu Apr 03 14:44:51 2014
 #
 
 
@@ -899,10 +899,10 @@ Report for cell cc3000fpga.verilog
 
   IO Cell usage:
               cell count
-             INBUF     2
-         INBUF_MSS     3
-            OUTBUF    14
-        OUTBUF_MSS     2
+             INBUF     1
+         INBUF_MSS     4
+            OUTBUF    13
+        OUTBUF_MSS     3
                    -----
              TOTAL    21
 
@@ -915,9 +915,9 @@ Block Rams : 0 of 8 (0%)
 
 Mapper successful!
 
-At Mapper Exit (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 111MB)
+At Mapper Exit (Time elapsed 0h:00m:02s; Memory used current: 41MB peak: 111MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:01s cputime
-# Wed Apr 02 17:09:40 2014
+Process took 0h:00m:05s realtime, 0h:00m:02s cputime
+# Thu Apr 03 14:44:52 2014
 
 ###########################################################]

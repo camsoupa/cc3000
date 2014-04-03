@@ -1,7 +1,7 @@
 
 Starting:    C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\win64\mbin\synbatch.exe
 Install:     C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1
-Date:        Wed Apr 02 17:09:34 2014
+Date:        Thu Apr 03 14:44:42 2014
 Version:     F-2012.03M-SP1 
 
 Arguments:   -product synplify_pro  -licensetype synplifypro_actel -batch -log synplify.log cc3000fpga_syn.tcl
@@ -51,7 +51,7 @@ Running Map & Optimize on cc3000fpga_syn|synthesis
 
 fpga_mapper Completed with warnings
 Return Code: 1
-Run Time:0h:00m:03s
+Run Time:0h:00m:06s
 
 
 Job Map completed on cc3000fpga_syn|synthesis

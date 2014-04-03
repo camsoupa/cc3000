@@ -1,12 +1,12 @@
 #--  Synopsys, Inc.
 #--  Version F-2012.03M-SP1 
 #--  Project file C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\run_options.txt
-#--  Written on Wed Apr 02 17:09:34 2014
+#--  Written on Thu Apr 03 14:44:42 2014
 
 
 #project files
-add_file -verilog "C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/mss_tshell.v"
 add_file -verilog "C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/Actel/SmartFusionMSS/MSS/2.5.106/mss_comps.v"
+add_file -verilog "C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/mss_tshell.v"
 add_file -verilog "C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_CCC_0/cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v"
 add_file -verilog "C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/cc3000fpga_MSS.v"
 add_file -verilog -lib COREAPB3_LIB "C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/Actel/DirectCore/CoreAPB3/4.0.100/rtl/vlog/core_obfuscated/coreapb3_muxptob3.v"

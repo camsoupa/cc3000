@@ -66,10 +66,10 @@ Report for cell cc3000fpga.verilog
 
   IO Cell usage:
               cell count
-             INBUF     2
-         INBUF_MSS     3
-            OUTBUF    14
-        OUTBUF_MSS     2
+             INBUF     1
+         INBUF_MSS     4
+            OUTBUF    13
+        OUTBUF_MSS     3
                    -----
              TOTAL    21
 

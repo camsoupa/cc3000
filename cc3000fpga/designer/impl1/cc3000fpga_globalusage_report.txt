@@ -1,0 +1,23 @@
+********************************************************************
+                            Global Usage Report
+********************************************************************
+  
+Product: Designer
+Release: v10.1 SP3
+Version: 10.1.3.1
+Date: Thu Apr 03 14:53:45 2014
+Design Name: cc3000fpga  Family: SmartFusion  Die: A2F200M3F  Package: 484 FBGA
+Design State: Post-Layout
+
+The following nets have been routed to a chip global resource:
+
+    Fanout            Name
+    ----------------------
+    187               Net   : FAB_CLK
+                      Driver: cc3000fpga_MSS_0/MSS_CCC_0/I_MSSCCC/U_TILE1
+    146               Net   : cc3000fpga_MSS_0_M2F_RESET_N
+                      Driver: cc3000fpga_MSS_0/MSS_ADLIB_INST_RNIRASC/U_CLKSRC/U_GL
+
+
+
+

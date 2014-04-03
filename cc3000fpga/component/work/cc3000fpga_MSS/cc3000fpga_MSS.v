@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Thu Apr 03 14:00:38 2014
+// Created by SmartDesign Thu Apr 03 14:44:10 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@ module cc3000fpga_MSS(
     F2M_GPI_30,
     F2M_GPI_31,
     FABINT,
-    IO_2_PADIN,
+    GPIO_2_IN,
     IO_4_D,
     MSSPRDATA,
     MSSPREADY,
@@ -22,7 +22,6 @@ module cc3000fpga_MSS(
     UART_1_RXD,
     // Outputs
     FAB_CLK,
-    IO_2_Y,
     IO_4_PADOUT,
     M2F_GPO_0,
     M2F_GPO_1,
@@ -44,7 +43,7 @@ input         F2M_GPI_29;
 input         F2M_GPI_30;
 input         F2M_GPI_31;
 input         FABINT;
-input         IO_2_PADIN;
+input         GPIO_2_IN;
 input         IO_4_D;
 input  [31:0] MSSPRDATA;
 input         MSSPREADY;
@@ -56,7 +55,6 @@ input         UART_1_RXD;
 // Output
 //--------------------------------------------------------------------
 output        FAB_CLK;
-output        IO_2_Y;
 output        IO_4_PADOUT;
 output        M2F_GPO_0;
 output        M2F_GPO_1;
@@ -76,15 +74,15 @@ wire          F2M_GPI_29;
 wire          F2M_GPI_30;
 wire          F2M_GPI_31;
 wire          FABINT;
-wire          IO_2_PADIN;
+wire          GPIO_2_IN;
 wire          IO_4_D;
-wire          IO_4_PADOUT_net_0;
 wire          MSS_ADLIB_INST_EMCCLK;
 wire          MSS_ADLIB_INST_FCLK;
 wire          MSS_ADLIB_INST_MACCLK;
 wire          MSS_ADLIB_INST_MACCLKCCC;
 wire          MSS_ADLIB_INST_PLLLOCK;
 wire          MSS_ADLIB_INST_SYNCCLKFDBK;
+wire          MSS_GPIO_0_GPIO_2_IN_Y;
 wire          MSS_RESET_0_MSS_RESET_N_Y;
 wire          MSS_RESET_N;
 wire          MSS_UART_0_RXD_Y;
@@ -109,7 +107,7 @@ wire          net_75_PSELx;
 wire          MSSPSLVERR;
 wire   [31:0] net_75_PWDATA;
 wire          net_75_PWRITE;
-wire          net_76;
+wire          PAD;
 wire          UART_0_RXD;
 wire          UART_0_TXD_net_0;
 wire          UART_1_RXD;
@@ -122,12 +120,11 @@ wire          net_75_PSELx_net_0;
 wire          net_75_PENABLE_net_0;
 wire          net_75_PWRITE_net_0;
 wire          net_73_net_0;
-wire          net_76_net_0;
 wire   [19:0] net_75_PADDR_net_0;
 wire   [31:0] net_75_PWDATA_net_0;
 wire          UART_0_TXD_net_1;
 wire          UART_1_TXD_net_1;
-wire          IO_4_PADOUT_net_1;
+wire          PAD_net_0;
 wire   [31:0] GPI_net_0;
 wire   [31:0] GPO_net_0;
 //--------------------------------------------------------------------
@@ -171,8 +168,6 @@ assign net_75_PWRITE_net_0              = net_75_PWRITE;
 assign MSSPWRITE                        = net_75_PWRITE_net_0;
 assign net_73_net_0                     = net_73;
 assign M2F_GPO_3                        = net_73_net_0;
-assign net_76_net_0                     = net_76;
-assign IO_2_Y                           = net_76_net_0;
 assign net_75_PADDR_net_0               = net_75_PADDR;
 assign MSSPADDR[19:0]                   = net_75_PADDR_net_0;
 assign net_75_PWDATA_net_0              = net_75_PWDATA;
@@ -181,8 +176,8 @@ assign UART_0_TXD_net_1                 = UART_0_TXD_net_0;
 assign UART_0_TXD                       = UART_0_TXD_net_1;
 assign UART_1_TXD_net_1                 = UART_1_TXD_net_0;
 assign UART_1_TXD                       = UART_1_TXD_net_1;
-assign IO_4_PADOUT_net_1                = IO_4_PADOUT_net_0;
-assign IO_4_PADOUT                      = IO_4_PADOUT_net_1;
+assign PAD_net_0                        = PAD;
+assign IO_4_PADOUT                      = PAD_net_0;
 //--------------------------------------------------------------------
 // Slices assignments
 //--------------------------------------------------------------------
@@ -192,21 +187,10 @@ assign MSSINT_GPO_3_A[3] = GPO_net_0[3:3];
 //--------------------------------------------------------------------
 // Concatenation assignments
 //--------------------------------------------------------------------
-assign GPI_net_0 = { MSSINT_GPI_31_Y , MSSINT_GPI_30_Y , MSSINT_GPI_29_Y , 29'h00000000 };
+assign GPI_net_0 = { MSSINT_GPI_31_Y , MSSINT_GPI_30_Y , MSSINT_GPI_29_Y , 26'h0000000 , MSS_GPIO_0_GPIO_2_IN_Y , 2'h0 };
 //--------------------------------------------------------------------
 // Component instances
 //--------------------------------------------------------------------
-//--------INBUF_MSS
-INBUF_MSS #( 
-        .ACT_CONFIG ( 1073741824 ),
-        .ACT_PIN    ( "W1" ) )
-FIO_INBUF_2(
-        // Inputs
-        .PAD ( IO_2_PADIN ),
-        // Outputs
-        .Y   ( net_76 ) 
-        );
-
 //--------OUTBUF_MSS
 OUTBUF_MSS #( 
         .ACT_CONFIG ( 1073741824 ),
@@ -215,7 +199,7 @@ FIO_OUTBUF_4(
         // Inputs
         .D   ( IO_4_D ),
         // Outputs
-        .PAD ( IO_4_PADOUT_net_0 ) 
+        .PAD ( PAD ) 
         );
 
 //--------MSS_APB
@@ -476,6 +460,17 @@ cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC MSS_CCC_0(
         .MSS_LOCK       ( MSS_ADLIB_INST_PLLLOCK ),
         .MAC_CLK_CCC    ( MSS_ADLIB_INST_MACCLKCCC ),
         .MAC_CLK_IO     ( MSS_ADLIB_INST_MACCLK ) 
+        );
+
+//--------INBUF_MSS
+INBUF_MSS #( 
+        .ACT_CONFIG ( 0 ),
+        .ACT_PIN    ( "W1" ) )
+MSS_GPIO_0_GPIO_2_IN(
+        // Inputs
+        .PAD ( GPIO_2_IN ),
+        // Outputs
+        .Y   ( MSS_GPIO_0_GPIO_2_IN_Y ) 
         );
 
 //--------INBUF_MSS

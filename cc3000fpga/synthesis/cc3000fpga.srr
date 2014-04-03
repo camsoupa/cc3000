@@ -1,12 +1,12 @@
 #Build: Synplify Pro F-2012.03M-SP1 , Build 084R, Jun 15 2012
 #install: C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1
 #OS: Windows 7 6.1
-#Hostname: DIG-3
+#Hostname: DIG-9
 
 #Implementation: synthesis
 
 $ Start of Compile
-#Wed Apr 02 17:09:34 2014
+#Thu Apr 03 14:44:42 2014
 
 Synopsys Verilog Compiler, version comp201203rcp1, Build 084R, built Jun 15 2012
 @N|Running in 64-bit mode
@@ -17,8 +17,8 @@ Copyright (C) 1994-2012 Synopsys, Inc. This software the associated documentatio
 @I::"C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\vlog\scemi_objects.v"
 @I::"C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\vlog\scemi_pipes.svh"
 @I::"C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\vlog\hypermods.v"
-@I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v"
 @I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v"
+@I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v"
 @I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v"
 @I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v"
 @I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v"
@@ -38,6 +38,8 @@ Copyright (C) 1994-2012 Synopsys, Inc. This software the associated documentatio
 @I::"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.v"
 Verilog syntax check successful!
 Selecting top level module cc3000fpga
+@N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v":37:7:37:16|Synthesizing module OUTBUF_MSS
+
 @N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v":1:7:1:13|Synthesizing module MSS_APB
 
 @N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v":151:7:151:13|Synthesizing module MSS_CCC
@@ -51,8 +53,6 @@ Selecting top level module cc3000fpga
 @N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v":5:7:5:42|Synthesizing module cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC
 
 @N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v":23:7:23:15|Synthesizing module INBUF_MSS
-
-@N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v":37:7:37:16|Synthesizing module OUTBUF_MSS
 
 @N: CG364 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v":145:7:145:12|Synthesizing module MSSINT
 
@@ -333,7 +333,7 @@ State machine has 7 reachable states with original encodings of:
 @W: CL159 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v":50:7:50:13|Input MAC_CLK is unused
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Apr 02 17:09:35 2014
+# Thu Apr 03 14:44:43 2014
 
 ###########################################################]
 Premap Report
@@ -378,7 +378,7 @@ Pre-mapping successful!
 At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 40MB peak: 105MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Apr 02 17:09:37 2014
+# Thu Apr 03 14:44:46 2014
 
 ###########################################################]
 Map & Optimize Report
@@ -495,20 +495,20 @@ Finished restoring hierarchy (Time elapsed 0h:00m:01s; Memory used current: 111M
 
 Writing Analyst data base C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm
 
-Finished Writing Netlist Databases (Time elapsed 0h:00m:01s; Memory used current: 110MB peak: 111MB)
+Finished Writing Netlist Databases (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
 
 Writing EDIF Netlist and constraint files
 F-2012.03M-SP1 
 
-Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:01s; Memory used current: 110MB peak: 111MB)
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
 
-@W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":537:7:537:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":572:7:572:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 Found clock FAB_CLK with period 10.00ns 
 Found clock FCLK with period 10.00ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Wed Apr 02 17:09:40 2014
+# Timing Report written on Thu Apr 03 14:44:51 2014
 #
 
 
@@ -1284,10 +1284,10 @@ Report for cell cc3000fpga.verilog
 
   IO Cell usage:
               cell count
-             INBUF     2
-         INBUF_MSS     3
-            OUTBUF    14
-        OUTBUF_MSS     2
+             INBUF     1
+         INBUF_MSS     4
+            OUTBUF    13
+        OUTBUF_MSS     3
                    -----
              TOTAL    21
 
@@ -1300,9 +1300,9 @@ Block Rams : 0 of 8 (0%)
 
 Mapper successful!
 
-At Mapper Exit (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 111MB)
+At Mapper Exit (Time elapsed 0h:00m:02s; Memory used current: 41MB peak: 111MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:01s cputime
-# Wed Apr 02 17:09:40 2014
+Process took 0h:00m:05s realtime, 0h:00m:02s cputime
+# Thu Apr 03 14:44:52 2014
 
 ###########################################################]

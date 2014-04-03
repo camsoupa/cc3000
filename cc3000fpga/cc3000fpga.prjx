@@ -514,7 +514,7 @@ LIST OpenedFileList
 SmartDesign;cc3000fpga_MSS
 Reports;Reports
 SmartDesign;cc3000fpga
-ACTIVEVIEW;cc3000fpga_MSS
+ACTIVEVIEW;cc3000fpga
 ENDLIST
 LIST ModuleSubBlockList
 LIST "BIBUF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"

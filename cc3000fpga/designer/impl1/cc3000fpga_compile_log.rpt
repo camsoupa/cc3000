@@ -450,9 +450,9 @@ I/O Technology:
 
 I/O Placement:
 
-    Locked  :   3 ( 21.43% )
-    Placed  :   0
-    UnPlaced:  11 ( 78.57% )
+    Locked  :   7 ( 50.00% )
+    Placed  :   7 ( 50.00% )
+    UnPlaced:   0
 
 Warning: Only some I/Os are locked
 
@@ -517,13 +517,13 @@ Nets that are candidates for clock assignment and the resulting fanout:
     12      INT_NET       Net   : CORESPI_0/USPI/N_273
                           Driver: CORESPI_0/USPI/UCC/spi_ssel_pos_RNIMSTK
 
-The Compile command succeeded ( 00:00:05 )
+The Compile command succeeded ( 00:00:04 )
 Wrote status report to file: cc3000fpga_compile_report.txt
 
-The Report command succeeded ( 00:00:01 )
+The Report command succeeded ( 00:00:00 )
 Design saved to file
 C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb.
 
-The Execute Script command succeeded ( 00:00:15 )
+The Execute Script command succeeded ( 00:00:13 )
 Design closed.
 

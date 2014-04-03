@@ -29,6 +29,8 @@
 #include <stdbool.h>
 #include "cc3000_common.h"
 
+
+
 //*****************************************************************************
 //
 // If building with a C++ compiler, make all of the definitions in this header
@@ -38,6 +40,25 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
+
+#define  FABRIC_BASE_ADDR  0x40050000
+
+typedef struct {
+
+ volatile uint32_t controlReg1;
+ volatile uint32_t intClear;
+ volatile uint32_t RXdata;
+ volatile uint32_t TXdata;
+ volatile uint32_t intMask;
+ volatile uint32_t intRaw;
+ volatile uint32_t controlReg2;
+ volatile uint32_t cmd;        //write only
+ volatile uint32_t status;     //read only
+ volatile uint32_t slaveSelect;
+ volatile uint32_t TXEndDataRegister; //
+} CoreSpi_TypeDef;
+
+
 
 //*****************************************************************************
 //

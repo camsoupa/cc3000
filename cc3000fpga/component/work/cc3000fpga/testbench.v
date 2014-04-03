@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by Actel SmartDesign Thu Apr 03 14:44:27 2014
+// Created by Actel SmartDesign Thu Apr 03 16:05:39 2014
 // Testbench Template
 // This is a basic testbench that instantiates your design with basic 
 // clock and reset pins connected.  If your design has special
@@ -54,12 +54,12 @@ cc3000fpga cc3000fpga_0 (
     .UART_1_TXD( ),
     .UART_0_TXD( ),
     .LED_1( ),
-    .LED_0( ),
     .M_MOSI( ),
     .MSTRCLKOUT( ),
     .LED_2( ),
     .SPISS( ),
-    .IO_4_PADOUT( )
+    .IO_4_PADOUT( ),
+    .LED_0( )
 
     // Inouts
 

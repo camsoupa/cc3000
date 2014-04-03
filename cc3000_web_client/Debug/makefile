@@ -11,7 +11,6 @@ RM := rm -rf
 -include subdir.mk
 -include utils/subdir.mk
 -include drivers/mss_uart/subdir.mk
--include drivers/mss_spi/subdir.mk
 -include drivers/mss_gpio/subdir.mk
 -include drivers/board/subdir.mk
 -include CMSIS/subdir.mk

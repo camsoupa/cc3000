@@ -19,7 +19,6 @@ EXECUTABLE :=
 SUBDIRS := \
 utils \
 drivers/mss_uart \
-drivers/mss_spi \
 drivers/mss_gpio \
 drivers/board \
 . \

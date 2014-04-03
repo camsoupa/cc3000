@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Thu Apr 03 14:44:27 2014
+// Created by SmartDesign Thu Apr 03 16:05:39 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -84,12 +84,12 @@ wire          WL_SPI_IRQ;
 wire          UART_1_TXD_net_1;
 wire          UART_0_TXD_net_1;
 wire          LED_1_net_1;
-wire          LED_0_net_1;
 wire          M_MOSI_net_1;
 wire          MSTRCLKOUT_net_1;
 wire          LED_3_net_0;
 wire   [7:0]  SPISS_net_1;
 wire          IO_4_PADOUT_0_net_0;
+wire          LED_0_net_1;
 //--------------------------------------------------------------------
 // TiedOff Nets
 //--------------------------------------------------------------------
@@ -143,8 +143,6 @@ assign UART_0_TXD_net_1    = UART_0_TXD_net_0;
 assign UART_0_TXD          = UART_0_TXD_net_1;
 assign LED_1_net_1         = LED_1_net_0;
 assign LED_1               = LED_1_net_1;
-assign LED_0_net_1         = LED_0_net_0;
-assign LED_0               = LED_0_net_1;
 assign M_MOSI_net_1        = M_MOSI_net_0;
 assign M_MOSI              = M_MOSI_net_1;
 assign MSTRCLKOUT_net_1    = MSTRCLKOUT_net_0;
@@ -155,6 +153,8 @@ assign SPISS_net_1         = SPISS_net_0;
 assign SPISS[7:0]          = SPISS_net_1;
 assign IO_4_PADOUT_0_net_0 = IO_4_PADOUT_0;
 assign IO_4_PADOUT         = IO_4_PADOUT_0_net_0;
+assign LED_0_net_1         = LED_0_net_0;
+assign LED_0               = LED_0_net_1;
 //--------------------------------------------------------------------
 // Bus Interface Nets - Unequal Pin Widths
 //--------------------------------------------------------------------

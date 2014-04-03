@@ -59,6 +59,8 @@
 #include "../CC3000HostDriver/matt_spi.h"
 #include "../CC3000HostDriver/hci.h"
 
+volatile CoreSpi_TypeDef * CORE_SPI = ((CoreSpi_TypeDef *) FABRIC_BASE_ADDR);
+
 //*****************************************************************************
 //
 // The size of the DMA channel control structure we need in bytes.

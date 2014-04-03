@@ -76,25 +76,10 @@
 //*****************************************************************************
 void pio_init()
 {
-    //  Board Initialization start
-    //
-    //
-    // The FPU should be enabled because some compilers will use floating-
-    // point registers, even for non-floating-point code.  If the FPU is not
-    // enabled this will cause a fault.  This also ensures that floating-
-    // point operations could be added to this application and would work
-    // correctly and use the hardware floating-point unit.  Finally, lazy
-    // stacking is enabled for interrupt handlers.  This allows floating-
-    // point instructions to be used within interrupt handlers, but at the
-    // expense of extra stack usage.
-    //
-    //FPUEnable();
-    //FPULazyStackingEnable();
-
     //
     // Initialize the system clock.
     //
-    initClk();
+    //initClk(); // I don't think we need to do this.
 
     //matt - TODO Implement all this or go about init some other way
 
@@ -302,7 +287,7 @@ void initClk(void)
     //
     // 16 MHz Crystal on Board. SSI Freq - configure M4 Clock to be ~50 MHz
     //
-    //TODO MAP_SysCtlClockSet(SYSCTL_SYSDIV_3 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
+    //TODO? probably not MAP_SysCtlClockSet(SYSCTL_SYSDIV_3 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
      //                   SYSCTL_XTAL_16MHZ);
 }
 

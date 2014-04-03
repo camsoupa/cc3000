@@ -1277,16 +1277,7 @@ CMD_connect(char *ssid)
     //
     // Validate input.
     //
-    /*
-    if(argc < 2)
-    {
-        return(CMDLINE_TOO_FEW_ARGS);
-    }
-    else if(argc > 2)
-    {
-        return(CMDLINE_TOO_MANY_ARGS);
-    }
-    */
+
 
     if(strlen(ssid) >= 255)
     {
@@ -2331,6 +2322,25 @@ main(void)
     g_ui32Socket = SENTINEL_EMPTY;
     g_ui32BindFlag = SENTINEL_EMPTY;
     g_ui32SmartConfigFinished = 0;
+
+
+
+    //testing
+    MSS_GPIO_init();
+    MSS_GPIO_config( MSS_GPIO_0, MSS_GPIO_OUTPUT_MODE);
+    MSS_GPIO_config( MSS_GPIO_1, MSS_GPIO_OUTPUT_MODE);
+    MSS_GPIO_config( MSS_GPIO_3, MSS_GPIO_OUTPUT_MODE);
+    MSS_GPIO_set_outputs(15);
+    MSS_GPIO_set_output(0, 0);
+
+
+    //dont do normal operation yet
+    while (1)
+    {
+
+
+    }
+
 
 
     //

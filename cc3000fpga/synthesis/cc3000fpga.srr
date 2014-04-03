@@ -6,7 +6,7 @@
 #Implementation: synthesis
 
 $ Start of Compile
-#Thu Apr 03 14:44:42 2014
+#Thu Apr 03 16:05:54 2014
 
 Synopsys Verilog Compiler, version comp201203rcp1, Build 084R, built Jun 15 2012
 @N|Running in 64-bit mode
@@ -333,7 +333,7 @@ State machine has 7 reachable states with original encodings of:
 @W: CL159 :"C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v":50:7:50:13|Input MAC_CLK is unused
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Apr 03 14:44:43 2014
+# Thu Apr 03 16:05:54 2014
 
 ###########################################################]
 Premap Report
@@ -378,7 +378,7 @@ Pre-mapping successful!
 At Mapper Exit (Time elapsed 0h:00m:00s; Memory used current: 40MB peak: 105MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Thu Apr 03 14:44:46 2014
+# Thu Apr 03 16:05:56 2014
 
 ###########################################################]
 Map & Optimize Report
@@ -444,7 +444,7 @@ original code -> new code
 @N: BN362 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_chanctrl.v":946:0:946:5|Removing sequential instance txfifo_datadelay[0] of view:PrimLib.dffr(prim) in hierarchy view:CORESPI_LIB.spi_chanctrl_Z2(verilog) because there are no references to its outputs 
 @A: BN291 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_chanctrl.v":946:0:946:5|Boundary register txfifo_datadelay[0] packed into a complex cell. To disable register packing, set syn_keep=1 on net between register and complex cell. 
 
-Finished factoring (Time elapsed 0h:00m:01s; Memory used current: 105MB peak: 105MB)
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 105MB)
 
 @N: BN362 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_fifo.v":143:0:143:5|Removing sequential instance CORESPI_0.USPI.URXF.full_next_out of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
 @N: BN362 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_fifo.v":143:0:143:5|Removing sequential instance CORESPI_0.USPI.URXF.empty_next_out of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
@@ -495,12 +495,12 @@ Finished restoring hierarchy (Time elapsed 0h:00m:01s; Memory used current: 111M
 
 Writing Analyst data base C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm
 
-Finished Writing Netlist Databases (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
+Finished Writing Netlist Databases (Time elapsed 0h:00m:01s; Memory used current: 110MB peak: 111MB)
 
 Writing EDIF Netlist and constraint files
 F-2012.03M-SP1 
 
-Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:01s; Memory used current: 110MB peak: 111MB)
 
 @W: MT246 :"c:\users\mapalmer\documents\project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":572:7:572:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 Found clock FAB_CLK with period 10.00ns 
@@ -508,7 +508,7 @@ Found clock FCLK with period 10.00ns
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Thu Apr 03 14:44:51 2014
+# Timing Report written on Thu Apr 03 16:05:59 2014
 #
 
 
@@ -1302,7 +1302,7 @@ Mapper successful!
 
 At Mapper Exit (Time elapsed 0h:00m:02s; Memory used current: 41MB peak: 111MB)
 
-Process took 0h:00m:05s realtime, 0h:00m:02s cputime
-# Thu Apr 03 14:44:52 2014
+Process took 0h:00m:02s realtime, 0h:00m:02s cputime
+# Thu Apr 03 16:05:59 2014
 
 ###########################################################]

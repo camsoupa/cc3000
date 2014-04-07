@@ -215,13 +215,13 @@ SpiConfigureHwMapping(void)
     sSpiInformation.sHwSettings.ui32PioSpiCs   = SPI_CS_PIN;
     sSpiInformation.sHwSettings.ui32PioSpiPort = SPI_PORT;
     sSpiInformation.sHwSettings.ui32DMAPort   = SYSCTL_PERIPH_UDMA;
-    sSpiInformation.sHwSettings.ui32PortInt    = INT_GPIO_SPI;
+    sSpiInformation.sHwSettings.ui32PortInt    = INT_GPIO_SPI;           // I don't think we need this
     sSpiInformation.sHwSettings.ui32SsiPortAddress = SYSCTL_PERIPH_SPI;
     sSpiInformation.sHwSettings.ui32SsiTx = SPI_TX_PIN;
     sSpiInformation.sHwSettings.ui32SsiRx = SPI_RX_PIN;
     sSpiInformation.sHwSettings.ui32SsiClck = SPI_CLK_PIN;
     sSpiInformation.sHwSettings.ui32SsiPort = SPI_BASE;
-    sSpiInformation.sHwSettings.ui32SsiPortInt = INT_SPI;
+    sSpiInformation.sHwSettings.ui32SsiPortInt = INT_SPI;                 // Don't need this
     sSpiInformation.sHwSettings.ui32DMARxChannel = SPI_UDMA_RX_CHANNEL;
     sSpiInformation.sHwSettings.ui32DMATxChannel = SPI_UDMA_TX_CHANNEL;
     */
@@ -229,7 +229,7 @@ SpiConfigureHwMapping(void)
 
 //*****************************************************************************
 //
-// Read and clear the status of the interrupt from the CC3000 to TM4C.
+// Read and clear the status of the interrupt from the CC3000 to smartfusion.
 //
 //*****************************************************************************
 uint32_t
@@ -247,6 +247,7 @@ SpiCleanGPIOISR(void)
     // Clear any asserted interrupts
     //
     MAP_GPIOIntClear(SPI_GPIO_IRQ_BASE, ui32Status);
+    MSS_GPIO_clear_irq()
 
     //
     // Return the read status to the caller.

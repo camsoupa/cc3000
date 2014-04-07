@@ -68,19 +68,19 @@
 //
 // IRQ settings
 //
-#define SYSCTL_PERIPH_IRQ_PORT          SYSCTL_PERIPH_GPIOB
-#define SPI_GPIO_IRQ_BASE               GPIO_PORTB_BASE
-#define SPI_IRQ_PIN                     GPIO_PIN_2
-#define INT_GPIO_SPI                    INT_GPIOB
-#define INT_SPI                         INT_SSI2
+//#define SYSCTL_PERIPH_IRQ_PORT          SYSCTL_PERIPH_GPIOB   // matt- I think this is a TI thing we don't need to do
+//#define SPI_GPIO_IRQ_BASE               GPIO_PORTB_BASE       // matt- I think this is a TI thing we don't need to do
+#define SPI_IRQ_PIN                     MSS_GPIO_2      // was GPIO_PIN_2 but MSS_GPIO_2 is our board's method
+//#define INT_GPIO_SPI                    INT_GPIOB
+//#define INT_SPI                         INT_SSI2
 
 //
 // SW EN settings
 //
-#define SYSCTL_PERIPH_SW_EN_PORT        SYSCTL_PERIPH_GPIOB
-#define SPI_GPIO_SW_EN_BASE             GPIO_PORTB_BASE
-#define SPI_EN_PIN                      GPIO_PIN_5
-
+//#define SYSCTL_PERIPH_SW_EN_PORT        SYSCTL_PERIPH_GPIOB  // matt- I think this is a TI thing we don't need to do
+//#define SPI_GPIO_SW_EN_BASE             GPIO_PORTB_BASE      // matt- I think this is a TI thing we don't need to do
+//#define SPI_EN_PIN                      GPIO_PIN_5  // We have the pass through pin config thing that comes directly
+                                                      // from the spi core so I don't think we need to set this up
 //
 // CS settings  PE0
 //

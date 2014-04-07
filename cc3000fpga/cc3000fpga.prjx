@@ -154,8 +154,8 @@ PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396885790"
-SIZE="5564"
+TIME="1396891079"
+SIZE="5519"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
 STATE="utd"
@@ -260,12 +260,12 @@ TIME="1396369740"
 SIZE="413"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.adb,adb"
-STATE="utd"
+STATE="ood"
 TIME="1396885790"
 SIZE="792576"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.fdb,fdb"
-STATE="utd"
+STATE="ood"
 TIME="1396885790"
 SIZE="67156"
 ENDFILE
@@ -280,7 +280,7 @@ TIME="1396885790"
 SIZE="34002"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb,pdb"
-STATE="utd"
+STATE="ood"
 TIME="1396885790"
 SIZE="76288"
 ENDFILE
@@ -349,7 +349,7 @@ SIZE="670"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.edn,syn_edn"
-STATE="utd"
+STATE="ood"
 TIME="1396885790"
 SIZE="511905"
 ENDFILE
@@ -376,19 +376,6 @@ LIST "cc3000fpga::work"
 FILE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 LIST SynthesisConstraints
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
-ENDLIST
-LIST ProjectState5.1
-LIST Impl1
-LiberoState=Post_Layout
-ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
-ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
-LIST FlowOptions
-UsePhySynth=FALSE
-UseSynth=TRUE
-ENDLIST
-Used_File_List
-ENDUsed_File_List
-ENDLIST
 ENDLIST
 ENDLIST
 LIST "cc3000fpga_MSS::work"
@@ -511,19 +498,6 @@ BATCH=0
 EndProfile
 ENDLIST
 LIST ProjectState5.1
-LIST "cc3000fpga::work"
-LIST Impl1
-LiberoState=Post_Layout
-ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
-ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
-LIST FlowOptions
-UsePhySynth=FALSE
-UseSynth=TRUE
-ENDLIST
-Used_File_List
-ENDUsed_File_List
-ENDLIST
-ENDLIST
 LIST "cc3000fpga_MSS::work"
 LIST Impl1
 ideSTIMULUS=StateSuccess
@@ -547,8 +521,10 @@ ENDLIST
 LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
-StartPage;StartPage
-ACTIVEVIEW;StartPage
+Reports;Reports
+SmartDesign;cc3000fpga
+SmartDesign;cc3000fpga_MSS
+ACTIVEVIEW;cc3000fpga
 ENDLIST
 LIST ModuleSubBlockList
 LIST "BIBUF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"

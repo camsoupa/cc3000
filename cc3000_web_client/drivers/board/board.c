@@ -79,20 +79,24 @@ void pio_init()
     //
     // Initialize the system clock.
     //
-    //initClk(); // I don't think we need to do this.
+    //initClk(); // I don't think we need to do this. But we might need to do something like this
+	// to get our timings right
 
     //matt - TODO Implement all this or go about init some other way
 
     //
     // Configure the system peripheral bus that IRQ & EN pin are mapped to.
     //
-    //MAP_SysCtlPeripheralEnable( SYSCTL_PERIPH_IRQ_PORT);
-    //MAP_SysCtlPeripheralEnable( SYSCTL_PERIPH_SW_EN_PORT);
+    //MAP_SysCtlPeripheralEnable( SYSCTL_PERIPH_IRQ_PORT); // I don't think we do this for our board
+    //MAP_SysCtlPeripheralEnable( SYSCTL_PERIPH_SW_EN_PORT); // the actual interrupt config is below
+
 
     //
     // Disable all the interrupts before configuring the lines.
     //
     //MAP_GPIOIntDisable(SPI_GPIO_IRQ_BASE, 0xFF);
+	MSS_GPIO_disable_irq(SPI_IRQ_PIN);
+
 
     //
     // Configure the WLAN_IRQ pin as an input.
@@ -100,11 +104,16 @@ void pio_init()
     //MAP_GPIOPinTypeGPIOInput(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
     //GPIOPadConfigSet(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN, GPIO_STRENGTH_2MA,
     //                    GPIO_PIN_TYPE_STD_WPU);
-
     //
     // Setup the GPIO interrupt for this pin
     //
     //MAP_GPIOIntTypeSet(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN, GPIO_FALLING_EDGE);
+
+
+    // This single call takes care of the configure as input and as negative edge interrupt
+	MSS_GPIO_config( SPI_IRQ_PIN, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE );
+
+
 
     //
     // Configure the pins for the enable signal to the CC3000.
@@ -113,13 +122,23 @@ void pio_init()
     //MAP_GPIODirModeSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_DIR_MODE_OUT );
     //MAP_GPIOPadConfigSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPD );
 
+	// I think this is already done. The signal comes from the spi core directly through the MSS
+	// This is and should be an active high signal.
+	// So I think the write below is just to make sure it is low? Ours should be that way already
+
+
+
     //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
     //SysCtlDelay(600000);
     //SysCtlDelay(600000);
     //SysCtlDelay(600000);
+    delay(600000); //TODO make sure delay is like SysCtlDelay...
     delay(600000);
     delay(600000);
-    delay(600000);
+
+
+    // Left off here
+
 
     //
     // Disable WLAN CS with pull up Resistor
@@ -139,6 +158,7 @@ void pio_init()
     // Clear interrupt status
     //
     SpiCleanGPIOISR();
+
 
     //MAP_IntEnable(INT_GPIO_SPI);
 
@@ -320,9 +340,7 @@ void initLEDs()
 //*****************************************************************************
 void turnLedOn(tBoardLED eLED)
 {
-   // TODO
    MSS_GPIO_set_output(eLED, 0);
-
 }
 
 //*****************************************************************************
@@ -332,7 +350,5 @@ void turnLedOn(tBoardLED eLED)
 //*****************************************************************************
 void turnLedOff(tBoardLED eLED)
 {
-
-   MSS_GPIO_set_output(eLED, 1);
-
+	MSS_GPIO_set_output(eLED, 1);
 }

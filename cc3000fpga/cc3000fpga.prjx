@@ -46,13 +46,13 @@ ENDLIST
 LIST FileManager
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\MSS.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560586"
+TIME="1396555238"
 SIZE="945"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v,hdl"
 STATE="utd"
-TIME="1390406808"
+TIME="1390406696"
 SIZE="11243"
 PARENT="<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -64,102 +64,102 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_CCC\2.0.106\MSS_CCC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560579"
+TIME="1396555235"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_CM3\1.0.200\MSS_CM3.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560579"
+TIME="1396555235"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_COM\1.0.200\MSS_COM.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560579"
+TIME="1396555235"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_DMA\1.0.101\MSS_DMA.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560579"
+TIME="1396555235"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_ENVM\2.3.102\MSS_ENVM.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_FIC\1.0.101\MSS_FIC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_FIO\1.0.203\MSS_FIO.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_GPIO\1.0.101\MSS_GPIO.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_INTR\1.0.101\MSS_INTR.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_RESET\1.0.101\MSS_RESET.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="254"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_RTC\1.0.100\MSS_RTC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_TIMER\1.0.100\MSS_TIMER.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="254"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_UART\1.0.101\MSS_UART.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_UFROM\1.0.100\MSS_UFROM.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="254"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_WATCHDOG\1.0.101\MSS_WATCHDOG.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="257"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396565661"
+TIME="1396885790"
 SIZE="5564"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
 STATE="utd"
-TIME="1396562738"
+TIME="1396885790"
 SIZE="2871"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 BEGIN_USE_CONSTRAINT
@@ -170,12 +170,12 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560586"
+TIME="1396885790"
 SIZE="14793"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc,pdc"
 STATE="utd"
-TIME="1396560575"
+TIME="1396885790"
 SIZE="1962"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -186,41 +186,41 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v,hdl"
 STATE="utd"
-TIME="1396560586"
+TIME="1396885790"
 SIZE="22908"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_ACE_0\MSS_ACE_0.log,???"
 STATE="utd"
-TIME="1396542082"
+TIME="1396369740"
 SIZE="31587"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396560578"
+TIME="1396555235"
 SIZE="495"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v,hdl"
 STATE="utd"
-TIME="1396560578"
+TIME="1396555235"
 SIZE="2890"
 PARENT="<project>\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_ENVM_0\MSS_ENVM_0.efc,efc"
 STATE="utd"
-TIME="1396560579"
+TIME="1396885790"
 SIZE="16172"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell.v,hdl"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="12226"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -232,7 +232,7 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
 STATE="utd"
-TIME="1396560580"
+TIME="1396555236"
 SIZE="200"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -244,128 +244,128 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\testbench.v,tb_hdl"
 STATE="utd"
-TIME="1396560586"
+TIME="1396885790"
 SIZE="2024"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\DESIGN_FIRMWARE\DESIGN_FIRMWARE.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396555650"
+TIME="1396478974"
 SIZE="2384"
 ENDFILE
 VALUE "<project>\component\work\DESIGN_IO\DESIGN_IO.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396542082"
+TIME="1396369740"
 SIZE="413"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.adb,adb"
 STATE="utd"
-TIME="1396555650"
-SIZE="700416"
+TIME="1396885790"
+SIZE="792576"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.fdb,fdb"
 STATE="utd"
-TIME="1396542082"
-SIZE="43034"
+TIME="1396885790"
+SIZE="67156"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.ide_des,ide_des"
 STATE="utd"
-TIME="1396555650"
-SIZE="1003"
+TIME="1396885790"
+SIZE="1001"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_compile_log.rpt,log"
 STATE="utd"
-TIME="1396561006"
+TIME="1396885790"
 SIZE="34002"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb,pdb"
 STATE="utd"
-TIME="1396555650"
-SIZE="52224"
+TIME="1396885790"
+SIZE="76288"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pro,pro"
 STATE="utd"
-TIME="1396555650"
+TIME="1396375401"
 SIZE="2046"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\projectData\cc3000fpga.pdb,pdb"
 STATE="utd"
-TIME="1396564303"
+TIME="1396885790"
 SIZE="76288"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_MSS.ide_des,ide_des"
 STATE="utd"
-TIME="1396555650"
+TIME="1396555240"
 SIZE="335"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_placeroute_log.rpt,log"
 STATE="utd"
-TIME="1396561141"
+TIME="1396885790"
 SIZE="2450"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1396542082"
+TIME="1396885790"
 SIZE="880"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_verifytiming_log.rpt,log"
 STATE="utd"
-TIME="1396561146"
+TIME="1396885790"
 SIZE="1200"
 ENDFILE
 VALUE "<project>\designer\impl1\MSS_XTLOSC.ide_des,ide_des"
 STATE="utd"
-TIME="1396555650"
+TIME="1396374817"
 SIZE="215"
 ENDFILE
 VALUE "<project>\designer\impl1\TRIBUFF_MSS.ide_des,ide_des"
 STATE="utd"
-TIME="1396555650"
+TIME="1396477924"
 SIZE="216"
 ENDFILE
 VALUE "<project>\simulation\CompileDssBfm.tcl,sim"
 STATE="utd"
-TIME="1390406799"
+TIME="1390406687"
 SIZE="41"
 PARENT="<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\MSS.cxf"
 ENDFILE
 VALUE "<project>\simulation\subsystem.bfm,sim"
 STATE="utd"
-TIME="1396562739"
+TIME="1396885790"
 SIZE="628"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
 VALUE "<project>\simulation\test.bfm,sim"
 STATE="utd"
-TIME="1396560579"
+TIME="1396885790"
 SIZE="5496"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\simulation\user.bfm,sim"
 STATE="utd"
-TIME="1396542082"
+TIME="1396369740"
 SIZE="670"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.edn,syn_edn"
 STATE="utd"
-TIME="1396555650"
-SIZE="511189"
+TIME="1396885790"
+SIZE="511905"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.so,so"
 STATE="utd"
-TIME="1396557891"
+TIME="1396480180"
 SIZE="243"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga_sdc.sdc,sdc"
 STATE="utd"
-TIME="1396555650"
+TIME="1396480180"
 SIZE="546"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga_syn.prj,prj"
 STATE="utd"
-TIME="1396555650"
+TIME="1396885790"
 SIZE="3839"
 ENDFILE
 ENDLIST
@@ -380,7 +380,6 @@ ENDLIST
 LIST ProjectState5.1
 LIST Impl1
 LiberoState=Post_Layout
-ideSTIMULUS=StateSuccess
 ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
 ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
 LIST FlowOptions
@@ -486,8 +485,8 @@ NAME="Synplify Pro AE"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro AE"
 LOCATION="C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\synplify_pro.exe"
-PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
-BATCH=1
+PARAM=""
+BATCH=0
 EndProfile
 NAME="ModelSim AE"
 FUNCTION="Simulation"
@@ -515,7 +514,6 @@ LIST ProjectState5.1
 LIST "cc3000fpga::work"
 LIST Impl1
 LiberoState=Post_Layout
-ideSTIMULUS=StateSuccess
 ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
 ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
 LIST FlowOptions
@@ -549,10 +547,8 @@ ENDLIST
 LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
-SmartDesign;cc3000fpga_MSS
-Reports;Reports
-SmartDesign;cc3000fpga
-ACTIVEVIEW;cc3000fpga
+StartPage;StartPage
+ACTIVEVIEW;StartPage
 ENDLIST
 LIST ModuleSubBlockList
 LIST "BIBUF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"

@@ -475,6 +475,10 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
 int
 initDriver(void)
 {
+
+    // Initialize use of GPIOs
+	MSS_GPIO_init();
+
     //
     // Initialize device pin configuration and the system clock.
     //
@@ -2326,12 +2330,7 @@ main(void)
 
 
     //testing
-    MSS_GPIO_init();
-    MSS_GPIO_config( MSS_GPIO_0, MSS_GPIO_OUTPUT_MODE);
-    MSS_GPIO_config( MSS_GPIO_1, MSS_GPIO_OUTPUT_MODE);
-    MSS_GPIO_config( MSS_GPIO_3, MSS_GPIO_OUTPUT_MODE);
-    MSS_GPIO_set_outputs(15);
-    MSS_GPIO_set_output(0, 0);
+
 
 
     //dont do normal operation yet

@@ -299,25 +299,17 @@ void initClk(void)
 void initLEDs()
 {
 
-// TODO
-    //
-    // Loop through each of the configured LEDs
-    //
+	// Setup the 3 LEDs we want to use as GPIO outputs
+    MSS_GPIO_config( MSS_GPIO_0, MSS_GPIO_OUTPUT_MODE);
+    MSS_GPIO_config( MSS_GPIO_1, MSS_GPIO_OUTPUT_MODE);
+    MSS_GPIO_config( MSS_GPIO_3, MSS_GPIO_OUTPUT_MODE);
 
-        //
-        // Enable the GPIO peripheral containing the LED control line.
-        //
+    // Turn all of them off
+    MSS_GPIO_set_outputs(15);
 
-
-        //
-        // Configure the LED pin as an output.
-        //
-
-
-        //
-        // Turn the LED off.
-        //
-
+    // Turn one on so we know we're at this point in code
+    // MSS_GPIO_set_output(0, 0);
+    turnLedOn(LED_0);
 
 }
 
@@ -328,8 +320,8 @@ void initLEDs()
 //*****************************************************************************
 void turnLedOn(tBoardLED eLED)
 {
-// TODO
-
+   // TODO
+   MSS_GPIO_set_output(eLED, 0);
 
 }
 
@@ -340,6 +332,7 @@ void turnLedOn(tBoardLED eLED)
 //*****************************************************************************
 void turnLedOff(tBoardLED eLED)
 {
-//TODO
+
+   MSS_GPIO_set_output(eLED, 1);
 
 }

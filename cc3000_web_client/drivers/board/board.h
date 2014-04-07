@@ -140,9 +140,9 @@
 
 typedef enum
 {
-    LED_0, //Red
-    LED_1, //Green
-    LED_2  //Blue
+    LED_0=0, //Red
+    LED_1=1, //Green
+    LED_2=3  //Blue
 }
 tBoardLED;
 

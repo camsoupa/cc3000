@@ -84,7 +84,7 @@
 //
 // CS settings  PE0
 //
-#define SPI_CS_PORT                     GPIO_PORTE_BASE
+//#define SPI_CS_PORT                     GPIO_PORTE_BASE // matt- TI thing
 #define SPI_CS_PIN                      GPIO_PIN_0
 #define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE
 

@@ -2,7 +2,7 @@
 #define cc3000fpga_HW_PLATFORM_H_
 /*****************************************************************************
 *
-*Created by Actel SmartDesign  Tue Apr 08 10:44:28 2014
+*Created by Actel SmartDesign  Tue Apr 08 15:51:41 2014
 *
 *Memory map specification for peripherals in cc3000fpga
 */

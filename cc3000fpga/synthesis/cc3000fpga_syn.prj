@@ -3,10 +3,6 @@
 #--  Project file C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga_syn.prj
 
 #project files
-add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/SmartFusionMSS/MSS/2.5.106/mss_comps.v"
-add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/mss_tshell.v"
-add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_CCC_0/cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v"
-add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/cc3000fpga_MSS.v"
 add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/hdl/inverter.v"
 add_file -verilog -lib COREAPB3_LIB "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/DirectCore/CoreAPB3/4.0.100/rtl/vlog/core_obfuscated/coreapb3_muxptob3.v"
 add_file -verilog -lib COREAPB3_LIB "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/DirectCore/CoreAPB3/4.0.100/rtl/vlog/core_obfuscated/coreapb3_iaddr_reg.v"
@@ -18,6 +14,10 @@ add_file -verilog -lib CORESPI_LIB "C:/Users/camsoupa/Documents/embedded_final_p
 add_file -verilog -lib CORESPI_LIB "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/DirectCore/CORESPI/4.2.116/rtl/vlog/core/spi_chanctrl.v"
 add_file -verilog -lib CORESPI_LIB "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/DirectCore/CORESPI/4.2.116/rtl/vlog/core/spi.v"
 add_file -verilog -lib CORESPI_LIB "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/DirectCore/CORESPI/4.2.116/rtl/vlog/core/corespi.v"
+add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/mss_tshell.v"
+add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/Actel/SmartFusionMSS/MSS/2.5.106/mss_comps.v"
+add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_CCC_0/cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v"
+add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/cc3000fpga_MSS.v"
 add_file -verilog "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga/cc3000fpga.v"
 add_file -constraint "C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/mss_tshell_syn.sdc"
 

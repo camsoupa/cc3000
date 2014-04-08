@@ -44,15 +44,237 @@ ALIAS=CORESPI_LIB
 COMPILE_OPTION=COMPILE
 ENDLIST
 LIST FileManager
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf,actgen_cxf"
+STATE="utd"
+TIME="1396992347"
+SIZE="2783"
+PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
+STATE="utd"
+TIME="1396992347"
+SIZE="1256"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+IS_INCLUDED="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\mti\scripts\wave_user.do,do"
+STATE="utd"
+TIME="1391015905"
+SIZE="912"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="4636"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="9073"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="25129"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="36275"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="122456"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v,hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="32421"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v,hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="3312"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v,hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="6738"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
+STATE="utd"
+TIME="1391015905"
+SIZE="23627"
+LIBRARY="COREAPB3_LIB"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+MODULE_UNDER_TEST="testbench"
+SIMULATION_TIME="-all"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfmtovec_compile.do,do"
+STATE="utd"
+TIME="1396987820"
+SIZE="922"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v,tb_hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="6486"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v,tb_hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="9201"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apbtoapb.v,tb_hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="6387"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v,tb_hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="197636"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_package.v,tb_hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="40025"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+IS_INCLUDED="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf,actgen_cxf"
+STATE="utd"
+TIME="1396992347"
+SIZE="2957"
+PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="3725"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="16132"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="40585"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="368"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="6543"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="6941"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v,hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="11599"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\testbench.v,tb_hdl"
+STATE="utd"
+TIME="1396987820"
+SIZE="7461"
+LIBRARY="CORESPI_LIB"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+MODULE_UNDER_TEST="testbench"
+SIMULATION_TIME="-all"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\wave.do,do"
+STATE="utd"
+TIME="1396987820"
+SIZE="3380"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+IS_READONLY="TRUE"
+ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396988961"
-SIZE="5627"
+TIME="1396992350"
+SIZE="6328"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
 STATE="utd"
-TIME="1396988850"
-SIZE="2424"
+TIME="1396992346"
+SIZE="2388"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 BEGIN_USE_CONSTRAINT
 TOOL_CONSTRAINT_TYPE="ideDESIGNER"
@@ -60,15 +282,29 @@ END_USE_CONSTRAINT
 USE_FOR_ANY_TOOL="FALSE"
 IS_READONLY="TRUE"
 ENDFILE
+VALUE "<project>\component\work\cc3000fpga\cc3000fpga.v,hdl"
+STATE="utd"
+TIME="1396992347"
+SIZE="16843"
+PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
+STATE="utd"
+TIME="1396992349"
+SIZE="1718"
+PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
+IS_READONLY="TRUE"
+ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396988911"
+TIME="1396993217"
 SIZE="11522"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc,pdc"
 STATE="utd"
-TIME="1396988830"
-SIZE="1960"
+TIME="1396992353"
+SIZE="1958"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
 TOOL_CONSTRAINT_TYPE="ideDESIGNER"
@@ -94,28 +330,23 @@ TIME="1396975881"
 SIZE="413"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.adb,adb"
-STATE="ood"
-TIME="1396987974"
-SIZE="526336"
-ENDFILE
-VALUE "<project>\designer\impl1\cc3000fpga.fdb,fdb"
-STATE="ood"
-TIME="1396988396"
-SIZE="65610"
+STATE="utd"
+TIME="1396992940"
+SIZE="517120"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.ide_des,ide_des"
 STATE="utd"
-TIME="1396975881"
-SIZE="1001"
+TIME="1396988879"
+SIZE="1030"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_compile_log.rpt,log"
 STATE="utd"
-TIME="1396987975"
-SIZE="34328"
+TIME="1396992940"
+SIZE="34260"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb,pdb"
 STATE="ood"
-TIME="1396975881"
+TIME="1396990252"
 SIZE="76288"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pro,pro"
@@ -125,23 +356,8 @@ SIZE="2091"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_MSS.ide_des,ide_des"
 STATE="utd"
-TIME="1396975881"
-SIZE="335"
-ENDFILE
-VALUE "<project>\designer\impl1\cc3000fpga_placeroute_log.rpt,log"
-STATE="utd"
-TIME="1396988348"
-SIZE="2483"
-ENDFILE
-VALUE "<project>\designer\impl1\cc3000fpga_prgdata_log.rpt,log"
-STATE="utd"
-TIME="1396988397"
-SIZE="815"
-ENDFILE
-VALUE "<project>\designer\impl1\cc3000fpga_verifytiming_log.rpt,log"
-STATE="utd"
-TIME="1396988380"
-SIZE="1233"
+TIME="1396988911"
+SIZE="234"
 ENDFILE
 VALUE "<project>\designer\impl1\MSS_XTLOSC.ide_des,ide_des"
 STATE="utd"
@@ -158,15 +374,27 @@ STATE="utd"
 TIME="1396981072"
 SIZE="104"
 ENDFILE
+VALUE "<project>\simulation\bfmtovec_compile.tcl,sim"
+STATE="utd"
+TIME="1391015905"
+SIZE="1229"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+ENDFILE
+VALUE "<project>\simulation\coreapb3_usertb_master.bfm,sim"
+STATE="utd"
+TIME="1391015905"
+SIZE="8016"
+PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+ENDFILE
 VALUE "<project>\simulation\subsystem.bfm,sim"
 STATE="utd"
-TIME="1396988852"
+TIME="1396992347"
 SIZE="628"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
 VALUE "<project>\simulation\test.bfm,sim"
 STATE="utd"
-TIME="1396988837"
+TIME="1396992359"
 SIZE="5496"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
@@ -176,10 +404,16 @@ TIME="1396975882"
 SIZE="670"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
+VALUE "<project>\simulation\user_tb.bfm,sim"
+STATE="utd"
+TIME="1396987820"
+SIZE="32208"
+PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
+ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.edn,syn_edn"
-STATE="ood"
-TIME="1396987894"
-SIZE="503855"
+STATE="utd"
+TIME="1396992901"
+SIZE="491484"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.so,so"
 STATE="utd"
@@ -188,28 +422,179 @@ SIZE="258"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga_sdc.sdc,sdc"
 STATE="utd"
-TIME="1396975882"
+TIME="1396987894"
 SIZE="546"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga_syn.prj,prj"
 STATE="utd"
-TIME="1396980542"
-SIZE="4094"
+TIME="1396987895"
+SIZE="4199"
 ENDFILE
 ENDLIST
 LIST UsedFile
 ENDLIST
 LIST NewModulesInfo
 LIST "cc3000fpga::work"
-FILE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
+FILE "<project>\component\work\cc3000fpga\cc3000fpga.v,hdl"
+LIST Other_Association
+VALUE "<project>\simulation\subsystem.bfm,sim"
+VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
+VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
+ENDLIST
+LIST AssociatedStimulus
+VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
+ENDLIST
 LIST SynthesisConstraints
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
+ENDLIST
+LIST ProjectState5.1
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST "cc3000fpga_MSS::work"
+FILE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf,actgen_cxf"
+LIST ProjectState5.1
+LIST Impl1
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST "CoreAPB3::COREAPB3_LIB"
+FILE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v,hdl"
+LIST Other_Association
+VALUE "<project>\simulation\bfmtovec_compile.tcl,sim"
+VALUE "<project>\simulation\coreapb3_usertb_master.bfm,sim"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\mti\scripts\wave_user.do,do"
+ENDLIST
+LIST AssociatedStimulus
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
+ENDLIST
+LIST ProjectState5.1
+LIST Impl1
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST "CORESPI::CORESPI_LIB"
+FILE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v,hdl"
+LIST Other_Association
+VALUE "<project>\simulation\user_tb.bfm,sim"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_package.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\testbench.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfmtovec_compile.do,do"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\wave.do,do"
+ENDLIST
+LIST AssociatedStimulus
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_package.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\testbench.v,tb_hdl"
+ENDLIST
+LIST ProjectState5.1
+LIST Impl1
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
 ENDLIST
 ENDLIST
 ENDLIST
 LIST AssociatedStimulus
+LIST cc3000fpga
+VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
+ENDLIST
+LIST CoreAPB3
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
+ENDLIST
+LIST CORESPI
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_package.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\testbench.v,tb_hdl"
+ENDLIST
 ENDLIST
 LIST Other_Association
+LIST cc3000fpga
+VALUE "<project>\simulation\subsystem.bfm,sim"
+VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
+VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
+ENDLIST
+LIST CoreAPB3
+VALUE "<project>\simulation\bfmtovec_compile.tcl,sim"
+VALUE "<project>\simulation\coreapb3_usertb_master.bfm,sim"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\mti\scripts\wave_user.do,do"
+ENDLIST
+LIST CORESPI
+VALUE "<project>\simulation\user_tb.bfm,sim"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_apbtoapb.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfm_package.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\testbench.v,tb_hdl"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\bfmtovec_compile.do,do"
+VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\wave.do,do"
+ENDLIST
 ENDLIST
 LIST SimulationOptions
 UseAutomaticDoFile=true
@@ -288,6 +673,52 @@ BATCH=0
 EndProfile
 ENDLIST
 LIST ProjectState5.1
+LIST "cc3000fpga::work"
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+LIST "cc3000fpga_MSS::work"
+LIST Impl1
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+LIST "CoreAPB3::COREAPB3_LIB"
+LIST Impl1
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+LIST "CORESPI::CORESPI_LIB"
+LIST Impl1
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
 ENDLIST
 LIST ExcludePackageForSimulation
 ENDLIST
@@ -303,15 +734,14 @@ LIST OpenedFileList
 SmartDesign;cc3000fpga
 SmartDesign;cc3000fpga_MSS
 HDL;hdl\inverter.v
-Reports;Reports
-ACTIVEVIEW;cc3000fpga
+ACTIVEVIEW;cc3000fpga_MSS
 ENDLIST
 LIST ModuleSubBlockList
-LIST "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.cxf","TRUE","FALSE"
-SUBBLOCK "CoreAPB3::work","","FALSE","FALSE"
-SUBBLOCK "CORESPI::work","","FALSE","FALSE"
-SUBBLOCK "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf","TRUE","FALSE"
+LIST "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.v","TRUE","FALSE"
 SUBBLOCK "inverter::work","hdl\inverter.v","FALSE","FALSE"
+SUBBLOCK "CoreAPB3::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v","FALSE","FALSE"
+SUBBLOCK "CORESPI::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v","FALSE","FALSE"
+SUBBLOCK "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf","TRUE","FALSE"
 ENDLIST
 LIST "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf","TRUE","FALSE"
 SUBBLOCK "MSS_ACE::work","","FALSE","FALSE"
@@ -334,10 +764,6 @@ SUBBLOCK "MSS_TIMER::work","","FALSE","FALSE"
 SUBBLOCK "MSS_UART::work","","FALSE","FALSE"
 SUBBLOCK "MSS_UFROM::work","","FALSE","FALSE"
 SUBBLOCK "MSS_WATCHDOG::work","","FALSE","FALSE"
-ENDLIST
-LIST "CoreAPB3::work","","FALSE","FALSE"
-ENDLIST
-LIST "CORESPI::work","","FALSE","FALSE"
 ENDLIST
 LIST "DESIGN_FIRMWARE::work","component\work\DESIGN_FIRMWARE\DESIGN_FIRMWARE.cxf","TRUE","FALSE"
 SUBBLOCK "HAL::work","","FALSE","FALSE"
@@ -415,6 +841,72 @@ LIST "MSS_Watchdog_Driver::work","","FALSE","FALSE"
 ENDLIST
 LIST "SmartFusion_CMSIS_PAL::work","","FALSE","FALSE"
 ENDLIST
+LIST "testbench::work","component\work\cc3000fpga\testbench.v","FALSE","TRUE"
+SUBBLOCK "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.v","TRUE","FALSE"
+ENDLIST
+LIST "CAPB3l::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v","FALSE","FALSE"
+ENDLIST
+LIST "CAPB3O::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v","FALSE","FALSE"
+ENDLIST
+LIST "CoreAPB3::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v","FALSE","FALSE"
+SUBBLOCK "CAPB3l::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v","FALSE","FALSE"
+SUBBLOCK "CAPB3O::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v","FALSE","FALSE"
+ENDLIST
+LIST "BFM_APB::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v","FALSE","TRUE"
+SUBBLOCK "BFM_MAIN::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v","FALSE","TRUE"
+SUBBLOCK "BFMA1l1OII::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v","FALSE","TRUE"
+ENDLIST
+LIST "BFM_APBSLAVE::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v","FALSE","TRUE"
+SUBBLOCK "BFM_APBSLAVEEXT::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v","FALSE","TRUE"
+ENDLIST
+LIST "BFM_APBSLAVEEXT::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v","FALSE","TRUE"
+ENDLIST
+LIST "BFM_MAIN::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v","FALSE","TRUE"
+ENDLIST
+LIST "BFMA1l1OII::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v","FALSE","TRUE"
+ENDLIST
+LIST "testbench::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v","FALSE","TRUE"
+SUBBLOCK "CoreAPB3::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v","FALSE","FALSE"
+SUBBLOCK "BFM_APB::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v","FALSE","TRUE"
+SUBBLOCK "BFM_APBSLAVE::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v","FALSE","TRUE"
+ENDLIST
+LIST "CORESPI::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v","FALSE","FALSE"
+SUBBLOCK "spi::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v","FALSE","FALSE"
+ENDLIST
+LIST "spi::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v","FALSE","FALSE"
+SUBBLOCK "spi_rf::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v","FALSE","FALSE"
+SUBBLOCK "spi_control::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v","FALSE","FALSE"
+SUBBLOCK "spi_fifo::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v","FALSE","FALSE"
+SUBBLOCK "spi_chanctrl::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v","FALSE","FALSE"
+ENDLIST
+LIST "spi_chanctrl::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v","FALSE","FALSE"
+SUBBLOCK "spi_clockmux::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v","FALSE","FALSE"
+ENDLIST
+LIST "spi_clockmux::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v","FALSE","FALSE"
+ENDLIST
+LIST "spi_control::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v","FALSE","FALSE"
+ENDLIST
+LIST "spi_fifo::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v","FALSE","FALSE"
+ENDLIST
+LIST "spi_rf::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v","FALSE","FALSE"
+ENDLIST
+LIST "BFM_AHB2APB::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v","FALSE","TRUE"
+ENDLIST
+LIST "BFM_APB::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v","FALSE","TRUE"
+SUBBLOCK "BFM_MAIN::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v","FALSE","TRUE"
+SUBBLOCK "BFM_AHB2APB::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_ahbtoapb.v","FALSE","TRUE"
+ENDLIST
+LIST "BFM_APB2APB::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_apbtoapb.v","FALSE","TRUE"
+ENDLIST
+LIST "BFM_MAIN::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_main.v","FALSE","TRUE"
+ENDLIST
+LIST "testbench::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\testbench.v","FALSE","TRUE"
+SUBBLOCK "BFM_APB::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\bfm_apb.v","FALSE","TRUE"
+SUBBLOCK "CORESPI::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v","FALSE","FALSE"
+ENDLIST
 ENDLIST
 LIST ActiveTestBenchList
+LIST "cc3000fpga::work"
+ACTIVETESTBENCH "","","FALSE"
+ENDLIST
 ENDLIST

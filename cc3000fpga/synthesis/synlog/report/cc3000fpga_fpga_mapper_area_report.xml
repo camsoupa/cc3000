@@ -8,7 +8,7 @@ The file contains the area information from mapper to be displayed as part of th
 <data>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_fpga_mapper_resourceusage.rpt</data>
 </report_link>
 <parameter tooltip="Total Core Cells used" name="Core Cells">
-<data>687</data>
+<data>662</data>
 </parameter>
 <parameter tooltip="Total IO Cells used" name="IO Cells">
 <data>14</data>

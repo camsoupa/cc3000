@@ -2,13 +2,13 @@ C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe  -pr
 rc:0 success:1
 C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn|o|0|0
 C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga_cck_prepass.rpt|o|0|0
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc|i|1396987747|200
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs|i|1396987881|81185
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396987884|77995
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap|o|1396987885|21439
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc|i|1396992364|200
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_compiler.srs|i|1396992896|81020
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396992898|79046
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap|o|1396992898|21439
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\lib\proasic\smartfusion.v|i|1340041216|72817
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1396987883|0
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396987884|77995
-C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr|o|1396987885|2256
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\syntmp\cc3000fpga.plg|o|1396992898|0
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synwork\cc3000fpga_premap.srd|o|1396992898|79046
+C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synlog\cc3000fpga_premap.srr|o|1396992898|2256
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin64\m_proasic.exe|i|1340212062|15745024
 C:\Microsemi\Libero_v10.1\Synopsys\synplify_F201203MSP1\bin\m_proasic.exe|i|1340212048|13099520

@@ -61,6 +61,8 @@ original code -> new code
 
 Finished factoring (Time elapsed 0h:00m:01s; Memory used current: 105MB peak: 106MB)
 
+@N: BN362 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_chanctrl.v":379:0:379:5|Removing sequential instance CORESPI_0.USPI.UCC.mtx_oen of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_chanctrl.v":589:0:589:5|Removing sequential instance CORESPI_0.USPI.UCC.mtx_spi_data_oen of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
 @N: BN362 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_fifo.v":143:0:143:5|Removing sequential instance CORESPI_0.USPI.URXF.full_next_out of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
 @N: BN362 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_fifo.v":143:0:143:5|Removing sequential instance CORESPI_0.USPI.URXF.empty_next_out of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
 @N: BN362 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_fifo.v":143:0:143:5|Removing sequential instance CORESPI_0.USPI.UTXF.full_next_out of view:PrimLib.dffr(prim) in hierarchy view:work.cc3000fpga(verilog) because there are no references to its outputs 
@@ -70,19 +72,19 @@ Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:01s; Me
 
 @W: MO160 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\actel\directcore\corespi\4.2.116\rtl\vlog\core\spi_chanctrl.v":946:0:946:5|Register bit CORESPI_0.USPI.UCC.stxp_lastframe is always 0, optimizing ...
 
-Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:02s; Memory used current: 105MB peak: 107MB)
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:01s; Memory used current: 105MB peak: 107MB)
 
 
-Starting Early Timing Optimization (Time elapsed 0h:00m:02s; Memory used current: 106MB peak: 107MB)
+Starting Early Timing Optimization (Time elapsed 0h:00m:01s; Memory used current: 105MB peak: 107MB)
 
 
-Finished Early Timing Optimization (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
+Finished Early Timing Optimization (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 110MB)
 
 
-Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:02s; Memory used current: 110MB peak: 111MB)
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:02s; Memory used current: 109MB peak: 110MB)
 
 
-Finished preparing to map (Time elapsed 0h:00m:02s; Memory used current: 109MB peak: 111MB)
+Finished preparing to map (Time elapsed 0h:00m:02s; Memory used current: 109MB peak: 110MB)
 
 
 High Fanout Net Report
@@ -90,12 +92,12 @@ High Fanout Net Report
 
 Driver Instance / Pin Name                      Fanout, notes                   
 --------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_ADLIB_INST / M2FRESETn     146 : 146 asynchronous set/reset
+cc3000fpga_MSS_0.MSS_ADLIB_INST / M2FRESETn     144 : 144 asynchronous set/reset
 ================================================================================
 
 @N: FP130 |Promoting Net cc3000fpga_MSS_0_M2F_RESET_N on CLKINT  I_75 
 
-Finished technology mapping (Time elapsed 0h:00m:02s; Memory used current: 111MB peak: 113MB)
+Finished technology mapping (Time elapsed 0h:00m:02s; Memory used current: 112MB peak: 113MB)
 
 
 Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:02s; Memory used current: 112MB peak: 113MB)
@@ -110,20 +112,20 @@ Finished restoring hierarchy (Time elapsed 0h:00m:02s; Memory used current: 112M
 
 Writing Analyst data base C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.srm
 
-Finished Writing Netlist Databases (Time elapsed 0h:00m:03s; Memory used current: 111MB peak: 113MB)
+Finished Writing Netlist Databases (Time elapsed 0h:00m:02s; Memory used current: 111MB peak: 113MB)
 
 Writing EDIF Netlist and constraint files
 F-2012.03M-SP1 
 
-Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:03s; Memory used current: 111MB peak: 113MB)
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:02s; Memory used current: 111MB peak: 113MB)
 
-@W: MT246 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":572:7:572:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\camsoupa\documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_mss\cc3000fpga_mss.v":559:7:559:18|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 Found clock FAB_CLK with period 10.00ns 
 Found clock FCLK with period 10.00ns 
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue Apr 08 14:11:34 2014
+# Timing Report written on Tue Apr 08 15:35:01 2014
 #
 
 
@@ -146,14 +148,14 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -5.724
+Worst slack in design: -5.810
 
                    Requested     Estimated     Requested     Estimated                Clock        Clock          
 Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group          
 ------------------------------------------------------------------------------------------------------------------
-FAB_CLK            100.0 MHz     95.3 MHz      10.000        10.491        -0.491     declared     clk_group_0    
+FAB_CLK            100.0 MHz     92.3 MHz      10.000        10.839        -0.839     declared     clk_group_0    
 FCLK               100.0 MHz     NA            10.000        NA            NA         declared     clk_group_0    
-System             100.0 MHz     87.2 MHz      10.000        11.470        -1.470     system       system_clkgroup
+System             100.0 MHz     88.4 MHz      10.000        11.309        -1.309     system       system_clkgroup
 ==================================================================================================================
 
 
@@ -167,10 +169,10 @@ Clocks             |    rise  to  rise    |    fall  to  fall   |    rise  to  f
 ----------------------------------------------------------------------------------------------------------
 Starting  Ending   |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
 ----------------------------------------------------------------------------------------------------------
-System    System   |  10.000      -1.471  |  No paths    -      |  No paths    -      |  No paths    -    
-System    FAB_CLK  |  10.000      -5.724  |  No paths    -      |  No paths    -      |  No paths    -    
+System    System   |  10.000      -1.309  |  No paths    -      |  No paths    -      |  No paths    -    
+System    FAB_CLK  |  10.000      -5.810  |  No paths    -      |  No paths    -      |  No paths    -    
 FAB_CLK   System   |  10.000      2.320   |  No paths    -      |  No paths    -      |  No paths    -    
-FAB_CLK   FAB_CLK  |  10.000      -0.491  |  No paths    -      |  No paths    -      |  No paths    -    
+FAB_CLK   FAB_CLK  |  10.000      -0.839  |  No paths    -      |  No paths    -      |  No paths    -    
 ==========================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -197,37 +199,37 @@ Starting Points with Worst Slack
 Instance                             Reference     Type         Pin     Net                  Time        Slack 
                                      Clock                                                                     
 ---------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URXF.empty_out        FAB_CLK       DFN1P0       Q       rx_fifo_empty        0.627       -0.491
-CORESPI_0.USPI.UCC.msrxp_strobe      FAB_CLK       DFN1C0       Q       rx_fifo_write        0.627       -0.099
-CORESPI_0.USPI.URF.control1[1]       FAB_CLK       DFN1E1C0     Q       MSTR                 0.627       -0.057
-CORESPI_0.USPI.UCC.mtx_bitsel[0]     FAB_CLK       DFN1E1P0     Q       mtx_bitsel[0]        0.627       0.318 
-CORESPI_0.USPI.URXF.counter_q[0]     FAB_CLK       DFN1C0       Q       rx_fifo_count[0]     0.627       0.362 
-CORESPI_0.USPI.UTXF.full_out         FAB_CLK       DFN1C0       Q       tx_fifo_full         0.627       0.402 
-CORESPI_0.USPI.UCC.mtx_bitsel[2]     FAB_CLK       DFN1E1C0     Q       mtx_bitsel[2]        0.627       0.491 
-CORESPI_0.USPI.UCC.mtx_fiforead      FAB_CLK       DFN1C0       Q       mtx_fiforead         0.627       0.631 
-CORESPI_0.USPI.UCC.mtx_bitsel[1]     FAB_CLK       DFN1E1P0     Q       mtx_bitsel[1]        0.627       0.645 
-CORESPI_0.USPI.URF.control1[0]       FAB_CLK       DFN1E1C0     Q       cfg_enable           0.627       0.954 
+CORESPI_0.USPI.URF.control1[1]       FAB_CLK       DFN1E1C0     Q       MSTR                 0.627       -0.839
+CORESPI_0.USPI.UCC.mtx_fiforead      FAB_CLK       DFN1C0       Q       mtx_fiforead         0.627       -0.727
+CORESPI_0.USPI.URXF.empty_out        FAB_CLK       DFN1P0       Q       rx_fifo_empty        0.627       -0.577
+CORESPI_0.USPI.UTXF.empty_out        FAB_CLK       DFN1P0       Q       tx_fifo_empty        0.627       -0.132
+CORESPI_0.USPI.UCC.msrxp_strobe      FAB_CLK       DFN1C0       Q       rx_fifo_write        0.627       0.354 
+CORESPI_0.USPI.UTXF.counter_q[0]     FAB_CLK       DFN1C0       Q       tx_fifo_count[0]     0.627       0.398 
+CORESPI_0.USPI.UCC.mtx_bitsel[0]     FAB_CLK       DFN1E1P0     Q       mtx_bitsel[0]        0.627       0.612 
+CORESPI_0.USPI.URXF.counter_q[0]     FAB_CLK       DFN1C0       Q       rx_fifo_count[0]     0.627       0.816 
+CORESPI_0.USPI.UCC.mtx_bitsel[1]     FAB_CLK       DFN1E1P0     Q       mtx_bitsel[1]        0.627       0.885 
+CORESPI_0.USPI.URF.control1[0]       FAB_CLK       DFN1E1C0     Q       cfg_enable           0.627       1.011 
 ===============================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                                       Starting                                                     Required           
-Instance                               Reference     Type         Pin     Net                       Time         Slack 
-                                       Clock                                                                           
------------------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URXF.empty_out          FAB_CLK       DFN1P0       D       empty_out_2               9.512        -0.491
-CORESPI_0.USPI.URXF.full_out           FAB_CLK       DFN1P0       D       full_out_2                9.512        -0.327
-CORESPI_0.USPI.UCC.mtx_bitsel[0]       FAB_CLK       DFN1E1P0     D       N_738                     9.512        -0.057
-CORESPI_0.USPI.UCC.mtx_bitsel[2]       FAB_CLK       DFN1E1C0     D       N_740                     9.542        -0.027
-CORESPI_0.USPI.UCC.mtx_bitsel[3]       FAB_CLK       DFN1E1C0     D       N_741                     9.542        -0.027
-CORESPI_0.USPI.UCC.mtx_bitsel[4]       FAB_CLK       DFN1E1C0     D       N_742                     9.542        -0.027
-CORESPI_0.USPI.UCC.mtx_alldone         FAB_CLK       DFN1C0       D       mtx_alldone_8_sqmuxa      9.512        0.113 
-CORESPI_0.USPI.UCC.mtx_bitsel[1]       FAB_CLK       DFN1E1P0     D       N_752                     9.512        0.136 
-CORESPI_0.USPI.UCC.mtx_datahold[0]     FAB_CLK       DFN1E1C0     E       mtx_fiforead_6_sqmuxa     9.482        0.227 
-CORESPI_0.USPI.UCC.mtx_datahold[1]     FAB_CLK       DFN1E1C0     E       mtx_fiforead_6_sqmuxa     9.482        0.227 
-=======================================================================================================================
+                                     Starting                                            Required           
+Instance                             Reference     Type         Pin     Net              Time         Slack 
+                                     Clock                                                                  
+------------------------------------------------------------------------------------------------------------
+CORESPI_0.USPI.UTXF.empty_out        FAB_CLK       DFN1P0       D       empty_out_2      9.512        -0.839
+CORESPI_0.USPI.UTXF.full_out         FAB_CLK       DFN1C0       D       full_out_2       9.512        -0.755
+CORESPI_0.USPI.URXF.empty_out        FAB_CLK       DFN1P0       D       empty_out_2      9.542        -0.577
+CORESPI_0.USPI.URXF.full_out         FAB_CLK       DFN1P0       D       full_out_2       9.542        -0.545
+CORESPI_0.USPI.UTXF.counter_q[5]     FAB_CLK       DFN1C0       D       counter_d[5]     9.512        0.063 
+CORESPI_0.USPI.UCC.mtx_bitsel[0]     FAB_CLK       DFN1E1P0     D       N_738            9.512        0.073 
+CORESPI_0.USPI.UTXF.counter_q[3]     FAB_CLK       DFN1C0       D       counter_d[3]     9.542        0.080 
+CORESPI_0.USPI.UTXF.counter_q[4]     FAB_CLK       DFN1C0       D       counter_d[4]     9.542        0.109 
+CORESPI_0.USPI.URXF.counter_q[5]     FAB_CLK       DFN1C0       D       counter_d[5]     9.512        0.180 
+CORESPI_0.USPI.UCC.mtx_bitsel[1]     FAB_CLK       DFN1E1P0     D       N_752            9.512        0.207 
+============================================================================================================
 
 
 
@@ -241,45 +243,45 @@ Path information for path number 1:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         9.512
 
-    - Propagation time:                      10.003
+    - Propagation time:                      10.351
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.491
+    = Slack (non-critical) :                 -0.839
 
     Number of logic level(s):                7
-    Starting point:                          CORESPI_0.USPI.URXF.empty_out / Q
-    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
+    Starting point:                          CORESPI_0.USPI.URF.control1[1] / Q
+    Ending point:                            CORESPI_0.USPI.UTXF.empty_out / D
     The start point is clocked by            FAB_CLK [rising] on pin CLK
     The end   point is clocked by            FAB_CLK [rising] on pin CLK
 
-Instance / Net                                                      Pin      Pin               Arrival     No. of    
-Name                                                     Type       Name     Dir     Delay     Time        Fan Out(s)
----------------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0     Q        Out     0.627     0.627       -         
-rx_fifo_empty                                            Net        -        -       1.395     -           8         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A      B        In      -         2.022       -         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A      Y        Out     0.346     2.368       -         
-N_103                                                    Net        -        -       1.007     -           4         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A      A        In      -         3.375       -         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A      Y        Out     0.439     3.814       -         
-un1_counter_d_0_sqmuxa[1]                                Net        -        -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1        C        In      -         5.209       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1        Y        Out     0.566     5.775       -         
-N115                                                     Net        -        -       0.328     -           2         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1        C        In      -         6.104       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1        Y        Out     0.558     6.661       -         
-N139                                                     Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2       B        In      -         6.935       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2       Y        Out     0.797     7.732       -         
-un1_counter_q[3]                                         Net        -        -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A      C        In      -         8.418       -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A      Y        Out     0.546     8.964       -         
-N_3_1                                                    Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2        A        In      -         9.237       -         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2        Y        Out     0.492     9.730       -         
-empty_out_2                                              Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0     D        In      -         10.003      -         
-=====================================================================================================================
-Total path delay (propagation time + setup) of 10.491 is 4.859(46.3%) logic and 5.632(53.7%) route.
+Instance / Net                                                         Pin      Pin               Arrival     No. of    
+Name                                                      Type         Name     Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------------------------------------------
+CORESPI_0.USPI.URF.control1[1]                            DFN1E1C0     Q        Out     0.627     0.627       -         
+MSTR                                                      Net          -        -       1.849     -           16        
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                    NOR3B        B        In      -         2.476       -         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                    NOR3B        Y        Out     0.516     2.992       -         
+un1_counter_d_0_sqmuxa[1]                                 Net          -        -       1.733     -           13        
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N     NOR2B        B        In      -         4.725       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N     NOR2B        Y        Out     0.534     5.259       -         
+N97                                                       Net          -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y      AO1          C        In      -         5.587       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y      AO1          Y        Out     0.538     6.126       -         
+N115                                                      Net          -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I17_Y      AO1          C        In      -         6.454       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I17_Y      AO1          Y        Out     0.538     6.992       -         
+N139                                                      Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I27_Y      XOR2         B        In      -         7.266       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I27_Y      XOR2         Y        Out     0.797     8.063       -         
+un1_counter_q[3]                                          Net          -        -       0.686     -           3         
+CORESPI_0.USPI.UTXF.empty_out_RNO_1                       NOR3A        C        In      -         8.749       -         
+CORESPI_0.USPI.UTXF.empty_out_RNO_1                       NOR3A        Y        Out     0.546     9.295       -         
+empty_out_2_0_a2_2                                        Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out_RNO                         AO1          B        In      -         9.569       -         
+CORESPI_0.USPI.UTXF.empty_out_RNO                         AO1          Y        Out     0.509     10.077      -         
+empty_out_2                                               Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out                             DFN1P0       D        In      -         10.351      -         
+========================================================================================================================
+Total path delay (propagation time + setup) of 10.839 is 5.093(47.0%) logic and 5.746(53.0%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -289,96 +291,96 @@ Path information for path number 2:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         9.512
 
-    - Propagation time:                      9.839
+    - Propagation time:                      10.267
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.327
+    = Slack (non-critical) :                 -0.755
 
     Number of logic level(s):                7
-    Starting point:                          CORESPI_0.USPI.URXF.empty_out / Q
-    Ending point:                            CORESPI_0.USPI.URXF.full_out / D
+    Starting point:                          CORESPI_0.USPI.URF.control1[1] / Q
+    Ending point:                            CORESPI_0.USPI.UTXF.full_out / D
     The start point is clocked by            FAB_CLK [rising] on pin CLK
     The end   point is clocked by            FAB_CLK [rising] on pin CLK
 
-Instance / Net                                                      Pin      Pin               Arrival     No. of    
-Name                                                     Type       Name     Dir     Delay     Time        Fan Out(s)
----------------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0     Q        Out     0.627     0.627       -         
-rx_fifo_empty                                            Net        -        -       1.395     -           8         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A      B        In      -         2.022       -         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A      Y        Out     0.346     2.368       -         
-N_103                                                    Net        -        -       1.007     -           4         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A      A        In      -         3.375       -         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A      Y        Out     0.439     3.814       -         
-un1_counter_d_0_sqmuxa[1]                                Net        -        -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I12_Y     MAJ3       B        In      -         5.209       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I12_Y     MAJ3       Y        Out     0.837     6.046       -         
-N142                                                     Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I26_Y     XOR2       B        In      -         6.319       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I26_Y     XOR2       Y        Out     0.797     7.117       -         
-un1_counter_q[2]                                         Net        -        -       0.328     -           2         
-CORESPI_0.USPI.URXF.counter_d_0_a2[2]                    NOR2A      A        In      -         7.445       -         
-CORESPI_0.USPI.URXF.counter_d_0_a2[2]                    NOR2A      Y        Out     0.439     7.884       -         
-counter_d[2]                                             Net        -        -       0.328     -           2         
-CORESPI_0.USPI.URXF.full_out_RNO_1                       XA1A       C        In      -         8.212       -         
-CORESPI_0.USPI.URXF.full_out_RNO_1                       XA1A       Y        Out     0.549     8.761       -         
-full_out_2_0_a2_3                                        Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.full_out_RNO                         OR3B       B        In      -         9.035       -         
-CORESPI_0.USPI.URXF.full_out_RNO                         OR3B       Y        Out     0.531     9.566       -         
-full_out_2                                               Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.full_out                             DFN1P0     D        In      -         9.839       -         
-=====================================================================================================================
-Total path delay (propagation time + setup) of 10.327 is 5.053(48.9%) logic and 5.274(51.1%) route.
+Instance / Net                                                          Pin      Pin               Arrival     No. of    
+Name                                                       Type         Name     Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------------------------------
+CORESPI_0.USPI.URF.control1[1]                             DFN1E1C0     Q        Out     0.627     0.627       -         
+MSTR                                                       Net          -        -       1.849     -           16        
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                     NOR3B        B        In      -         2.476       -         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                     NOR3B        Y        Out     0.516     2.992       -         
+un1_counter_d_0_sqmuxa[1]                                  Net          -        -       1.733     -           13        
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N      NOR2B        B        In      -         4.725       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N      NOR2B        Y        Out     0.534     5.259       -         
+N97                                                        Net          -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y       AO1          C        In      -         5.587       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y       AO1          Y        Out     0.538     6.126       -         
+N115                                                       Net          -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     OR2          B        In      -         6.454       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     OR2          Y        Out     0.550     7.004       -         
+ADD_6x6_fast_I20_Y_1                                       Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y       AO1          C        In      -         7.278       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y       AO1          Y        Out     0.538     7.816       -         
+N134                                                       Net          -        -       0.686     -           3         
+CORESPI_0.USPI.UTXF.full_out_RNO_1                         XA1C         A        In      -         8.502       -         
+CORESPI_0.USPI.UTXF.full_out_RNO_1                         XA1C         Y        Out     0.701     9.203       -         
+full_out_2_0_a2_2                                          Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.full_out_RNO                           NOR3B        B        In      -         9.477       -         
+CORESPI_0.USPI.UTXF.full_out_RNO                           NOR3B        Y        Out     0.516     9.993       -         
+full_out_2                                                 Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.full_out                               DFN1C0       D        In      -         10.267      -         
+=========================================================================================================================
+Total path delay (propagation time + setup) of 10.755 is 5.009(46.6%) logic and 5.746(53.4%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
 Path information for path number 3: 
       Requested Period:                      10.000
-    - Setup time:                            0.458
+    - Setup time:                            0.488
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.542
+    = Required time:                         9.512
 
-    - Propagation time:                      9.641
+    - Propagation time:                      10.239
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.099
+    = Slack (non-critical) :                 -0.726
 
     Number of logic level(s):                8
-    Starting point:                          CORESPI_0.USPI.UCC.msrxp_strobe / Q
-    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
+    Starting point:                          CORESPI_0.USPI.UCC.mtx_fiforead / Q
+    Ending point:                            CORESPI_0.USPI.UTXF.empty_out / D
     The start point is clocked by            FAB_CLK [rising] on pin CLK
     The end   point is clocked by            FAB_CLK [rising] on pin CLK
 
-Instance / Net                                                            Pin      Pin               Arrival     No. of    
-Name                                                           Type       Name     Dir     Delay     Time        Fan Out(s)
----------------------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.UCC.msrxp_strobe                                DFN1C0     Q        Out     0.627     0.627       -         
-rx_fifo_write                                                  Net        -        -       1.454     -           10        
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I0_CO1_a0_1     NOR2B      B        In      -         2.081       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I0_CO1_a0_1     NOR2B      Y        Out     0.534     2.615       -         
-ADD_6x6_fast_I0_CO1_a0_1                                       Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I0_CO1_a0       NOR3B      B        In      -         2.888       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I0_CO1_a0       NOR3B      Y        Out     0.516     3.405       -         
-N_1_2                                                          Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I0_CO1_0        OR2        B        In      -         3.678       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I0_CO1_0        OR2        Y        Out     0.550     4.228       -         
-N94                                                            Net        -        -       1.007     -           4         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I25_Y_0         XOR2       B        In      -         5.235       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I25_Y_0         XOR2       Y        Out     0.797     6.032       -         
-ADD_6x6_fast_I25_Y_0                                           Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I25_Y           XOR2       A        In      -         6.306       -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I25_Y           XOR2       Y        Out     0.347     6.654       -         
-un1_counter_q[1]                                               Net        -        -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_2                            NOR2       A        In      -         7.340       -         
-CORESPI_0.USPI.URXF.empty_out_RNO_2                            NOR2       Y        Out     0.432     7.772       -         
-r_m1_0_a2_0                                                    Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                            NOR3A      A        In      -         8.045       -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                            NOR3A      Y        Out     0.565     8.610       -         
-N_3_1                                                          Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                              MX2        A        In      -         8.884       -         
-CORESPI_0.USPI.URXF.empty_out_RNO                              MX2        Y        Out     0.484     9.367       -         
-empty_out_2                                                    Net        -        -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                                  DFN1P0     D        In      -         9.641       -         
-===========================================================================================================================
-Total path delay (propagation time + setup) of 10.099 is 5.310(52.6%) logic and 4.789(47.4%) route.
+Instance / Net                                                       Pin      Pin               Arrival     No. of    
+Name                                                      Type       Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------
+CORESPI_0.USPI.UCC.mtx_fiforead                           DFN1C0     Q        Out     0.627     0.627       -         
+mtx_fiforead                                              Net        -        -       1.089     -           5         
+CORESPI_0.USPI.UTXF.counter_d_0_sqmuxa_1_0_a2_m2_e_0      AOI1B      C        In      -         1.716       -         
+CORESPI_0.USPI.UTXF.counter_d_0_sqmuxa_1_0_a2_m2_e_0      AOI1B      Y        Out     0.345     2.060       -         
+counter_d_0_sqmuxa_1_0_a2_m2_e_0                          Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                    NOR3B      A        In      -         2.334       -         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                    NOR3B      Y        Out     0.546     2.879       -         
+un1_counter_d_0_sqmuxa[1]                                 Net        -        -       1.733     -           13        
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N     NOR2B      B        In      -         4.613       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N     NOR2B      Y        Out     0.534     5.147       -         
+N97                                                       Net        -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y      AO1        C        In      -         5.475       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y      AO1        Y        Out     0.538     6.013       -         
+N115                                                      Net        -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I17_Y      AO1        C        In      -         6.342       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I17_Y      AO1        Y        Out     0.538     6.880       -         
+N139                                                      Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I27_Y      XOR2       B        In      -         7.154       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I27_Y      XOR2       Y        Out     0.797     7.951       -         
+un1_counter_q[3]                                          Net        -        -       0.686     -           3         
+CORESPI_0.USPI.UTXF.empty_out_RNO_1                       NOR3A      C        In      -         8.637       -         
+CORESPI_0.USPI.UTXF.empty_out_RNO_1                       NOR3A      Y        Out     0.546     9.183       -         
+empty_out_2_0_a2_2                                        Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out_RNO                         AO1        B        In      -         9.456       -         
+CORESPI_0.USPI.UTXF.empty_out_RNO                         AO1        Y        Out     0.509     9.965       -         
+empty_out_2                                               Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out                             DFN1P0     D        In      -         10.239      -         
+======================================================================================================================
+Total path delay (propagation time + setup) of 10.727 is 5.467(51.0%) logic and 5.259(49.0%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -388,75 +390,96 @@ Path information for path number 4:
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         9.512
 
-    - Propagation time:                      9.569
+    - Propagation time:                      10.154
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.057
+    = Slack (non-critical) :                 -0.642
 
-    Number of logic level(s):                4
-    Starting point:                          CORESPI_0.USPI.URF.control1[1] / Q
-    Ending point:                            CORESPI_0.USPI.UCC.mtx_bitsel[0] / D
+    Number of logic level(s):                8
+    Starting point:                          CORESPI_0.USPI.UCC.mtx_fiforead / Q
+    Ending point:                            CORESPI_0.USPI.UTXF.full_out / D
     The start point is clocked by            FAB_CLK [rising] on pin CLK
     The end   point is clocked by            FAB_CLK [rising] on pin CLK
 
-Instance / Net                                             Pin      Pin               Arrival     No. of    
-Name                                          Type         Name     Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URF.control1[1]                DFN1E1C0     Q        Out     0.627     0.627       -         
-MSTR                                          Net          -        -       2.003     -           20        
-CORESPI_0.USPI.UCC.un1_mtx_state50_i_0_o2     OR2B         B        In      -         2.630       -         
-CORESPI_0.USPI.UCC.un1_mtx_state50_i_0_o2     OR2B         Y        Out     0.534     3.164       -         
-N_800                                         Net          -        -       1.926     -           18        
-CORESPI_0.USPI.UCC.spi_clk_tick_RNIMMN21      OR2A         B        In      -         5.089       -         
-CORESPI_0.USPI.UCC.spi_clk_tick_RNIMMN21      OR2A         Y        Out     0.438     5.527       -         
-N_174                                         Net          -        -       1.512     -           11        
-CORESPI_0.USPI.UCC.mtx_state_RNIT5MM3[5]      NOR2         B        In      -         7.038       -         
-CORESPI_0.USPI.UCC.mtx_state_RNIT5MM3[5]      NOR2         Y        Out     0.438     7.476       -         
-N_296                                         Net          -        -       1.211     -           6         
-CORESPI_0.USPI.UCC.mtx_bitsel_RNO[0]          OR3A         B        In      -         8.687       -         
-CORESPI_0.USPI.UCC.mtx_bitsel_RNO[0]          OR3A         Y        Out     0.608     9.295       -         
-N_738                                         Net          -        -       0.274     -           1         
-CORESPI_0.USPI.UCC.mtx_bitsel[0]              DFN1E1P0     D        In      -         9.569       -         
-============================================================================================================
-Total path delay (propagation time + setup) of 10.057 is 3.132(31.1%) logic and 6.925(68.9%) route.
+Instance / Net                                                        Pin      Pin               Arrival     No. of    
+Name                                                       Type       Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------------------------
+CORESPI_0.USPI.UCC.mtx_fiforead                            DFN1C0     Q        Out     0.627     0.627       -         
+mtx_fiforead                                               Net        -        -       1.089     -           5         
+CORESPI_0.USPI.UTXF.counter_d_0_sqmuxa_1_0_a2_m2_e_0       AOI1B      C        In      -         1.716       -         
+CORESPI_0.USPI.UTXF.counter_d_0_sqmuxa_1_0_a2_m2_e_0       AOI1B      Y        Out     0.345     2.060       -         
+counter_d_0_sqmuxa_1_0_a2_m2_e_0                           Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                     NOR3B      A        In      -         2.334       -         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                     NOR3B      Y        Out     0.546     2.879       -         
+un1_counter_d_0_sqmuxa[1]                                  Net        -        -       1.733     -           13        
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N      NOR2B      B        In      -         4.613       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N      NOR2B      Y        Out     0.534     5.147       -         
+N97                                                        Net        -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y       AO1        C        In      -         5.475       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y       AO1        Y        Out     0.538     6.013       -         
+N115                                                       Net        -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     OR2        B        In      -         6.342       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     OR2        Y        Out     0.550     6.892       -         
+ADD_6x6_fast_I20_Y_1                                       Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y       AO1        C        In      -         7.165       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y       AO1        Y        Out     0.538     7.704       -         
+N134                                                       Net        -        -       0.686     -           3         
+CORESPI_0.USPI.UTXF.full_out_RNO_1                         XA1C       A        In      -         8.390       -         
+CORESPI_0.USPI.UTXF.full_out_RNO_1                         XA1C       Y        Out     0.701     9.091       -         
+full_out_2_0_a2_2                                          Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.full_out_RNO                           NOR3B      B        In      -         9.364       -         
+CORESPI_0.USPI.UTXF.full_out_RNO                           NOR3B      Y        Out     0.516     9.881       -         
+full_out_2                                                 Net        -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.full_out                               DFN1C0     D        In      -         10.154      -         
+=======================================================================================================================
+Total path delay (propagation time + setup) of 10.642 is 5.383(50.6%) logic and 5.259(49.4%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
 Path information for path number 5: 
       Requested Period:                      10.000
-    - Setup time:                            0.458
+    - Setup time:                            0.488
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.542
+    = Required time:                         9.512
 
-    - Propagation time:                      9.569
+    - Propagation time:                      10.145
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.027
+    = Slack (non-critical) :                 -0.633
 
-    Number of logic level(s):                4
+    Number of logic level(s):                7
     Starting point:                          CORESPI_0.USPI.URF.control1[1] / Q
-    Ending point:                            CORESPI_0.USPI.UCC.mtx_bitsel[2] / D
+    Ending point:                            CORESPI_0.USPI.UTXF.empty_out / D
     The start point is clocked by            FAB_CLK [rising] on pin CLK
     The end   point is clocked by            FAB_CLK [rising] on pin CLK
 
-Instance / Net                                             Pin      Pin               Arrival     No. of    
-Name                                          Type         Name     Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URF.control1[1]                DFN1E1C0     Q        Out     0.627     0.627       -         
-MSTR                                          Net          -        -       2.003     -           20        
-CORESPI_0.USPI.UCC.un1_mtx_state50_i_0_o2     OR2B         B        In      -         2.630       -         
-CORESPI_0.USPI.UCC.un1_mtx_state50_i_0_o2     OR2B         Y        Out     0.534     3.164       -         
-N_800                                         Net          -        -       1.926     -           18        
-CORESPI_0.USPI.UCC.spi_clk_tick_RNIMMN21      OR2A         B        In      -         5.089       -         
-CORESPI_0.USPI.UCC.spi_clk_tick_RNIMMN21      OR2A         Y        Out     0.438     5.527       -         
-N_174                                         Net          -        -       1.512     -           11        
-CORESPI_0.USPI.UCC.mtx_state_RNIT5MM3[5]      NOR2         B        In      -         7.038       -         
-CORESPI_0.USPI.UCC.mtx_state_RNIT5MM3[5]      NOR2         Y        Out     0.438     7.476       -         
-N_296                                         Net          -        -       1.211     -           6         
-CORESPI_0.USPI.UCC.mtx_bitsel_RNO[2]          NOR3         B        In      -         8.687       -         
-CORESPI_0.USPI.UCC.mtx_bitsel_RNO[2]          NOR3         Y        Out     0.608     9.295       -         
-N_740                                         Net          -        -       0.274     -           1         
-CORESPI_0.USPI.UCC.mtx_bitsel[2]              DFN1E1C0     D        In      -         9.569       -         
-============================================================================================================
-Total path delay (propagation time + setup) of 10.027 is 3.102(30.9%) logic and 6.925(69.1%) route.
+Instance / Net                                                          Pin      Pin               Arrival     No. of    
+Name                                                       Type         Name     Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------------------------------
+CORESPI_0.USPI.URF.control1[1]                             DFN1E1C0     Q        Out     0.627     0.627       -         
+MSTR                                                       Net          -        -       1.849     -           16        
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                     NOR3B        B        In      -         2.476       -         
+CORESPI_0.USPI.UTXF.empty_out_RNIVESK5                     NOR3B        Y        Out     0.516     2.992       -         
+un1_counter_d_0_sqmuxa[1]                                  Net          -        -       1.733     -           13        
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N      NOR2B        B        In      -         4.725       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I1_G0N      NOR2B        Y        Out     0.534     5.259       -         
+N97                                                        Net          -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y       AO1          C        In      -         5.587       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I10_Y       AO1          Y        Out     0.538     6.126       -         
+N115                                                       Net          -        -       0.328     -           2         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     OR2          B        In      -         6.454       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     OR2          Y        Out     0.550     7.004       -         
+ADD_6x6_fast_I20_Y_1                                       Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y       AO1          C        In      -         7.278       -         
+CORESPI_0.USPI.UTXF.un1_counter_q.ADD_6x6_fast_I20_Y       AO1          Y        Out     0.538     7.816       -         
+N134                                                       Net          -        -       0.686     -           3         
+CORESPI_0.USPI.UTXF.empty_out_RNO_0                        XA1C         A        In      -         8.502       -         
+CORESPI_0.USPI.UTXF.empty_out_RNO_0                        XA1C         Y        Out     0.701     9.203       -         
+empty_out_2_0_a2_3                                         Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out_RNO                          AO1          A        In      -         9.477       -         
+CORESPI_0.USPI.UTXF.empty_out_RNO                          AO1          Y        Out     0.395     9.872       -         
+empty_out_2                                                Net          -        -       0.274     -           1         
+CORESPI_0.USPI.UTXF.empty_out                              DFN1P0       D        In      -         10.145      -         
+=========================================================================================================================
+Total path delay (propagation time + setup) of 10.633 is 4.887(46.0%) logic and 5.746(54.0%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -475,16 +498,16 @@ Starting Points with Worst Slack
 Instance                            Reference     Type        Pin              Net                                       Time        Slack 
                                     Clock                                                                                                  
 -------------------------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[9]      CoreAPB3_0_APBmslave0_PADDR[25]           0.000       -5.724
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPSEL          cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx     0.000       -5.724
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[10]     CoreAPB3_0_APBmslave0_PADDR[26]           0.000       -5.573
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[8]      CoreAPB3_0_APBmslave0_PADDR[24]           0.000       -5.523
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[11]     CoreAPB3_0_APBmslave0_PADDR[27]           0.000       -5.455
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[3]      CoreAPB3_0_APBmslave0_PADDR[3]            0.000       -4.633
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[4]      CoreAPB3_0_APBmslave0_PADDR[4]            0.000       -4.427
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPENABLE       CoreAPB3_0_APBmslave0_PENABLE             0.000       -4.120
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[6]      CoreAPB3_0_APBmslave0_PADDR[6]            0.000       -3.382
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[2]      CoreAPB3_0_APBmslave0_PADDR[2]            0.000       -3.052
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[9]      CoreAPB3_0_APBmslave0_PADDR[25]           0.000       -5.810
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPSEL          cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx     0.000       -5.810
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[10]     CoreAPB3_0_APBmslave0_PADDR[26]           0.000       -5.616
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[8]      CoreAPB3_0_APBmslave0_PADDR[24]           0.000       -5.570
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[11]     CoreAPB3_0_APBmslave0_PADDR[27]           0.000       -5.498
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[3]      CoreAPB3_0_APBmslave0_PADDR[3]            0.000       -4.689
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[4]      CoreAPB3_0_APBmslave0_PADDR[4]            0.000       -4.483
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPENABLE       CoreAPB3_0_APBmslave0_PENABLE             0.000       -4.205
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[6]      CoreAPB3_0_APBmslave0_PADDR[6]            0.000       -3.467
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[2]      CoreAPB3_0_APBmslave0_PADDR[2]            0.000       -3.138
 ===========================================================================================================================================
 
 
@@ -495,16 +518,16 @@ Ending Points with Worst Slack
 Instance                                Reference     Type       Pin     Net              Time         Slack 
                                         Clock                                                                
 -------------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.URXF.empty_out           System        DFN1P0     D       empty_out_2      9.512        -5.724
-CORESPI_0.USPI.URXF.full_out            System        DFN1P0     D       full_out_2       9.512        -5.552
-CORESPI_0.USPI.URXF.counter_q[3]        System        DFN1C0     D       counter_d[3]     9.542        -4.822
-CORESPI_0.USPI.URXF.counter_q[5]        System        DFN1C0     D       counter_d[5]     9.512        -4.029
-CORESPI_0.USPI.URXF.counter_q[2]        System        DFN1C0     D       counter_d[2]     9.542        -3.896
+CORESPI_0.USPI.URXF.empty_out           System        DFN1P0     D       empty_out_2      9.542        -5.810
+CORESPI_0.USPI.URXF.full_out            System        DFN1P0     D       full_out_2       9.542        -5.777
+CORESPI_0.USPI.URXF.counter_q[5]        System        DFN1C0     D       counter_d[5]     9.512        -5.053
+CORESPI_0.USPI.URXF.counter_q[3]        System        DFN1C0     D       counter_d[3]     9.542        -4.881
+CORESPI_0.USPI.UTXF.empty_out           System        DFN1P0     D       empty_out_2      9.512        -4.456
+CORESPI_0.USPI.UTXF.full_out            System        DFN1C0     D       full_out_2       9.512        -4.260
+CORESPI_0.USPI.URXF.counter_q[2]        System        DFN1C0     D       counter_d[2]     9.542        -3.912
 CORESPI_0.USPI.URXF.rd_pointer_q[3]     System        DFN1C0     D       N_43             9.542        -3.597
 CORESPI_0.USPI.URXF.rd_pointer_q[4]     System        DFN1C0     D       N_45             9.542        -3.597
-CORESPI_0.USPI.URXF.counter_q[0]        System        DFN1C0     D       counter_d[0]     9.512        -3.294
-CORESPI_0.USPI.UTXF.full_out            System        DFN1C0     D       full_out_2       9.512        -3.226
-CORESPI_0.USPI.UTXF.counter_q[4]        System        DFN1C0     D       counter_d[4]     9.542        -3.171
+CORESPI_0.USPI.UTXF.counter_q[3]        System        DFN1C0     D       counter_d[3]     9.542        -3.538
 =============================================================================================================
 
 
@@ -515,14 +538,136 @@ Worst Path Information
 
 Path information for path number 1: 
       Requested Period:                      10.000
+    - Setup time:                            0.458
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         9.542
+
+    - Propagation time:                      15.352
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (critical) :                     -5.810
+
+    Number of logic level(s):                11
+    Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPADDR[9]
+    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                         Pin             Pin               Arrival     No. of    
+Name                                                       Type        Name            Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------------------------------------
+cc3000fpga_MSS_0.MSS_ADLIB_INST                            MSS_APB     MSSPADDR[9]     Out     0.000     0.000       -         
+CoreAPB3_0_APBmslave0_PADDR[25]                            Net         -               -       0.274     -           1         
+CoreAPB3_0.CAPB3O0OI_2[0]                                  NOR3A       C               In      -         0.274       -         
+CoreAPB3_0.CAPB3O0OI_2[0]                                  NOR3A       Y               Out     0.546     0.819       -         
+CAPB3O0OI_2[0]                                             Net         -               -       1.089     -           5         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                  NOR3C       B               In      -         1.908       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                  NOR3C       Y               Out     0.516     2.424       -         
+tx_fifo_last_0_a2_2_0                                      Net         -               -       0.686     -           3         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                    NOR3B       A               In      -         3.110       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                    NOR3B       Y               Out     0.546     3.656       -         
+N_18                                                       Net         -               -       1.395     -           8         
+CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                      NOR3B       A               In      -         5.051       -         
+CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                      NOR3B       Y               Out     0.546     5.596       -         
+rx_fifo_read                                               Net         -               -       1.395     -           8         
+CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                     NOR2A       A               In      -         6.991       -         
+CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                     NOR2A       Y               Out     0.534     7.525       -         
+N_103                                                      Net         -               -       1.007     -           4         
+CORESPI_0.USPI.URXF.empty_out_RNI2VL65                     NOR2A       A               In      -         8.532       -         
+CORESPI_0.USPI.URXF.empty_out_RNI2VL65                     NOR2A       Y               Out     0.534     9.066       -         
+un1_counter_d_0_sqmuxa[1]                                  Net         -               -       1.454     -           10        
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y       OA1         C               In      -         10.520      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y       OA1         Y               Out     0.566     11.086      -         
+N115                                                       Net         -               -       0.328     -           2         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     AO1         C               In      -         11.415      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     AO1         Y               Out     0.538     11.953      -         
+ADD_6x6_fast_I20_Y_1                                       Net         -               -       0.274     -           1         
+CORESPI_0.USPI.URXF.counter_q_RNIRC2B81[5]                 AX1D        B               In      -         12.227      -         
+CORESPI_0.USPI.URXF.counter_q_RNIRC2B81[5]                 AX1D        Y               Out     0.845     13.071      -         
+un1_counter_q[5]                                           Net         -               -       0.686     -           3         
+CORESPI_0.USPI.URXF.empty_out_RNO_1                        OR3         C               In      -         13.757      -         
+CORESPI_0.USPI.URXF.empty_out_RNO_1                        OR3         Y               Out     0.639     14.396      -         
+N_2_3                                                      Net         -               -       0.274     -           1         
+CORESPI_0.USPI.URXF.empty_out_RNO                          MX2         S               In      -         14.670      -         
+CORESPI_0.USPI.URXF.empty_out_RNO                          MX2         Y               Out     0.408     15.078      -         
+empty_out_2                                                Net         -               -       0.274     -           1         
+CORESPI_0.USPI.URXF.empty_out                              DFN1P0      D               In      -         15.352      -         
+===============================================================================================================================
+Total path delay (propagation time + setup) of 15.810 is 6.676(42.2%) logic and 9.134(57.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 2: 
+      Requested Period:                      10.000
+    - Setup time:                            0.458
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         9.542
+
+    - Propagation time:                      15.352
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (critical) :                     -5.810
+
+    Number of logic level(s):                11
+    Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPSEL
+    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                         Pin         Pin               Arrival     No. of    
+Name                                                       Type        Name        Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------------------------
+cc3000fpga_MSS_0.MSS_ADLIB_INST                            MSS_APB     MSSPSEL     Out     0.000     0.000       -         
+cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx                      Net         -           -       0.274     -           1         
+CoreAPB3_0.CAPB3O0OI_2[0]                                  NOR3A       A           In      -         0.274       -         
+CoreAPB3_0.CAPB3O0OI_2[0]                                  NOR3A       Y           Out     0.546     0.819       -         
+CAPB3O0OI_2[0]                                             Net         -           -       1.089     -           5         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                  NOR3C       B           In      -         1.908       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                  NOR3C       Y           Out     0.516     2.424       -         
+tx_fifo_last_0_a2_2_0                                      Net         -           -       0.686     -           3         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                    NOR3B       A           In      -         3.110       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                    NOR3B       Y           Out     0.546     3.656       -         
+N_18                                                       Net         -           -       1.395     -           8         
+CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                      NOR3B       A           In      -         5.051       -         
+CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                      NOR3B       Y           Out     0.546     5.596       -         
+rx_fifo_read                                               Net         -           -       1.395     -           8         
+CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                     NOR2A       A           In      -         6.991       -         
+CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                     NOR2A       Y           Out     0.534     7.525       -         
+N_103                                                      Net         -           -       1.007     -           4         
+CORESPI_0.USPI.URXF.empty_out_RNI2VL65                     NOR2A       A           In      -         8.532       -         
+CORESPI_0.USPI.URXF.empty_out_RNI2VL65                     NOR2A       Y           Out     0.534     9.066       -         
+un1_counter_d_0_sqmuxa[1]                                  Net         -           -       1.454     -           10        
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y       OA1         C           In      -         10.520      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y       OA1         Y           Out     0.566     11.086      -         
+N115                                                       Net         -           -       0.328     -           2         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     AO1         C           In      -         11.415      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I20_Y_1     AO1         Y           Out     0.538     11.953      -         
+ADD_6x6_fast_I20_Y_1                                       Net         -           -       0.274     -           1         
+CORESPI_0.USPI.URXF.counter_q_RNIRC2B81[5]                 AX1D        B           In      -         12.227      -         
+CORESPI_0.USPI.URXF.counter_q_RNIRC2B81[5]                 AX1D        Y           Out     0.845     13.071      -         
+un1_counter_q[5]                                           Net         -           -       0.686     -           3         
+CORESPI_0.USPI.URXF.empty_out_RNO_1                        OR3         C           In      -         13.757      -         
+CORESPI_0.USPI.URXF.empty_out_RNO_1                        OR3         Y           Out     0.639     14.396      -         
+N_2_3                                                      Net         -           -       0.274     -           1         
+CORESPI_0.USPI.URXF.empty_out_RNO                          MX2         S           In      -         14.670      -         
+CORESPI_0.USPI.URXF.empty_out_RNO                          MX2         Y           Out     0.408     15.078      -         
+empty_out_2                                                Net         -           -       0.274     -           1         
+CORESPI_0.USPI.URXF.empty_out                              DFN1P0      D           In      -         15.352      -         
+===========================================================================================================================
+Total path delay (propagation time + setup) of 15.810 is 6.676(42.2%) logic and 9.134(57.8%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      10.000
     - Setup time:                            0.488
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         9.512
 
-    - Propagation time:                      15.236
+    - Propagation time:                      15.295
     - Clock delay at starting point:         0.000 (ideal)
     - Estimated clock delay at start point:  -0.000
-    = Slack (critical) :                     -5.724
+    = Slack (non-critical) :                 -5.783
 
     Number of logic level(s):                11
     Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPADDR[9]
@@ -538,11 +683,11 @@ CoreAPB3_0_APBmslave0_PADDR[25]                          Net         -          
 CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       C               In      -         0.274       -         
 CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       Y               Out     0.546     0.819       -         
 CAPB3O0OI_2[0]                                           Net         -               -       1.089     -           5         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        B               In      -         1.908       -         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        Y               Out     0.516     2.424       -         
-rdata_0_sqmuxa_0_o2_0_0                                  Net         -               -       0.686     -           3         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       C               In      -         3.110       -         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       Y               Out     0.546     3.656       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                NOR3C       B               In      -         1.908       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                NOR3C       Y               Out     0.516     2.424       -         
+tx_fifo_last_0_a2_2_0                                    Net         -               -       0.686     -           3         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3B       A               In      -         3.110       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3B       Y               Out     0.546     3.656       -         
 N_18                                                     Net         -               -       1.395     -           8         
 CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       A               In      -         5.051       -         
 CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       Y               Out     0.546     5.596       -         
@@ -552,38 +697,38 @@ CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       Y          
 N_103                                                    Net         -               -       1.007     -           4         
 CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       A               In      -         8.532       -         
 CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       Y               Out     0.534     9.066       -         
-un1_counter_d_0_sqmuxa[1]                                Net         -               -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C               In      -         10.461      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y               Out     0.566     11.027      -         
+un1_counter_d_0_sqmuxa[1]                                Net         -               -       1.454     -           10        
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C               In      -         10.520      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y               Out     0.566     11.086      -         
 N115                                                     Net         -               -       0.328     -           2         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C               In      -         11.355      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y               Out     0.538     11.894      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C               In      -         11.415      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y               Out     0.538     11.953      -         
 N139                                                     Net         -               -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B               In      -         12.167      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y               Out     0.797     12.964      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B               In      -         12.227      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y               Out     0.797     13.024      -         
 un1_counter_q[3]                                         Net         -               -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C               In      -         13.651      -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y               Out     0.546     14.196      -         
-N_3_1                                                    Net         -               -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A               In      -         14.470      -         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y               Out     0.492     14.963      -         
+CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C               In      -         13.710      -         
+CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y               Out     0.546     14.256      -         
+N_3_0                                                    Net         -               -       0.274     -           1         
+CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A               In      -         14.529      -         
+CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y               Out     0.492     15.022      -         
 empty_out_2                                              Net         -               -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D               In      -         15.236      -         
+CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D               In      -         15.295      -         
 =============================================================================================================================
-Total path delay (propagation time + setup) of 15.724 is 6.649(42.3%) logic and 9.075(57.7%) route.
+Total path delay (propagation time + setup) of 15.783 is 6.649(42.1%) logic and 9.134(57.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
-Path information for path number 2: 
+Path information for path number 4: 
       Requested Period:                      10.000
     - Setup time:                            0.488
     + Clock delay at ending point:           0.000 (ideal)
     = Required time:                         9.512
 
-    - Propagation time:                      15.236
+    - Propagation time:                      15.295
     - Clock delay at starting point:         0.000 (ideal)
     - Estimated clock delay at start point:  -0.000
-    = Slack (critical) :                     -5.724
+    = Slack (non-critical) :                 -5.783
 
     Number of logic level(s):                11
     Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPSEL
@@ -599,11 +744,11 @@ cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx                    Net         -          
 CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       A           In      -         0.274       -         
 CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       Y           Out     0.546     0.819       -         
 CAPB3O0OI_2[0]                                           Net         -           -       1.089     -           5         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        B           In      -         1.908       -         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        Y           Out     0.516     2.424       -         
-rdata_0_sqmuxa_0_o2_0_0                                  Net         -           -       0.686     -           3         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       C           In      -         3.110       -         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       Y           Out     0.546     3.656       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                NOR3C       B           In      -         1.908       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                NOR3C       Y           Out     0.516     2.424       -         
+tx_fifo_last_0_a2_2_0                                    Net         -           -       0.686     -           3         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3B       A           In      -         3.110       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3B       Y           Out     0.546     3.656       -         
 N_18                                                     Net         -           -       1.395     -           8         
 CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       A           In      -         5.051       -         
 CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       Y           Out     0.546     5.596       -         
@@ -613,208 +758,86 @@ CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       Y          
 N_103                                                    Net         -           -       1.007     -           4         
 CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       A           In      -         8.532       -         
 CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       Y           Out     0.534     9.066       -         
-un1_counter_d_0_sqmuxa[1]                                Net         -           -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C           In      -         10.461      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y           Out     0.566     11.027      -         
+un1_counter_d_0_sqmuxa[1]                                Net         -           -       1.454     -           10        
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C           In      -         10.520      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y           Out     0.566     11.086      -         
 N115                                                     Net         -           -       0.328     -           2         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C           In      -         11.355      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y           Out     0.538     11.894      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C           In      -         11.415      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y           Out     0.538     11.953      -         
 N139                                                     Net         -           -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B           In      -         12.167      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y           Out     0.797     12.964      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B           In      -         12.227      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y           Out     0.797     13.024      -         
 un1_counter_q[3]                                         Net         -           -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C           In      -         13.651      -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y           Out     0.546     14.196      -         
-N_3_1                                                    Net         -           -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A           In      -         14.470      -         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y           Out     0.492     14.963      -         
+CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C           In      -         13.710      -         
+CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y           Out     0.546     14.256      -         
+N_3_0                                                    Net         -           -       0.274     -           1         
+CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A           In      -         14.529      -         
+CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y           Out     0.492     15.022      -         
 empty_out_2                                              Net         -           -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D           In      -         15.236      -         
+CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D           In      -         15.295      -         
 =========================================================================================================================
-Total path delay (propagation time + setup) of 15.724 is 6.649(42.3%) logic and 9.075(57.7%) route.
+Total path delay (propagation time + setup) of 15.783 is 6.649(42.1%) logic and 9.134(57.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
-Path information for path number 3: 
+Path information for path number 5: 
       Requested Period:                      10.000
-    - Setup time:                            0.488
+    - Setup time:                            0.458
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.512
+    = Required time:                         9.542
 
-    - Propagation time:                      15.085
+    - Propagation time:                      15.319
     - Clock delay at starting point:         0.000 (ideal)
     - Estimated clock delay at start point:  -0.000
-    = Slack (non-critical) :                 -5.573
+    = Slack (non-critical) :                 -5.777
 
     Number of logic level(s):                11
-    Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPADDR[10]
-    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
-    The start point is clocked by            System [rising]
-    The end   point is clocked by            FAB_CLK [rising] on pin CLK
-
-Instance / Net                                                       Pin              Pin               Arrival     No. of    
-Name                                                     Type        Name             Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_ADLIB_INST                          MSS_APB     MSSPADDR[10]     Out     0.000     0.000       -         
-CoreAPB3_0_APBmslave0_PADDR[26]                          Net         -                -       0.274     -           1         
-CoreAPB3_0.CAPB3O0OI_1[0]                                NOR2        B                In      -         0.274       -         
-CoreAPB3_0.CAPB3O0OI_1[0]                                NOR2        Y                Out     0.550     0.824       -         
-CAPB3O0OI_1[0]                                           Net         -                -       1.089     -           5         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        A                In      -         1.912       -         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        Y                Out     0.447     2.359       -         
-rdata_0_sqmuxa_0_o2_0_0                                  Net         -                -       0.686     -           3         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       C                In      -         3.045       -         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       Y                Out     0.609     3.654       -         
-N_18                                                     Net         -                -       1.395     -           8         
-CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       A                In      -         5.049       -         
-CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       Y                Out     0.566     5.615       -         
-rx_fifo_read                                             Net         -                -       1.395     -           8         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       A                In      -         7.010       -         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       Y                Out     0.439     7.449       -         
-N_103                                                    Net         -                -       1.007     -           4         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       A                In      -         8.457       -         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       Y                Out     0.439     8.896       -         
-un1_counter_d_0_sqmuxa[1]                                Net         -                -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C                In      -         10.291      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y                Out     0.566     10.857      -         
-N115                                                     Net         -                -       0.328     -           2         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C                In      -         11.185      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y                Out     0.558     11.743      -         
-N139                                                     Net         -                -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B                In      -         12.016      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y                Out     0.797     12.813      -         
-un1_counter_q[3]                                         Net         -                -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C                In      -         13.500      -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y                Out     0.546     14.045      -         
-N_3_1                                                    Net         -                -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A                In      -         14.319      -         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y                Out     0.492     14.812      -         
-empty_out_2                                              Net         -                -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D                In      -         15.085      -         
-==============================================================================================================================
-Total path delay (propagation time + setup) of 15.573 is 6.498(41.7%) logic and 9.075(58.3%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 4: 
-      Requested Period:                      10.000
-    - Setup time:                            0.488
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.512
-
-    - Propagation time:                      15.035
-    - Clock delay at starting point:         0.000 (ideal)
-    - Estimated clock delay at start point:  -0.000
-    = Slack (non-critical) :                 -5.523
-
-    Number of logic level(s):                11
-    Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPADDR[8]
-    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
+    Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPADDR[9]
+    Ending point:                            CORESPI_0.USPI.URXF.full_out / D
     The start point is clocked by            System [rising]
     The end   point is clocked by            FAB_CLK [rising] on pin CLK
 
 Instance / Net                                                       Pin             Pin               Arrival     No. of    
 Name                                                     Type        Name            Dir     Delay     Time        Fan Out(s)
 -----------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_ADLIB_INST                          MSS_APB     MSSPADDR[8]     Out     0.000     0.000       -         
-CoreAPB3_0_APBmslave0_PADDR[24]                          Net         -               -       0.274     -           1         
-CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       B               In      -         0.274       -         
-CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       Y               Out     0.415     0.689       -         
+cc3000fpga_MSS_0.MSS_ADLIB_INST                          MSS_APB     MSSPADDR[9]     Out     0.000     0.000       -         
+CoreAPB3_0_APBmslave0_PADDR[25]                          Net         -               -       0.274     -           1         
+CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       C               In      -         0.274       -         
+CoreAPB3_0.CAPB3O0OI_2[0]                                NOR3A       Y               Out     0.546     0.819       -         
 CAPB3O0OI_2[0]                                           Net         -               -       1.089     -           5         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        B               In      -         1.778       -         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        Y               Out     0.531     2.309       -         
-rdata_0_sqmuxa_0_o2_0_0                                  Net         -               -       0.686     -           3         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       C               In      -         2.995       -         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       Y               Out     0.609     3.604       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                NOR3C       B               In      -         1.908       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_2_0                NOR3C       Y               Out     0.516     2.424       -         
+tx_fifo_last_0_a2_2_0                                    Net         -               -       0.686     -           3         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3B       A               In      -         3.110       -         
+CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3B       Y               Out     0.546     3.656       -         
 N_18                                                     Net         -               -       1.395     -           8         
-CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       A               In      -         4.999       -         
-CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       Y               Out     0.566     5.565       -         
+CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       A               In      -         5.051       -         
+CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       Y               Out     0.546     5.596       -         
 rx_fifo_read                                             Net         -               -       1.395     -           8         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       A               In      -         6.960       -         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       Y               Out     0.439     7.399       -         
+CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       A               In      -         6.991       -         
+CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       Y               Out     0.534     7.525       -         
 N_103                                                    Net         -               -       1.007     -           4         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       A               In      -         8.406       -         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       Y               Out     0.439     8.845       -         
-un1_counter_d_0_sqmuxa[1]                                Net         -               -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C               In      -         10.240      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y               Out     0.566     10.807      -         
+CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       A               In      -         8.532       -         
+CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       Y               Out     0.534     9.066       -         
+un1_counter_d_0_sqmuxa[1]                                Net         -               -       1.454     -           10        
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C               In      -         10.520      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y               Out     0.566     11.086      -         
 N115                                                     Net         -               -       0.328     -           2         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C               In      -         11.135      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y               Out     0.558     11.692      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C               In      -         11.415      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y               Out     0.538     11.953      -         
 N139                                                     Net         -               -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B               In      -         11.966      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y               Out     0.797     12.763      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B               In      -         12.227      -         
+CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y               Out     0.797     13.024      -         
 un1_counter_q[3]                                         Net         -               -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C               In      -         13.449      -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y               Out     0.546     13.995      -         
-N_3_1                                                    Net         -               -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A               In      -         14.269      -         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y               Out     0.492     14.761      -         
-empty_out_2                                              Net         -               -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D               In      -         15.035      -         
+CORESPI_0.USPI.URXF.full_out_RNO_0                       NOR3A       C               In      -         13.710      -         
+CORESPI_0.USPI.URXF.full_out_RNO_0                       NOR3A       Y               Out     0.546     14.256      -         
+full_out_2_0_a2_2                                        Net         -               -       0.274     -           1         
+CORESPI_0.USPI.URXF.full_out_RNO                         OR3B        B               In      -         14.529      -         
+CORESPI_0.USPI.URXF.full_out_RNO                         OR3B        Y               Out     0.516     15.045      -         
+full_out_2                                               Net         -               -       0.274     -           1         
+CORESPI_0.USPI.URXF.full_out                             DFN1P0      D               In      -         15.319      -         
 =============================================================================================================================
-Total path delay (propagation time + setup) of 15.523 is 6.448(41.5%) logic and 9.075(58.5%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 5: 
-      Requested Period:                      10.000
-    - Setup time:                            0.488
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.512
-
-    - Propagation time:                      14.967
-    - Clock delay at starting point:         0.000 (ideal)
-    - Estimated clock delay at start point:  -0.000
-    = Slack (non-critical) :                 -5.455
-
-    Number of logic level(s):                11
-    Starting point:                          cc3000fpga_MSS_0.MSS_ADLIB_INST / MSSPADDR[11]
-    Ending point:                            CORESPI_0.USPI.URXF.empty_out / D
-    The start point is clocked by            System [rising]
-    The end   point is clocked by            FAB_CLK [rising] on pin CLK
-
-Instance / Net                                                       Pin              Pin               Arrival     No. of    
-Name                                                     Type        Name             Dir     Delay     Time        Fan Out(s)
-------------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSS_ADLIB_INST                          MSS_APB     MSSPADDR[11]     Out     0.000     0.000       -         
-CoreAPB3_0_APBmslave0_PADDR[27]                          Net         -                -       0.274     -           1         
-CoreAPB3_0.CAPB3O0OI_1[0]                                NOR2        A                In      -         0.274       -         
-CoreAPB3_0.CAPB3O0OI_1[0]                                NOR2        Y                Out     0.432     0.705       -         
-CAPB3O0OI_1[0]                                           Net         -                -       1.089     -           5         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        A                In      -         1.794       -         
-CORESPI_0.USPI.URF.rdata_0_sqmuxa_0_o2_0_0               OR3C        Y                Out     0.447     2.240       -         
-rdata_0_sqmuxa_0_o2_0_0                                  Net         -                -       0.686     -           3         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       C                In      -         2.927       -         
-CORESPI_0.USPI.UCON.tx_fifo_last_0_a2_1                  NOR3A       Y                Out     0.609     3.536       -         
-N_18                                                     Net         -                -       1.395     -           8         
-CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       A                In      -         4.931       -         
-CORESPI_0.USPI.UCON.rx_fifo_read_0_a2                    NOR3B       Y                Out     0.566     5.497       -         
-rx_fifo_read                                             Net         -                -       1.395     -           8         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       A                In      -         6.892       -         
-CORESPI_0.USPI.URXF.empty_out_RNIC3LR4                   NOR2A       Y                Out     0.439     7.331       -         
-N_103                                                    Net         -                -       1.007     -           4         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       A                In      -         8.338       -         
-CORESPI_0.USPI.URXF.empty_out_RNI2VL65                   NOR2A       Y                Out     0.439     8.777       -         
-un1_counter_d_0_sqmuxa[1]                                Net         -                -       1.395     -           8         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         C                In      -         10.172      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I10_Y     OA1         Y                Out     0.566     10.739      -         
-N115                                                     Net         -                -       0.328     -           2         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         C                In      -         11.067      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I17_Y     AO1         Y                Out     0.558     11.624      -         
-N139                                                     Net         -                -       0.274     -           1         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        B                In      -         11.898      -         
-CORESPI_0.USPI.URXF.un1_counter_q.ADD_6x6_fast_I27_Y     XOR2        Y                Out     0.797     12.695      -         
-un1_counter_q[3]                                         Net         -                -       0.686     -           3         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       C                In      -         13.381      -         
-CORESPI_0.USPI.URXF.empty_out_RNO_0                      NOR3A       Y                Out     0.546     13.927      -         
-N_3_1                                                    Net         -                -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         A                In      -         14.201      -         
-CORESPI_0.USPI.URXF.empty_out_RNO                        MX2         Y                Out     0.492     14.693      -         
-empty_out_2                                              Net         -                -       0.274     -           1         
-CORESPI_0.USPI.URXF.empty_out                            DFN1P0      D                In      -         14.967      -         
-==============================================================================================================================
-Total path delay (propagation time + setup) of 15.455 is 6.380(41.3%) logic and 9.075(58.7%) route.
+Total path delay (propagation time + setup) of 15.777 is 6.643(42.1%) logic and 9.134(57.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -826,66 +849,60 @@ Target Part: A2F200M3F_FBGA484_-1
 Report for cell cc3000fpga.verilog
   Core Cell usage:
               cell count     area count*area
-              AND2    11      1.0       11.0
-               AO1    38      1.0       38.0
-              AO1A     4      1.0        4.0
+              AND2     8      1.0        8.0
+               AO1    43      1.0       43.0
+              AO1A     5      1.0        5.0
               AO1B     3      1.0        3.0
-              AO1C     7      1.0        7.0
-              AOI1     1      1.0        1.0
-             AOI1B     4      1.0        4.0
-              AX1D     5      1.0        5.0
-              AX1E     1      1.0        1.0
+              AO1C     6      1.0        6.0
+              AO1D     2      1.0        2.0
+              AOI1     2      1.0        2.0
+             AOI1B     5      1.0        5.0
+              AX1D     4      1.0        4.0
              AXOI5     1      1.0        1.0
             CLKINT     1      0.0        0.0
                GND    13      0.0        0.0
                INV     5      1.0        5.0
-              MAJ3     2      1.0        2.0
-            MSSINT     6      0.0        0.0
+              MAJ3     1      1.0        1.0
+            MSSINT     5      0.0        0.0
            MSS_APB     1      0.0        0.0
            MSS_CCC     1      0.0        0.0
                MX2    45      1.0       45.0
-              MX2A     1      1.0        1.0
-              MX2B     1      1.0        1.0
-              NOR2    19      1.0       19.0
+              NOR2    11      1.0       11.0
              NOR2A    34      1.0       34.0
-             NOR2B    60      1.0       60.0
-              NOR3    12      1.0       12.0
-             NOR3A    44      1.0       44.0
-             NOR3B    35      1.0       35.0
-             NOR3C    25      1.0       25.0
+             NOR2B    53      1.0       53.0
+              NOR3     7      1.0        7.0
+             NOR3A    46      1.0       46.0
+             NOR3B    36      1.0       36.0
+             NOR3C    24      1.0       24.0
                OA1     8      1.0        8.0
-              OA1A     1      1.0        1.0
-              OA1B     2      1.0        2.0
+              OA1B     3      1.0        3.0
               OA1C     4      1.0        4.0
-              OAI1     1      1.0        1.0
-               OR2    26      1.0       26.0
+              OAI1     2      1.0        2.0
+               OR2    23      1.0       23.0
               OR2A     8      1.0        8.0
-              OR2B     7      1.0        7.0
-               OR3    22      1.0       22.0
-              OR3A     5      1.0        5.0
+              OR2B     5      1.0        5.0
+               OR3    20      1.0       20.0
+              OR3A     6      1.0        6.0
               OR3B     1      1.0        1.0
-              OR3C     2      1.0        2.0
+              OR3C     1      1.0        1.0
              RCOSC     1      0.0        0.0
                VCC    13      0.0        0.0
                XA1     2      1.0        2.0
-              XA1A     3      1.0        3.0
-              XA1B     5      1.0        5.0
-              XA1C     2      1.0        2.0
-             XNOR2     1      1.0        1.0
-               XO1     1      1.0        1.0
+              XA1B     3      1.0        3.0
+              XA1C     9      1.0        9.0
               XO1A     6      1.0        6.0
               XOR2    34      1.0       34.0
               XOR3     2      1.0        2.0
 
 
             DFN1C0    80      1.0       80.0
-          DFN1E0C0     8      1.0        8.0
+          DFN1E0C0     7      1.0        7.0
             DFN1E1    40      1.0       40.0
           DFN1E1C0    33      1.0       33.0
           DFN1E1P0     3      1.0        3.0
-            DFN1P0    22      1.0       22.0
+            DFN1P0    21      1.0       21.0
                    -----          ----------
-             TOTAL   723               687.0
+             TOTAL   697               662.0
 
 
   IO Cell usage:
@@ -898,7 +915,7 @@ Report for cell cc3000fpga.verilog
              TOTAL    14
 
 
-Core Cells         : 687 of 4608 (15%)
+Core Cells         : 662 of 4608 (14%)
 IO Cells           : 14
 
   RAM/ROM Usage Summary
@@ -906,9 +923,9 @@ Block Rams : 0 of 8 (0%)
 
 Mapper successful!
 
-At Mapper Exit (Time elapsed 0h:00m:03s; Memory used current: 41MB peak: 113MB)
+At Mapper Exit (Time elapsed 0h:00m:02s; Memory used current: 41MB peak: 113MB)
 
-Process took 0h:00m:08s realtime, 0h:00m:03s cputime
-# Tue Apr 08 14:11:34 2014
+Process took 0h:00m:02s realtime, 0h:00m:02s cputime
+# Tue Apr 08 15:35:02 2014
 
 ###########################################################]

@@ -19,7 +19,12 @@
 
 # Libero metadata
 *runstatus.xml
+*log.txt
+*report.txt
 *.log
+*.rpt
 *.srr
 *.plg
 *.tlg
+cc3000fpga/synthesis/
+cc3000fpga/simulation/

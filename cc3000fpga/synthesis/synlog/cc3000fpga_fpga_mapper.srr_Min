@@ -1,7 +1,7 @@
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue Apr 08 14:11:34 2014
+# Timing Report written on Tue Apr 08 15:35:02 2014
 #
 
 
@@ -28,9 +28,9 @@ Worst slack in design: 0.192
                    Requested     Estimated     Requested     Estimated                Clock        Clock          
 Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group          
 ------------------------------------------------------------------------------------------------------------------
-FAB_CLK            100.0 MHz     95.3 MHz      10.000        10.491        -0.491     declared     clk_group_0    
+FAB_CLK            100.0 MHz     92.3 MHz      10.000        10.839        -0.839     declared     clk_group_0    
 FCLK               100.0 MHz     NA            10.000        NA            NA         declared     clk_group_0    
-System             100.0 MHz     87.2 MHz      10.000        11.470        -1.470     system       system_clkgroup
+System             100.0 MHz     88.4 MHz      10.000        11.309        -1.309     system       system_clkgroup
 ==================================================================================================================
 
 
@@ -44,7 +44,7 @@ Starting  Ending   |  constraint  slack  |  constraint  slack  |  constraint  sl
 ---------------------------------------------------------------------------------------------------------
 System    System   |  0.000       0.192  |  No paths    -      |  No paths    -      |  No paths    -    
 System    FAB_CLK  |  0.000       False  |  No paths    -      |  No paths    -      |  No paths    -    
-FAB_CLK   System   |  0.000       1.756  |  No paths    -      |  No paths    -      |  No paths    -    
+FAB_CLK   System   |  0.000       1.842  |  No paths    -      |  No paths    -      |  No paths    -    
 FAB_CLK   FAB_CLK  |  0.000       False  |  No paths    -      |  No paths    -      |  No paths    -    
 =========================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
@@ -72,16 +72,16 @@ Starting Points with Worst Slack
 Instance                           Reference     Type         Pin     Net               Time        Slack
                                    Clock                                                                 
 ---------------------------------------------------------------------------------------------------------
-CORESPI_0.USPI.UTXF.full_out       FAB_CLK       DFN1C0       Q       tx_fifo_full      0.494       2.165
+CORESPI_0.USPI.UTXF.full_out       FAB_CLK       DFN1C0       Q       tx_fifo_full      0.494       2.288
 CORESPI_0.USPI.URXF.empty_out      FAB_CLK       DFN1P0       Q       rx_fifo_empty     0.494       2.471
-CORESPI_0.USPI.URF.int_raw[4]      FAB_CLK       DFN1C0       Q       int_raw[4]        0.494       2.751
+CORESPI_0.USPI.URF.int_raw[4]      FAB_CLK       DFN1C0       Q       int_raw[4]        0.494       2.476
 CORESPI_0.USPI.URF.int_raw[5]      FAB_CLK       DFN1C0       Q       int_raw[5]        0.494       2.751
 CORESPI_0.USPI.URF.int_raw[6]      FAB_CLK       DFN1C0       Q       int_raw[6]        0.494       2.751
 CORESPI_0.USPI.URF.int_raw[7]      FAB_CLK       DFN1C0       Q       int_raw[7]        0.494       2.751
 CORESPI_0.USPI.URF.control1[5]     FAB_CLK       DFN1E1C0     Q       control1[5]       0.494       2.857
 CORESPI_0.USPI.URF.control1[6]     FAB_CLK       DFN1E1C0     Q       cfg_frameurun     0.494       2.983
+CORESPI_0.USPI.URF.control1[7]     FAB_CLK       DFN1E1C0     Q       cfg_oenoff        0.494       2.983
 CORESPI_0.USPI.URF.int_raw[2]      FAB_CLK       DFN1C0       Q       int_raw[2]        0.494       3.036
-CORESPI_0.USPI.URF.int_raw[3]      FAB_CLK       DFN1C0       Q       int_raw[3]        0.494       3.036
 =========================================================================================================
 
 
@@ -92,9 +92,9 @@ Ending Points with Worst Slack
 Instance                            Reference     Type        Pin              Net                                           Time         Slack
                                     Clock                                                                                                      
 -----------------------------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSSINT_GPI_30      FAB_CLK       MSSINT      A                tx_fifo_full_i                                0.000        1.756
+cc3000fpga_MSS_0.MSSINT_GPI_30      FAB_CLK       MSSINT      A                tx_fifo_full_i                                0.000        1.842
 cc3000fpga_MSS_0.MSSINT_GPI_31      FAB_CLK       MSSINT      A                rx_fifo_empty_i                               0.000        1.971
-cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[4]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[4]     0.000        2.381
+cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[4]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[4]     0.000        2.106
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[5]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[5]     0.000        2.381
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[6]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[6]     0.000        2.381
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[7]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[7]     0.000        2.381
@@ -111,13 +111,13 @@ Worst Path Information
 
 
 Path information for path number 1: 
-    Propagation time:                        1.756
+    Propagation time:                        1.842
     + Clock delay at starting point:         0.000 (ideal)
     - Requested Period:                      0.000
     - Hold time:                             0.000
     - Clock delay at ending point:           0.000 (ideal)
 0.000
-    = Slack (non-critical) :                 1.756
+    = Slack (non-critical) :                 1.842
 
     Number of logic level(s):                1
     Starting point:                          CORESPI_0.USPI.UTXF.full_out / Q
@@ -129,11 +129,11 @@ Instance / Net                                      Pin      Pin               A
 Name                                     Type       Name     Dir     Delay     Time        Fan Out(s)
 -----------------------------------------------------------------------------------------------------
 CORESPI_0.USPI.UTXF.full_out             DFN1C0     Q        Out     0.494     0.494       -         
-tx_fifo_full                             Net        -        -       0.762     -           5         
-CORESPI_0.USPI.UTXF.full_out_RNIUK45     INV        A        In      -         1.256       -         
-CORESPI_0.USPI.UTXF.full_out_RNIUK45     INV        Y        Out     0.309     1.565       -         
+tx_fifo_full                             Net        -        -       0.848     -           6         
+CORESPI_0.USPI.UTXF.full_out_RNIUK45     INV        A        In      -         1.342       -         
+CORESPI_0.USPI.UTXF.full_out_RNIUK45     INV        Y        Out     0.309     1.651       -         
 tx_fifo_full_i                           Net        -        -       0.192     -           1         
-cc3000fpga_MSS_0.MSSINT_GPI_30           MSSINT     A        In      -         1.756       -         
+cc3000fpga_MSS_0.MSSINT_GPI_30           MSSINT     A        In      -         1.842       -         
 =====================================================================================================
 
 
@@ -152,7 +152,6 @@ Starting Points with Worst Slack
 Instance                            Reference     Type        Pin              Net                                 Time        Slack
                                     Clock                                                                                           
 ------------------------------------------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSSINT_GPI_29      System        MSSINT      Y                MSSINT_GPI_29_Y                     0.000       0.274
 cc3000fpga_MSS_0.MSSINT_GPI_30      System        MSSINT      Y                MSSINT_GPI_30_Y                     0.000       0.274
 cc3000fpga_MSS_0.MSSINT_GPI_31      System        MSSINT      Y                MSSINT_GPI_31_Y                     0.000       0.274
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     EMCCLK           MSS_ADLIB_INST_EMCCLK               0.000       0.274
@@ -162,6 +161,7 @@ cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPO[3]           G
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[11]     CoreAPB3_0_APBmslave0_PADDR[27]     0.000       2.340
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[8]      CoreAPB3_0_APBmslave0_PADDR[24]     0.000       2.458
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[10]     CoreAPB3_0_APBmslave0_PADDR[26]     0.000       2.468
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[9]      CoreAPB3_0_APBmslave0_PADDR[25]     0.000       2.697
 ====================================================================================================================================
 
 
@@ -176,12 +176,12 @@ cc3000fpga_MSS_0.MSSINT_GPO_0       System        MSSINT      A                G
 cc3000fpga_MSS_0.MSSINT_GPO_1       System        MSSINT      A                GPO_net_0[1]                                  0.000        0.192
 cc3000fpga_MSS_0.MSSINT_GPO_3       System        MSSINT      A                GPO_net_0[3]                                  0.000        0.192
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     EMCCLKRTN        MSS_ADLIB_INST_EMCCLK                         0.000        0.192
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPI[29]          MSSINT_GPI_29_Y                               0.000        0.192
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPI[30]          MSSINT_GPI_30_Y                               0.000        0.192
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPI[31]          MSSINT_GPI_31_Y                               0.000        0.192
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPRDATA[0]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[0]     0.000        1.849
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPRDATA[1]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[1]     0.000        1.849
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPRDATA[2]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[2]     0.000        1.849
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPRDATA[3]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[3]     0.000        1.849
 ===============================================================================================================================================
 
 
@@ -201,17 +201,17 @@ Path information for path number 1:
     = Slack (critical) :                     0.192
 
     Number of logic level(s):                0
-    Starting point:                          cc3000fpga_MSS_0.MSSINT_GPI_29 / Y
-    Ending point:                            cc3000fpga_MSS_0.MSS_ADLIB_INST / GPI[29]
+    Starting point:                          cc3000fpga_MSS_0.MSSINT_GPI_30 / Y
+    Ending point:                            cc3000fpga_MSS_0.MSS_ADLIB_INST / GPI[30]
     The start point is clocked by            System [rising]
     The end   point is clocked by            System [rising]
 
 Instance / Net                                  Pin         Pin               Arrival     No. of    
 Name                                Type        Name        Dir     Delay     Time        Fan Out(s)
 ----------------------------------------------------------------------------------------------------
-cc3000fpga_MSS_0.MSSINT_GPI_29      MSSINT      Y           Out     0.000     0.000       -         
-MSSINT_GPI_29_Y                     Net         -           -       0.192     -           1         
-cc3000fpga_MSS_0.MSS_ADLIB_INST     MSS_APB     GPI[29]     In      -         0.192       -         
+cc3000fpga_MSS_0.MSSINT_GPI_30      MSSINT      Y           Out     0.000     0.000       -         
+MSSINT_GPI_30_Y                     Net         -           -       0.192     -           1         
+cc3000fpga_MSS_0.MSS_ADLIB_INST     MSS_APB     GPI[30]     In      -         0.192       -         
 ====================================================================================================
 
 

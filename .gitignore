@@ -28,3 +28,8 @@
 *.tlg
 cc3000fpga/synthesis/
 cc3000fpga/simulation/
+
+# SoftConsole build files
+cc3000_web_client/Debug/
+
+

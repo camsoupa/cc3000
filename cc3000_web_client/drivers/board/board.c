@@ -273,7 +273,7 @@ InitSysTick(void)
     //SysTickEnable();
 
 	MSS_TIM1_init( MSS_TIMER_PERIODIC_MODE );
-	MSS_TIM1_load_immediate( uint32_t load_value );
+	//MSS_TIM1_load_immediate( uint32_t load_value );
 	MSS_TIM1_enable_irq();
 	MSS_TIM1_start();
 

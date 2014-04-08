@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------
-// Created by Actel SmartDesign Thu Apr 03 16:05:39 2014
+// Created by Actel SmartDesign Tue Apr 08 10:44:24 2014
 // Parameters for CORESPI
 //--------------------------------------------------------------------
 

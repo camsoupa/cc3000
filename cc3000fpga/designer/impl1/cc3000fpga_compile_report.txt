@@ -1,13 +1,13 @@
 ***************************************************************************
                                Status Report
-                          Thu Apr 03 16:06:16 2014 ***************************************************************************
+                          Tue Apr 08 10:45:20 2014 ***************************************************************************
 
 Product: Designer
 Release: v10.1 SP3
 Version: 10.1.3.1
 File Name: C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb
 Design Name: cc3000fpga  Design State: compile
-Last Saved: Thu Apr 03 15:39:19 2014
+Last Saved: Mon Apr 07 09:49:50 2014
 
 ***** Device Data **************************************************
 
@@ -22,7 +22,7 @@ Voltage Range:   COM
 
 ***** Import Variables *********************************************
 
-Source File(s) Imported on Thu Apr 03 16:06:04 2014:
+Source File(s) Imported on Tue Apr 08 10:45:06 2014:
         C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn
         C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
 

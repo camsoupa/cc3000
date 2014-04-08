@@ -1,13 +1,13 @@
 ***************************************************************************
                                Status Report
-                          Thu Apr 03 16:06:47 2014 ***************************************************************************
+                          Tue Apr 08 10:45:56 2014 ***************************************************************************
 
 Product: Designer
 Release: v10.1 SP3
 Version: 10.1.3.1
 File Name: C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb
 Design Name: cc3000fpga  Design State: layout
-Last Saved: Thu Apr 03 16:06:16 2014
+Last Saved: Tue Apr 08 10:45:21 2014
 
 ***** Device Data **************************************************
 
@@ -22,7 +22,7 @@ Voltage Range:   COM
 
 ***** Import Variables *********************************************
 
-Source File(s) Imported on Thu Apr 03 16:06:04 2014:
+Source File(s) Imported on Tue Apr 08 10:45:06 2014:
         C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn
         C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
 
@@ -564,16 +564,16 @@ Global net placement completed successfully.
 
                         o - o - o - o - o - o
 
-Timing-driven Placer Started: Thu Apr 03 16:06:20 2014
+Timing-driven Placer Started: Tue Apr 08 10:45:27 2014
 
-Placer Finished: Thu Apr 03 16:06:26 2014
+Placer Finished: Tue Apr 08 10:45:33 2014
 Total Placer CPU Time:     00:00:06
 
                         o - o - o - o - o - o
 
 
 Timing-driven Router 
-Design: cc3000fpga                      Started: Thu Apr 03 16:06:30 2014
+Design: cc3000fpga                      Started: Tue Apr 08 10:45:39 2014
 
  
 Iterative improvement...
@@ -581,7 +581,7 @@ Iterative improvement...
 Timing-driven Router completed successfully.
 
 Design: cc3000fpga                      
-Finished: Thu Apr 03 16:06:42 2014
+Finished: Tue Apr 08 10:45:51 2014
 Total CPU Time:     00:00:11            Total Elapsed Time: 00:00:12
                         o - o - o - o - o - o
 

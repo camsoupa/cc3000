@@ -34,16 +34,16 @@ Global net placement completed successfully.
 
                         o - o - o - o - o - o
 
-Timing-driven Placer Started: Thu Apr 03 16:06:20 2014
+Timing-driven Placer Started: Tue Apr 08 10:45:27 2014
 
-Placer Finished: Thu Apr 03 16:06:26 2014
+Placer Finished: Tue Apr 08 10:45:33 2014
 Total Placer CPU Time:     00:00:06
 
                         o - o - o - o - o - o
 
 
 Timing-driven Router 
-Design: cc3000fpga                      Started: Thu Apr 03 16:06:30 2014
+Design: cc3000fpga                      Started: Tue Apr 08 10:45:39 2014
 
  
 Iterative improvement...
@@ -51,7 +51,7 @@ Iterative improvement...
 Timing-driven Router completed successfully.
 
 Design: cc3000fpga                      
-Finished: Thu Apr 03 16:06:42 2014
+Finished: Tue Apr 08 10:45:51 2014
 Total CPU Time:     00:00:11            Total Elapsed Time: 00:00:12
                         o - o - o - o - o - o
 
@@ -60,7 +60,7 @@ Finished loading the Timing data.
 TIMER: Max delay timing requirements have NOT been met.
 TIMER: Min delay timing requirements have been met.
 
-The Layout command succeeded ( 00:00:28 )
+The Layout command succeeded ( 00:00:32 )
 Wrote status report to file: cc3000fpga_place_and_route_report.txt
 
 The Report command succeeded ( 00:00:00 )
@@ -76,6 +76,6 @@ The Report command succeeded ( 00:00:00 )
 Design saved to file
 C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb.
 
-The Execute Script command succeeded ( 00:00:30 )
+The Execute Script command succeeded ( 00:00:34 )
 Design closed.
 

@@ -13,13 +13,13 @@ Opened an existing Libero design cc3000fpga.adb.
 'C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer'
 'IDE_DESIGNERVIEW_LASTREV' set to '1'
 
- Netlist Reading Time = 0.0 seconds
+ Netlist Reading Time = 1.0 seconds
 Imported the files:
    C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn
 
 C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc
 
-The Import command succeeded ( 00:00:07 )
+The Import command succeeded ( 00:00:08 )
 =====================================================================
 Parameters used to run compile:
 ===============================
@@ -517,13 +517,13 @@ Nets that are candidates for clock assignment and the resulting fanout:
     12      INT_NET       Net   : CORESPI_0/USPI/N_273
                           Driver: CORESPI_0/USPI/UCC/spi_ssel_pos_RNIMSTK
 
-The Compile command succeeded ( 00:00:04 )
+The Compile command succeeded ( 00:00:05 )
 Wrote status report to file: cc3000fpga_compile_report.txt
 
 The Report command succeeded ( 00:00:00 )
 Design saved to file
 C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb.
 
-The Execute Script command succeeded ( 00:00:13 )
+The Execute Script command succeeded ( 00:00:18 )
 Design closed.
 

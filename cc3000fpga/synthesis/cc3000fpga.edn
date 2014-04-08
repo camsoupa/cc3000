@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timeStamp 2014 4 3 16 5 59)
+      (timeStamp 2014 4 8 10 44 55)
       (author "Synopsys, Inc.")
       (program "Synplify Pro" (version "F-2012.03M-SP1 , mapper mapact, Build 729R"))
      )
@@ -7900,7 +7900,7 @@
            (port CoreAPB3_0_APBmslave0_PADDR_3 (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PADDR_2 (direction OUTPUT))
            (port N_145 (direction INPUT))
-           (port IO_4_PADOUT (direction OUTPUT))
+           (port SPIO_EN (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PWRITE (direction OUTPUT))
            (port CoreAPB3_0_APBmslave0_PENABLE (direction OUTPUT))
            (port cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx (direction OUTPUT))
@@ -9374,9 +9374,9 @@
            (portRef (member cc3000fpga_mss_0_mss_master_apb_prdata 0))
            (portRef (member mssprdata 24) (instanceRef MSS_ADLIB_INST))
           ))
-          (net IO_4_PADOUT (joined
+          (net SPIO_EN (joined
            (portRef PAD (instanceRef FIO_OUTBUF_4))
-           (portRef IO_4_PADOUT)
+           (portRef SPIO_EN)
           ))
           (net N_145 (joined
            (portRef N_145)
@@ -9410,12 +9410,12 @@
            (port UART_0_RXD (direction INPUT))
            (port UART_1_RXD (direction INPUT))
            (port WL_SPI_IRQ (direction INPUT))
-           (port IO_4_PADOUT (direction OUTPUT))
            (port LED_0 (direction OUTPUT))
            (port LED_1 (direction OUTPUT))
            (port LED_2 (direction OUTPUT))
            (port MSTRCLKOUT (direction OUTPUT))
            (port M_MOSI (direction OUTPUT))
+           (port SPIO_EN (direction OUTPUT))
            (port (array (rename spiss "SPISS[7:0]") 8) (direction OUTPUT))
            (port UART_0_TXD (direction OUTPUT))
            (port UART_1_TXD (direction OUTPUT))
@@ -9520,9 +9520,9 @@
            (portRef WL_SPI_IRQ)
            (portRef WL_SPI_IRQ (instanceRef cc3000fpga_MSS_0))
           ))
-          (net IO_4_PADOUT (joined
-           (portRef IO_4_PADOUT (instanceRef cc3000fpga_MSS_0))
-           (portRef IO_4_PADOUT)
+          (net SPIO_EN (joined
+           (portRef SPIO_EN (instanceRef cc3000fpga_MSS_0))
+           (portRef SPIO_EN)
           ))
           (net UART_0_TXD (joined
            (portRef UART_0_TXD (instanceRef cc3000fpga_MSS_0))

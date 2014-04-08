@@ -80,9 +80,7 @@ void pio_init()
     // Initialize the system clock.
     //
     //initClk(); // I don't think we need to do this. But we might need to do something like this
-	// to get our timings right
-
-    //matt - TODO Implement all this or go about init some other way
+	// to get our timings right TODO
 
     //
     // Configure the system peripheral bus that IRQ & EN pin are mapped to.
@@ -136,10 +134,6 @@ void pio_init()
     delay(600000);
     delay(600000);
 
-
-    // Left off here
-
-
     //
     // Disable WLAN CS with pull up Resistor
     //
@@ -149,10 +143,16 @@ void pio_init()
     //                            GPIO_PIN_TYPE_STD_WPU);
     //MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, PIN_HIGH);
 
+    // CS is low enabled!!!
+    // CORE SPI should do this for us?
+
+
     //
     // Enable interrupt for WLAN_IRQ pin
     //
     //MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
+
+    MSS_GPIO_enable_irq( SPI_IRQ_PIN );
 
     //
     // Clear interrupt status
@@ -182,7 +182,14 @@ void pio_init()
 long ReadWlanInterruptPin(void)
 {
     //return MAP_GPIOPinRead(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
-	return 0; // put top line back... TODO
+
+    uint32_t gpio_inputs;
+    long spi_irq_status = 0;
+
+    gpio_inputs = MSS_GPIO_get_inputs();
+    spi_irq_status = gpio_inputs & MSS_GPIO_2_MASK;
+
+	return spi_irq_status;
 }
 
 //*****************************************************************************
@@ -198,7 +205,8 @@ long ReadWlanInterruptPin(void)
 //*****************************************************************************
 void WlanInterruptEnable()
 {
-    //TODO MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
+    //MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
+    MSS_GPIO_enable_irq( SPI_IRQ_PIN );
 }
 
 //*****************************************************************************
@@ -215,6 +223,7 @@ void WlanInterruptEnable()
 void WlanInterruptDisable()
 {
     // TODO MAP_GPIOIntDisable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
+    MSS_GPIO_disable_irq( SPI_IRQ_PIN );
 }
 
 //*****************************************************************************
@@ -230,6 +239,8 @@ void WlanInterruptDisable()
 //*****************************************************************************
 void WriteWlanPin( unsigned char val )
 {
+	// We might have to do this if the Core Spi is doing a bad job...
+
     if(val)
     {
         //TODO MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);

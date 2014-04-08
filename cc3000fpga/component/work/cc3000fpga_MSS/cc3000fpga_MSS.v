@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Tue Apr 08 10:44:18 2014
+// Created by SmartDesign Tue Apr 08 14:25:34 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -13,7 +13,6 @@ module cc3000fpga_MSS(
     F2M_GPI_31,
     FABINT,
     GPIO_2_IN,
-    IO_4_D,
     MSSPRDATA,
     MSSPREADY,
     MSSPSLVERR,
@@ -22,7 +21,7 @@ module cc3000fpga_MSS(
     UART_1_RXD,
     // Outputs
     FAB_CLK,
-    IO_4_PADOUT,
+    GPIO_4_OUT,
     M2F_GPO_0,
     M2F_GPO_1,
     M2F_GPO_3,
@@ -44,7 +43,6 @@ input         F2M_GPI_30;
 input         F2M_GPI_31;
 input         FABINT;
 input         GPIO_2_IN;
-input         IO_4_D;
 input  [31:0] MSSPRDATA;
 input         MSSPREADY;
 input         MSSPSLVERR;
@@ -55,7 +53,7 @@ input         UART_1_RXD;
 // Output
 //--------------------------------------------------------------------
 output        FAB_CLK;
-output        IO_4_PADOUT;
+output        GPIO_4_OUT;
 output        M2F_GPO_0;
 output        M2F_GPO_1;
 output        M2F_GPO_3;
@@ -75,7 +73,6 @@ wire          F2M_GPI_30;
 wire          F2M_GPI_31;
 wire          FABINT;
 wire          GPIO_2_IN;
-wire          IO_4_D;
 wire          MSS_ADLIB_INST_EMCCLK;
 wire          MSS_ADLIB_INST_FCLK;
 wire          MSS_ADLIB_INST_MACCLK;
@@ -83,6 +80,7 @@ wire          MSS_ADLIB_INST_MACCLKCCC;
 wire          MSS_ADLIB_INST_PLLLOCK;
 wire          MSS_ADLIB_INST_SYNCCLKFDBK;
 wire          MSS_GPIO_0_GPIO_2_IN_Y;
+wire   [4:4]  MSS_GPIO_0_GPIO_4_OUT_D;
 wire          MSS_RESET_0_MSS_RESET_N_Y;
 wire          MSS_RESET_N;
 wire          MSS_UART_0_RXD_Y;
@@ -177,13 +175,14 @@ assign UART_0_TXD                       = UART_0_TXD_net_1;
 assign UART_1_TXD_net_1                 = UART_1_TXD_net_0;
 assign UART_1_TXD                       = UART_1_TXD_net_1;
 assign PAD_net_0                        = PAD;
-assign IO_4_PADOUT                      = PAD_net_0;
+assign GPIO_4_OUT                       = PAD_net_0;
 //--------------------------------------------------------------------
 // Slices assignments
 //--------------------------------------------------------------------
-assign MSSINT_GPO_0_A[0] = GPO_net_0[0:0];
-assign MSSINT_GPO_1_A[1] = GPO_net_0[1:1];
-assign MSSINT_GPO_3_A[3] = GPO_net_0[3:3];
+assign MSS_GPIO_0_GPIO_4_OUT_D[4] = GPO_net_0[4:4];
+assign MSSINT_GPO_0_A[0]          = GPO_net_0[0:0];
+assign MSSINT_GPO_1_A[1]          = GPO_net_0[1:1];
+assign MSSINT_GPO_3_A[3]          = GPO_net_0[3:3];
 //--------------------------------------------------------------------
 // Concatenation assignments
 //--------------------------------------------------------------------
@@ -191,17 +190,6 @@ assign GPI_net_0 = { MSSINT_GPI_31_Y , MSSINT_GPI_30_Y , MSSINT_GPI_29_Y , 26'h0
 //--------------------------------------------------------------------
 // Component instances
 //--------------------------------------------------------------------
-//--------OUTBUF_MSS
-OUTBUF_MSS #( 
-        .ACT_CONFIG ( 1073741824 ),
-        .ACT_PIN    ( "AA1" ) )
-FIO_OUTBUF_4(
-        // Inputs
-        .D   ( IO_4_D ),
-        // Outputs
-        .PAD ( PAD ) 
-        );
-
 //--------MSS_APB
 MSS_APB #( 
         .ACT_CONFIG ( 0 ),
@@ -471,6 +459,17 @@ MSS_GPIO_0_GPIO_2_IN(
         .PAD ( GPIO_2_IN ),
         // Outputs
         .Y   ( MSS_GPIO_0_GPIO_2_IN_Y ) 
+        );
+
+//--------OUTBUF_MSS
+OUTBUF_MSS #( 
+        .ACT_CONFIG ( 0 ),
+        .ACT_PIN    ( "AA1" ) )
+MSS_GPIO_0_GPIO_4_OUT(
+        // Inputs
+        .D   ( MSS_GPIO_0_GPIO_4_OUT_D ),
+        // Outputs
+        .PAD ( PAD ) 
         );
 
 //--------INBUF_MSS

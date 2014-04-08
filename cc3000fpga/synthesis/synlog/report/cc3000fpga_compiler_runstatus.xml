@@ -6,7 +6,7 @@ The file contains the job information from compiler to be displayed as part of t
 
 <job_run_status name="compiler"> 
   <report_link name="Detailed report">
-    <data>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\cc3000fpga.srr</data>
+    <data>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.srr</data>
     <title>$ Start of Compile</title>
   </report_link> 
   <job_status>
@@ -14,28 +14,28 @@ The file contains the job information from compiler to be displayed as part of t
   </job_status>
 <job_info> 
 			<info name="Notes">
-  <data>27</data>
-  <report_link name="more"><data>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_compiler_notes.txt</data></report_link>
+  <data>28</data>
+  <report_link name="more"><data>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_compiler_notes.txt</data></report_link>
   </info>
 			<info name="Warnings">
-  <data>98</data>
-  <report_link name="more"><data>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_compiler_warnings.txt</data></report_link>
+  <data>99</data>
+  <report_link name="more"><data>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_compiler_warnings.txt</data></report_link>
   </info>
 			<info name="Errors">
   <data>0</data>
-  <report_link name="more"><data>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_compiler_errors.txt</data></report_link>
+  <report_link name="more"><data>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\synlog\report\cc3000fpga_compiler_errors.txt</data></report_link>
   </info>
 			<info name="CPU Time">
   <data>-</data>
   </info>
 			<info name="Real Time">
-  <data>0h:00m:01s</data>
+  <data>0h:00m:02s</data>
   </info>
 			<info name="Peak Memory">
   <data>-</data>
   </info>
 			<info name="Date &amp;Time">
-  <data type="timestamp">1396562754</data>
+  <data type="timestamp">1396987881</data>
   </info>
 			</job_info>
 </job_run_status>

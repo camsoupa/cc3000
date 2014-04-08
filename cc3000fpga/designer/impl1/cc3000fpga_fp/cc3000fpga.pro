@@ -1,12 +1,12 @@
 <project name="cc3000fpga" version="1.1">
     <ProjectDirectory>
-        C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp
+        C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp
     </ProjectDirectory>
     <View>
         SingleSTAPLView
     </View>
     <LogFile>
-        C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp\cc3000fpga.log
+        C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp\cc3000fpga.log
     </LogFile>
     <SerializationOption>
         Skip
@@ -59,7 +59,7 @@
         </Hardware>
         <Algo type="PDB">
             <filename>
-                C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb
+                C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb
             </filename>
             <local>
                 projectData\cc3000fpga.pdb

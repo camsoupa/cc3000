@@ -24,6 +24,7 @@ USPI
 cc3000fpga_MSS_0
 CoreAPB3_0
 CORESPI_0
+inverter_1
 sign
 zero
 mul
@@ -250,4 +251,3 @@ R
 S
 T
 U
-V

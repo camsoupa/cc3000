@@ -1,7 +1,7 @@
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Thu Apr 03 16:05:59 2014
+# Timing Report written on Tue Apr 08 14:11:34 2014
 #
 
 
@@ -11,7 +11,7 @@ Requested Frequency:    100.0 MHz
 Wire load mode:         top
 Wire load model:        smartfusion
 Paths requested:        5
-Constraint File(s):    C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc
+Constraint File(s):    C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc
                        
 @N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
 
@@ -28,9 +28,9 @@ Worst slack in design: 0.192
                    Requested     Estimated     Requested     Estimated                Clock        Clock          
 Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group          
 ------------------------------------------------------------------------------------------------------------------
-FAB_CLK            100.0 MHz     91.5 MHz      10.000        10.932        -0.932     declared     clk_group_0    
+FAB_CLK            100.0 MHz     95.3 MHz      10.000        10.491        -0.491     declared     clk_group_0    
 FCLK               100.0 MHz     NA            10.000        NA            NA         declared     clk_group_0    
-System             100.0 MHz     88.4 MHz      10.000        11.309        -1.309     system       system_clkgroup
+System             100.0 MHz     87.2 MHz      10.000        11.470        -1.470     system       system_clkgroup
 ==================================================================================================================
 
 
@@ -74,11 +74,11 @@ Instance                           Reference     Type         Pin     Net       
 ---------------------------------------------------------------------------------------------------------
 CORESPI_0.USPI.UTXF.full_out       FAB_CLK       DFN1C0       Q       tx_fifo_full      0.494       2.165
 CORESPI_0.USPI.URXF.empty_out      FAB_CLK       DFN1P0       Q       rx_fifo_empty     0.494       2.471
-CORESPI_0.USPI.URF.control1[5]     FAB_CLK       DFN1E1C0     Q       control1[5]       0.494       2.728
 CORESPI_0.USPI.URF.int_raw[4]      FAB_CLK       DFN1C0       Q       int_raw[4]        0.494       2.751
 CORESPI_0.USPI.URF.int_raw[5]      FAB_CLK       DFN1C0       Q       int_raw[5]        0.494       2.751
 CORESPI_0.USPI.URF.int_raw[6]      FAB_CLK       DFN1C0       Q       int_raw[6]        0.494       2.751
 CORESPI_0.USPI.URF.int_raw[7]      FAB_CLK       DFN1C0       Q       int_raw[7]        0.494       2.751
+CORESPI_0.USPI.URF.control1[5]     FAB_CLK       DFN1E1C0     Q       control1[5]       0.494       2.857
 CORESPI_0.USPI.URF.control1[6]     FAB_CLK       DFN1E1C0     Q       cfg_frameurun     0.494       2.983
 CORESPI_0.USPI.URF.int_raw[2]      FAB_CLK       DFN1C0       Q       int_raw[2]        0.494       3.036
 CORESPI_0.USPI.URF.int_raw[3]      FAB_CLK       DFN1C0       Q       int_raw[3]        0.494       3.036
@@ -94,11 +94,11 @@ Instance                            Reference     Type        Pin              N
 -----------------------------------------------------------------------------------------------------------------------------------------------
 cc3000fpga_MSS_0.MSSINT_GPI_30      FAB_CLK       MSSINT      A                tx_fifo_full_i                                0.000        1.756
 cc3000fpga_MSS_0.MSSINT_GPI_31      FAB_CLK       MSSINT      A                rx_fifo_empty_i                               0.000        1.971
-cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     FABINT           Interrupt                                     0.000        2.367
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[4]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[4]     0.000        2.381
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[5]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[5]     0.000        2.381
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[6]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[6]     0.000        2.381
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[7]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[7]     0.000        2.381
+cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     FABINT           Interrupt                                     0.000        2.496
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[1]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[1]     0.000        3.288
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[0]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[0]     0.000        3.414
 cc3000fpga_MSS_0.MSS_ADLIB_INST     FAB_CLK       MSS_APB     MSSPRDATA[2]     cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA[2]     0.000        3.414
@@ -159,9 +159,9 @@ cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     EMCCLK           M
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPO[0]           GPO_net_0[0]                        0.000       0.274
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPO[1]           GPO_net_0[1]                        0.000       0.274
 cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     GPO[3]           GPO_net_0[3]                        0.000       0.274
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[10]     CoreAPB3_0_APBmslave0_PADDR[26]     0.000       2.340
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[9]      CoreAPB3_0_APBmslave0_PADDR[25]     0.000       2.458
-cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[11]     CoreAPB3_0_APBmslave0_PADDR[27]     0.000       2.468
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[11]     CoreAPB3_0_APBmslave0_PADDR[27]     0.000       2.340
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[8]      CoreAPB3_0_APBmslave0_PADDR[24]     0.000       2.458
+cc3000fpga_MSS_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[10]     CoreAPB3_0_APBmslave0_PADDR[26]     0.000       2.468
 ====================================================================================================================================
 
 

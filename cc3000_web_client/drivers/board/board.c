@@ -79,8 +79,7 @@ void pio_init()
     //
     // Initialize the system clock.
     //
-    //initClk(); // I don't think we need to do this. But we might need to do something like this
-	// to get our timings right TODO
+    //initClk(); // I don't think we need to do this.
 
     //
     // Configure the system peripheral bus that IRQ & EN pin are mapped to.
@@ -120,13 +119,13 @@ void pio_init()
     //MAP_GPIODirModeSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_DIR_MODE_OUT );
     //MAP_GPIOPadConfigSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPD );
 
-	// I think this is already done. The signal comes from the spi core directly through the MSS
-	// This is and should be an active high signal.
-	// So I think the write below is just to make sure it is low? Ours should be that way already
-
-
+	MSS_GPIO_config( SPI_EN_PIN, MSS_GPIO_OUTPUT_MODE);
 
     //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
+	MSS_GPIO_set_output(SPI_EN_PIN, 0);
+
+
+
     //SysCtlDelay(600000);
     //SysCtlDelay(600000);
     //SysCtlDelay(600000);
@@ -144,7 +143,7 @@ void pio_init()
     //MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, PIN_HIGH);
 
     // CS is low enabled!!!
-    // CORE SPI should do this for us?
+    // CORE SPI should do this for us with the new inverter added?
 
 
     //
@@ -160,7 +159,7 @@ void pio_init()
     SpiCleanGPIOISR();
 
 
-    //MAP_IntEnable(INT_GPIO_SPI);
+    //MAP_IntEnable(INT_GPIO_SPI);  // same as enable_irq two lines above?
 
     //
     // Initialize LED Pins and state.
@@ -187,7 +186,8 @@ long ReadWlanInterruptPin(void)
     long spi_irq_status = 0;
 
     gpio_inputs = MSS_GPIO_get_inputs();
-    spi_irq_status = gpio_inputs & MSS_GPIO_2_MASK;
+    spi_irq_status = gpio_inputs & MSS_GPIO_2_MASK; // this works according to
+                                                    // where this mask is defined
 
 	return spi_irq_status;
 }
@@ -222,7 +222,7 @@ void WlanInterruptEnable()
 //*****************************************************************************
 void WlanInterruptDisable()
 {
-    // TODO MAP_GPIOIntDisable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
+    // MAP_GPIOIntDisable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
     MSS_GPIO_disable_irq( SPI_IRQ_PIN );
 }
 
@@ -244,10 +244,12 @@ void WriteWlanPin( unsigned char val )
     if(val)
     {
         //TODO MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
+    	MSS_GPIO_set_output(SPI_EN_PIN, 1);
     }
     else
     {
         // TODO MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
+    	MSS_GPIO_set_output(SPI_EN_PIN, 0);
     }
 
 }
@@ -269,6 +271,12 @@ InitSysTick(void)
     //SysTickPeriodSet(SysCtlClockGet() / SYSTICK_PER_SECOND);
     //SysTickIntEnable();
     //SysTickEnable();
+
+	MSS_TIM1_init( MSS_TIMER_PERIODIC_MODE );
+	MSS_TIM1_load_immediate( uint32_t load_value );
+	MSS_TIM1_enable_irq();
+	MSS_TIM1_start();
+
 }
 
 //*****************************************************************************
@@ -292,6 +300,9 @@ SysTickHandler(void)
     //
     if(ulTickCount >= (SYSTICK_PER_SECOND / 2))
     {
+    	// maybe flash an led on and off to make sure this is happening
+    	// so we can get our timing right.
+
         //
         // Yes = call the unsolicited event handler.  We need to do this a
         // few times each second.
@@ -315,11 +326,14 @@ SysTickHandler(void)
 void initClk(void)
 {
 
+	// TODO? I don't think we need to init a clk on our board.
+	// we should do init sys tick like shown above
+
     //
     // 16 MHz Crystal on Board. SSI Freq - configure M4 Clock to be ~50 MHz
     //
-    //TODO? probably not MAP_SysCtlClockSet(SYSCTL_SYSDIV_3 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
-     //                   SYSCTL_XTAL_16MHZ);
+    // MAP_SysCtlClockSet(SYSCTL_SYSDIV_3 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN |
+    //                   SYSCTL_XTAL_16MHZ);
 }
 
 //*****************************************************************************

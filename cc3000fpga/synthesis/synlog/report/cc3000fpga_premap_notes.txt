@@ -1,4 +1,0 @@
-@N: MF248 |Running in 64-bit mode.
-@N: MF258 |Gated clock conversion disabled 
-@N: MF547 |Generated clock conversion disabled 
-@N: BN225 |Writing default property annotation file C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.sap.

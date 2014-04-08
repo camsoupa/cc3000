@@ -46,13 +46,13 @@ ENDLIST
 LIST FileManager
 VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396992347"
+TIME="1396993897"
 SIZE="2783"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
 STATE="utd"
-TIME="1396992347"
+TIME="1396993897"
 SIZE="1256"
 PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
 IS_READONLY="TRUE"
@@ -189,7 +189,7 @@ IS_INCLUDED="TRUE"
 ENDFILE
 VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396992347"
+TIME="1396993897"
 SIZE="2957"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
@@ -268,12 +268,12 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396992350"
+TIME="1396993902"
 SIZE="6328"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
 STATE="utd"
-TIME="1396992346"
+TIME="1396993897"
 SIZE="2388"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 BEGIN_USE_CONSTRAINT
@@ -284,39 +284,32 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.v,hdl"
 STATE="utd"
-TIME="1396992347"
+TIME="1396993898"
 SIZE="16843"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
 STATE="utd"
-TIME="1396992349"
+TIME="1396993900"
 SIZE="1718"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf,actgen_cxf"
 STATE="utd"
-TIME="1396993217"
+TIME="1396993969"
 SIZE="11522"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc,pdc"
 STATE="utd"
-TIME="1396992353"
+TIME="1396993879"
 SIZE="1958"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
 TOOL_CONSTRAINT_TYPE="ideDESIGNER"
 END_USE_CONSTRAINT
 USE_FOR_ANY_TOOL="FALSE"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\work\cc3000fpga_MSS\MSS_ACE_0\MSS_ACE_0.log,???"
-STATE="utd"
-TIME="1396975881"
-SIZE="31587"
-PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\DESIGN_FIRMWARE\DESIGN_FIRMWARE.cxf,actgen_cxf"
@@ -330,7 +323,7 @@ TIME="1396975881"
 SIZE="413"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.adb,adb"
-STATE="utd"
+STATE="ood"
 TIME="1396992940"
 SIZE="517120"
 ENDFILE
@@ -388,14 +381,14 @@ PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
 ENDFILE
 VALUE "<project>\simulation\subsystem.bfm,sim"
 STATE="utd"
-TIME="1396992347"
+TIME="1396993898"
 SIZE="628"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
 VALUE "<project>\simulation\test.bfm,sim"
 STATE="utd"
-TIME="1396992359"
-SIZE="5496"
+TIME="1396993885"
+SIZE="5497"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\simulation\user.bfm,sim"
@@ -411,7 +404,7 @@ SIZE="32208"
 PARENT="<project>\component\Actel\DirectCore\CORESPI\4.2.116\CORESPI.cxf"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.edn,syn_edn"
-STATE="utd"
+STATE="ood"
 TIME="1396992901"
 SIZE="491484"
 ENDFILE
@@ -449,9 +442,7 @@ VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
 ENDLIST
 LIST ProjectState5.1
 LIST Impl1
-LiberoState=Post_Synthesis
 ideSTIMULUS=StateSuccess
-ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -675,9 +666,7 @@ ENDLIST
 LIST ProjectState5.1
 LIST "cc3000fpga::work"
 LIST Impl1
-LiberoState=Post_Synthesis
 ideSTIMULUS=StateSuccess
-ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
 UseSynth=TRUE
@@ -734,6 +723,7 @@ LIST OpenedFileList
 SmartDesign;cc3000fpga
 SmartDesign;cc3000fpga_MSS
 HDL;hdl\inverter.v
+Reports;Reports
 ACTIVEVIEW;cc3000fpga_MSS
 ENDLIST
 LIST ModuleSubBlockList

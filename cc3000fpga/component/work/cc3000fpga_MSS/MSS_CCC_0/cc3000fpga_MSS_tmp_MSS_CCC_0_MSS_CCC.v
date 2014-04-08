@@ -79,15 +79,15 @@ output LPXIN_CLKOUT;
     assign N_VCC = VCC_power_net1;
     
     MSS_CCC #( .VCOFREQUENCY(-1.000) )  I_MSSCCC (.CLKA(N_CLKA_RCOSC), 
-        .EXTFB(N_GND), .GLA(), .GLAMSS(GLA0), .LOCK(), .LOCKMSS(), 
-        .CLKB(N_GND), .GLB(FAB_CLK), .YB(), .CLKC(N_GND), .GLC(), .YC()
-        , .MACCLK(), .OADIV({N_GND, N_GND, N_GND, N_GND, N_GND}), 
+        .EXTFB(N_GND), .GLA(FAB_CLK), .GLAMSS(GLA0), .LOCK(), .LOCKMSS(
+        ), .CLKB(N_GND), .GLB(), .YB(), .CLKC(N_GND), .GLC(), .YC(), 
+        .MACCLK(), .OADIV({N_GND, N_GND, N_GND, N_GND, N_GND}), 
         .OADIVHALF(N_GND), .OAMUX({N_GND, N_GND, N_GND}), .BYPASSA(
         N_VCC), .DLYGLA({N_GND, N_GND, N_GND, N_GND, N_GND}), 
         .DLYGLAMSS({N_GND, N_GND, N_GND, N_GND, N_GND}), .DLYGLAFAB({
         N_GND, N_GND, N_GND, N_GND, N_GND}), .OBDIV({N_GND, N_GND, 
-        N_GND, N_GND, N_VCC}), .OBDIVHALF(N_GND), .OBMUX({N_GND, N_VCC, 
-        N_VCC}), .BYPASSB(N_GND), .DLYGLB({N_GND, N_GND, N_GND, N_GND, 
+        N_GND, N_VCC, N_VCC}), .OBDIVHALF(N_GND), .OBMUX({N_GND, N_GND, 
+        N_GND}), .BYPASSB(N_VCC), .DLYGLB({N_GND, N_GND, N_GND, N_GND, 
         N_GND}), .OCDIV({N_GND, N_GND, N_GND, N_VCC, N_VCC}), 
         .OCDIVHALF(N_GND), .OCMUX({N_GND, N_GND, N_GND}), .BYPASSC(
         N_VCC), .DLYGLC({N_GND, N_GND, N_GND, N_GND, N_GND}), .FINDIV({

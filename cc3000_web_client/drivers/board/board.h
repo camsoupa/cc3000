@@ -62,8 +62,8 @@
 //
 // CC3000 Board specific Macros
 //
-#define ASSERT_CS()          (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0))
-#define DEASSERT_CS()        (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0xFF))
+#define ASSERT_CS()          (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0))     //Core spi is doing this for us...
+#define DEASSERT_CS()        (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0xFF))  //Core spi is doing this for us...
 
 //
 // IRQ settings
@@ -79,14 +79,14 @@
 //
 //#define SYSCTL_PERIPH_SW_EN_PORT        SYSCTL_PERIPH_GPIOB  // matt- I think this is a TI thing we don't need to do
 //#define SPI_GPIO_SW_EN_BASE             GPIO_PORTB_BASE      // matt- I think this is a TI thing we don't need to do
-//#define SPI_EN_PIN                      GPIO_PIN_5  // We have the pass through pin config thing that comes directly
+#define SPI_EN_PIN                      MSS_GPIO_4  // We have the pass through pin config thing that comes directly
                                                       // from the spi core so I don't think we need to set this up
 //
 // CS settings  PE0
 //
 //#define SPI_CS_PORT                     GPIO_PORTE_BASE // matt- TI thing
-#define SPI_CS_PIN                      GPIO_PIN_0
-#define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE
+//#define SPI_CS_PIN                      GPIO_PIN_0
+//#define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE
 
 //
 // SPI Hardware Abstraction layer

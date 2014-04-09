@@ -2330,7 +2330,7 @@ main(void)
     g_ui32BindFlag = SENTINEL_EMPTY;
     g_ui32SmartConfigFinished = 0;
 
-
+	printf("UART is WORKING\n");
     //
     // Initialize all board specific components.
     //

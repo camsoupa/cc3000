@@ -287,8 +287,13 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 
     // TODO add handler for FABINT if we think we need it.
 	// TODO add handlers for these GPIO interrups
+
+
+	NVIC_EnableIRQ(GPIO31_IRQn);
     MSS_GPIO_config( SPI_RX_AVAIL, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
+    NVIC_EnableIRQ(GPIO30_IRQn);
     MSS_GPIO_config( SPI_TX_RFM, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
+    // STILL NEED TO ENBALE GPIO IRQ BELOW!! TODO
 
     //
     // Set pin muxing to route the SPI signals to the relevant pins.
@@ -418,6 +423,9 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     // Enable the SSI interrupt
     //
     //MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
+	NVIC_EnableIRQ(Fabric_IRQn);
+    MSS_GPIO_enable_irq( SPI_RX_AVAIL );
+    MSS_GPIO_enable_irq( SPI_TX_RFM );
 
 }
 
@@ -455,6 +463,7 @@ SpiClose(void)
     MSS_GPIO_disable_irq(SPI_RX_AVAIL);
     MSS_GPIO_disable_irq(SPI_TX_RFM);
     //MSS_GPIO_disable_irq(FABINT?);
+	NVIC_DisableIRQ(Fabric_IRQn);
 
 
 

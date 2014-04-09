@@ -107,6 +107,8 @@ void pio_init()
 
 
     // This single call takes care of the configure as input and as negative edge interrupt
+
+	NVIC_EnableIRQ(GPIO2_IRQn);
 	MSS_GPIO_config( SPI_IRQ_PIN, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE );
 
 
@@ -261,21 +263,29 @@ void WriteWlanPin( unsigned char val )
 void
 InitSysTick(void)
 {
+	//THEIR METHOD
     //
     // Configure SysTick to occur 10 times per second and enable its interrupt.
     //
-
 	// the Get() gets the clk frequency
 	// see driverlib/systick.h in Tivaware
     //SysTickPeriodSet(SysCtlClockGet() / SYSTICK_PER_SECOND); // Tiva's clk returns 66,666,666 for the Get()
     //SysTickIntEnable(); // enable the interrupt from this timer
     //SysTickEnable();    // start the counter
 
+	//MANUAL OUR METHOD
     // Set up handler to SysTickHandler in startup_a2fxxxm3.s
+	/*
 	MSS_TIM1_init( MSS_TIMER_PERIODIC_MODE );
 	MSS_TIM1_load_immediate( 100000000 / SYSTICK_PER_SECOND );
 	MSS_TIM1_enable_irq();
 	MSS_TIM1_start();
+    */
+
+	//SMARTFUSION METHOD
+	SysTick_Config(2); // 20ms between interrups i'm thinking is good? I think we have a 10ms tick
+
+
 
 }
 
@@ -286,7 +296,7 @@ InitSysTick(void)
 //
 //*****************************************************************************
 void
-SysTickHandler(void)
+SysTick_Handler(void)
 {
 
 	// no call to SysTickIntRegister but this is set up in the TI code as the SysTick

@@ -29,7 +29,7 @@
 // The desired system tick frequency.Defines for setting up the system tick.
 //
 //*****************************************************************************
-#define SYSTICK_PER_SECOND            15 // changed from 10 to 15 to reflect our clk speed differences
+#define SYSTICK_PER_SECOND            10
 
 //*****************************************************************************
 //

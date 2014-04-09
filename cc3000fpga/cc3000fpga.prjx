@@ -93,8 +93,8 @@ SIZE="520704"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.ide_des,ide_des"
 STATE="utd"
-TIME="1396993900"
-SIZE="1156"
+TIME="1396997866"
+SIZE="1033"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_compile_log.rpt,log"
 STATE="utd"
@@ -113,8 +113,8 @@ SIZE="2091"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_MSS.ide_des,ide_des"
 STATE="utd"
-TIME="1396994192"
-SIZE="365"
+TIME="1396998301"
+SIZE="234"
 ENDFILE
 VALUE "<project>\designer\impl1\MSS_XTLOSC.ide_des,ide_des"
 STATE="utd"
@@ -273,11 +273,8 @@ ENDLIST
 LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
-Reports;Reports
-SmartDesign;cc3000fpga_MSS
-SmartDesign;cc3000fpga
-HDL;hdl\timer.v
-ACTIVEVIEW;cc3000fpga
+StartPage;StartPage
+ACTIVEVIEW;StartPage
 ENDLIST
 LIST ModuleSubBlockList
 LIST "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.cxf","TRUE","FALSE"
@@ -285,7 +282,6 @@ SUBBLOCK "CoreAPB3::work","","FALSE","FALSE"
 SUBBLOCK "CORESPI::work","","FALSE","FALSE"
 SUBBLOCK "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf","TRUE","FALSE"
 SUBBLOCK "inverter::work","hdl\inverter.v","FALSE","FALSE"
-SUBBLOCK "timerWrapper::work","hdl\timerWrapper.v","FALSE","FALSE"
 ENDLIST
 LIST "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf","TRUE","FALSE"
 SUBBLOCK "MSS_ACE::work","","FALSE","FALSE"

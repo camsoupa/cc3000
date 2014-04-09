@@ -155,32 +155,34 @@ uint8_t g_pui8Dummy[2] = {0, 0x5A};
 //
 // Case for Code Composer Studio.
 //
+/*
 #if defined(__CCS__) || defined(ccs)
 uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
 uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
 uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
 #pragma DATA_ALIGN(ui8DMAChannelControlStructure, 1024);
 static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE];
-
+*/
 //
 // Case for IAR Embedded Workbench for ARM (ewarm).
 //
+/*
 #elif defined(__IAR_SYSTEMS_ICC__) || defined(ewarm)
 __no_init uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
 __no_init uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
 __no_init uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
 #pragma data_alignment=1024
 __no_init static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE];
-
+*/
 //
 // Case for Sourcery CodeBench, GCC, and Keil RVMDK.
 //
-#else
+//#else
 uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
 uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
 uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
 static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE] __attribute__ ((aligned(1024)));
-#endif
+//#endif
 
 //*****************************************************************************
 //

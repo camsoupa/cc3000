@@ -91,6 +91,14 @@
 //
 // SPI Hardware Abstraction layer
 //
+
+// OURS
+//#define SPI_INT                       this is on the FABINT
+#define SPI_RX_AVAIL                    MSS_GPIO_31
+#define SPI_TX_RFM                      MSS_GPIO_30
+
+
+// THEIRS
 #define SPI_BASE                        SSI2_BASE
 #define SPI_CLK_PIN                     GPIO_PIN_4
 #define SPI_RX_PIN                      GPIO_PIN_6

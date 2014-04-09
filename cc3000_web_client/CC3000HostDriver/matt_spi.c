@@ -225,6 +225,10 @@ SpiConfigureHwMapping(void)
     sSpiInformation.sHwSettings.ui32DMARxChannel = SPI_UDMA_RX_CHANNEL;
     sSpiInformation.sHwSettings.ui32DMATxChannel = SPI_UDMA_TX_CHANNEL;
     */
+
+
+
+
 }
 
 //*****************************************************************************
@@ -271,93 +275,99 @@ SpiCleanGPIOISR(void)
 void
 SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
-	/* TODO
+
     //
     // Enable required SSI and GPIO peripherals.
     //
-    MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32PioPortAddress);
-    MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32SsiPortAddress);
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI_BASE);
+    //MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32PioPortAddress);
+    //MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32SsiPortAddress);
+    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI_BASE);
+
+    // TODO add handler for FABINT if we think we need it.
+	// TODO add handlers for these GPIO interrups
+    MSS_GPIO_config( SPI_RX_AVAIL, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
+    MSS_GPIO_config( SPI_TX_RFM, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
 
     //
     // Set pin muxing to route the SPI signals to the relevant pins.
     //
-    GPIOPinConfigure(SPI_CLK_MUX_SEL);
-    GPIOPinConfigure(SPI_RX_MUX_SEL);
-    GPIOPinConfigure(SPI_TX_MUX_SEL);
+    //GPIOPinConfigure(SPI_CLK_MUX_SEL);
+    //GPIOPinConfigure(SPI_RX_MUX_SEL);
+    //GPIOPinConfigure(SPI_TX_MUX_SEL);
+    // No need to do this for us
 
     //
     // Configure the appropriate pins to be SSI instead of GPIO
     //
-    MAP_GPIOPinTypeSSI(sSpiInformation.sHwSettings.ui32PioSpiPort,
-                       (sSpiInformation.sHwSettings.ui32SsiTx |
-                        sSpiInformation.sHwSettings.ui32SsiRx |
-                        sSpiInformation.sHwSettings.ui32SsiClck));
+    //MAP_GPIOPinTypeSSI(sSpiInformation.sHwSettings.ui32PioSpiPort,
+    //                   (sSpiInformation.sHwSettings.ui32SsiTx |
+    //                    sSpiInformation.sHwSettings.ui32SsiRx |
+    //                    sSpiInformation.sHwSettings.ui32SsiClck));
 
-    MAP_GPIOPadConfigSet(sSpiInformation.sHwSettings.ui32PioSpiPort,
-                         sSpiInformation.sHwSettings.ui32SsiClck,
-                         GPIO_STRENGTH_8MA,GPIO_PIN_TYPE_STD_WPD);
+    //MAP_GPIOPadConfigSet(sSpiInformation.sHwSettings.ui32PioSpiPort,
+    //                     sSpiInformation.sHwSettings.ui32SsiClck,
+    //                     GPIO_STRENGTH_8MA,GPIO_PIN_TYPE_STD_WPD);
 
     //
     // Configure and enable the SSI port for master mode
     //
-    MAP_SysCtlPeripheralReset(sSpiInformation.sHwSettings.ui32SsiPortAddress);
+    //MAP_SysCtlPeripheralReset(sSpiInformation.sHwSettings.ui32SsiPortAddress);
 
     //
     // Ensure that the SSI is disabled before making any configuration
     // changes.
     //
-    MAP_SSIDisable(sSpiInformation.sHwSettings.ui32SsiPort);
+   // MAP_SSIDisable(sSpiInformation.sHwSettings.ui32SsiPort);
 
     //
     // Configure SSI with 8 bit data, Polarity '0', Phase '1' and clock
     // frequency as provided by the caller.
     //
-    MAP_SSIConfigSetExpClk(sSpiInformation.sHwSettings.ui32SsiPort,
-                           ui32SysClck, SSI_FRF_MOTO_MODE_1, SSI_MODE_MASTER,
-                           ui32SSIFreq, 8);
+    //MAP_SSIConfigSetExpClk(sSpiInformation.sHwSettings.ui32SsiPort,
+     //                      ui32SysClck, SSI_FRF_MOTO_MODE_1, SSI_MODE_MASTER,
+     //                      ui32SSIFreq, 8);
 
     //
     // Enable EOT mode for the SSIRIS EOT bit
     //
-    HWREG(sSpiInformation.sHwSettings.ui32SsiPort + SSI_O_CR1) |= SSI_CR1_EOT;
+    //HWREG(sSpiInformation.sHwSettings.ui32SsiPort + SSI_O_CR1) |= SSI_CR1_EOT;
 
     //
     // Enable the SSI now that configuration is complete.
     //
-    MAP_SSIEnable(sSpiInformation.sHwSettings.ui32SsiPort);
+    //MAP_SSIEnable(sSpiInformation.sHwSettings.ui32SsiPort);
 
     //
     // Enable DMA mode for both RX and TX
     //
-    MAP_SSIDMAEnable(sSpiInformation.sHwSettings.ui32SsiPort, SSI_DMA_TX);
+    //MAP_SSIDMAEnable(sSpiInformation.sHwSettings.ui32SsiPort, SSI_DMA_TX);
 
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_UDMA);
+    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_UDMA);
 
     //
     // Enable the uDMA controller.
     //
-    MAP_uDMAEnable();
+    //MAP_uDMAEnable();
 
     //
     //Configure the DMA channels for the selected SPI Module
     //
-    MAP_uDMAChannelAssign( sSpiInformation.sHwSettings.ui32DMARxChannel);
-    MAP_uDMAChannelAssign( sSpiInformation.sHwSettings.ui32DMATxChannel);
+    //MAP_uDMAChannelAssign( sSpiInformation.sHwSettings.ui32DMARxChannel);
+    //MAP_uDMAChannelAssign( sSpiInformation.sHwSettings.ui32DMATxChannel);
 
     //
     // Point at the control table to use for channel control structures
     //
-    MAP_uDMAControlBaseSet(ui8DMAChannelControlStructure);
+    //MAP_uDMAControlBaseSet(ui8DMAChannelControlStructure);
 
     //
     // Put the attributes in a known state for the uDMA SSIRX channel.  These
     // should already be disabled by default.
     //
-    MAP_uDMAChannelAttributeDisable(sSpiInformation.sHwSettings.ui32DMARxChannel,
-                                    UDMA_ATTR_ALTSELECT | UDMA_ATTR_USEBURST |
-                                    UDMA_ATTR_HIGH_PRIORITY |
-                                    UDMA_ATTR_REQMASK);
+    //MAP_uDMAChannelAttributeDisable(sSpiInformation.sHwSettings.ui32DMARxChannel,
+    //                                UDMA_ATTR_ALTSELECT | UDMA_ATTR_USEBURST |
+    //                                UDMA_ATTR_HIGH_PRIORITY |
+    //                                UDMA_ATTR_REQMASK);
 
     //
     // Configure the control parameters for the primary control structure for
@@ -367,18 +377,18 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     // size is set to 1 to match the RX FIFO trigger threshold. The uDMA
     // controller will use a 4 byte burst transfer if possible.
     //
-    MAP_uDMAChannelControlSet((sSpiInformation.sHwSettings.ui32DMARxChannel |
-                               UDMA_PRI_SELECT), (UDMA_SIZE_8 |
-                              UDMA_SRC_INC_NONE | UDMA_DST_INC_8 | UDMA_ARB_1));
+    //MAP_uDMAChannelControlSet((sSpiInformation.sHwSettings.ui32DMARxChannel |
+    //                           UDMA_PRI_SELECT), (UDMA_SIZE_8 |
+    //                          UDMA_SRC_INC_NONE | UDMA_DST_INC_8 | UDMA_ARB_1));
 
     //
     // Put the attributes in a known state for the uDMA SSITX channel.  These
     // should already be disabled by default.
     //
-    MAP_uDMAChannelAttributeDisable(sSpiInformation.sHwSettings.ui32DMATxChannel,
-                                    UDMA_ATTR_ALTSELECT | UDMA_ATTR_USEBURST |
-                                    UDMA_ATTR_HIGH_PRIORITY |
-                                    UDMA_ATTR_REQMASK);
+    //MAP_uDMAChannelAttributeDisable(sSpiInformation.sHwSettings.ui32DMATxChannel,
+    //                                UDMA_ATTR_ALTSELECT | UDMA_ATTR_USEBURST |
+    //                                UDMA_ATTR_HIGH_PRIORITY |
+    //                                UDMA_ATTR_REQMASK);
 
     //
     // Configure the control parameters for the primary control structure for
@@ -388,9 +398,9 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     // size is set to 1 to match the RX FIFO trigger threshold. The uDMA
     // controller will use a 4 byte burst transfer if possible.
     //
-    MAP_uDMAChannelControlSet(sSpiInformation.sHwSettings.ui32DMATxChannel |
-                              UDMA_PRI_SELECT, UDMA_SIZE_8 | UDMA_SRC_INC_8 |
-                              UDMA_DST_INC_NONE | UDMA_ARB_4);
+    //MAP_uDMAChannelControlSet(sSpiInformation.sHwSettings.ui32DMATxChannel |
+    //                          UDMA_PRI_SELECT, UDMA_SIZE_8 | UDMA_SRC_INC_8 |
+    //                          UDMA_DST_INC_NONE | UDMA_ARB_4);
 
     //
     // Now both the uDMA SSI TX and RX channels are primed to start a
@@ -399,14 +409,14 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     //
     // The uDMA TX/RX channel must be disabled.
     //
-    MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMARxChannel);
-    MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMATxChannel);
+    //MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMARxChannel);
+    //MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMATxChannel);
 
     //
     // Enable the SSI interrupt
     //
-    MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-    */
+    //MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
+
 }
 
 //*****************************************************************************
@@ -418,7 +428,7 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 void
 SpiClose(void)
 {
-/* TODO
+
     if (sSpiInformation.pRxPacket)
     {
         sSpiInformation.pRxPacket = 0;
@@ -427,14 +437,25 @@ SpiClose(void)
     //
     //  Disable the interrupt from the IRQ GPIO input.
     //
-    tSLInformation.WlanInterruptDisable();
+    //tSLInformation.WlanInterruptDisable();  // takes care of disabling SPI_IRQ_PIN I think
+    WlanInterruptDisable();
 
     //
     // Disable interrupt for SPI IRQ and SSI module.
     //
-    MAP_IntDisable(sSpiInformation.sHwSettings.ui32PortInt);
-    MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-*/
+    //MAP_IntDisable(sSpiInformation.sHwSettings.ui32PortInt);
+    //MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
+
+    //MSS_GPIO_clear_irq(SPI_RX_AVAIL);
+    //MSS_GPIO_clear_irq(SPI_TX_RFM);
+    //MSS_GPIO_clear_irq(FABINT?);
+
+    MSS_GPIO_disable_irq(SPI_RX_AVAIL);
+    MSS_GPIO_disable_irq(SPI_TX_RFM);
+    //MSS_GPIO_disable_irq(FABINT?);
+
+
+
 }
 
 //*****************************************************************************

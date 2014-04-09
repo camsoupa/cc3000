@@ -271,7 +271,7 @@ InitSysTick(void)
     //SysTickIntEnable(); // enable the interrupt from this timer
     //SysTickEnable();    // start the counter
 
-    // TODO Set up handler to SysTickHandler in startup_a2fxxxm3.s
+    // Set up handler to SysTickHandler in startup_a2fxxxm3.s
 	MSS_TIM1_init( MSS_TIMER_PERIODIC_MODE );
 	MSS_TIM1_load_immediate( 100000000 / SYSTICK_PER_SECOND );
 	MSS_TIM1_enable_irq();
@@ -291,7 +291,7 @@ SysTickHandler(void)
 
 	// no call to SysTickIntRegister but this is set up in the TI code as the SysTick
 	// interrupt handler for the timer in startup_ccs.c
-    // very similar to our NVIC thing in CMSIS/startup_gcc/startup_A2FXXXM3.s  TODO
+    // very similar to our NVIC thing in CMSIS/startup_gcc/startup_A2FXXXM3.s
 
     static unsigned long ulTickCount = 0;
 

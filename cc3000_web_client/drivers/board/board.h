@@ -29,14 +29,14 @@
 // The desired system tick frequency.Defines for setting up the system tick.
 //
 //*****************************************************************************
-#define SYSTICK_PER_SECOND            10
+#define SYSTICK_PER_SECOND            15 // changed from 10 to 15 to reflect our clk speed differences
 
 //*****************************************************************************
 //
 // The desired system clock rate.
 //
 //*****************************************************************************
-#define SYSCLOCK_RATE_HZ                50000000
+#define SYSCLOCK_RATE_HZ                100000000 // changed from 50,000,000 to 100,000,000
 
 //*****************************************************************************
 //
@@ -84,9 +84,9 @@
 //
 // CS settings  PE0
 //
-//#define SPI_CS_PORT                     GPIO_PORTE_BASE // matt- TI thing
-//#define SPI_CS_PIN                      GPIO_PIN_0
-//#define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE
+//#define SPI_CS_PORT                     GPIO_PORTE_BASE      // matt- TI thing
+//#define SPI_CS_PIN                      GPIO_PIN_0           // matt- CORE SPI does this for us
+//#define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE  // Ti thing
 
 //
 // SPI Hardware Abstraction layer
@@ -112,31 +112,16 @@
 // UART definitions.
 //
 //*****************************************************************************
-#define CC3000_UART_BASE                UART0_BASE
-#define CC3000_UART_SYSCTL_PERIPH_GPIO  SYSCTL_PERIPH_GPIOA
-#define CC3000_UART_SYSCTL_PERIPH_UART  SYSCTL_PERIPH_UART0
-#define CC3000_UART_GPIO_RX             GPIO_PA0_U0RX
-#define CC3000_UART_GPIO_TX             GPIO_PA1_U0TX
-#define CC3000_UART_GPIO_PORT_BASE      GPIO_PORTA_BASE
-#define CC3000_UART_GPIO_PINS           (GPIO_PIN_0 | GPIO_PIN_1)
-#define CC3000_UART_INT                 INT_UART0
+
+// deleted because we use our own uart things
 
 //*****************************************************************************
 //
 // LED connection definitions.
 //
 //*****************************************************************************
-#define CC3000_LED_RED_SYSCTL_PERIPH    SYSCTL_PERIPH_GPIOF
-#define CC3000_LED_RED_PORT             GPIO_PORTF_BASE
-#define CC3000_LED_RED_PIN              GPIO_PIN_1
 
-#define CC3000_LED_BLUE_SYSCTL_PERIPH   SYSCTL_PERIPH_GPIOF
-#define CC3000_LED_BLUE_PORT            GPIO_PORTF_BASE
-#define CC3000_LED_BLUE_PIN             GPIO_PIN_2
-
-#define CC3000_LED_GREEN_SYSCTL_PERIPH  SYSCTL_PERIPH_GPIOF
-#define CC3000_LED_GREEN_PORT           GPIO_PORTF_BASE
-#define CC3000_LED_GREEN_PIN            GPIO_PIN_3
+// deleted because we use our own uart things
 
 typedef enum
 {

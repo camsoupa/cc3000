@@ -57,7 +57,7 @@ g_pfnVectors:
     .word  I2C1_IRQHandler
     .word  I2C1_SMBAlert_IRQHandler
     .word  I2C1_SMBus_IRQHandler
-    .word  Timer1_IRQHandler
+    .word  SysTickHandler /*Timer1_IRQHandler*/
     .word  Timer2_IRQHandler
     .word  PLL_Lock_IRQHandler
     .word  PLL_LockLost_IRQHandler

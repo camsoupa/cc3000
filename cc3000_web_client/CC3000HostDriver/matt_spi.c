@@ -235,25 +235,29 @@ SpiConfigureHwMapping(void)
 uint32_t
 SpiCleanGPIOISR(void)
 {
-	/* TODO
-    uint32_t ui32Status;
+	// call SpiCleanGPIOISR from the GPIO ISR?
+
+	// TODO
+
+
+    uint32_t ui32Status = 0;
 
     //
     // Get the reason for the interrupt
     //
-    ui32Status = MAP_GPIOIntStatus(SPI_GPIO_IRQ_BASE, true);
+    //ui32Status = MAP_GPIOIntStatus(SPI_GPIO_IRQ_BASE, true);
 
     //
     // Clear any asserted interrupts
     //
-    MAP_GPIOIntClear(SPI_GPIO_IRQ_BASE, ui32Status);
-    MSS_GPIO_clear_irq()
+    //MAP_GPIOIntClear(SPI_GPIO_IRQ_BASE, ui32Status);
+    //MSS_GPIO_clear_irq();
 
     //
     // Return the read status to the caller.
     //
     return(ui32Status);
-    */
+
 }
 
 //*****************************************************************************
@@ -604,7 +608,7 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
     //
     // Assert the chip select to CC3000.
     //
-    ASSERT_CS();
+    ASSERT_CS(); TODO
 
     //
     // Wait 80 microseconds or so.

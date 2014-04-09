@@ -48,7 +48,6 @@
 */
 
 #include   "../mss_uart/mss_uart.h"
-
 #include   "../mss_gpio/mss_gpio.h"
 #include   "../mss_spi/mss_spi.h"
 #include   "../mss_timer/mss_timer.h"
@@ -124,12 +123,13 @@ void pio_init()
     //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
 	MSS_GPIO_set_output(SPI_EN_PIN, 0);
 
+    //see Ti's SysCtlDelay in tivaware driverlib/sysctl.c
+	// it is an asm loop of 3 instructions doing what delay is doing
 
-
     //SysCtlDelay(600000);
     //SysCtlDelay(600000);
     //SysCtlDelay(600000);
-    delay(600000); //TODO make sure delay is like SysCtlDelay...
+    delay(600000);
     delay(600000);
     delay(600000);
 
@@ -156,7 +156,7 @@ void pio_init()
     //
     // Clear interrupt status
     //
-    SpiCleanGPIOISR();
+    SpiCleanGPIOISR();  //TODO
 
 
     //MAP_IntEnable(INT_GPIO_SPI);  // same as enable_irq two lines above?
@@ -188,7 +188,6 @@ long ReadWlanInterruptPin(void)
     gpio_inputs = MSS_GPIO_get_inputs();
     spi_irq_status = gpio_inputs & MSS_GPIO_2_MASK; // this works according to
                                                     // where this mask is defined
-
 	return spi_irq_status;
 }
 
@@ -239,16 +238,15 @@ void WlanInterruptDisable()
 //*****************************************************************************
 void WriteWlanPin( unsigned char val )
 {
-	// We might have to do this if the Core Spi is doing a bad job...
 
     if(val)
     {
-        //TODO MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
+        //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
     	MSS_GPIO_set_output(SPI_EN_PIN, 1);
     }
     else
     {
-        // TODO MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
+        //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
     	MSS_GPIO_set_output(SPI_EN_PIN, 0);
     }
 
@@ -267,13 +265,15 @@ InitSysTick(void)
     // Configure SysTick to occur 10 times per second and enable its interrupt.
     //
 
-	//TODO implement these?
-    //SysTickPeriodSet(SysCtlClockGet() / SYSTICK_PER_SECOND);
-    //SysTickIntEnable();
-    //SysTickEnable();
+	// the Get() gets the clk frequency
+	// see driverlib/systick.h in Tivaware
+    //SysTickPeriodSet(SysCtlClockGet() / SYSTICK_PER_SECOND); // Tiva's clk returns 66,666,666 for the Get()
+    //SysTickIntEnable(); // enable the interrupt from this timer
+    //SysTickEnable();    // start the counter
 
+    // TODO Set up handler to SysTickHandler in startup_a2fxxxm3.s
 	MSS_TIM1_init( MSS_TIMER_PERIODIC_MODE );
-	//MSS_TIM1_load_immediate( uint32_t load_value );
+	MSS_TIM1_load_immediate( 100000000 / SYSTICK_PER_SECOND );
 	MSS_TIM1_enable_irq();
 	MSS_TIM1_start();
 
@@ -288,6 +288,11 @@ InitSysTick(void)
 void
 SysTickHandler(void)
 {
+
+	// no call to SysTickIntRegister but this is set up in the TI code as the SysTick
+	// interrupt handler for the timer in startup_ccs.c
+    // very similar to our NVIC thing in CMSIS/startup_gcc/startup_A2FXXXM3.s  TODO
+
     static unsigned long ulTickCount = 0;
 
     //
@@ -301,7 +306,6 @@ SysTickHandler(void)
     if(ulTickCount >= (SYSTICK_PER_SECOND / 2))
     {
     	// maybe flash an led on and off to make sure this is happening
-    	// so we can get our timing right.
 
         //
         // Yes = call the unsolicited event handler.  We need to do this a
@@ -326,9 +330,7 @@ SysTickHandler(void)
 void initClk(void)
 {
 
-	// TODO? I don't think we need to init a clk on our board.
-	// we should do init sys tick like shown above
-
+	// I don't think we need to init a clk on our board.
     //
     // 16 MHz Crystal on Board. SSI Freq - configure M4 Clock to be ~50 MHz
     //

@@ -277,7 +277,7 @@ Reports;Reports
 SmartDesign;cc3000fpga_MSS
 SmartDesign;cc3000fpga
 HDL;hdl\timer.v
-ACTIVEVIEW;cc3000fpga_MSS
+ACTIVEVIEW;cc3000fpga
 ENDLIST
 LIST ModuleSubBlockList
 LIST "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.cxf","TRUE","FALSE"

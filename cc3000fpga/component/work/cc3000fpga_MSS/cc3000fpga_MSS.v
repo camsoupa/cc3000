@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Thu Apr 10 11:12:51 2014
+// Created by SmartDesign Thu Apr 10 17:20:14 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -8,151 +8,186 @@
 // cc3000fpga_MSS
 module cc3000fpga_MSS(
     // Inputs
-    F2M_GPI_30,
-    F2M_GPI_31,
+    F2M_GPI_25,
     F2M_GPI_5,
     F2M_GPI_6,
     F2M_GPI_7,
     F2M_GPI_8,
-    FABINT,
-    GPIO_2_IN,
     MSSPRDATA,
     MSSPREADY,
     MSSPSLVERR,
     MSS_RESET_N,
+    SPI_1_DI,
     UART_0_RXD,
     UART_1_RXD,
     // Outputs
     FAB_CLK,
-    GPIO_4_OUT,
     M2F_GPO_0,
     M2F_GPO_1,
+    M2F_GPO_11,
+    M2F_GPO_12,
+    M2F_GPO_13,
+    M2F_GPO_24,
+    M2F_GPO_26,
+    M2F_GPO_27,
     M2F_GPO_3,
-    M2F_GPO_9,
     M2F_RESET_N,
     MSSPADDR,
     MSSPENABLE,
     MSSPSEL,
     MSSPWDATA,
     MSSPWRITE,
+    SPI_1_DO,
     UART_0_TXD,
-    UART_1_TXD
+    UART_1_TXD,
+    // Inouts
+    SPI_1_CLK,
+    SPI_1_SS
 );
 
 //--------------------------------------------------------------------
 // Input
 //--------------------------------------------------------------------
-input         F2M_GPI_30;
-input         F2M_GPI_31;
+input         F2M_GPI_25;
 input         F2M_GPI_5;
 input         F2M_GPI_6;
 input         F2M_GPI_7;
 input         F2M_GPI_8;
-input         FABINT;
-input         GPIO_2_IN;
 input  [31:0] MSSPRDATA;
 input         MSSPREADY;
 input         MSSPSLVERR;
 input         MSS_RESET_N;
+input         SPI_1_DI;
 input         UART_0_RXD;
 input         UART_1_RXD;
 //--------------------------------------------------------------------
 // Output
 //--------------------------------------------------------------------
 output        FAB_CLK;
-output        GPIO_4_OUT;
 output        M2F_GPO_0;
 output        M2F_GPO_1;
+output        M2F_GPO_11;
+output        M2F_GPO_12;
+output        M2F_GPO_13;
+output        M2F_GPO_24;
+output        M2F_GPO_26;
+output        M2F_GPO_27;
 output        M2F_GPO_3;
-output        M2F_GPO_9;
 output        M2F_RESET_N;
 output [19:0] MSSPADDR;
 output        MSSPENABLE;
 output        MSSPSEL;
 output [31:0] MSSPWDATA;
 output        MSSPWRITE;
+output        SPI_1_DO;
 output        UART_0_TXD;
 output        UART_1_TXD;
 //--------------------------------------------------------------------
+// Inout
+//--------------------------------------------------------------------
+inout         SPI_1_CLK;
+inout         SPI_1_SS;
+//--------------------------------------------------------------------
 // Nets
 //--------------------------------------------------------------------
-wire          F2M_GPI_5;
-wire          F2M_GPI_6;
-wire          F2M_GPI_7;
-wire          F2M_GPI_8;
-wire          F2M_GPI_30;
-wire          F2M_GPI_31;
-wire          FABINT;
-wire          GPIO_2_IN;
-wire          MSS_ADLIB_INST_EMCCLK;
-wire          MSS_ADLIB_INST_FCLK;
-wire          MSS_ADLIB_INST_MACCLK;
-wire          MSS_ADLIB_INST_MACCLKCCC;
-wire          MSS_ADLIB_INST_PLLLOCK;
-wire          MSS_ADLIB_INST_SYNCCLKFDBK;
-wire          MSS_GPIO_0_GPIO_2_IN_Y;
-wire   [4:4]  MSS_GPIO_0_GPIO_4_OUT_D;
-wire          MSS_RESET_0_MSS_RESET_N_Y;
-wire          MSS_RESET_N;
-wire          MSS_UART_0_RXD_Y;
-wire          MSS_UART_0_TXD_D;
-wire          MSS_UART_1_RXD_Y;
-wire          MSS_UART_1_TXD_D;
-wire          MSSINT_GPI_5_Y;
-wire          MSSINT_GPI_6_Y;
-wire          MSSINT_GPI_7_Y;
-wire          MSSINT_GPI_8_Y;
-wire          MSSINT_GPI_30_Y;
-wire          MSSINT_GPI_31_Y;
-wire   [0:0]  MSSINT_GPO_0_A;
-wire   [1:1]  MSSINT_GPO_1_A;
-wire   [3:3]  MSSINT_GPO_3_A;
-wire   [9:9]  MSSINT_GPO_9_A;
-wire          net_71;
-wire          net_72;
-wire          net_73;
-wire          net_74;
-wire          net_75;
-wire   [19:0] net_76_PADDR;
-wire          net_76_PENABLE;
-wire   [31:0] MSSPRDATA;
-wire          MSSPREADY;
-wire          net_76_PSELx;
-wire          MSSPSLVERR;
-wire   [31:0] net_76_PWDATA;
-wire          net_76_PWRITE;
-wire          PAD;
-wire          UART_0_RXD;
-wire          UART_0_TXD_net_0;
-wire          UART_1_RXD;
-wire          UART_1_TXD_net_0;
-wire          net_72_net_0;
-wire          net_71_net_0;
-wire          MSS_ADLIB_INST_SYNCCLKFDBK_net_0;
-wire          net_75_net_0;
-wire          net_76_PSELx_net_0;
-wire          net_76_PENABLE_net_0;
-wire          net_76_PWRITE_net_0;
-wire          net_73_net_0;
-wire          net_74_net_0;
-wire   [19:0] net_76_PADDR_net_0;
-wire   [31:0] net_76_PWDATA_net_0;
-wire          UART_0_TXD_net_1;
-wire          UART_1_TXD_net_1;
-wire          PAD_net_0;
-wire   [31:0] GPI_net_0;
-wire   [31:0] GPO_net_0;
+wire           F2M_GPI_5;
+wire           F2M_GPI_6;
+wire           F2M_GPI_7;
+wire           F2M_GPI_8;
+wire           F2M_GPI_25;
+wire           MSS_ADLIB_INST_EMCCLK;
+wire           MSS_ADLIB_INST_FCLK;
+wire           MSS_ADLIB_INST_MACCLK;
+wire           MSS_ADLIB_INST_MACCLKCCC;
+wire           MSS_ADLIB_INST_PLLLOCK;
+wire           MSS_ADLIB_INST_SYNCCLKFDBK;
+wire           MSS_RESET_0_MSS_RESET_N_Y;
+wire           MSS_RESET_N;
+wire           MSS_SPI_1_CLK_D;
+wire           MSS_SPI_1_CLK_Y;
+wire           MSS_SPI_1_DI_Y;
+wire           MSS_SPI_1_DO_D;
+wire           MSS_SPI_1_DO_E;
+wire   [0:0]   MSS_SPI_1_SS_D;
+wire           MSS_SPI_1_SS_E;
+wire           MSS_SPI_1_SS_Y;
+wire           MSS_UART_0_RXD_Y;
+wire           MSS_UART_0_TXD_D;
+wire           MSS_UART_1_RXD_Y;
+wire           MSS_UART_1_TXD_D;
+wire           MSSINT_GPI_5_Y;
+wire           MSSINT_GPI_6_Y;
+wire           MSSINT_GPI_7_Y;
+wire           MSSINT_GPI_8_Y;
+wire           MSSINT_GPI_25_Y;
+wire   [0:0]   MSSINT_GPO_0_A;
+wire   [1:1]   MSSINT_GPO_1_A;
+wire   [3:3]   MSSINT_GPO_3_A;
+wire   [11:11] MSSINT_GPO_11_A;
+wire   [12:12] MSSINT_GPO_12_A;
+wire   [13:13] MSSINT_GPO_13_A;
+wire   [24:24] MSSINT_GPO_24_A;
+wire   [26:26] MSSINT_GPO_26_A;
+wire   [27:27] MSSINT_GPO_27_A;
+wire           net_71;
+wire           net_72;
+wire           net_73;
+wire           net_74;
+wire           net_75;
+wire           net_76;
+wire           net_77;
+wire           net_78;
+wire           net_79;
+wire           net_80;
+wire   [19:0]  net_81_PADDR;
+wire           net_81_PENABLE;
+wire   [31:0]  MSSPRDATA;
+wire           MSSPREADY;
+wire           net_81_PSELx;
+wire           MSSPSLVERR;
+wire   [31:0]  net_81_PWDATA;
+wire           net_81_PWRITE;
+wire           SPI_1_CLK;
+wire           SPI_1_DI;
+wire           SPI_1_DO_net_0;
+wire           SPI_1_SS;
+wire           UART_0_RXD;
+wire           UART_0_TXD_net_0;
+wire           UART_1_RXD;
+wire           UART_1_TXD_net_0;
+wire           net_72_net_0;
+wire           net_71_net_0;
+wire           MSS_ADLIB_INST_SYNCCLKFDBK_net_0;
+wire           net_80_net_0;
+wire           net_81_PSELx_net_0;
+wire           net_81_PENABLE_net_0;
+wire           net_81_PWRITE_net_0;
+wire           net_73_net_0;
+wire           net_79_net_0;
+wire           net_78_net_0;
+wire           net_77_net_0;
+wire           net_76_net_0;
+wire           net_75_net_0;
+wire           net_74_net_0;
+wire   [19:0]  net_81_PADDR_net_0;
+wire   [31:0]  net_81_PWDATA_net_0;
+wire           UART_0_TXD_net_1;
+wire           UART_1_TXD_net_1;
+wire           SPI_1_DO_net_1;
+wire   [31:0]  GPI_net_0;
+wire   [31:0]  GPO_net_0;
+wire   [7:0]   SPI1SSO_net_0;
 //--------------------------------------------------------------------
 // TiedOff Nets
 //--------------------------------------------------------------------
-wire          GND_net;
-wire          VCC_net;
-wire   [1:0]  DMAREADY_const_net_0;
-wire   [1:0]  MACF2MRXD_const_net_0;
-wire   [1:0]  MACRXD_const_net_0;
-wire   [15:0] EMCRDB_const_net_0;
-wire   [31:0] FABPADDR_const_net_0;
-wire   [31:0] FABPWDATA_const_net_0;
+wire           GND_net;
+wire           VCC_net;
+wire   [1:0]   DMAREADY_const_net_0;
+wire   [1:0]   MACF2MRXD_const_net_0;
+wire   [1:0]   MACRXD_const_net_0;
+wire   [15:0]  EMCRDB_const_net_0;
+wire   [31:0]  FABPADDR_const_net_0;
+wire   [31:0]  FABPWDATA_const_net_0;
 //--------------------------------------------------------------------
 // Constant assignments
 //--------------------------------------------------------------------
@@ -173,40 +208,55 @@ assign net_71_net_0                     = net_71;
 assign M2F_GPO_0                        = net_71_net_0;
 assign MSS_ADLIB_INST_SYNCCLKFDBK_net_0 = MSS_ADLIB_INST_SYNCCLKFDBK;
 assign FAB_CLK                          = MSS_ADLIB_INST_SYNCCLKFDBK_net_0;
-assign net_75_net_0                     = net_75;
-assign M2F_RESET_N                      = net_75_net_0;
-assign net_76_PSELx_net_0               = net_76_PSELx;
-assign MSSPSEL                          = net_76_PSELx_net_0;
-assign net_76_PENABLE_net_0             = net_76_PENABLE;
-assign MSSPENABLE                       = net_76_PENABLE_net_0;
-assign net_76_PWRITE_net_0              = net_76_PWRITE;
-assign MSSPWRITE                        = net_76_PWRITE_net_0;
+assign net_80_net_0                     = net_80;
+assign M2F_RESET_N                      = net_80_net_0;
+assign net_81_PSELx_net_0               = net_81_PSELx;
+assign MSSPSEL                          = net_81_PSELx_net_0;
+assign net_81_PENABLE_net_0             = net_81_PENABLE;
+assign MSSPENABLE                       = net_81_PENABLE_net_0;
+assign net_81_PWRITE_net_0              = net_81_PWRITE;
+assign MSSPWRITE                        = net_81_PWRITE_net_0;
 assign net_73_net_0                     = net_73;
 assign M2F_GPO_3                        = net_73_net_0;
+assign net_79_net_0                     = net_79;
+assign M2F_GPO_27                       = net_79_net_0;
+assign net_78_net_0                     = net_78;
+assign M2F_GPO_26                       = net_78_net_0;
+assign net_77_net_0                     = net_77;
+assign M2F_GPO_24                       = net_77_net_0;
+assign net_76_net_0                     = net_76;
+assign M2F_GPO_13                       = net_76_net_0;
+assign net_75_net_0                     = net_75;
+assign M2F_GPO_12                       = net_75_net_0;
 assign net_74_net_0                     = net_74;
-assign M2F_GPO_9                        = net_74_net_0;
-assign net_76_PADDR_net_0               = net_76_PADDR;
-assign MSSPADDR[19:0]                   = net_76_PADDR_net_0;
-assign net_76_PWDATA_net_0              = net_76_PWDATA;
-assign MSSPWDATA[31:0]                  = net_76_PWDATA_net_0;
+assign M2F_GPO_11                       = net_74_net_0;
+assign net_81_PADDR_net_0               = net_81_PADDR;
+assign MSSPADDR[19:0]                   = net_81_PADDR_net_0;
+assign net_81_PWDATA_net_0              = net_81_PWDATA;
+assign MSSPWDATA[31:0]                  = net_81_PWDATA_net_0;
 assign UART_0_TXD_net_1                 = UART_0_TXD_net_0;
 assign UART_0_TXD                       = UART_0_TXD_net_1;
 assign UART_1_TXD_net_1                 = UART_1_TXD_net_0;
 assign UART_1_TXD                       = UART_1_TXD_net_1;
-assign PAD_net_0                        = PAD;
-assign GPIO_4_OUT                       = PAD_net_0;
+assign SPI_1_DO_net_1                   = SPI_1_DO_net_0;
+assign SPI_1_DO                         = SPI_1_DO_net_1;
 //--------------------------------------------------------------------
 // Slices assignments
 //--------------------------------------------------------------------
-assign MSS_GPIO_0_GPIO_4_OUT_D[4] = GPO_net_0[4:4];
-assign MSSINT_GPO_0_A[0]          = GPO_net_0[0:0];
-assign MSSINT_GPO_1_A[1]          = GPO_net_0[1:1];
-assign MSSINT_GPO_3_A[3]          = GPO_net_0[3:3];
-assign MSSINT_GPO_9_A[9]          = GPO_net_0[9:9];
+assign MSS_SPI_1_SS_D[0]   = SPI1SSO_net_0[0:0];
+assign MSSINT_GPO_0_A[0]   = GPO_net_0[0:0];
+assign MSSINT_GPO_1_A[1]   = GPO_net_0[1:1];
+assign MSSINT_GPO_3_A[3]   = GPO_net_0[3:3];
+assign MSSINT_GPO_11_A[11] = GPO_net_0[11:11];
+assign MSSINT_GPO_12_A[12] = GPO_net_0[12:12];
+assign MSSINT_GPO_13_A[13] = GPO_net_0[13:13];
+assign MSSINT_GPO_24_A[24] = GPO_net_0[24:24];
+assign MSSINT_GPO_26_A[26] = GPO_net_0[26:26];
+assign MSSINT_GPO_27_A[27] = GPO_net_0[27:27];
 //--------------------------------------------------------------------
 // Concatenation assignments
 //--------------------------------------------------------------------
-assign GPI_net_0 = { MSSINT_GPI_31_Y , MSSINT_GPI_30_Y , 21'h000000 , MSSINT_GPI_8_Y , MSSINT_GPI_7_Y , MSSINT_GPI_6_Y , MSSINT_GPI_5_Y , 2'h0 , MSS_GPIO_0_GPIO_2_IN_Y , 2'h0 };
+assign GPI_net_0 = { 6'h00 , MSSINT_GPI_25_Y , 16'h0000 , MSSINT_GPI_8_Y , MSSINT_GPI_7_Y , MSSINT_GPI_6_Y , MSSINT_GPI_5_Y , 5'h00 };
 //--------------------------------------------------------------------
 // Component instances
 //--------------------------------------------------------------------
@@ -228,7 +278,7 @@ MSS_ADLIB_INST(
         .FABPENABLE     ( GND_net ), // tied to 1'b0 from definition
         .SYNCCLKFDBK    ( MSS_ADLIB_INST_SYNCCLKFDBK ),
         .CALIBIN        ( GND_net ), // tied to 1'b0 from definition
-        .FABINT         ( FABINT ),
+        .FABINT         ( GND_net ), // tied to 1'b0 from definition
         .F2MRESETn      ( VCC_net ), // tied to 1'b1 from definition
         .DMAREADY       ( DMAREADY_const_net_0 ), // tied to 2'h0 from definition
         .RXEV           ( GND_net ), // tied to 1'b0 from definition
@@ -283,9 +333,9 @@ MSS_ADLIB_INST(
         .UART0RXD       ( MSS_UART_0_RXD_Y ),
         .I2C0SDAI       ( GND_net ), // tied to 1'b0 from definition
         .I2C0SCLI       ( GND_net ), // tied to 1'b0 from definition
-        .SPI1DI         ( GND_net ), // tied to 1'b0 from definition
-        .SPI1CLKI       ( GND_net ), // tied to 1'b0 from definition
-        .SPI1SSI        ( GND_net ), // tied to 1'b0 from definition
+        .SPI1DI         ( MSS_SPI_1_DI_Y ),
+        .SPI1CLKI       ( MSS_SPI_1_CLK_Y ),
+        .SPI1SSI        ( MSS_SPI_1_SS_Y ),
         .UART1RXD       ( MSS_UART_1_RXD_Y ),
         .I2C1SDAI       ( GND_net ), // tied to 1'b0 from definition
         .I2C1SCLI       ( GND_net ), // tied to 1'b0 from definition
@@ -340,18 +390,18 @@ MSS_ADLIB_INST(
         .GNDVAREF       ( GND_net ), // tied to 1'b0 from definition
         .PUn            ( GND_net ), // tied to 1'b0 from definition
         // Outputs
-        .MSSPADDR       ( net_76_PADDR ),
-        .MSSPWDATA      ( net_76_PWDATA ),
-        .MSSPWRITE      ( net_76_PWRITE ),
-        .MSSPSEL        ( net_76_PSELx ),
-        .MSSPENABLE     ( net_76_PENABLE ),
+        .MSSPADDR       ( net_81_PADDR ),
+        .MSSPWDATA      ( net_81_PWDATA ),
+        .MSSPWRITE      ( net_81_PWRITE ),
+        .MSSPSEL        ( net_81_PSELx ),
+        .MSSPENABLE     ( net_81_PENABLE ),
         .FABPRDATA      (  ),
         .FABPREADY      (  ),
         .FABPSLVERR     (  ),
         .CALIBOUT       (  ),
         .MSSINT         (  ),
         .WDINT          (  ),
-        .M2FRESETn      ( net_75 ),
+        .M2FRESETn      ( net_80 ),
         .DEEPSLEEP      (  ),
         .SLEEP          (  ),
         .TXEV           (  ),
@@ -406,11 +456,11 @@ MSS_ADLIB_INST(
         .UART0TXD       ( MSS_UART_0_TXD_D ),
         .I2C0SDAO       (  ),
         .I2C0SCLO       (  ),
-        .SPI1DO         (  ),
-        .SPI1DOE        (  ),
-        .SPI1CLKO       (  ),
-        .SPI1MODE       (  ),
-        .SPI1SSO        (  ),
+        .SPI1DO         ( MSS_SPI_1_DO_D ),
+        .SPI1DOE        ( MSS_SPI_1_DO_E ),
+        .SPI1CLKO       ( MSS_SPI_1_CLK_D ),
+        .SPI1MODE       ( MSS_SPI_1_SS_E ),
+        .SPI1SSO        ( SPI1SSO_net_0 ),
         .UART1TXD       ( MSS_UART_1_TXD_D ),
         .I2C1SDAO       (  ),
         .I2C1SCLO       (  ),
@@ -473,34 +523,63 @@ cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC MSS_CCC_0(
 //--------INBUF_MSS
 INBUF_MSS #( 
         .ACT_CONFIG ( 0 ),
-        .ACT_PIN    ( "W1" ) )
-MSS_GPIO_0_GPIO_2_IN(
-        // Inputs
-        .PAD ( GPIO_2_IN ),
-        // Outputs
-        .Y   ( MSS_GPIO_0_GPIO_2_IN_Y ) 
-        );
-
-//--------OUTBUF_MSS
-OUTBUF_MSS #( 
-        .ACT_CONFIG ( 0 ),
-        .ACT_PIN    ( "AA1" ) )
-MSS_GPIO_0_GPIO_4_OUT(
-        // Inputs
-        .D   ( MSS_GPIO_0_GPIO_4_OUT_D ),
-        // Outputs
-        .PAD ( PAD ) 
-        );
-
-//--------INBUF_MSS
-INBUF_MSS #( 
-        .ACT_CONFIG ( 0 ),
         .ACT_PIN    ( "R1" ) )
 MSS_RESET_0_MSS_RESET_N(
         // Inputs
         .PAD ( MSS_RESET_N ),
         // Outputs
         .Y   ( MSS_RESET_0_MSS_RESET_N_Y ) 
+        );
+
+//--------BIBUF_MSS
+BIBUF_MSS #( 
+        .ACT_CONFIG ( 0 ),
+        .ACT_PIN    ( "AA22" ) )
+MSS_SPI_1_CLK(
+        // Inputs
+        .D   ( MSS_SPI_1_CLK_D ),
+        .E   ( MSS_SPI_1_SS_E ),
+        // Outputs
+        .Y   ( MSS_SPI_1_CLK_Y ),
+        // Inouts
+        .PAD ( SPI_1_CLK ) 
+        );
+
+//--------INBUF_MSS
+INBUF_MSS #( 
+        .ACT_CONFIG ( 0 ),
+        .ACT_PIN    ( "V19" ) )
+MSS_SPI_1_DI(
+        // Inputs
+        .PAD ( SPI_1_DI ),
+        // Outputs
+        .Y   ( MSS_SPI_1_DI_Y ) 
+        );
+
+//--------TRIBUFF_MSS
+TRIBUFF_MSS #( 
+        .ACT_CONFIG ( 0 ),
+        .ACT_PIN    ( "T17" ) )
+MSS_SPI_1_DO(
+        // Inputs
+        .D   ( MSS_SPI_1_DO_D ),
+        .E   ( MSS_SPI_1_DO_E ),
+        // Outputs
+        .PAD ( SPI_1_DO_net_0 ) 
+        );
+
+//--------BIBUF_MSS
+BIBUF_MSS #( 
+        .ACT_CONFIG ( 0 ),
+        .ACT_PIN    ( "W21" ) )
+MSS_SPI_1_SS(
+        // Inputs
+        .D   ( MSS_SPI_1_SS_D ),
+        .E   ( MSS_SPI_1_SS_E ),
+        // Outputs
+        .Y   ( MSS_SPI_1_SS_Y ),
+        // Inouts
+        .PAD ( SPI_1_SS ) 
         );
 
 //--------INBUF_MSS
@@ -580,19 +659,11 @@ MSSINT MSSINT_GPI_8(
         );
 
 //--------MSSINT
-MSSINT MSSINT_GPI_30(
+MSSINT MSSINT_GPI_25(
         // Inputs
-        .A ( F2M_GPI_30 ),
+        .A ( F2M_GPI_25 ),
         // Outputs
-        .Y ( MSSINT_GPI_30_Y ) 
-        );
-
-//--------MSSINT
-MSSINT MSSINT_GPI_31(
-        // Inputs
-        .A ( F2M_GPI_31 ),
-        // Outputs
-        .Y ( MSSINT_GPI_31_Y ) 
+        .Y ( MSSINT_GPI_25_Y ) 
         );
 
 //--------MSSINT
@@ -620,11 +691,51 @@ MSSINT MSSINT_GPO_3(
         );
 
 //--------MSSINT
-MSSINT MSSINT_GPO_9(
+MSSINT MSSINT_GPO_11(
         // Inputs
-        .A ( MSSINT_GPO_9_A ),
+        .A ( MSSINT_GPO_11_A ),
         // Outputs
         .Y ( net_74 ) 
+        );
+
+//--------MSSINT
+MSSINT MSSINT_GPO_12(
+        // Inputs
+        .A ( MSSINT_GPO_12_A ),
+        // Outputs
+        .Y ( net_75 ) 
+        );
+
+//--------MSSINT
+MSSINT MSSINT_GPO_13(
+        // Inputs
+        .A ( MSSINT_GPO_13_A ),
+        // Outputs
+        .Y ( net_76 ) 
+        );
+
+//--------MSSINT
+MSSINT MSSINT_GPO_24(
+        // Inputs
+        .A ( MSSINT_GPO_24_A ),
+        // Outputs
+        .Y ( net_77 ) 
+        );
+
+//--------MSSINT
+MSSINT MSSINT_GPO_26(
+        // Inputs
+        .A ( MSSINT_GPO_26_A ),
+        // Outputs
+        .Y ( net_78 ) 
+        );
+
+//--------MSSINT
+MSSINT MSSINT_GPO_27(
+        // Inputs
+        .A ( MSSINT_GPO_27_A ),
+        // Outputs
+        .Y ( net_79 ) 
         );
 
 

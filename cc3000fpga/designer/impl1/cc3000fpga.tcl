@@ -1,5 +1,5 @@
 # Created by Actel Designer Software 10.1.3.1
-# Thu Apr 10 11:30:26 2014
+# Thu Apr 10 17:20:58 2014
 
 # (OPEN DESIGN)
 
@@ -11,12 +11,15 @@ set_defvar "IDE_DESIGNERVIEW_NAME" {Impl1}
 set_defvar "IDE_DESIGNERVIEW_COUNT" "1"
 set_defvar "IDE_DESIGNERVIEW_REV0" {Impl1}
 set_defvar "IDE_DESIGNERVIEW_REVNUM0" "1"
-set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer}
+set_defvar "IDE_DESIGNERVIEW_ROOTDIR" {C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\designer}
 set_defvar "IDE_DESIGNERVIEW_LASTREV" "1"
 
-report -type "timing" -format "TEXT" -analysis "max" -print_summary "yes" -use_slack_threshold "no"                             -print_paths "yes" -max_paths 5 -max_expanded_paths 1                             -max_parallel_paths 1 -include_user_sets "no"                             -include_pin_to_pin "yes" -include_clock_domains "yes"                             -select_clock_domains "no" {cc3000fpga_maxdelay_timing_report.txt}
-report -type "timing" -format "TEXT" -analysis "min" -print_summary "yes" -use_slack_threshold "no"                             -print_paths "yes" -max_paths 5 -max_expanded_paths 1                             -max_parallel_paths 1 -include_user_sets "no"                             -include_pin_to_pin "yes" -include_clock_domains "yes"                             -select_clock_domains "no" {cc3000fpga_mindelay_timing_report.txt}
-report -type "timing_violations" -format "TEXT" -analysis "max" -use_slack_threshold "yes" -slack_threshold 0.00                               -limit_max_paths "yes" -max_paths 100 -max_expanded_paths 0                               -max_parallel_paths 1 {cc3000fpga_maxdelay_timingviolations_report.txt}
-report -type "timing_violations" -format "TEXT" -analysis "min" -use_slack_threshold "yes" -slack_threshold 0.00                               -limit_max_paths "yes" -max_paths 100 -max_expanded_paths 0                               -max_parallel_paths 1 {cc3000fpga_mindelay_timingviolations_report.txt}
+
+# import of input files
+import_source  \
+-format "edif" -edif_flavor "GENERIC" -netlist_naming "VERILOG" {../../synthesis/cc3000fpga.edn} \
+-format "pdc"  {..\..\component\work\cc3000fpga\cc3000fpga.pdc} -merge_physical "yes" -merge_timing "yes"
+compile
+report -type "status" {cc3000fpga_compile_report.txt}
 
 save_design

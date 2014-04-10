@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by Actel SmartDesign Thu Apr 10 17:20:14 2014
+// Created by Actel SmartDesign Thu Apr 10 17:19:40 2014
 // Testbench Template
 // This is a basic testbench that instantiates your design with basic 
 // clock and reset pins connected.  If your design has special
@@ -40,43 +40,29 @@ always @(SYSCLK)
 
 
 //////////////////////////////////////////////////////////////////////
-// Instantiate Unit Under Test:  cc3000fpga_MSS
+// Instantiate Unit Under Test:  cc3000fpga
 //////////////////////////////////////////////////////////////////////
-cc3000fpga_MSS cc3000fpga_MSS_0 (
+cc3000fpga cc3000fpga_0 (
     // Inputs
-    .MSSPREADY({1{1'b0}}),
-    .MSSPSLVERR({1{1'b0}}),
-    .F2M_GPI_5({1{1'b0}}),
-    .F2M_GPI_8({1{1'b0}}),
-    .F2M_GPI_7({1{1'b0}}),
-    .F2M_GPI_6({1{1'b0}}),
-    .F2M_GPI_25({1{1'b0}}),
-    .MSSPRDATA({32{1'b0}}),
-    .UART_0_RXD({1{1'b0}}),
     .UART_1_RXD({1{1'b0}}),
-    .SPI_1_DI({1{1'b0}}),
+    .UART_0_RXD({1{1'b0}}),
     .MSS_RESET_N(NSYSRESET),
+    .SPI_1_DI({1{1'b0}}),
+    .in_from_fabric_di({1{1'b0}}),
 
     // Outputs
-    .M2F_GPO_1( ),
-    .M2F_GPO_0( ),
-    .FAB_CLK( ),
-    .M2F_RESET_N( ),
-    .MSSPSEL( ),
-    .MSSPENABLE( ),
-    .MSSPWRITE( ),
-    .M2F_GPO_3( ),
-    .M2F_GPO_27( ),
-    .M2F_GPO_26( ),
-    .M2F_GPO_24( ),
-    .M2F_GPO_13( ),
-    .M2F_GPO_12( ),
-    .M2F_GPO_11( ),
-    .MSSPADDR( ),
-    .MSSPWDATA( ),
-    .UART_0_TXD( ),
     .UART_1_TXD( ),
+    .UART_0_TXD( ),
+    .LED_1( ),
+    .LED_2( ),
+    .LED_0( ),
     .SPI_1_DO( ),
+    .out_to_fabric_clk( ),
+    .out_to_fabric_do( ),
+    .out_to_fabric_ss( ),
+    .LED_B( ),
+    .LED_R( ),
+    .LED_G( ),
 
     // Inouts
     .SPI_1_CLK( ),

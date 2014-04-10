@@ -3,7 +3,7 @@
 
 # Version: 10.1 SP3 10.1.3.1
 # Family: SmartFusion , Die: A2F200M3F , Package: 484 FBGA
-# Date generated: Thu Apr 10 11:12:29 2014 
+# Date generated: Thu Apr 10 17:19:58 2014 
 
 
 # 
@@ -12,20 +12,15 @@
 
 
 # 
-# I/O constraints
+# User Groups
 # 
 
-set_io GPIO_2_IN      \
-    -pinname W1       \
-    -fixed yes        \
-    -DIRECTION Input
+define_group -name SPI_1_PADs
 
 
-set_io GPIO_4_OUT      \
-    -pinname AA1       \
-    -fixed yes         \
-    -DIRECTION Output
-
+# 
+# I/O constraints
+# 
 
 set_io MSS_RESET_N    \
     -pinname R1       \
@@ -55,6 +50,36 @@ set_io UART_1_TXD      \
     -pinname V20       \
     -fixed yes         \
     -DIRECTION Output
+
+
+# User Group SPI_1_PADs
+
+set_io SPI_1_CLK            \
+    -pinname AA22           \
+    -fixed yes              \
+    -GROUP_NAME SPI_1_PADs  \
+    -DIRECTION Inout
+
+
+set_io SPI_1_DI             \
+    -pinname V19            \
+    -fixed yes              \
+    -GROUP_NAME SPI_1_PADs  \
+    -DIRECTION Input
+
+
+set_io SPI_1_DO             \
+    -pinname T17            \
+    -fixed yes              \
+    -GROUP_NAME SPI_1_PADs  \
+    -DIRECTION Output
+
+
+set_io SPI_1_SS             \
+    -pinname W21            \
+    -fixed yes              \
+    -GROUP_NAME SPI_1_PADs  \
+    -DIRECTION Inout
 
 
 

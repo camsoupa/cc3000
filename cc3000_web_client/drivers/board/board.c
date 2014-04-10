@@ -107,7 +107,7 @@ void pio_init()
 
 
     // This single call takes care of the configure as input and as negative edge interrupt
-
+    // handler for this interrupt is IntSpiGPIOHandler()
 	NVIC_EnableIRQ(GPIO2_IRQn);
 	MSS_GPIO_config( SPI_IRQ_PIN, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE );
 
@@ -295,8 +295,7 @@ InitSysTick(void)
 //
 //
 //*****************************************************************************
-void
-SysTick_Handler(void)
+__attribute__((__interrupt__)) void SysTick_Handler(void)
 {
 
 	// no call to SysTickIntRegister but this is set up in the TI code as the SysTick

@@ -285,9 +285,6 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     //MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32SsiPortAddress);
     //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI_BASE);
 
-    // TODO add handler for FABINT if we think we need it.
-	// TODO add handlers for these GPIO interrups
-
 
 	NVIC_EnableIRQ(GPIO31_IRQn);
     MSS_GPIO_config( SPI_RX_AVAIL, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
@@ -426,6 +423,45 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 	NVIC_EnableIRQ(Fabric_IRQn);
     MSS_GPIO_enable_irq( SPI_RX_AVAIL );
     MSS_GPIO_enable_irq( SPI_TX_RFM );
+
+}
+
+/***************************************************************
+*
+*
+* Interrupt Handler for FAB_INT
+*
+*
+****************************************************************/
+__attribute__((__interrupt__)) void Fabric_IRQHandler()
+{
+
+
+}
+
+/***************************************************************
+*
+*
+* Interrupt Handler for SPI_RX_AVAIL (MSS_GPIO_31)
+*
+*
+****************************************************************/
+__attribute__((__interrupt__)) void GPIO31_IRQHandler()
+{
+
+
+}
+
+/***************************************************************
+*
+*
+* Interrupt Handler for  SPI_TX_RFM (MSS_GPIO_30)
+*
+*
+****************************************************************/
+__attribute__((__interrupt__)) void GPIO30_IRQHandler()
+{
+
 
 }
 
@@ -1380,9 +1416,12 @@ SpiContReadOperation(void)
 // this transition, we start transmission of the command packet.
 //
 //*****************************************************************************
-void
-IntSpiGPIOHandler(void)
+//void IntSpiGPIOHandler(void)
+__attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
+
+	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
+
 	/* TODO
     uint32_t ui32Status;
 

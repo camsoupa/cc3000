@@ -71,7 +71,7 @@ g_pfnVectors:
     .word  Fabric_IRQHandler
     .word  GPIO0_IRQHandler
     .word  GPIO1_IRQHandler
-    .word  GPIO2_IRQHandler
+    .word  IntSpiGPIOHandler
     .word  GPIO3_IRQHandler
     .word  GPIO4_IRQHandler
     .word  GPIO5_IRQHandler

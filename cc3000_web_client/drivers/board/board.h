@@ -62,8 +62,11 @@
 //
 // CC3000 Board specific Macros
 //
-#define ASSERT_CS()          (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0))     //Core spi is doing this for us...
-#define DEASSERT_CS()        (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0xFF))  //Core spi is doing this for us...
+//#define ASSERT_CS()          (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0))
+#define ASSERT_CS()            (MSS_GPIO_set_output(SPI_CS_PIN, 0)))
+//#define DEASSERT_CS()        (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0xFF))
+#define DEASSERT_CS()          (MSS_GPIO_set_output(SPI_CS_PIN, 1)))
+
 
 //
 // IRQ settings
@@ -85,7 +88,7 @@
 // CS settings  PE0
 //
 //#define SPI_CS_PORT                     GPIO_PORTE_BASE      // matt- TI thing
-//#define SPI_CS_PIN                      GPIO_PIN_0           // matt- CORE SPI does this for us
+#define SPI_CS_PIN                      MSS_GPIO_9
 //#define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE  // Ti thing
 
 //

@@ -2,7 +2,7 @@
 #define cc3000fpga_HW_PLATFORM_H_
 /*****************************************************************************
 *
-*Created by Actel SmartDesign  Tue Apr 08 15:51:41 2014
+*Created by Actel SmartDesign  Thu Apr 10 11:13:59 2014
 *
 *Memory map specification for peripherals in cc3000fpga
 */
@@ -12,6 +12,10 @@
 * Master(s) for this subsystem: MSS_CM3_0 
 *---------------------------------------------------------------------------*/
 #define CORESPI_0                       0x40050000U
+#define TIMER_1                         0x40050100U
+#define TIMER_2                         0x40050200U
+#define TIMER_3                         0x40050300U
+#define TIMER_4                         0x40050400U
 
 
 #endif /* cc3000fpga_HW_PLATFORM_H_*/

@@ -1,5 +1,5 @@
 #===========================================================
-# Created by Actel SmartDesign Tue Apr 08 15:51:38 2014
+# Created by Actel SmartDesign Thu Apr 10 11:13:55 2014
 #
 # Syntax: 
 # ------- 
@@ -18,3 +18,7 @@
 #-----------------------------------------------------------
 
 memmap CORESPI_0 0x40050000;
+memmap Timer_1 0x40050100;
+memmap Timer_2 0x40050200;
+memmap Timer_3 0x40050300;
+memmap Timer_4 0x40050400;

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Wed Apr 09 17:17:46 2014
+// Created by SmartDesign Thu Apr 10 11:12:51 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -28,6 +28,7 @@ module cc3000fpga_MSS(
     M2F_GPO_0,
     M2F_GPO_1,
     M2F_GPO_3,
+    M2F_GPO_9,
     M2F_RESET_N,
     MSSPADDR,
     MSSPENABLE,
@@ -63,6 +64,7 @@ output        GPIO_4_OUT;
 output        M2F_GPO_0;
 output        M2F_GPO_1;
 output        M2F_GPO_3;
+output        M2F_GPO_9;
 output        M2F_RESET_N;
 output [19:0] MSSPADDR;
 output        MSSPENABLE;
@@ -105,18 +107,20 @@ wire          MSSINT_GPI_31_Y;
 wire   [0:0]  MSSINT_GPO_0_A;
 wire   [1:1]  MSSINT_GPO_1_A;
 wire   [3:3]  MSSINT_GPO_3_A;
+wire   [9:9]  MSSINT_GPO_9_A;
 wire          net_71;
 wire          net_72;
 wire          net_73;
 wire          net_74;
-wire   [19:0] net_75_PADDR;
-wire          net_75_PENABLE;
+wire          net_75;
+wire   [19:0] net_76_PADDR;
+wire          net_76_PENABLE;
 wire   [31:0] MSSPRDATA;
 wire          MSSPREADY;
-wire          net_75_PSELx;
+wire          net_76_PSELx;
 wire          MSSPSLVERR;
-wire   [31:0] net_75_PWDATA;
-wire          net_75_PWRITE;
+wire   [31:0] net_76_PWDATA;
+wire          net_76_PWRITE;
 wire          PAD;
 wire          UART_0_RXD;
 wire          UART_0_TXD_net_0;
@@ -125,13 +129,14 @@ wire          UART_1_TXD_net_0;
 wire          net_72_net_0;
 wire          net_71_net_0;
 wire          MSS_ADLIB_INST_SYNCCLKFDBK_net_0;
-wire          net_74_net_0;
-wire          net_75_PSELx_net_0;
-wire          net_75_PENABLE_net_0;
-wire          net_75_PWRITE_net_0;
+wire          net_75_net_0;
+wire          net_76_PSELx_net_0;
+wire          net_76_PENABLE_net_0;
+wire          net_76_PWRITE_net_0;
 wire          net_73_net_0;
-wire   [19:0] net_75_PADDR_net_0;
-wire   [31:0] net_75_PWDATA_net_0;
+wire          net_74_net_0;
+wire   [19:0] net_76_PADDR_net_0;
+wire   [31:0] net_76_PWDATA_net_0;
 wire          UART_0_TXD_net_1;
 wire          UART_1_TXD_net_1;
 wire          PAD_net_0;
@@ -168,20 +173,22 @@ assign net_71_net_0                     = net_71;
 assign M2F_GPO_0                        = net_71_net_0;
 assign MSS_ADLIB_INST_SYNCCLKFDBK_net_0 = MSS_ADLIB_INST_SYNCCLKFDBK;
 assign FAB_CLK                          = MSS_ADLIB_INST_SYNCCLKFDBK_net_0;
-assign net_74_net_0                     = net_74;
-assign M2F_RESET_N                      = net_74_net_0;
-assign net_75_PSELx_net_0               = net_75_PSELx;
-assign MSSPSEL                          = net_75_PSELx_net_0;
-assign net_75_PENABLE_net_0             = net_75_PENABLE;
-assign MSSPENABLE                       = net_75_PENABLE_net_0;
-assign net_75_PWRITE_net_0              = net_75_PWRITE;
-assign MSSPWRITE                        = net_75_PWRITE_net_0;
+assign net_75_net_0                     = net_75;
+assign M2F_RESET_N                      = net_75_net_0;
+assign net_76_PSELx_net_0               = net_76_PSELx;
+assign MSSPSEL                          = net_76_PSELx_net_0;
+assign net_76_PENABLE_net_0             = net_76_PENABLE;
+assign MSSPENABLE                       = net_76_PENABLE_net_0;
+assign net_76_PWRITE_net_0              = net_76_PWRITE;
+assign MSSPWRITE                        = net_76_PWRITE_net_0;
 assign net_73_net_0                     = net_73;
 assign M2F_GPO_3                        = net_73_net_0;
-assign net_75_PADDR_net_0               = net_75_PADDR;
-assign MSSPADDR[19:0]                   = net_75_PADDR_net_0;
-assign net_75_PWDATA_net_0              = net_75_PWDATA;
-assign MSSPWDATA[31:0]                  = net_75_PWDATA_net_0;
+assign net_74_net_0                     = net_74;
+assign M2F_GPO_9                        = net_74_net_0;
+assign net_76_PADDR_net_0               = net_76_PADDR;
+assign MSSPADDR[19:0]                   = net_76_PADDR_net_0;
+assign net_76_PWDATA_net_0              = net_76_PWDATA;
+assign MSSPWDATA[31:0]                  = net_76_PWDATA_net_0;
 assign UART_0_TXD_net_1                 = UART_0_TXD_net_0;
 assign UART_0_TXD                       = UART_0_TXD_net_1;
 assign UART_1_TXD_net_1                 = UART_1_TXD_net_0;
@@ -195,6 +202,7 @@ assign MSS_GPIO_0_GPIO_4_OUT_D[4] = GPO_net_0[4:4];
 assign MSSINT_GPO_0_A[0]          = GPO_net_0[0:0];
 assign MSSINT_GPO_1_A[1]          = GPO_net_0[1:1];
 assign MSSINT_GPO_3_A[3]          = GPO_net_0[3:3];
+assign MSSINT_GPO_9_A[9]          = GPO_net_0[9:9];
 //--------------------------------------------------------------------
 // Concatenation assignments
 //--------------------------------------------------------------------
@@ -332,18 +340,18 @@ MSS_ADLIB_INST(
         .GNDVAREF       ( GND_net ), // tied to 1'b0 from definition
         .PUn            ( GND_net ), // tied to 1'b0 from definition
         // Outputs
-        .MSSPADDR       ( net_75_PADDR ),
-        .MSSPWDATA      ( net_75_PWDATA ),
-        .MSSPWRITE      ( net_75_PWRITE ),
-        .MSSPSEL        ( net_75_PSELx ),
-        .MSSPENABLE     ( net_75_PENABLE ),
+        .MSSPADDR       ( net_76_PADDR ),
+        .MSSPWDATA      ( net_76_PWDATA ),
+        .MSSPWRITE      ( net_76_PWRITE ),
+        .MSSPSEL        ( net_76_PSELx ),
+        .MSSPENABLE     ( net_76_PENABLE ),
         .FABPRDATA      (  ),
         .FABPREADY      (  ),
         .FABPSLVERR     (  ),
         .CALIBOUT       (  ),
         .MSSINT         (  ),
         .WDINT          (  ),
-        .M2FRESETn      ( net_74 ),
+        .M2FRESETn      ( net_75 ),
         .DEEPSLEEP      (  ),
         .SLEEP          (  ),
         .TXEV           (  ),
@@ -609,6 +617,14 @@ MSSINT MSSINT_GPO_3(
         .A ( MSSINT_GPO_3_A ),
         // Outputs
         .Y ( net_73 ) 
+        );
+
+//--------MSSINT
+MSSINT MSSINT_GPO_9(
+        // Inputs
+        .A ( MSSINT_GPO_9_A ),
+        // Outputs
+        .Y ( net_74 ) 
         );
 
 

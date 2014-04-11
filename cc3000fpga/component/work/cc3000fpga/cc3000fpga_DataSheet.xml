@@ -11,37 +11,37 @@
     <hdl-type>Verilog</hdl-type>
     <project-description>
     </project-description>
-    <location>C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga</location>
-    <state>GENERATED ( Thu Apr 10 17:19:42 2014 )</state>
-    <swide-toolchain>SoftConsole workspace generated to C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
+    <location>C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/component/work/cc3000fpga</location>
+    <state>GENERATED ( Fri Apr 11 00:00:07 2014 )</state>
+    <swide-toolchain>SoftConsole workspace generated to C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
   </project-settings>
   <site-map>
   </site-map>
   <fileset>
     <name>HDL File(s)</name>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\inverter.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\spi2fabric.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\timer.v</file>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\timerWrapper.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\inverter.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\spi2fabric.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\timer.v</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\timerWrapper.v</file>
   </fileset>
   <fileset>
     <name>Flash Memory File(s)</name>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
+    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
   </fileset>
   <io>
     <port-name>SPI_1_DO</port-name>
@@ -65,6 +65,12 @@
     <port-name>SPI_1_SS</port-name>
     <direction>INOUT</direction>
     <pin-number>W21</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPI_EN_PIN</port-name>
+    <direction>OUT</direction>
+    <pin-number>AA1</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
@@ -107,6 +113,12 @@
     <port-name>SPI_1_DI</port-name>
     <direction>IN</direction>
     <pin-number>V19</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>cc3000_IRQ</port-name>
+    <direction>IN</direction>
+    <pin-number>W1</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
@@ -160,7 +172,7 @@
   <core type="ComponentModule">
     <core-type>ComponentModule</core-type>
     <core-exttype>HierSpiritDesign</core-exttype>
-    <core-location>C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS</core-location>
+    <core-location>C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/component/work/cc3000fpga_MSS</core-location>
     <core-name>cc3000fpga_MSS_0</core-name>
   </core>
   <core type="SpiritModule">
@@ -430,10 +442,7 @@ There is one APB3 Master interface.
     </core-param>
     <core-name>CoreAPB3_0</core-name>
   </core>
-  <core type="HdlModule">
-    <core-type>HdlModule</core-type>
-    <core-exttype>spi2fabric</core-exttype>
-    <core-location>hdl\spi2fabric.v</core-location>
+  <core>
     <core-name>spi2fabric_0</core-name>
   </core>
   <core>

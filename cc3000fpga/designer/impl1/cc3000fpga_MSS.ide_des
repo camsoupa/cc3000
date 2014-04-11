@@ -1,7 +1,7 @@
 KEY IDE_DES_TOOL "Ide"
-KEY IDE_DES_ADB_PATH "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\designer\impl1\cc3000fpga_MSS.adb"
+KEY IDE_DES_ADB_PATH "C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\designer\impl1\cc3000fpga_MSS.adb"
 LIST SOURCE_FILES
-VALUE "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc;pdc"
+VALUE "C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc;pdc"
 ENDLIST
 LIST OPTIONAL_FILES
 ENDLIST

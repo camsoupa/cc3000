@@ -144,6 +144,8 @@ void pio_init()
     //                            GPIO_PIN_TYPE_STD_WPU);
 
 
+
+    // Do this after spi is configured
     // CS is low enabled!!!
     // CORE SPI is not doing this for us now... it is manual
 	MSS_GPIO_config( SPI_CS_PIN, MSS_GPIO_OUTPUT_MODE);

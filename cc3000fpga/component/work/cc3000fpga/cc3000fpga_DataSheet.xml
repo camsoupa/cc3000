@@ -11,104 +11,38 @@
     <hdl-type>Verilog</hdl-type>
     <project-description>
     </project-description>
-    <location>C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/component/work/cc3000fpga</location>
-    <state>GENERATED ( Fri Apr 11 00:00:07 2014 )</state>
-    <swide-toolchain>SoftConsole workspace generated to C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
+    <location>C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga</location>
+    <state>GENERATED ( Fri Apr 11 16:44:39 2014 )</state>
+    <swide-toolchain>SoftConsole workspace generated to C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
   </project-settings>
   <site-map>
   </site-map>
   <fileset>
     <name>HDL File(s)</name>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\inverter.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\spi2fabric.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\timer.v</file>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\hdl\timerWrapper.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_chanctrl.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_clockmux.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_control.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_fifo.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi_rf.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\hdl\inverter.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\hdl\spi2fabric.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\hdl\timer.v</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\hdl\timerWrapper.v</file>
   </fileset>
   <fileset>
     <name>Flash Memory File(s)</name>
-    <file>C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
+    <file>C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\component\work\C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
   </fileset>
-  <io>
-    <port-name>SPI_1_DO</port-name>
-    <direction>OUT</direction>
-    <pin-number>T17</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>LED_1</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>out_to_fabric_do</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>SPI_1_SS</port-name>
-    <direction>INOUT</direction>
-    <pin-number>W21</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>SPI_EN_PIN</port-name>
-    <direction>OUT</direction>
-    <pin-number>AA1</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>UART_0_RXD</port-name>
-    <direction>IN</direction>
-    <pin-number>U18</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>in_from_fabric_di</port-name>
-    <direction>IN</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>LED_0</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>SPI_1_CLK</port-name>
-    <direction>INOUT</direction>
-    <pin-number>AA22</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>UART_1_TXD</port-name>
-    <direction>OUT</direction>
-    <pin-number>V20</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>out_to_fabric_ss</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
   <io>
     <port-name>SPI_1_DI</port-name>
     <direction>IN</direction>
@@ -122,9 +56,9 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>UART_1_RXD</port-name>
-    <direction>IN</direction>
-    <pin-number>W22</pin-number>
+    <port-name>SPI_1_DO</port-name>
+    <direction>OUT</direction>
+    <pin-number>T17</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
@@ -134,25 +68,13 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>LED_G</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>out_to_fabric_clk</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>LED_2</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
     <port-name>LED_R</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>LED_0</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -164,15 +86,75 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
+    <port-name>LED_2</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>LED_G</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>LED_1</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>UART_1_RXD</port-name>
+    <direction>IN</direction>
+    <pin-number>W22</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPI_EN_PIN</port-name>
+    <direction>OUT</direction>
+    <pin-number>AA1</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPI_1_SS</port-name>
+    <direction>INOUT</direction>
+    <pin-number>W21</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>UART_0_RXD</port-name>
+    <direction>IN</direction>
+    <pin-number>U18</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>SPI_SS_PIN</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
+    <port-name>UART_1_TXD</port-name>
+    <direction>OUT</direction>
+    <pin-number>V20</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
     <port-name>MSS_RESET_N</port-name>
     <direction>IN</direction>
     <pin-number>R1</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
+  <io>
+    <port-name>SPI_1_CLK</port-name>
+    <direction>INOUT</direction>
+    <pin-number>AA22</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
   <core type="ComponentModule">
     <core-type>ComponentModule</core-type>
     <core-exttype>HierSpiritDesign</core-exttype>
-    <core-location>C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/component/work/cc3000fpga_MSS</core-location>
+    <core-location>C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS</core-location>
     <core-name>cc3000fpga_MSS_0</core-name>
   </core>
   <core type="SpiritModule">
@@ -441,9 +423,6 @@ There is one APB3 Master interface.
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-name>CoreAPB3_0</core-name>
-  </core>
-  <core>
-    <core-name>spi2fabric_0</core-name>
   </core>
   <core>
     <core-name>Timer_1</core-name>

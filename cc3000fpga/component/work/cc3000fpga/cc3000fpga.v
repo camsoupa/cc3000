@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Fri Apr 11 00:00:04 2014
+// Created by SmartDesign Fri Apr 11 16:44:35 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -13,7 +13,6 @@ module cc3000fpga(
     UART_0_RXD,
     UART_1_RXD,
     cc3000_IRQ,
-    in_from_fabric_di,
     // Outputs
     LED_0,
     LED_1,
@@ -23,11 +22,9 @@ module cc3000fpga(
     LED_R,
     SPI_1_DO,
     SPI_EN_PIN,
+    SPI_SS_PIN,
     UART_0_TXD,
     UART_1_TXD,
-    out_to_fabric_clk,
-    out_to_fabric_do,
-    out_to_fabric_ss,
     // Inouts
     SPI_1_CLK,
     SPI_1_SS
@@ -41,7 +38,6 @@ input  SPI_1_DI;
 input  UART_0_RXD;
 input  UART_1_RXD;
 input  cc3000_IRQ;
-input  in_from_fabric_di;
 //--------------------------------------------------------------------
 // Output
 //--------------------------------------------------------------------
@@ -53,11 +49,9 @@ output LED_G;
 output LED_R;
 output SPI_1_DO;
 output SPI_EN_PIN;
+output SPI_SS_PIN;
 output UART_0_TXD;
 output UART_1_TXD;
-output out_to_fabric_clk;
-output out_to_fabric_do;
-output out_to_fabric_ss;
 //--------------------------------------------------------------------
 // Inout
 //--------------------------------------------------------------------
@@ -68,9 +62,6 @@ inout  SPI_1_SS;
 //--------------------------------------------------------------------
 wire          cc3000_IRQ;
 wire          cc3000fpga_MSS_0_FAB_CLK;
-wire          cc3000fpga_MSS_0_M2F_GPO_24;
-wire          cc3000fpga_MSS_0_M2F_GPO_26;
-wire          cc3000fpga_MSS_0_M2F_GPO_27;
 wire          cc3000fpga_MSS_0_M2F_RESET_N;
 wire          cc3000fpga_MSS_0_MSS_MASTER_APB_PENABLE;
 wire   [31:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA;
@@ -99,8 +90,6 @@ wire   [31:0] CoreAPB3_0_APBmslave4_PRDATA;
 wire          CoreAPB3_0_APBmslave4_PREADY;
 wire          CoreAPB3_0_APBmslave4_PSELx;
 wire          CoreAPB3_0_APBmslave4_PSLVERR;
-wire          GPIO_4_OUT;
-wire          in_from_fabric_di;
 wire          LED_0_net_0;
 wire          LED_1_net_0;
 wire          LED_3;
@@ -108,14 +97,12 @@ wire          LED_B_net_0;
 wire          LED_G_net_0;
 wire          LED_R_net_0;
 wire          MSS_RESET_N;
-wire          out_to_fabric_clk_net_0;
-wire          out_to_fabric_do_net_0;
-wire          out_to_fabric_ss_net_0;
-wire          spi2fabric_0_out_to_spi_di;
 wire          SPI_1_CLK;
 wire          SPI_1_DI;
-wire          SPI_1_DO_0;
+wire          SPI_1_DO_1;
 wire          SPI_1_SS;
+wire          SPI_EN_PIN_0;
+wire          SPI_SS_PIN_net_0;
 wire          Timer_1_FABINT;
 wire          Timer_2_FABINT;
 wire          Timer_3_FABINT;
@@ -129,14 +116,12 @@ wire          UART_0_TXD_net_1;
 wire          LED_1_net_1;
 wire          LED_3_net_0;
 wire          LED_0_net_1;
-wire          SPI_1_DO_0_net_0;
-wire          out_to_fabric_clk_net_1;
-wire          out_to_fabric_do_net_1;
-wire          out_to_fabric_ss_net_1;
+wire          SPI_1_DO_1_net_0;
 wire          LED_B_net_1;
 wire          LED_R_net_1;
 wire          LED_G_net_1;
-wire          GPIO_4_OUT_net_0;
+wire          SPI_EN_PIN_0_net_0;
+wire          SPI_SS_PIN_net_1;
 //--------------------------------------------------------------------
 // TiedOff Nets
 //--------------------------------------------------------------------
@@ -178,32 +163,28 @@ assign PRDATAS16_const_net_0 = 32'h00000000;
 //--------------------------------------------------------------------
 // Top level output port assignments
 //--------------------------------------------------------------------
-assign UART_1_TXD_net_1        = UART_1_TXD_net_0;
-assign UART_1_TXD              = UART_1_TXD_net_1;
-assign UART_0_TXD_net_1        = UART_0_TXD_net_0;
-assign UART_0_TXD              = UART_0_TXD_net_1;
-assign LED_1_net_1             = LED_1_net_0;
-assign LED_1                   = LED_1_net_1;
-assign LED_3_net_0             = LED_3;
-assign LED_2                   = LED_3_net_0;
-assign LED_0_net_1             = LED_0_net_0;
-assign LED_0                   = LED_0_net_1;
-assign SPI_1_DO_0_net_0        = SPI_1_DO_0;
-assign SPI_1_DO                = SPI_1_DO_0_net_0;
-assign out_to_fabric_clk_net_1 = out_to_fabric_clk_net_0;
-assign out_to_fabric_clk       = out_to_fabric_clk_net_1;
-assign out_to_fabric_do_net_1  = out_to_fabric_do_net_0;
-assign out_to_fabric_do        = out_to_fabric_do_net_1;
-assign out_to_fabric_ss_net_1  = out_to_fabric_ss_net_0;
-assign out_to_fabric_ss        = out_to_fabric_ss_net_1;
-assign LED_B_net_1             = LED_B_net_0;
-assign LED_B                   = LED_B_net_1;
-assign LED_R_net_1             = LED_R_net_0;
-assign LED_R                   = LED_R_net_1;
-assign LED_G_net_1             = LED_G_net_0;
-assign LED_G                   = LED_G_net_1;
-assign GPIO_4_OUT_net_0        = GPIO_4_OUT;
-assign SPI_EN_PIN              = GPIO_4_OUT_net_0;
+assign UART_1_TXD_net_1   = UART_1_TXD_net_0;
+assign UART_1_TXD         = UART_1_TXD_net_1;
+assign UART_0_TXD_net_1   = UART_0_TXD_net_0;
+assign UART_0_TXD         = UART_0_TXD_net_1;
+assign LED_1_net_1        = LED_1_net_0;
+assign LED_1              = LED_1_net_1;
+assign LED_3_net_0        = LED_3;
+assign LED_2              = LED_3_net_0;
+assign LED_0_net_1        = LED_0_net_0;
+assign LED_0              = LED_0_net_1;
+assign SPI_1_DO_1_net_0   = SPI_1_DO_1;
+assign SPI_1_DO           = SPI_1_DO_1_net_0;
+assign LED_B_net_1        = LED_B_net_0;
+assign LED_B              = LED_B_net_1;
+assign LED_R_net_1        = LED_R_net_0;
+assign LED_R              = LED_R_net_1;
+assign LED_G_net_1        = LED_G_net_0;
+assign LED_G              = LED_G_net_1;
+assign SPI_EN_PIN_0_net_0 = SPI_EN_PIN_0;
+assign SPI_EN_PIN         = SPI_EN_PIN_0_net_0;
+assign SPI_SS_PIN_net_1   = SPI_SS_PIN_net_0;
+assign SPI_SS_PIN         = SPI_SS_PIN_net_1;
 //--------------------------------------------------------------------
 // Bus Interface Nets - Unequal Pin Widths
 //--------------------------------------------------------------------
@@ -215,23 +196,23 @@ assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20 = 12'h0;
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0 = cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR[19:0];
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0 = { cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20, cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0 };
 
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_0_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_1_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_1;
+wire   [31:0] CoreAPB3_0_APBmslave0_PADDR;
 wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_3_7to0;
 wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_3;
 wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_2_7to0;
 wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_2;
-wire   [31:0] CoreAPB3_0_APBmslave0_PADDR;
-assign CoreAPB3_0_APBmslave0_PADDR_0_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
-assign CoreAPB3_0_APBmslave0_PADDR_0 = { CoreAPB3_0_APBmslave0_PADDR_0_7to0 };
-assign CoreAPB3_0_APBmslave0_PADDR_1_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
-assign CoreAPB3_0_APBmslave0_PADDR_1 = { CoreAPB3_0_APBmslave0_PADDR_1_7to0 };
+wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_1_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_1;
+wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_0_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_0;
 assign CoreAPB3_0_APBmslave0_PADDR_3_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
 assign CoreAPB3_0_APBmslave0_PADDR_3 = { CoreAPB3_0_APBmslave0_PADDR_3_7to0 };
 assign CoreAPB3_0_APBmslave0_PADDR_2_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
 assign CoreAPB3_0_APBmslave0_PADDR_2 = { CoreAPB3_0_APBmslave0_PADDR_2_7to0 };
+assign CoreAPB3_0_APBmslave0_PADDR_1_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
+assign CoreAPB3_0_APBmslave0_PADDR_1 = { CoreAPB3_0_APBmslave0_PADDR_1_7to0 };
+assign CoreAPB3_0_APBmslave0_PADDR_0_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
+assign CoreAPB3_0_APBmslave0_PADDR_0 = { CoreAPB3_0_APBmslave0_PADDR_0_7to0 };
 
 //--------------------------------------------------------------------
 // Component instances
@@ -249,9 +230,8 @@ cc3000fpga_MSS cc3000fpga_MSS_0(
         .F2M_GPI_7   ( Timer_3_FABINT ),
         .F2M_GPI_6   ( Timer_2_FABINT ),
         .SPI_1_DI    ( SPI_1_DI ),
-        .F2M_GPI_25  ( spi2fabric_0_out_to_spi_di ),
-        .MSSPRDATA   ( cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA ),
         .GPIO_2_IN   ( cc3000_IRQ ),
+        .MSSPRDATA   ( cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA ),
         // Outputs
         .UART_0_TXD  ( UART_0_TXD_net_0 ),
         .UART_1_TXD  ( UART_1_TXD_net_0 ),
@@ -263,16 +243,14 @@ cc3000fpga_MSS cc3000fpga_MSS_0(
         .MSSPENABLE  ( cc3000fpga_MSS_0_MSS_MASTER_APB_PENABLE ),
         .MSSPWRITE   ( cc3000fpga_MSS_0_MSS_MASTER_APB_PWRITE ),
         .M2F_GPO_3   ( LED_3 ),
-        .SPI_1_DO    ( SPI_1_DO_0 ),
-        .M2F_GPO_27  ( cc3000fpga_MSS_0_M2F_GPO_27 ),
-        .M2F_GPO_26  ( cc3000fpga_MSS_0_M2F_GPO_26 ),
-        .M2F_GPO_24  ( cc3000fpga_MSS_0_M2F_GPO_24 ),
+        .SPI_1_DO    ( SPI_1_DO_1 ),
         .M2F_GPO_13  ( LED_B_net_0 ),
         .M2F_GPO_12  ( LED_G_net_0 ),
         .M2F_GPO_11  ( LED_R_net_0 ),
+        .GPIO_4_OUT  ( SPI_EN_PIN_0 ),
         .MSSPADDR    ( cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR ),
         .MSSPWDATA   ( cc3000fpga_MSS_0_MSS_MASTER_APB_PWDATA ),
-        .GPIO_4_OUT  ( GPIO_4_OUT ),
+        .M2F_GPO_9   ( SPI_SS_PIN_net_0 ),
         // Inouts
         .SPI_1_CLK   ( SPI_1_CLK ),
         .SPI_1_SS    ( SPI_1_SS ) 
@@ -402,20 +380,6 @@ CoreAPB3_0(
         .PRDATA     ( cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA ),
         .PADDRS     ( CoreAPB3_0_APBmslave0_PADDR ),
         .PWDATAS    ( CoreAPB3_0_APBmslave0_PWDATA ) 
-        );
-
-//--------spi2fabric
-spi2fabric spi2fabric_0(
-        // Inputs
-        .in_from_fabric_di ( in_from_fabric_di ),
-        .in_from_spi_do    ( cc3000fpga_MSS_0_M2F_GPO_24 ),
-        .in_from_spi_clk   ( cc3000fpga_MSS_0_M2F_GPO_26 ),
-        .in_from_spi_ss    ( cc3000fpga_MSS_0_M2F_GPO_27 ),
-        // Outputs
-        .out_to_spi_di     ( spi2fabric_0_out_to_spi_di ),
-        .out_to_fabric_do  ( out_to_fabric_do_net_0 ),
-        .out_to_fabric_clk ( out_to_fabric_clk_net_0 ),
-        .out_to_fabric_ss  ( out_to_fabric_ss_net_0 ) 
         );
 
 //--------timerWrapper

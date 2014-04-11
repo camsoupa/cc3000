@@ -316,6 +316,8 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     // Configure and enable the SSI port for master mode
     //
     //MAP_SysCtlPeripheralReset(sSpiInformation.sHwSettings.ui32SsiPortAddress);
+    const uint32_t master_tx_frame = 0xAA;
+    uint32_t master_rx;
 
 	MSS_SPI_init( &g_mss_spi1 );
 
@@ -326,17 +328,8 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 	// I think this is only for DMA
 	 // MSS_SPI_enable( &g_mss_spi1 );
 
-
-	// Need to figure out if slave select is active high or low and do accordingly TODO
-	// I think we still might want to break the SS out of the spi's control.
-	// need to de-asert SS as soon as we figure out which way it goes.
-    // cc3000 SS is low enabled!!!
-	// These aren't showing up on my board....
-	MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
-
-	printf("asserting ? SS\n");
 	// This is how we can send data. There is also a MSS_SPI_transfer_block... not sure which we should use yet.
-	//MSS_SPI_transfer_frame( &g_mss_spi1, master_tx_frame );
+	//master_rx = MSS_SPI_transfer_frame( &g_mss_spi1, master_tx_frame );
 
 	// This is how we can change the cs...
 	// These aren't showing up on my board....
@@ -525,10 +518,10 @@ SpiClose(void)
     //MSS_GPIO_clear_irq(SPI_TX_RFM);
     //MSS_GPIO_clear_irq(FABINT?);
 
-    MSS_GPIO_disable_irq(SPI_RX_AVAIL);
-    MSS_GPIO_disable_irq(SPI_TX_RFM);
+    //MSS_GPIO_disable_irq(SPI_RX_AVAIL);
+   // MSS_GPIO_disable_irq(SPI_TX_RFM);
     //MSS_GPIO_disable_irq(FABINT?);
-	NVIC_DisableIRQ(Fabric_IRQn);
+	//NVIC_DisableIRQ(Fabric_IRQn);
 
 
 

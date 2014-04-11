@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by Actel SmartDesign Fri Apr 11 00:00:04 2014
+// Created by Actel SmartDesign Fri Apr 11 16:44:35 2014
 // Testbench Template
 // This is a basic testbench that instantiates your design with basic 
 // clock and reset pins connected.  If your design has special
@@ -48,7 +48,6 @@ cc3000fpga cc3000fpga_0 (
     .UART_0_RXD({1{1'b0}}),
     .MSS_RESET_N(NSYSRESET),
     .SPI_1_DI({1{1'b0}}),
-    .in_from_fabric_di({1{1'b0}}),
     .cc3000_IRQ({1{1'b0}}),
 
     // Outputs
@@ -58,13 +57,11 @@ cc3000fpga cc3000fpga_0 (
     .LED_2( ),
     .LED_0( ),
     .SPI_1_DO( ),
-    .out_to_fabric_clk( ),
-    .out_to_fabric_do( ),
-    .out_to_fabric_ss( ),
     .LED_B( ),
     .LED_R( ),
     .LED_G( ),
     .SPI_EN_PIN( ),
+    .SPI_SS_PIN( ),
 
     // Inouts
     .SPI_1_CLK( ),

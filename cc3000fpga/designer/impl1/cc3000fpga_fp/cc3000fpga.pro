@@ -1,22 +1,22 @@
 <project name="cc3000fpga" version="1.1">
     <ProjectDirectory>
-        C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp
+        C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp
     </ProjectDirectory>
     <View>
         SingleSTAPLView
     </View>
     <LogFile>
-        C:/Users/Gnewt/Documents/GitHub/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp\cc3000fpga.log
+        C:/Users/mapalmer/Documents/Project/cc3000/cc3000fpga/designer/impl1/cc3000fpga_fp\cc3000fpga.log
     </LogFile>
     <SerializationOption>
         Skip
     </SerializationOption>
     <programmer status="enable" type="FlashPro3" revision="UndefRev" connection="usb2.0">
         <name>
-            61369
+            71665
         </name>
         <id>
-            61369
+            71665
         </id>
     </programmer>
     <configuration>
@@ -59,7 +59,7 @@
         </Hardware>
         <Algo type="PDB">
             <filename>
-                C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb
+                C:\Users\mapalmer\Documents\Project\cc3000\cc3000fpga\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb
             </filename>
             <local>
                 projectData\cc3000fpga.pdb

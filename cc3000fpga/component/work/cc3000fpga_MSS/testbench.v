@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by Actel SmartDesign Thu Apr 10 23:59:59 2014
+// Created by Actel SmartDesign Fri Apr 11 16:44:52 2014
 // Testbench Template
 // This is a basic testbench that instantiates your design with basic 
 // clock and reset pins connected.  If your design has special
@@ -50,7 +50,6 @@ cc3000fpga_MSS cc3000fpga_MSS_0 (
     .F2M_GPI_8({1{1'b0}}),
     .F2M_GPI_7({1{1'b0}}),
     .F2M_GPI_6({1{1'b0}}),
-    .F2M_GPI_25({1{1'b0}}),
     .MSSPRDATA({32{1'b0}}),
     .UART_0_RXD({1{1'b0}}),
     .UART_1_RXD({1{1'b0}}),
@@ -67,12 +66,10 @@ cc3000fpga_MSS cc3000fpga_MSS_0 (
     .MSSPENABLE( ),
     .MSSPWRITE( ),
     .M2F_GPO_3( ),
-    .M2F_GPO_27( ),
-    .M2F_GPO_26( ),
-    .M2F_GPO_24( ),
     .M2F_GPO_13( ),
     .M2F_GPO_12( ),
     .M2F_GPO_11( ),
+    .M2F_GPO_9( ),
     .MSSPADDR( ),
     .MSSPWDATA( ),
     .UART_0_TXD( ),

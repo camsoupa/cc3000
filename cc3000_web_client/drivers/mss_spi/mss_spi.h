@@ -671,8 +671,8 @@ void MSS_SPI_configure_master_mode
  */
 void MSS_SPI_set_slave_select
 (
-	mss_spi_instance_t * this_spi,
-	mss_spi_slave_t slave
+	volatile mss_spi_instance_t * this_spi,
+	volatile mss_spi_slave_t slave
 );
 
 /***************************************************************************//**

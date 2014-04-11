@@ -1,5 +1,5 @@
 #===========================================================
-# Created by Actel SmartDesign Thu Apr 10 23:59:54 2014
+# Created by Actel SmartDesign Fri Apr 11 16:44:46 2014
 # 
 # 
 # Warning:  Do not modify this file, it may lead to unexpected 
@@ -101,7 +101,7 @@ procedure init;
   write w GPIO 0x18 0x2;
   write w GPIO 0x1c 0x2;
   write w GPIO 0x20 0x2;
-  write w GPIO 0x24 0x0;
+  write w GPIO 0x24 0x5;
   write w GPIO 0x28 0x0;
   write w GPIO 0x2c 0x5;
   write w GPIO 0x30 0x5;
@@ -116,10 +116,10 @@ procedure init;
   write w GPIO 0x54 0x0;
   write w GPIO 0x58 0x0;
   write w GPIO 0x5c 0x0;
-  write w GPIO 0x60 0x5;
-  write w GPIO 0x64 0x2;
-  write w GPIO 0x68 0x5;
-  write w GPIO 0x6c 0x5;
+  write w GPIO 0x60 0x0;
+  write w GPIO 0x64 0x0;
+  write w GPIO 0x68 0x0;
+  write w GPIO 0x6c 0x0;
   write w GPIO 0x70 0x0;
   write w GPIO 0x74 0x0;
   write w GPIO 0x78 0x0;

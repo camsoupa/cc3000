@@ -285,12 +285,12 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     //MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32SsiPortAddress);
     //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI_BASE);
 
-
+/* only if using core spi
 	NVIC_EnableIRQ(GPIO31_IRQn);
     MSS_GPIO_config( SPI_RX_AVAIL, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
     NVIC_EnableIRQ(GPIO30_IRQn);
     MSS_GPIO_config( SPI_TX_RFM, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
-    // STILL NEED TO ENBALE GPIO IRQ BELOW!! TODO
+*/
 
     //
     // Set pin muxing to route the SPI signals to the relevant pins.
@@ -316,6 +316,33 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     // Configure and enable the SSI port for master mode
     //
     //MAP_SysCtlPeripheralReset(sSpiInformation.sHwSettings.ui32SsiPortAddress);
+
+	MSS_SPI_init( &g_mss_spi1 );
+
+	// I think this is all right. I'm not sure if we want SPI_MODE2 or SPI_MODE1 though.
+	// Actually looking at http://www.totalphase.com/support/articles/200349236-SPI-Background I think mode 1 is right
+	MSS_SPI_configure_master_mode(&g_mss_spi1, MSS_SPI_SLAVE_0, MSS_SPI_MODE1, MSS_SPI_PCLK_DIV_64, MSS_SPI_BLOCK_TRANSFER_FRAME_SIZE);
+
+	// I think this is only for DMA
+	 // MSS_SPI_enable( &g_mss_spi1 );
+
+
+	// Need to figure out if slave select is active high or low and do accordingly TODO
+	// I think we still might want to break the SS out of the spi's control.
+	// need to de-asert SS as soon as we figure out which way it goes.
+    // cc3000 SS is low enabled!!!
+	// These aren't showing up on my board....
+	MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
+
+	printf("asserting ? SS\n");
+	// This is how we can send data. There is also a MSS_SPI_transfer_block... not sure which we should use yet.
+	//MSS_SPI_transfer_frame( &g_mss_spi1, master_tx_frame );
+
+	// This is how we can change the cs...
+	// These aren't showing up on my board....
+	MSS_SPI_clear_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
+
+	printf("clearing SS\n");
 
     //
     // Ensure that the SSI is disabled before making any configuration
@@ -420,10 +447,12 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
     // Enable the SSI interrupt
     //
     //MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
+
+	/* only if using core spi
 	NVIC_EnableIRQ(Fabric_IRQn);
     MSS_GPIO_enable_irq( SPI_RX_AVAIL );
     MSS_GPIO_enable_irq( SPI_TX_RFM );
-
+    */
 }
 
 /***************************************************************

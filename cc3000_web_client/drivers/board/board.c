@@ -145,21 +145,21 @@ void pio_init()
 
 
 
-    // Do this after spi is configured
+    // Do this after spi is configured !!!
     // CS is low enabled!!!
     // CORE SPI is not doing this for us now... it is manual
-	MSS_GPIO_config( SPI_CS_PIN, MSS_GPIO_OUTPUT_MODE);
+	//MSS_GPIO_config( SPI_CS_PIN, MSS_GPIO_OUTPUT_MODE);
 
     //MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, PIN_HIGH);
 	// CS is low enabled so this is de-asserting it
-	MSS_GPIO_set_output(SPI_CS_PIN, 1);
+	//MSS_GPIO_set_output(SPI_CS_PIN, 1);
 
 
     //
     // Enable interrupt for WLAN_IRQ pin
     //
     //MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
-    MSS_GPIO_enable_irq( SPI_IRQ_PIN );
+    //MSS_GPIO_enable_irq( SPI_IRQ_PIN );
 
     //
     // Clear interrupt status

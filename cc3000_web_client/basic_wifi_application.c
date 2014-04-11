@@ -2348,7 +2348,7 @@ main(void)
 
 
     //
-    // Loop forever waiting  for commands from PC...
+    // Loop forever
     //
     while(1)
     {

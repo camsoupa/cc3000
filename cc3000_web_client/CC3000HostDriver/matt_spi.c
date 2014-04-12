@@ -426,20 +426,18 @@ SpiIsDMAStopped(uint32_t ui32Channel)
 static void
 SpiFlushRxFifo(void)
 {
-	/* TODO
+	// TODO call MSS_SPI_transfer_frame() (which reads and writes) to get all the data
     uint32_t ui32Idx;
 
-    while(MAP_SSIDataGetNonBlocking(sSpiInformation.sHwSettings.ui32SsiPort,
-                                    &ui32Idx))
-    {
+    //while(MAP_SSIDataGetNonBlocking(sSpiInformation.sHwSettings.ui32SsiPort,
+    //                                &ui32Idx))
+    //{
         // Keep reading until there's no data left to read.
-    }
+    //}
 
-    //
     //Clear the RX overrun interrupt flag.
-    //
-    SSIIntClear(sSpiInformation.sHwSettings.ui32SsiPort, SSI_RIS_RORRIS);
-    */
+    //TODO: is there an overrun interrupt we have access to?
+    //SSIIntClear(sSpiInformation.sHwSettings.ui32SsiPort, SSI_RIS_RORRIS);
 }
 
 //*****************************************************************************

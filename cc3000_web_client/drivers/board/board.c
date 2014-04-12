@@ -62,6 +62,17 @@
 #include "../../CC3000HostDriver/hci.h"
 
 
+/* Function for delay taken from our lab 6
+ * trying to replace  ROM_SysCtlDelay(100); not sure if this will do it*/
+int delay ( volatile uint32_t n)
+{
+    while(n!=0)
+    {
+    	n--;
+    }
+    return 0;
+}
+
 //*****************************************************************************
 //
 //! pio_init

@@ -49,6 +49,11 @@ extern "C" {
 //*****************************************************************************
 typedef void (*tSpiHandleRx)(void *p);
 
+void SpiIntHandler(bool, bool);
+void dma_rx_done_irq_handler(void);
+void dma_tx_done_irq_handler(void);
+
+
 //*****************************************************************************
 //
 // The global transmit buffer.  This is accessed from wlan.c.
@@ -62,6 +67,7 @@ extern uint8_t wlan_tx_buffer[];
 //
 //*****************************************************************************
 extern void SpiOpen(tSpiHandleRx pfRxHandler);
+bool SpiBusy(void);
 extern void SpiClose(void);
 extern long SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length);
 extern void SpiResumeSpi(void);

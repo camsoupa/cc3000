@@ -201,6 +201,12 @@ static void SpiWriteAsync(const uint8_t *data, uint16_t size);
 static void SpiReadData(uint8_t *data, uint16_t size);
 static void SpiDisableInterrupts(void);
 
+bool SpiBusy()
+{
+   //TODO: how do we know if Spi is busy?
+	return (0);
+}
+
 //*****************************************************************************
 //
 // Initialize the hardware settings for the SPI and IRQ interface between
@@ -211,9 +217,9 @@ static void SpiDisableInterrupts(void);
 void
 SpiConfigureHwMapping(void)
 {
-	/* TODO
+/*
     sSpiInformation.sHwSettings.ui32PioPortAddress = SYSCTL_PERIPH_SPI_PORT;
-    sSpiInformation.sHwSettings.ui32PioSpiCs   = SPI_CS_PIN;
+    sSpiInformation.sHwSettings.ui32PioSpiCs   = SPI_CS();_PIN;
     sSpiInformation.sHwSettings.ui32PioSpiPort = SPI_PORT;
     sSpiInformation.sHwSettings.ui32DMAPort   = SYSCTL_PERIPH_UDMA;
     sSpiInformation.sHwSettings.ui32PortInt    = INT_GPIO_SPI;           // I don't think we need this
@@ -225,11 +231,7 @@ SpiConfigureHwMapping(void)
     sSpiInformation.sHwSettings.ui32SsiPortInt = INT_SPI;                 // Don't need this
     sSpiInformation.sHwSettings.ui32DMARxChannel = SPI_UDMA_RX_CHANNEL;
     sSpiInformation.sHwSettings.ui32DMATxChannel = SPI_UDMA_TX_CHANNEL;
-    */
-
-
-
-
+*/
 }
 
 //*****************************************************************************
@@ -240,28 +242,10 @@ SpiConfigureHwMapping(void)
 uint32_t
 SpiCleanGPIOISR(void)
 {
-	// call SpiCleanGPIOISR from the GPIO ISR?
-
-	// TODO
-
-
-    uint32_t ui32Status = 0;
-
-    //
-    // Get the reason for the interrupt
-    //
-    //ui32Status = MAP_GPIOIntStatus(SPI_GPIO_IRQ_BASE, true);
-
-    //
-    // Clear any asserted interrupts
-    //
-    //MAP_GPIOIntClear(SPI_GPIO_IRQ_BASE, ui32Status);
-    //MSS_GPIO_clear_irq();
-
-    //
-    // Return the read status to the caller.
-    //
-    return(ui32Status);
+	// called from CC3000 GPIO interrupt handler
+    // unlike TI, there is no status, so we just return 0;
+    MSS_GPIO_clear_irq(SPI_IRQ_PIN);
+    return 0;
 
 }
 
@@ -276,214 +260,48 @@ SpiCleanGPIOISR(void)
 void
 SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
-
-    //
-    // Enable required SSI and GPIO peripherals.
-    //
-    //MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32PioPortAddress);
-    //MAP_SysCtlPeripheralEnable(sSpiInformation.sHwSettings.ui32SsiPortAddress);
-    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI_BASE);
-
-/* only if using core spi
-	NVIC_EnableIRQ(GPIO31_IRQn);
-    MSS_GPIO_config( SPI_RX_AVAIL, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
-    NVIC_EnableIRQ(GPIO30_IRQn);
-    MSS_GPIO_config( SPI_TX_RFM, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_LEVEL_HIGH );
-*/
-
-    //
-    // Set pin muxing to route the SPI signals to the relevant pins.
-    //
-    //GPIOPinConfigure(SPI_CLK_MUX_SEL);
-    //GPIOPinConfigure(SPI_RX_MUX_SEL);
-    //GPIOPinConfigure(SPI_TX_MUX_SEL);
-    // No need to do this for us
-
-    //
-    // Configure the appropriate pins to be SSI instead of GPIO
-    //
-    //MAP_GPIOPinTypeSSI(sSpiInformation.sHwSettings.ui32PioSpiPort,
-    //                   (sSpiInformation.sHwSettings.ui32SsiTx |
-    //                    sSpiInformation.sHwSettings.ui32SsiRx |
-    //                    sSpiInformation.sHwSettings.ui32SsiClck));
-
-    //MAP_GPIOPadConfigSet(sSpiInformation.sHwSettings.ui32PioSpiPort,
-    //                     sSpiInformation.sHwSettings.ui32SsiClck,
-    //                     GPIO_STRENGTH_8MA,GPIO_PIN_TYPE_STD_WPD);
-
-    //
-    // Configure and enable the SSI port for master mode
-    //
-    //MAP_SysCtlPeripheralReset(sSpiInformation.sHwSettings.ui32SsiPortAddress);
-    const uint32_t master_tx_frame = 0xAA;
-    uint32_t master_rx;
-
 	MSS_SPI_init( &g_mss_spi1 );
 
 	// I think this is all right. I'm not sure if we want SPI_MODE2 or SPI_MODE1 though.
 	// Actually looking at http://www.totalphase.com/support/articles/200349236-SPI-Background I think mode 1 is right
 	MSS_SPI_configure_master_mode(&g_mss_spi1, MSS_SPI_SLAVE_0, MSS_SPI_MODE1, MSS_SPI_PCLK_DIV_64, MSS_SPI_BLOCK_TRANSFER_FRAME_SIZE);
 
-	// I think this is only for DMA
-	 // MSS_SPI_enable( &g_mss_spi1 );
+	MSS_SPI_enable( &g_mss_spi1 );
 
-	// This is how we can send data. There is also a MSS_SPI_transfer_block... not sure which we should use yet.
-	//master_rx = MSS_SPI_transfer_frame( &g_mss_spi1, master_tx_frame );
+	// enable peripheral
+	PDMA_init();
 
-	// This is how we can change the cs...
-	// These aren't showing up on my board....
-	MSS_SPI_clear_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
+	// Transmit channel
+	PDMA_configure
+	(
+	 SPI_UDMA_TX_CHANNEL,
+	 PDMA_TO_SPI_1,
+	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER | PDMA_INC_SRC_ONE_BYTE,
+	 PDMA_DEFAULT_WRITE_ADJ
+	);
 
-	printf("clearing SS\n");
+	// Receive channel
+	PDMA_configure
+	(
+	 SPI_UDMA_RX_CHANNEL,
+	 PDMA_FROM_SPI_1,
+	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER | PDMA_INC_DEST_ONE_BYTE,
+	 PDMA_DEFAULT_WRITE_ADJ
+	);
 
-    //
-    // Ensure that the SSI is disabled before making any configuration
-    // changes.
-    //
-   // MAP_SSIDisable(sSpiInformation.sHwSettings.ui32SsiPort);
-
-    //
-    // Configure SSI with 8 bit data, Polarity '0', Phase '1' and clock
-    // frequency as provided by the caller.
-    //
-    //MAP_SSIConfigSetExpClk(sSpiInformation.sHwSettings.ui32SsiPort,
-     //                      ui32SysClck, SSI_FRF_MOTO_MODE_1, SSI_MODE_MASTER,
-     //                      ui32SSIFreq, 8);
-
-    //
-    // Enable EOT mode for the SSIRIS EOT bit
-    //
-    //HWREG(sSpiInformation.sHwSettings.ui32SsiPort + SSI_O_CR1) |= SSI_CR1_EOT;
-
-    //
-    // Enable the SSI now that configuration is complete.
-    //
-    //MAP_SSIEnable(sSpiInformation.sHwSettings.ui32SsiPort);
-
-    //
-    // Enable DMA mode for both RX and TX
-    //
-    //MAP_SSIDMAEnable(sSpiInformation.sHwSettings.ui32SsiPort, SSI_DMA_TX);
-
-    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_UDMA);
-
-    //
-    // Enable the uDMA controller.
-    //
-    //MAP_uDMAEnable();
-
-    //
-    //Configure the DMA channels for the selected SPI Module
-    //
-    //MAP_uDMAChannelAssign( sSpiInformation.sHwSettings.ui32DMARxChannel);
-    //MAP_uDMAChannelAssign( sSpiInformation.sHwSettings.ui32DMATxChannel);
-
-    //
-    // Point at the control table to use for channel control structures
-    //
-    //MAP_uDMAControlBaseSet(ui8DMAChannelControlStructure);
-
-    //
-    // Put the attributes in a known state for the uDMA SSIRX channel.  These
-    // should already be disabled by default.
-    //
-    //MAP_uDMAChannelAttributeDisable(sSpiInformation.sHwSettings.ui32DMARxChannel,
-    //                                UDMA_ATTR_ALTSELECT | UDMA_ATTR_USEBURST |
-    //                                UDMA_ATTR_HIGH_PRIORITY |
-    //                                UDMA_ATTR_REQMASK);
-
-    //
-    // Configure the control parameters for the primary control structure for
-    // the SSI RX channel. The transfer data size is 8 bits, the source
-    // address does not increment since it will be reading from a register.
-    // The destination address increment is byte 8-bit bytes. The arbitration
-    // size is set to 1 to match the RX FIFO trigger threshold. The uDMA
-    // controller will use a 4 byte burst transfer if possible.
-    //
-    //MAP_uDMAChannelControlSet((sSpiInformation.sHwSettings.ui32DMARxChannel |
-    //                           UDMA_PRI_SELECT), (UDMA_SIZE_8 |
-    //                          UDMA_SRC_INC_NONE | UDMA_DST_INC_8 | UDMA_ARB_1));
-
-    //
-    // Put the attributes in a known state for the uDMA SSITX channel.  These
-    // should already be disabled by default.
-    //
-    //MAP_uDMAChannelAttributeDisable(sSpiInformation.sHwSettings.ui32DMATxChannel,
-    //                                UDMA_ATTR_ALTSELECT | UDMA_ATTR_USEBURST |
-    //                                UDMA_ATTR_HIGH_PRIORITY |
-    //                                UDMA_ATTR_REQMASK);
-
-    //
-    // Configure the control parameters for the primary control structure for
-    // the SSI RX channel. The transfer data size is 8 bits, the source
-    // address does not increment since it will be reading from a register.
-    // The destination address increment is byte 8-bit bytes. The arbitration
-    // size is set to 1 to match the RX FIFO trigger threshold. The uDMA
-    // controller will use a 4 byte burst transfer if possible.
-    //
-    //MAP_uDMAChannelControlSet(sSpiInformation.sHwSettings.ui32DMATxChannel |
-    //                          UDMA_PRI_SELECT, UDMA_SIZE_8 | UDMA_SRC_INC_8 |
-    //                          UDMA_DST_INC_NONE | UDMA_ARB_4);
-
-    //
-    // Now both the uDMA SSI TX and RX channels are primed to start a
-    // transfer.  As soon as the channels are enabled, the peripheral will
-    // issue a transfer request and the data transfers will begin.
-    //
-    // The uDMA TX/RX channel must be disabled.
-    //
-    //MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMARxChannel);
-    //MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMATxChannel);
-
-    //
-    // Enable the SSI interrupt
-    //
-    //MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-
-	/* only if using core spi
-	NVIC_EnableIRQ(Fabric_IRQn);
-    MSS_GPIO_enable_irq( SPI_RX_AVAIL );
-    MSS_GPIO_enable_irq( SPI_TX_RFM );
-    */
+	PDMA_set_irq_handler( SPI_UDMA_RX_CHANNEL, dma_rx_done_irq_handler );
+	PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler ); //needed?
+	PDMA_enable_irq(SPI_UDMA_RX_CHANNEL);
+	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL); //needed?
 }
 
-/***************************************************************
-*
-*
-* Interrupt Handler for FAB_INT
-*
-*
-****************************************************************/
-__attribute__((__interrupt__)) void Fabric_IRQHandler()
+void dma_tx_done_irq_handler()
 {
-
-
+	SpiIntHandler(true, false);
 }
-
-/***************************************************************
-*
-*
-* Interrupt Handler for SPI_RX_AVAIL (MSS_GPIO_31)
-*
-*
-****************************************************************/
-__attribute__((__interrupt__)) void GPIO31_IRQHandler()
+void dma_rx_done_irq_handler()
 {
-
-
-}
-
-/***************************************************************
-*
-*
-* Interrupt Handler for  SPI_TX_RFM (MSS_GPIO_30)
-*
-*
-****************************************************************/
-__attribute__((__interrupt__)) void GPIO30_IRQHandler()
-{
-
-
+	SpiIntHandler(false, true);
 }
 
 //*****************************************************************************
@@ -495,35 +313,15 @@ __attribute__((__interrupt__)) void GPIO30_IRQHandler()
 void
 SpiClose(void)
 {
-
     if (sSpiInformation.pRxPacket)
     {
         sSpiInformation.pRxPacket = 0;
     }
 
-    //
     //  Disable the interrupt from the IRQ GPIO input.
-    //
-    //tSLInformation.WlanInterruptDisable();  // takes care of disabling SPI_IRQ_PIN I think
     WlanInterruptDisable();
 
-    //
-    // Disable interrupt for SPI IRQ and SSI module.
-    //
-    //MAP_IntDisable(sSpiInformation.sHwSettings.ui32PortInt);
-    //MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-
-    //MSS_GPIO_clear_irq(SPI_RX_AVAIL);
-    //MSS_GPIO_clear_irq(SPI_TX_RFM);
-    //MSS_GPIO_clear_irq(FABINT?);
-
-    //MSS_GPIO_disable_irq(SPI_RX_AVAIL);
-   // MSS_GPIO_disable_irq(SPI_TX_RFM);
-    //MSS_GPIO_disable_irq(FABINT?);
-	//NVIC_DisableIRQ(Fabric_IRQn);
-
-
-
+    NVIC_DisableIRQ(SPI1_IRQn);
 }
 
 //*****************************************************************************
@@ -536,11 +334,10 @@ SpiClose(void)
 void
 SpiOpen(tSpiHandleRx pfnRxHandler)
 {
-/* TODO
     //
     // Parameter sanity check.
     //
-    ASSERT(pfnRxHandler);
+    //ASSERT(pfnRxHandler);
 
     //
     // Set the initial state to indicate that we need to wait for the power-up
@@ -567,12 +364,9 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
     //
     tSLInformation.WlanInterruptEnable();
 
-    //
     // Enable the IRQ and SPI interrupts in the NVIC.
-    //
-    MAP_IntEnable(sSpiInformation.sHwSettings.ui32PortInt);
-    MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-*/
+    NVIC_EnableIRQ(SPI1_IRQn);
+    MSS_GPIO_enable_irq(SPI_IRQ_PIN);
 }
 
 //*****************************************************************************
@@ -584,14 +378,10 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
 int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
 
-    //
     // Configure the hardware to use the required SPI and GPIO peripherals.
-    //
     SpiConfigureHwMapping();
 
-    //
     // Set SPI interface configuration parameters.
-    //
     SSIConfigure(ui32SSIFreq, ui32SysClck);
 
     return(ESUCCESS);
@@ -607,20 +397,9 @@ int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 static uint32_t
 SpiCheckDMAStatus(uint32_t ui32Channel)
 {
-	/* TODO
-    uint32_t ui32Chan;
-
-    //
-    // Check the DMA control table to see if the basic transfer is
-    // complete.  The basic transfer uses receive buffer g_ui8InBuffer,
-    // and the primary control structure.
-    //
-    ui32Chan = (ui32Channel == sSpiInformation.sHwSettings.ui32DMATxChannel) ?
-             (sSpiInformation.sHwSettings.ui32DMATxChannel | UDMA_PRI_SELECT) :
-             (sSpiInformation.sHwSettings.ui32DMARxChannel | UDMA_PRI_SELECT);
-
-    return(MAP_uDMAChannelModeGet(ui32Chan));
-    */
+	// experimental, since I don't know what UDMA_MODE_STOP|DMA_MODE_BASIC
+	// are defined as...
+	return PDMA_status(ui32Channel);
 }
 
 //*****************************************************************************
@@ -634,20 +413,9 @@ SpiCheckDMAStatus(uint32_t ui32Channel)
 static bool
 SpiIsDMAStopped(uint32_t ui32Channel)
 {
-	/* TODO
-    uint32_t ui32Mode;
-    uint32_t ui32Enable;
-
-    ui32Mode = SpiCheckDMAStatus(ui32Channel);
-    ui32Enable = MAP_uDMAChannelIsEnabled(ui32Channel);
-
-    if((ui32Mode == UDMA_MODE_STOP) && (!ui32Enable))
-    {
-        return(1);
-    }
-
-    return(0);
-    */
+	// experimental
+	uint32_t BOTH_CHANNELS_COMPLETE = 0x0002;
+    return(BOTH_CHANNELS_COMPLETE & PDMA_status(ui32Channel));
 }
 
 //*****************************************************************************
@@ -664,9 +432,7 @@ SpiFlushRxFifo(void)
     while(MAP_SSIDataGetNonBlocking(sSpiInformation.sHwSettings.ui32SsiPort,
                                     &ui32Idx))
     {
-        //
         // Keep reading until there's no data left to read.
-        //
     }
 
     //
@@ -693,60 +459,36 @@ SpiFlushRxFifo(void)
 uint32_t
 SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 {
-	/* TODO
-    //
     // Assert the chip select to CC3000.
-    //
-    ASSERT_CS(); TODO
+    ASSERT_CS();
 
-    //
     // Wait 80 microseconds or so.
-    //
-    SysCtlDelay((DELAY_50_MICROSECONDS * 8) / 5);
+    delay((DELAY_50_MICROSECONDS * 8) / 5);
 
-    //
     // Write the first 4 bytes of the packet we have been provided.
-    //
     SpiWriteDataSynchronous(ui8Buf, 4);
 
-    //
     // Wait for the transmission to complete.
-    //
-    while(SSIBusy(SPI_BASE))
-    {
-        //
-        // Spin...
-        //
-    }
+    while(SpiBusy());
 
-    //
     // Generate an 80 microsecond gap between the last byte sent and the
     // remainder of the packet.
-    //
-    SysCtlDelay((DELAY_50_MICROSECONDS * 8) / 5);
+    delay((DELAY_50_MICROSECONDS * 8) / 5);
 
-    //
     // Send the remaining bytes in the packet.
-    //
     SpiWriteDataSynchronous(ui8Buf + 4, ui16Length - 4);
 
-    //
     // We're done.  Switch the state to IDLE so that future transmissions
     // follow the usual convention of waiting for IRQ to become active before
     // starting to send data.
-    //
     sSpiInformation.ui32SpiState = eSPI_STATE_IDLE;
 
-    //
     // Wait for the remainder of the packet transmission to complete.
-    //
-    while(SSIBusy(SPI_BASE));
+    while(SpiBusy());
 
-    //
     // Pull CS high again to indicate the end of the packet.
-    //
     DEASSERT_CS();
-*/
+
     return(0);
 }
 
@@ -776,19 +518,14 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 long
 SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 {
-	/* TODO
     uint8_t ui8Pad = 0;
 
-    //
     // Parameter sanity check.
-    //
     ASSERT(pui8UserBuffer);
     ASSERT(ui16Length);
 
-    //
     // Figure out the total length of the packet in order to determine if
     // there is padding or not.
-    //
     if(!(ui16Length & 0x0001))
     {
         ui8Pad++;
@@ -809,45 +546,29 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 
     if (sSpiInformation.ui32SpiState == eSPI_STATE_INITIALIZED)
     {
-        //
         // This is the first SPI transmission so we need to use special timing.
-        //
         SpiFirstWrite(pui8UserBuffer, ui16Length);
     }
     else
     {
-        //
         // We need wait until the device is idle to prevent us from trying to
         // transmit a packet when a packet receive may be ongoing.
-        //
-        while (sSpiInformation.ui32SpiState != eSPI_STATE_IDLE)
-        {
-            //
-            // Keep spinning.
-            //
-        }
+        while (sSpiInformation.ui32SpiState != eSPI_STATE_IDLE); // spin
 
         sSpiInformation.ui32SpiState = eSPI_STATE_WRITE_IRQ;
         sSpiInformation.pTxPacket = pui8UserBuffer;
         sSpiInformation.ui16TxPacketLength = ui16Length;
 
-        //
         // Assert the CS line and wait till SSI IRQ line is active and then
         // initialize write operation.
-        //
         ASSERT_CS();
+
+        //TODO: something is missing here...
     }
 
-    //
     // Wait for the transaction to complete before returning.
-    //
-    while (eSPI_STATE_IDLE != sSpiInformation.ui32SpiState)
-    {
-        //
-        // Kill time waiting for the transaction to complete
-        //
-    }
-*/
+    while (eSPI_STATE_IDLE != sSpiInformation.ui32SpiState); // kill time
+
     return(0);
 }
 
@@ -859,10 +580,8 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 void
 SpiDisableSSIDMAChannels()
 {
-	/* TODO
-    MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMATxChannel);
-    MAP_uDMAChannelDisable(sSpiInformation.sHwSettings.ui32DMARxChannel);
-    */
+	PDMA_pause(SPI_UDMA_RX_CHANNEL);
+	PDMA_pause(SPI_UDMA_TX_CHANNEL);
 }
 
 //*****************************************************************************
@@ -873,10 +592,8 @@ SpiDisableSSIDMAChannels()
 void
 SpiEnableSSIDMAChannels()
 {
-	/* TODO
-    MAP_uDMAChannelEnable(sSpiInformation.sHwSettings.ui32DMATxChannel);
-    MAP_uDMAChannelEnable(sSpiInformation.sHwSettings.ui32DMARxChannel);
-    */
+	PDMA_resume(SPI_UDMA_RX_CHANNEL);
+	PDMA_resume(SPI_UDMA_TX_CHANNEL);
 }
 
 //*****************************************************************************
@@ -896,74 +613,63 @@ SpiEnableSSIDMAChannels()
 static void
 SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 {
-	/* TODO
-    //
     // Disable both the transmit and receive DMA channels before we mess with
     // their setup.
-    //
     SpiDisableSSIDMAChannels();
 
-    //
     // Configure TX to generate the necessary clocks for read from the slave.
     // If we've been asked for 10 bytes or less, we set the transmit channel
     // to send a read header.  If more than 10 bytes, we send constant READ
     // values.
-    //
     if(ui16Size <= sizeof(tSpiReadHeader))
     {
-        //
-        // We can send the whole read header.
-        //
-        MAP_uDMAChannelControlSet((sSpiInformation.sHwSettings.ui32DMATxChannel |
-                                  UDMA_PRI_SELECT), (UDMA_SIZE_8 |
-                                  UDMA_SRC_INC_8 | UDMA_DST_INC_NONE |
-                                  UDMA_ARB_4));
+    	PDMA_configure
+    	(
+    	 SPI_UDMA_TX_CHANNEL,
+    	 PDMA_TO_SPI_1,
+    	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER | PDMA_INC_SRC_ONE_BYTE,
+    	 PDMA_DEFAULT_WRITE_ADJ
+    	);
+
     }
     else
     {
-        //
         // We've been asked for more bytes than a single read header so
         // just send the first byte repeatedly.
-        //
-        MAP_uDMAChannelControlSet((sSpiInformation.sHwSettings.ui32DMATxChannel |
-                                  UDMA_PRI_SELECT), (UDMA_SIZE_8 |
-                                  UDMA_SRC_INC_NONE | UDMA_DST_INC_NONE |
-                                  UDMA_ARB_4));
+    	PDMA_configure
+    	(
+    	 SPI_UDMA_TX_CHANNEL,
+    	 PDMA_TO_SPI_1,
+    	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER,
+    	 PDMA_DEFAULT_WRITE_ADJ
+    	);
     }
 
-    MAP_uDMAChannelTransferSet((sSpiInformation.sHwSettings.ui32DMATxChannel |
-                                UDMA_PRI_SELECT), UDMA_MODE_BASIC,
-                               (void *)tSpiReadHeader,
-                               (void *)(sSpiInformation.sHwSettings.ui32SsiPort +
-                                        SSI_O_DR), ui16Size);
+    PDMA_start(SPI_UDMA_TX_CHANNEL,PDMA_SPI1_TX_REGISTER,(uint32_t)tSpiReadHeader,ui16Size);
 
-    //
     // Configure RX to read the required number of bytes.
-    //
-    MAP_uDMAChannelControlSet((sSpiInformation.sHwSettings.ui32DMARxChannel |
-                               UDMA_PRI_SELECT), (UDMA_SIZE_8 |
-                              UDMA_SRC_INC_NONE | UDMA_DST_INC_8 | UDMA_ARB_1));
+	PDMA_configure
+	(
+	 SPI_UDMA_RX_CHANNEL,
+	 PDMA_FROM_SPI_1,
+	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER,
+	 PDMA_DEFAULT_WRITE_ADJ
+	);
 
-    MAP_uDMAChannelTransferSet((sSpiInformation.sHwSettings.ui32DMARxChannel |
-                               UDMA_PRI_SELECT), UDMA_MODE_BASIC,
-                               (void *)(sSpiInformation.sHwSettings.ui32SsiPort +
-                                        SSI_O_DR),
-                               (void *)pui8Data, ui16Size);
+	PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)pui8Data,ui16Size);
 
-    //
     // Clean out any stale data that may be in the SSI receive FIFO.
-    //
     SpiFlushRxFifo();
-    MAP_SSIDMAEnable(sSpiInformation.sHwSettings.ui32SsiPort,
-                     SSI_DMA_TX | SSI_DMA_RX);
 
-    //
+    MSS_SPI_set_transfer_byte_count(&g_mss_spi1, ui16Size);
+
+    // Enable the SSI transmit and receive DMA channels.
+	MSS_SPI_enable(&g_mss_spi1);
+
     // Enable both the RX and TX channels here.  The transmit is also needed
     // here to ensure that the master (us) generates the clocks required to
     // read the required data from the slave.
-    //
     SpiEnableSSIDMAChannels();
-    */
 }
 
 //*****************************************************************************
@@ -983,70 +689,57 @@ SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 {
-	/* TODO
-    //
-    // The uDMA channels must be disabled.
-    //
+	MSS_SPI_disable(&g_mss_spi1);
+
+	// The DMA channels must be disabled.
     SpiDisableSSIDMAChannels();
 
-    //
-    // The uDMA controller can only transfer 1024 bytes in a single transaction
+    // The TI uDMA controller can only transfer 1024 bytes in a single transaction
     // when using basic mode.  If asked for more than 1024 bytes, we split the
     // transaction into two.
-    //
     if (ui16Size <= SPI_WINDOW_SIZE)
     {
-        //
         // We can handle this request in a single DMA transaction.
-        //
         sSpiInformation.ui32SpiState = eSPI_STATE_WRITE_EOT;
     }
     else
     {
-        //
         // Remember that we've split this into two DMA transactions and set
         // up to send the first part.
-        //
         sSpiInformation.ui32SpiState = eSPI_STATE_WRITE_FIRST_PORTION;
 
-        //
         // Truncate the packet to the maximum size for now.
-        //
         ui16Size = SPI_WINDOW_SIZE;
     }
 
-    //
-    // Set up a dummy RX DMA to keep the receive FIFO flushed.
-    //
-    MAP_uDMAChannelControlSet(sSpiInformation.sHwSettings.ui32DMARxChannel |
-                              UDMA_PRI_SELECT, UDMA_SIZE_8 | UDMA_SRC_INC_NONE |
-                              UDMA_DST_INC_NONE | UDMA_ARB_1);
-    MAP_uDMAChannelTransferSet(
-              (sSpiInformation.sHwSettings.ui32DMARxChannel |
-               UDMA_PRI_SELECT), UDMA_MODE_BASIC,
-              (void *)(sSpiInformation.sHwSettings.ui32SsiPort + SSI_O_DR),
-              (void *)g_pui8Dummy, ui16Size );
+    // Configure:
 
-    //
-    // Start another DMA transfer to SSI TX.
-    //
-    MAP_uDMAChannelControlSet(sSpiInformation.sHwSettings.ui32DMATxChannel |
-                              UDMA_PRI_SELECT, UDMA_SIZE_8 | UDMA_SRC_INC_8 |
-                              UDMA_DST_INC_NONE | UDMA_ARB_4);
+	// Transmit channel
+	PDMA_configure
+	(
+	 SPI_UDMA_TX_CHANNEL,
+	 PDMA_TO_SPI_1,
+	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER | PDMA_INC_SRC_ONE_BYTE,
+	 PDMA_DEFAULT_WRITE_ADJ
+	);
 
-    MAP_uDMAChannelTransferSet(
-              (sSpiInformation.sHwSettings.ui32DMATxChannel|UDMA_PRI_SELECT),
-              UDMA_MODE_BASIC,(void *)pui8Data,
-              (void *)(sSpiInformation.sHwSettings.ui32SsiPort + SSI_O_DR),
-              ui16Size );
+	// Set up a dummy RX DMA to keep the receive FIFO flushed.
+	// Receive channel
+	PDMA_configure
+	(
+	 SPI_UDMA_RX_CHANNEL,
+	 PDMA_FROM_SPI_1,
+	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER,
+	 PDMA_DEFAULT_WRITE_ADJ
+	);
 
-    //
+	MSS_SPI_set_transfer_byte_count(&g_mss_spi1, ui16Size);
+	PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)g_pui8Dummy,16);
+	PDMA_start(SPI_UDMA_TX_CHANNEL,PDMA_SPI1_TX_REGISTER,(uint32_t)pui8Data,ui16Size);
+
     // Enable the SSI transmit and receive DMA channels.
-    //
-    MAP_SSIDMAEnable(sSpiInformation.sHwSettings.ui32SsiPort,
-                     SSI_DMA_TX | SSI_DMA_RX);
+	MSS_SPI_enable(&g_mss_spi1);
     SpiEnableSSIDMAChannels();
-    */
 }
 
 //*****************************************************************************
@@ -1062,39 +755,25 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteDataSynchronous(const uint8_t *pui8Data, uint16_t ui16Size)
 {
-	/* TODO
-    //
     // This is a synchronous, polled write so we disable all SSI-related
     // interrupts.
-    //
-    MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
+	// TODO: how do we do this on smartfusion?  Is there even an ssi int we have access to?
+    //MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
 
-    //
     // Perform the write.
-    //
     SpiWriteAsync(pui8Data, ui16Size);
 
-    //
     // Wait for the DMA transmit transaction to complete.
-    //
-    while(SSIBusy(SPI_BASE))
-    {
-        //
-        // Kill time.
-        //
-    }
+	while (!MSS_SPI_tx_done( &g_mss_spi1));
 
-    //
     // Clear pending SSI DMA interrupts in the NVIC.
-    //
-    IntPendClear(INT_SPI);
-    IntPendClear(INT_UDMA);
+    // IntPendClear(INT_SPI); // No such thing, right?
+    // Why?  Should it be only TX or only Rx?
+    PDMA_clear_irq(SPI_UDMA_TX_CHANNEL);
+    PDMA_clear_irq(SPI_UDMA_RX_CHANNEL);
 
-    //
-    // Re-enable the SSI interrupt.
-    //
-    MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-    */
+    // Re-enable the SSI interrupt
+    NVIC_EnableIRQ(SPI1_IRQn);
 }
 
 //*****************************************************************************
@@ -1141,86 +820,74 @@ SpiReadHeader(void)
 long
 SpiReadDataCont(bool *pbError)
 {
-/* TODO
     uint32_t ui32Count;
     uint8_t *pui8Buff;
     uint8_t ui8Type;
-    //
+
     // Parameter sanity check.
-    //
     ASSERT(pbError);
 
-    //
+
     // Assume no error until we determine otherwise.
-    //
     *pbError = false;
 
-    //
+
     // Determine what type of packet we have
-    //
     pui8Buff =  sSpiInformation.pRxPacket;
     ui32Count = 0;
     STREAM_TO_UINT8((char *)(pui8Buff + SPI_HEADER_SIZE),
                     HCI_PACKET_TYPE_OFFSET, ui8Type);
 
-    //
+
     // What type of packet have we received?
-    //
     switch(ui8Type)
     {
-        //
+
         // The packet header indicates that this is a data packet.
-        //
         case HCI_TYPE_DATA:
         {
-            //
+
             // Determine the length of the data packet payload.  For a data
             // packet, the length is two bytes long allowing payloads of up
             // to 65535 bytes (although this implementation doesn't use
             // packets that long).
-            //
             STREAM_TO_UINT16((char *)(pui8Buff + SPI_HEADER_SIZE),
                              HCI_DATA_LENGTH_OFFSET, ui32Count);
 
-            //
+
             // Is this payload too long to be received into the buffer that
             // we have available to us?  If so, this indicates a software
             // error or a corruption in the received packet.  Either way, we
             // don't bother trying to receive the reset of the packet.  Note
             // that we need to round the packet size to the nearest higher
             // multiple of two because we've not considered padding yet.
-            //
             if(((ui32Count + HCI_DATA_HEADER_SIZE +
                  SPI_HEADER_SIZE + 1) & ~1) >
                sSpiInformation.ulRxBufferSize)
             {
-                //
+
                 // This must be a corrupted packet because the length we parsed
                 // out of the header is larger than our receive buffer.
-                //
                 *pbError = true;
                 return(0);
             }
 
-            //
+
             // Can we get the whole payload in a single DMA transaction?
-            //
             if (ui32Count >= SPI_WINDOW_SIZE)
             {
-                //
+
                 // No - receive as much as we can in the next transaction.
-                //
                 SpiReadData(pui8Buff + 10, SPI_WINDOW_SIZE);
                 sSpiInformation.ui32SpiState = eSPI_STATE_READ_FIRST_PORTION;
             }
             else
             {
-                //
                 // Yes - the amount we have to read is strictly less than the
                 // maximum DMA transaction size so we can read the whole
                 // payload in one transaction, even if we need an additional
                 // padding byte.
-                //
+
                 // Do we need that padding byte? Note that the payload length
                 // is 2 bytes in a data packet but only one in an event packet
                 // so the length we need to read is actually the length parsed
@@ -1229,7 +896,6 @@ SpiReadDataCont(bool *pbError)
                 // already read 10 bytes so, to keep the whole packet an even
                 // number of bytes, we need to read an even number of payload
                 // bytes.
-                //
                 if (!((HEADERS_SIZE_EVNT + ui32Count) & 1))
                 {
                     ui32Count++;
@@ -1245,54 +911,48 @@ SpiReadDataCont(bool *pbError)
             break;
         }
 
-        //
+
         // The packet header indicates that this is an event packet.
-        //
         case HCI_TYPE_EVNT:
         {
-            //
+
             // Determine the length of the event packet payload.  This is a
             // single byte in the event packet header.
-            //
             STREAM_TO_UINT8((char *)(pui8Buff + SPI_HEADER_SIZE),
                             HCI_EVENT_LENGTH_OFFSET, ui32Count);
 
-            //
+
             // Subtract one because we already read the first payload byte (or
             // a padding byte) when we read the initial 10 bytes.
-            //
             ui32Count -= 1;
 
-            //
+
             // Add a padding byte if needed.  All packets contain an even
             // number of bytes.
-            //
             if ((HEADERS_SIZE_EVNT + ui32Count) & 1)
             {
                 ui32Count++;
             }
 
-            //
+
             // Is this payload too long to be received into the buffer that
             // we have available to us?  If so, this indicates a software
             // error or corruption in the received header.  Either way, we
             // don't bother trying to receive the reset of the packet.
-            //
             if((ui32Count + HEADERS_SIZE_EVNT) >
                sSpiInformation.ulRxBufferSize)
             {
-                //
+
                 // This must be a corrupted packet because the length we parsed
                 // out of the header is larger than our receive buffer.
-                //
                 *pbError = true;
                 return(0);
             }
 
-            //
+
             // If there is any more data to receive, schedule another DMA
             // transaction.
-            //
+
             if(ui32Count)
             {
                 SpiReadData(pui8Buff + 10, ui32Count);
@@ -1301,10 +961,7 @@ SpiReadDataCont(bool *pbError)
             sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
             break;
         }
-
-        //
         // The packet type is unrecognized so don't receive anything more.
-        //
         default:
         {
             *pbError = true;
@@ -1312,13 +969,10 @@ SpiReadDataCont(bool *pbError)
         }
     }
 
-    //
     // If we get here, we've scheduled a new DMA transaction to read the
     // remainder of the packet.  Tell the caller how many bytes they should
     // expect when that transaction completes.
-    //
     return (ui32Count);
-    */
 }
 
 //*****************************************************************************
@@ -1329,10 +983,8 @@ SpiReadDataCont(bool *pbError)
 static void
 SpiDisableInterrupts(void)
 {
-	/* TODO
-    MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-    MAP_IntDisable(sSpiInformation.sHwSettings.ui32PortInt);
-    */
+    MSS_GPIO_disable_irq(SPI_IRQ_PIN);
+    NVIC_DisableIRQ(SPI1_IRQn);
 }
 
 //*****************************************************************************
@@ -1343,10 +995,8 @@ SpiDisableInterrupts(void)
 void
 SpiResumeSpi(void)
 {
-	/* TODO
-    MAP_IntEnable(sSpiInformation.sHwSettings.ui32SsiPortInt);
-    MAP_IntEnable(sSpiInformation.sHwSettings.ui32PortInt);
-    */
+	MSS_GPIO_enable_irq(SPI_IRQ_PIN);
+	NVIC_EnableIRQ(SPI1_IRQn);
 }
 
 //*****************************************************************************
@@ -1361,19 +1011,15 @@ SpiResumeSpi(void)
 void
 SpiTriggerRxProcessing(bool bBadPacket)
 {
-	/* TODO
-    //
     // Tidy up at the end of receiving a packet.
-    //
     SpiDisableInterrupts();
-    while(SSIBusy(SPI_BASE));
+
+    //TODO: wait while spi is busy
+    //while(SpiBusy());
+
     DEASSERT_CS();
 
-    //
-    // Turn off SSI receive DMA now that the transfer is complete.
-    //
-    MAP_SSIDMADisable(sSpiInformation.sHwSettings.ui32SsiPort, SSI_DMA_RX);
-
+    MSS_SPI_disable(&g_mss_spi1);
     //
     // Move back to idle state so that we are ready to send or receive another
     // packet.
@@ -1388,7 +1034,6 @@ SpiTriggerRxProcessing(bool bBadPacket)
         sSpiInformation.SPIRxHandler(sSpiInformation.pRxPacket +
                                      SPI_HEADER_SIZE);
     }
-    */
 }
 
 //*****************************************************************************
@@ -1440,65 +1085,37 @@ SpiContReadOperation(void)
 //void IntSpiGPIOHandler(void)
 __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
-
 	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
+	MSS_GPIO_clear_irq(SPI_IRQ_PIN);
 
-	/* TODO
-    uint32_t ui32Status;
+	if (sSpiInformation.ui32SpiState == eSPI_STATE_POWERUP)
+	{
+		// We received the first IRQ line edge after powering up the
+		// part.  This is part of the startup sequence so change the state
+		// to show that we received this.
+		sSpiInformation.ui32SpiState = eSPI_STATE_INITIALIZED;
+	}
+	else if (sSpiInformation.ui32SpiState == eSPI_STATE_IDLE)
+	{
+		// We're idle so an IRQ interrupt indicates that the CC3000 has
+		// data to send us.
+		sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ;
 
-    //
-    // Which pin caused the interrupt?
-    //
-    ui32Status = SpiCleanGPIOISR();
+		// IRQ line asserted so handshake with CS and set up to
+		// receive a packet header from the CC3000.
+		ASSERT_CS();
 
-    //
-    // Was it our IRQ pin?
-    //
-    if(ui32Status & SPI_IRQ_PIN)
-    {
-        //
-        // Yes - is this the first IRQ interrupt since powering up?
-        //
-        if (sSpiInformation.ui32SpiState == eSPI_STATE_POWERUP)
-        {
-            //
-            // We received the first IRQ line edge after powering up the
-            // part.  This is part of the startup sequence so change the state
-            // to show that we received this.
-            //
-            sSpiInformation.ui32SpiState = eSPI_STATE_INITIALIZED;
-        }
-        else if (sSpiInformation.ui32SpiState == eSPI_STATE_IDLE)
-        {
-            //
-            // We're idle so an IRQ interrupt indicates that the CC3000 has
-            // data to send us.
-            //
-            sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ;
-
-            //
-            // IRQ line asserted so handshake with CS and set up to
-            // receive a packet header from the CC3000.
-            //
-            ASSERT_CS();
-
-            //
-            // Start receiving the 10 byte header from the CC3000.
-            //
-            SpiReadHeader();
-        }
-        else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)
-        {
-            //
-            // The CC3000 has responded to us lowering CS by handshaking with
-            // its IRQ.  This indicates that we can now start transmitting the
-            // command packet that we're waiting to send.
-            //
-            SpiWriteAsync(sSpiInformation.pTxPacket,
-                          sSpiInformation.ui16TxPacketLength);
-        }
-    }
-    */
+		// Start receiving the 10 byte header from the CC3000.
+		SpiReadHeader();
+	}
+	else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)
+	{
+		// The CC3000 has responded to us lowering CS by handshaking with
+		// its IRQ.  This indicates that we can now start transmitting the
+		// command packet that we're waiting to send.
+		SpiWriteAsync(sSpiInformation.pTxPacket,
+					  sSpiInformation.ui16TxPacketLength);
+	}
 }
 
 //*****************************************************************************
@@ -1511,149 +1128,99 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 //
 //*****************************************************************************
 void
-SpiIntHandler(void)
+SpiIntHandler(bool bTxFinished, bool bRxFinished)
 {
-	/* TODO
-    bool bTxFinished, bRxFinished;
     uint16_t ui16Count;
     uint8_t *pui8Buff;
-
-    //
-    // Determine which of the DMA transactions are now complete.
-    //
-    bTxFinished = SpiIsDMAStopped(sSpiInformation.sHwSettings.ui32DMATxChannel);
-    bRxFinished = SpiIsDMAStopped(sSpiInformation.sHwSettings.ui32DMARxChannel);
 
     pui8Buff =  sSpiInformation.pRxPacket;
     ui16Count = 0;
 
     if (sSpiInformation.ui32SpiState == eSPI_STATE_READ_IRQ)
     {
-        //
         // If both DMA transactions have completed...
-        //
         if (bTxFinished && bRxFinished)
         {
-            //
             // Clear any pending SSI interrupt which can be caused by the other
             // DMA transaction completing.
-            //
-            IntPendClear(sSpiInformation.sHwSettings.ui32SsiPortInt);
+            NVIC_ClearPendingIRQ(SPI1_IRQn);
 
-            //
+
             // Parse the packet header data received and receive the remainder
             // of the response.
-            //
             SpiContReadOperation();
         }
     }
-    //
     // Have we just read the first portion of a packet that is too long for
     // a single DMA transaction and which has to be split into one or more
     // sections?
-    //
     else if (sSpiInformation.ui32SpiState == eSPI_STATE_READ_FIRST_PORTION)
     {
-        //
         // Did the receive DMA transaction complete?
-        //
         if (bRxFinished)
         {
-            //
             // Clean up any additional interrupts pending at the NVIC.
-            //
-            IntPendClear(sSpiInformation.sHwSettings.ui32SsiPortInt);
-
-            //
+            NVIC_ClearPendingIRQ(SPI1_IRQn);
             // Get the size of the packet payload from the header.  We assume
             // that this must be a data packet because an event packet cannot
             // have a payload longer than 255 bytes and, therefore, can always
             // be accommodated in a single DMA transaction.
-            //
             STREAM_TO_UINT16((char *)(pui8Buff + SPI_HEADER_SIZE),
                               HCI_DATA_LENGTH_OFFSET, ui16Count);
 
-            //
             // We have already read one maximum-DMA-sized chunk of the data
             // so subtract this from the payload length to get the number of
             // bytes we still need to read.
-            //
             ui16Count -=SPI_WINDOW_SIZE;
 
-            //
             // Pad the count of bytes to receive so that the incoming packet
             // always contains an odd number of bytes.
-            //
             if (!((HEADERS_SIZE_EVNT + ui16Count) & 1))
             {
                 ui16Count++;
             }
 
-            //
             // Schedule a new DMA transaction to receive the remaining bytes
             // in the packet.  The assumption here is that no packet can be
             // longer than (10 + (2* SPI_WINDOW_SIZE)) bytes.
-            //
             SpiReadData(sSpiInformation.pRxPacket + 10 + SPI_WINDOW_SIZE,
                         ui16Count);
 
-            //
             // Remember that we're waiting for the last portion of the packet
             // to be read.
-            //
             sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
         }
     }
-    //
     // Were we waiting for the last part of a received packet to arrive?
-    //
     else if (sSpiInformation.ui32SpiState == eSPI_STATE_READ_EOT)
     {
-        //
         // Did the receive DMA complete?
-        //
         if (bRxFinished)
         {
-            //
             // Yes - clean up any SSI interrupt that may be pending at the NVIC.
-            //
-            IntPendClear(sSpiInformation.sHwSettings.ui32SsiPortInt);
+            NVIC_ClearPendingIRQ(SPI1_IRQn);
 
-            //
             // Process the received packet.
-            //
             SpiTriggerRxProcessing(false);
         }
     }
-    //
     // Were we waiting for the last part of a transmitted packet to be sent?
-    //
     else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_EOT)
     {
-        //
         // Did the transmit DMA complete?
-        //
         if (bTxFinished)
         {
-            //
             // Wait for the last bit of the transmission to make it onto the
             // wire.
-            //
-            while(SSIBusy(SPI_BASE));
+            while(SpiBusy());
 
-            //
             // Raise CS to indicate that the packet has ended.
-            //
             DEASSERT_CS();
 
-            //
             // Clean out any stray data that may exit in the receive FIFO.
-            //
             SpiFlushRxFifo();
 
-            //
             // We're finished with this transaction so go back to idle.
-            //
             sSpiInformation.ui32SpiState = eSPI_STATE_IDLE;
         }
     }
@@ -1662,16 +1229,12 @@ SpiIntHandler(void)
     //
     else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_FIRST_PORTION)
     {
-        //
         // Are we being notified that the transmit DMA completed?
-        //
         if (bTxFinished)
         {
-            //
             // Yes - send the remainder of the packet.  The assumption, again,
             // is that no packet can be more than (10 + (2 * SPI_WINDOW_SIZE))
             // bytes long.
-            //
             SpiFlushRxFifo();
 
             sSpiInformation.ui32SpiState = eSPI_STATE_WRITE_EOT;
@@ -1680,5 +1243,4 @@ SpiIntHandler(void)
                           sSpiInformation.ui16TxPacketLength - SPI_WINDOW_SIZE);
         }
     }
-    */
 }

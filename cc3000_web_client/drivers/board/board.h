@@ -24,6 +24,8 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
+
+
 //*****************************************************************************
 //
 // The desired system tick frequency.Defines for setting up the system tick.
@@ -63,11 +65,11 @@
 // CC3000 Board specific Macros
 //
 //#define ASSERT_CS()          (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0))
-#define ASSERT_CS()            (MSS_GPIO_set_output(SPI_CS_PIN, 0)))
+#define ASSERT_CS()            (MSS_GPIO_set_output(SPI_CS_PIN, 0))
 //#define DEASSERT_CS()        (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0xFF))
-#define DEASSERT_CS()          (MSS_GPIO_set_output(SPI_CS_PIN, 1)))
+#define DEASSERT_CS()          (MSS_GPIO_set_output(SPI_CS_PIN, 1))
 
-
+#define ASSERT(a)               if(!a) exit(1);
 //
 // IRQ settings
 //
@@ -97,8 +99,8 @@
 
 // OURS
 //#define SPI_INT                       this is on the FABINT
-#define SPI_RX_AVAIL                    MSS_GPIO_31
-#define SPI_TX_RFM                      MSS_GPIO_30
+#define SPI_RX_AVAIL                    MSS_GPIO_31 //TODO: what should this be now?
+#define SPI_TX_RFM                      MSS_GPIO_30 //TODO: what should this be now?
 
 
 // THEIRS
@@ -115,8 +117,8 @@
 #define SPI_RX_MUX_SEL                  GPIO_PB6_SSI2RX
 #define SPI_TX_MUX_SEL                  GPIO_PB7_SSI2TX
 
-#define SPI_UDMA_RX_CHANNEL             UDMA_CH12_SSI2RX
-#define SPI_UDMA_TX_CHANNEL             UDMA_CH13_SSI2TX
+#define SPI_UDMA_RX_CHANNEL             PDMA_CHANNEL_0
+#define SPI_UDMA_TX_CHANNEL             PDMA_CHANNEL_1
 
 //*****************************************************************************
 //
@@ -147,6 +149,8 @@ tBoardLED;
 // Function Prototypes
 //
 //*****************************************************************************
+
+extern int delay ( volatile uint32_t);
 extern void pio_init(void);
 extern void initLEDs(void);
 extern long ReadWlanInterruptPin(void);
@@ -158,5 +162,7 @@ extern void SysTickHandler(void);
 extern void initClk(void);
 extern void turnLedOn(tBoardLED eLED);
 extern void turnLedOff(tBoardLED eLED);
+
+
 
 #endif //__BOARD_H__

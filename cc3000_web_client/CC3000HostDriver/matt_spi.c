@@ -217,21 +217,6 @@ bool SpiBusy()
 void
 SpiConfigureHwMapping(void)
 {
-/*
-    sSpiInformation.sHwSettings.ui32PioPortAddress = SYSCTL_PERIPH_SPI_PORT;
-    sSpiInformation.sHwSettings.ui32PioSpiCs   = SPI_CS();_PIN;
-    sSpiInformation.sHwSettings.ui32PioSpiPort = SPI_PORT;
-    sSpiInformation.sHwSettings.ui32DMAPort   = SYSCTL_PERIPH_UDMA;
-    sSpiInformation.sHwSettings.ui32PortInt    = INT_GPIO_SPI;           // I don't think we need this
-    sSpiInformation.sHwSettings.ui32SsiPortAddress = SYSCTL_PERIPH_SPI;
-    sSpiInformation.sHwSettings.ui32SsiTx = SPI_TX_PIN;
-    sSpiInformation.sHwSettings.ui32SsiRx = SPI_RX_PIN;
-    sSpiInformation.sHwSettings.ui32SsiClck = SPI_CLK_PIN;
-    sSpiInformation.sHwSettings.ui32SsiPort = SPI_BASE;
-    sSpiInformation.sHwSettings.ui32SsiPortInt = INT_SPI;                 // Don't need this
-    sSpiInformation.sHwSettings.ui32DMARxChannel = SPI_UDMA_RX_CHANNEL;
-    sSpiInformation.sHwSettings.ui32DMATxChannel = SPI_UDMA_TX_CHANNEL;
-*/
 }
 
 //*****************************************************************************
@@ -337,7 +322,7 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
     //
     // Parameter sanity check.
     //
-    //ASSERT(pfnRxHandler);
+    ASSERT(pfnRxHandler);
 
     //
     // Set the initial state to indicate that we need to wait for the power-up
@@ -753,10 +738,8 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteDataSynchronous(const uint8_t *pui8Data, uint16_t ui16Size)
 {
-    // This is a synchronous, polled write so we disable all SSI-related
-    // interrupts.
-	// TODO: how do we do this on smartfusion?  Is there even an ssi int we have access to?
-    //MAP_IntDisable(sSpiInformation.sHwSettings.ui32SsiPortInt);
+    // This is a synchronous, polled write so we disable all SSI-related interrupts.
+	NVIC_DisableIRQ(SPI1_IRQn);
 
     // Perform the write.
     SpiWriteAsync(pui8Data, ui16Size);

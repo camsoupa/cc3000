@@ -47,6 +47,7 @@
 
 #include   "../drivers/mss_uart/mss_uart.h"
 #include   "../drivers/mss_gpio/mss_gpio.h"
+#include   "../drivers/mss_pdma/mss_pdma.h"
 #include   "../drivers/mss_spi/mss_spi.h"
 #include   "../drivers/mss_timer/mss_timer.h"
 #include   "../drivers/board/board.h"
@@ -58,8 +59,6 @@
 #include "../CC3000HostDriver/netapp.h"
 #include "../CC3000HostDriver/matt_spi.h"
 #include "../CC3000HostDriver/hci.h"
-
-volatile CoreSpi_TypeDef * CORE_SPI = ((CoreSpi_TypeDef *) FABRIC_BASE_ADDR);
 
 //*****************************************************************************
 //

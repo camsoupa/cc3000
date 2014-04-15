@@ -15,6 +15,8 @@
 #define ON 0
 #define OFF 1
 
+#define I 30
+
 // timer status register reason for interrupt
 #define STATUS_OVERFLOW 0x01
 #define STATUS_COMPARE  0x02
@@ -34,10 +36,10 @@ uint8_t blue_timer_id;
 uint8_t pulse_timer_id;
 
 //0-100
-uint8_t master_brightness = 100;
-
-uint8_t full_brightness = 100;
+uint8_t master_brightness = 255 * I;
+uint8_t full_brightness = 255 * I;
 uint8_t min_brightness = 0;
+
 uint8_t pulse_direction;
 
 //the rgb color of the led
@@ -45,16 +47,25 @@ uint8_t red;
 uint8_t green;
 uint8_t blue;
 
+//display
 uint8_t gpio_r;
 uint8_t gpio_g;
 uint8_t gpio_b;
 uint8_t gpio_i;
 
+//interrupts
+uint8_t gpio_r_i;
+uint8_t gpio_g_i;
+uint8_t gpio_b_i;
+uint8_t gpio_i_i;
+
 void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gpio_i){
-	MSS_GPIO_config(_gpio_r, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE);
-	MSS_GPIO_config(_gpio_g, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE);
-	MSS_GPIO_config(_gpio_b, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE);
-	MSS_GPIO_config(_gpio_i, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_NEGATIVE);
+	timer_init();
+
+	MSS_GPIO_config((gpio_r_i = _gpio_r), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
+	MSS_GPIO_config((gpio_g_i = _gpio_g), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
+	MSS_GPIO_config((gpio_b_i = _gpio_b), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
+	MSS_GPIO_config((gpio_i_i = _gpio_i), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
 
 	MSS_GPIO_enable_irq(_gpio_r);
 	MSS_GPIO_enable_irq(_gpio_g);
@@ -68,12 +79,12 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	pulse_timer_id = add_timer(TIMER_PULSE);
 
 	// all colors overflow at their max pwm value
-	timer_setOverflowVal(red_timer_id, 255);
-	timer_setOverflowVal(blue_timer_id, 255);
-	timer_setOverflowVal(green_timer_id, 255);
-	timer_setOverflowVal(pulse_timer_id, 0);
+	timer_setOverflowVal(red_timer_id, 255*I);
+	timer_setOverflowVal(blue_timer_id, 255*I);
+	timer_setOverflowVal(green_timer_id, 255*I);
 
 	// pulse uses overflow only
+	timer_enable_allInterrupts(pulse_timer_id);
 	timer_enable_overflowInt(pulse_timer_id);
 	timer_disable_compareInt(pulse_timer_id);
 
@@ -81,6 +92,15 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	timer_enable_allInterrupts(red_timer_id);
 	timer_enable_allInterrupts(blue_timer_id);
 	timer_enable_allInterrupts(green_timer_id);
+
+	timer_enable_compareInt(red_timer_id);
+	timer_enable_compareInt(blue_timer_id);
+	timer_enable_compareInt(green_timer_id);
+
+	timer_enable_overflowInt(red_timer_id);
+	timer_enable_overflowInt(blue_timer_id);
+	timer_enable_overflowInt(green_timer_id);
+
 
 	// don't start the colors until set_brightness is called
 }
@@ -96,6 +116,7 @@ void init_rgb_led(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b){
 }
 
 void on_pulse(void){
+	MSS_GPIO_clear_irq(gpio_i_i);
 	if(pulse_direction == BRIGHTER) {
 		if(master_brightness < full_brightness)
 			set_brightness(master_brightness+1);
@@ -110,20 +131,22 @@ void on_pulse(void){
 }
 
 void pwm_red(){
+	MSS_GPIO_clear_irq(gpio_r_i);
 	pwm_timer_handler(gpio_r, red_timer_id);
 }
 
 void pwm_green(){
+	MSS_GPIO_clear_irq(gpio_g_i);
 	pwm_timer_handler(gpio_g, green_timer_id);
 }
 
 void pwm_blue(){
+	MSS_GPIO_clear_irq(gpio_b_i);
 	pwm_timer_handler(gpio_b, blue_timer_id);
 }
 
 void pwm_timer_handler(uint32_t gpio, uint32_t timer_index)
 {
-    MSS_GPIO_clear_irq(gpio);
     uint32_t status = timer_getInterrupt_status(timer_index);
 
     if(status & STATUS_OVERFLOW)
@@ -143,9 +166,9 @@ void set_color(uint8_t r, uint8_t g, uint8_t b){
 void set_brightness(uint8_t brightness){
   master_brightness = brightness;
 
-  timer_setCompareVal(red_timer_id, red*(master_brightness/full_brightness));
-  timer_setCompareVal(blue_timer_id, blue*(master_brightness/full_brightness));
-  timer_setCompareVal(green_timer_id, green*(master_brightness/full_brightness));
+  timer_setCompareVal(red_timer_id, red*I*(master_brightness/full_brightness));
+  timer_setCompareVal(blue_timer_id, blue*I*(master_brightness/full_brightness));
+  timer_setCompareVal(green_timer_id, green*I*(master_brightness/full_brightness));
 
   timer_enable(red_timer_id);
   timer_enable(green_timer_id);
@@ -156,8 +179,11 @@ void set_brightness(uint8_t brightness){
 // 0 = no pulse, 1(fast pulse)-2^32(slow pulse)
 void set_pulse_rate(uint32_t rate){
    timer_setOverflowVal(pulse_timer_id, rate);
-   if(rate)
-     timer_enable(pulse_timer_id);
-   else
+   if(rate > 0) {
+     timer_enable_allInterrupts(pulse_timer_id);
+	 timer_enable(pulse_timer_id);
+   } else {
+	 timer_disable_allInterrupts(pulse_timer_id);
 	 timer_disable(pulse_timer_id);
+   }
 }

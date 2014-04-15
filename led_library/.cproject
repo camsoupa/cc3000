@@ -23,6 +23,9 @@
 <tool id="cdt.managedbuild.tool.gnu.c.compiler.cross.cortexm3.exe.debug.1574269086" name="GNU C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cross.cortexm3.exe.debug">
 <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cross.cortexm3.exe.debug.option.optimization.level.1334923701" name="Optimization Level" superClass="gnu.c.compiler.cross.cortexm3.exe.debug.option.optimization.level" valueType="enumerated"/>
 <option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cross.cortexm3.exe.debug.option.debugging.level.820793079" name="Debug Level" superClass="gnu.c.compiler.cross.cortexm3.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+<option id="gnu.c.compiler.option.preprocessor.def.symbols.876914111" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+<listOptionValue builtIn="false" value="ACTEL_STDIO_THRU_UART"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1369502510" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cross.cortexm3.exe.debug.1767219924" name="GNU C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cross.cortexm3.exe.debug">
@@ -30,7 +33,7 @@
 <option id="gnu.cpp.compiler.cross.cortexm3.exe.debug.option.debugging.level.469594119" name="Debug Level" superClass="gnu.cpp.compiler.cross.cortexm3.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.c.linker.cross.cortexm3.exe.debug.99193959" name="GNU C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cross.cortexm3.exe.debug">
-<option id="gnu.c.link.option.ldflags.591766806" superClass="gnu.c.link.option.ldflags" value="-T../CMSIS/startup_gcc/debug-in-actel-smartfusion-esram.ld" valueType="string"/>
+<option id="gnu.c.link.option.ldflags.591766806" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-T../CMSIS/startup_gcc/debug-in-actel-smartfusion-esram.ld" valueType="string"/>
 <inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1556210256" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 <additionalInput kind="additionalinput" paths="$(LIBS)"/>

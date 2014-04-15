@@ -170,19 +170,23 @@ void PDMA_start
 {
     /* Pause transfer. */
     PDMA->CHANNEL[channel_id].CRTL |= PAUSE_MASK;
-    
+	printf("here\n\r");
     /* Clear complete transfers. */
     if ( PDMA->CHANNEL[channel_id].STATUS & PORT_A_COMPLETE_MASK )
     {
         PDMA->CHANNEL[channel_id].CRTL |= CLEAR_PORT_A_DONE_MASK;
         g_pdma_started_a[channel_id] = CHANNEL_STOPPED;
     }
+
+	printf("here1\n\r");
+
     if ( PDMA->CHANNEL[channel_id].STATUS & PORT_B_COMPLETE_MASK )
     {
         PDMA->CHANNEL[channel_id].CRTL |= CLEAR_PORT_B_DONE_MASK;
         g_pdma_started_b[channel_id] = CHANNEL_STOPPED;
     }
     
+	printf("here2\n\r");
     /* Load source, destination and transfer count. */
     if ( PDMA->CHANNEL[channel_id].STATUS & BUFFER_B_SELECT_MASK )
     {
@@ -193,6 +197,7 @@ void PDMA_start
         PDMA->CHANNEL[channel_id].BUFFER_B_DEST_ADDR = dest_addr;
         PDMA->CHANNEL[channel_id].BUFFER_B_TRANSFER_COUNT = transfer_count;
     }
+
     else
     {
         g_pdma_next_channel[channel_id] = NEXT_CHANNEL_B;
@@ -202,7 +207,8 @@ void PDMA_start
         PDMA->CHANNEL[channel_id].BUFFER_A_DEST_ADDR = dest_addr;
         PDMA->CHANNEL[channel_id].BUFFER_A_TRANSFER_COUNT = transfer_count;
     }
-    
+
+	printf("here3\n\r");
     /* Start transfer */
     PDMA->CHANNEL[channel_id].CRTL &= ~PAUSE_MASK;
 }

@@ -26,19 +26,6 @@
 #include <stdio.h>
 #include <inttypes.h>
 
-//#include "inc/hw_types.h"
-//#include "driverlib/timer.h"
-//#include "driverlib/rom.h"
-//#include "driverlib/rom_map.h"
-//#include "driverlib/systick.h"
-//#include "driverlib/fpu.h"
-//#include "driverlib/debug.h"
-//#include "utils/ustdlib.h"
-//#include "utils/uartstdio.h"
-//#include "utils/cmdline.h"
-//#include "driverlib/ssi.h"
-//#include "driverlib/uart.h"
-
 #include "drivers/mss_timer/mss_timer.h"
 #include "drivers/mss_uart/mss_uart.h"
 #include "drivers/mss_gpio/mss_gpio.h"
@@ -54,14 +41,7 @@
 #include "CC3000HostDriver/hci.h"
 #include "application_commands.h"
 
-/*
-#include "dispatcher.h"
-#include "spi_version.h"
-#include "board.h"
-#include "application_version.h"
-#include "host_driver_version.h"
-#include "security.h"
-*/
+
 
 //*****************************************************************************
 //! \addtogroup example_list
@@ -337,8 +317,8 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     if(lEventType == HCI_EVNT_WLAN_ASYNC_SIMPLE_CONFIG_DONE)
     {
 
-        printf("\r    Received Asynchronous Simple Config Done Event "
-                         "from CC3000\n>");
+        printf("\r    Received Asynchrus Evnt dne "
+                         "from CC30\n>");
 
         g_ui32SmartConfigFinished = 1;
         g_ui8StopSmartConfig = 1;
@@ -360,7 +340,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     //
     if(lEventType == HCI_EVNT_WLAN_UNSOL_DISCONNECT)
     {
-        printf("\r    Received Unsolicited Disconnect from CC3000\n>");
+        printf("\r    Rec Unsolicit Discnt CC3000\n>");
         g_ui32CC3000Connected = 0;
         g_ui32CC3000DHCP = 0;
         g_ui32CC3000DHCP_configured = 0;
@@ -368,12 +348,12 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         // Turn off the LED3 (Green)
         //
-        turnLedOff(LED_1); // TODO
+        turnLedOff(LED_1);
 
         //
         // Turn back on the LED 1 (RED)
         //
-        turnLedOn(LED_0); // TODO
+        turnLedOn(LED_0);
     }
 
     //
@@ -394,7 +374,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         if( *(pcData + NETAPP_IPCONFIG_MAC_OFFSET) == 0)
         {
-            printf("\r    DHCP Connected. IP: %d.%d.%d.%d\n",
+            printf("\r    DHCP Done. IP: %d.%d.%d.%d\n",
                         pcData[3],pcData[2],pcData[1],pcData[0]);
 
             //
@@ -405,7 +385,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
             //
             // Turn on the LED3 (Green).
             //
-            turnLedOn(LED_1); // TODO
+            turnLedOn(LED_1);
         }
         else
         {
@@ -426,7 +406,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         psPingData = (netapp_pingreport_args_t *)pcData;
 #ifdef DEBUG
-        printf("    Data Received='\n");
+        printf("    Data Rec'd='\n");
         for(lEventType = 0; lEventType < ucLength; lEventType++)
         {
             printf("%d,",pcData[lEventType]);
@@ -439,14 +419,13 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         if(psPingData->min_round_time == -1)
         {
-            printf("\r    Ping Failed. Please check address and try "
-                       "again.\n>");
+            printf("\r    Ping Fa\n>");
         }
         else
         {
-            printf("\r    Ping Results:\n"
-                       "    sent: %d, received: %d, min time: %dms,"
-                       " max time: %dms, avg time: %dms\n>",
+            printf("\r    Ping Rests:\n"
+                       "    snt: %d, rec'd: %d, min time: %dms,"
+                       " mx tme: %dms, avg time: %dms\n>",
                        psPingData->packets_sent, psPingData->packets_received,
                        psPingData->min_round_time, psPingData->max_round_time,
                        psPingData->avg_round_time);
@@ -479,20 +458,25 @@ initDriver(void)
     // Initialize use of GPIOs
 	MSS_GPIO_init();
 
+
+
     //
     // Initialize device pin configuration and the system clock.
     //
     pio_init();
+
+
 
     //
     // Initialize and configure the SPI.
     //
     init_spi(1000000, 100000000);
 
+
     //
     // Enable processor interrupts.
     //
-    //MAP_IntMasterEnable(); // TODO... do this for fabric too?
+    //MAP_IntMasterEnable();
 
     MSS_GPIO_enable_irq(SPI_IRQ_PIN); // Do this for each?
 
@@ -504,10 +488,14 @@ initDriver(void)
               sendBootLoaderPatch, ReadWlanInterruptPin,
               WlanInterruptEnable, WlanInterruptDisable, WriteWlanPin);
 
+
+
     //
     // Start up the CC3000 stack.
     //
     wlan_start(0);
+
+	printf("Done starting wlan!\n\r");
 
     //
     // Turn on the the red LED to indicate that we are active and initiated
@@ -529,7 +517,7 @@ initDriver(void)
     //
     // Print version string.
     //
-    printf("\n\n\rCC3000 Basic Wifi Application!\n\r");
+    //printf("\n\n\rCC3000 Basic Wifi Application!\n\r");
 
     //
     // Set flag to stop smart config if running.
@@ -611,56 +599,6 @@ DotDecimalDecoder(char *pcString, uint8_t *pui8Val1, uint8_t *pui8Val2,
     return(0);
 }
 
-//*****************************************************************************
-//
-// Table of valid command strings, callback functions and help messages.  This
-// is used by the cmdline module.
-//
-//*****************************************************************************
-/* matt - not used anymore
-tCmdLineEntry g_psCmdTable[] =
-{
-    {"help",          CMD_help,
-                  " : Display this list of commands." },
-    {"matTest",       CMD_matt,
-                  " : Connect, send GET request, recv page, and close socket" },
-    {"smartconfig",   CMD_smartConfig,
-                  " : First time simple configuration. Use app on smartphone\n"
-"                     to connect to network." },
-    {"connect",       CMD_connect,
-                  " : [1]SSID : Connect to an open access point." },
-    {"ipconfig",      CMD_ipConfig,
-                  " : [1]Local IP address [2]Default gateway\n"
-"                     [3](optional) Network mask. For DHCP give no arguments."},
-    {"socketopen",    CMD_socketOpen,
-                  " : [1]UDP/TCP : Open socket, specify TCP or UDP." },
-    {"bind",          CMD_bind,
-                  " : [1]Port to bind socket to" },
-    {"senddata",      CMD_sendData,
-                  " : [1]IP Address [2]Destination Port\n"
-"                     [3]Data to send ( < 255 bytes, no spaces allowed)." },
-    {"receivedata",   CMD_receiveData,
-                  " : Receive data on a socket." },
-    {"mdnsadvertise", CMD_mdnsadvertise,
-                  " : [1](optional) name to broadcast via mDNS to connected\n"
-"                     network." },
-    {"resetcc3000",   CMD_cc3000reset,
-                  " : Reset the CC3000."},
-    {"socketclose",   CMD_socketClose,
-                  " : Close the open socket." },
-    {"disconnect",    CMD_disconnect,
-                  " : Disconnect from the network." },
-    {"deletepolicy",  CMD_deletePolicy,
-                  " : Delete the automatic connection policy. On reset CC3000\n"
-"                     will not automatically reconnect to the network." },
-    {"ping",          CMD_ping,
-                  " : [1]IP [2](optional) Maximum tries,\n"
-"                     [3](optional) Timeout in ms."},
-    { 0, 0, 0 }
-};
-*/
-
-
 
 //*****************************************************************************
 //
@@ -719,14 +657,14 @@ void StartSmartConfig(void)
     //
     // Set the prefix used for smart config.
     //
-    //wlan_smart_config_set_prefix((char *)g_pcCC3000_prefix); //TODO implement this
+    //wlan_smart_config_set_prefix((char *)g_pcCC3000_prefix); //implement this if we want smart config
     turnLedOff(LED_0);
 
 
     //
     // Start the SmartConfig process.
     //
-    //wlan_smart_config_start(0); // matt edit was 1 //TODO implement this
+    //wlan_smart_config_start(0); // matt edited this. it was was 1
     turnLedOn(LED_0);
 
     //
@@ -879,21 +817,21 @@ int matt_socket()
            //
            // Inform user of the socket being opened.
            //
-           printf("    Socket is of type TCP\n");
+           printf("    Socket  TCP\n");
 
        //
        // Error checking.
        //
        if(i32Check >= 0)
        {
-           printf("    Socket Handle is '%d'\n",i32Check);
+           printf("    Socket Handle '%d'\n",i32Check);
            g_ui32Socket = i32Check;
            //return(0);
        }
        else
        {
-           printf("    Socket Function returned an error."
-                       "   Socket not opened. Error code %d.\n",i32Check);
+           printf("    Socket Function error."
+                       "    Error code %d.\n",i32Check);
            g_ui32SocketType = 0;
            return(-1);
        }
@@ -916,7 +854,7 @@ int matt_bind()
 
            if(g_ui32Socket == SENTINEL_EMPTY)
            {
-               printf("    Socket not open, please run socketopen.\n");
+               printf("    Socket: runsocketopen.\n");
                return(1);
            }
 
@@ -955,7 +893,7 @@ int matt_bind()
            }
            else
            {
-               printf("    Bind Failed. bind() returned code '%d'\n",i8Check);
+               printf("    Bind Failed. '%d'\n",i8Check);
 
                //
                // Set global flag variable to indicate the socket is not bound.
@@ -1020,7 +958,7 @@ int matt_send()
 	    //
 	    if(g_ui32Socket == SENTINEL_EMPTY)
 	    {
-	        printf("    Please Open a socket before tying this command.\n");
+	        printf("    Please Open a socket.\n");
 	        return(1);
 	    }
 
@@ -1078,11 +1016,11 @@ int matt_send()
 	        //
 	        if(g_bSocketConnected == false)
 	        {
-	            printf("    Connecting to TCP Socket on Server...\n");
+	            printf("    Connecting to TCP Server...\n");
 	            i32Check = connect(g_ui32Socket, &g_tSocketAddr, sizeof(sockaddr));
 	            if(i32Check != 0)
 	            {
-	                printf("    Connect failed with error code '%d'\n", i32Check);
+	                printf("    Connect failed  '%d'\n", i32Check);
 	                printf("    Please make sure there is a server with the "
 	                           "specified socket open to connect to\n");
 	                return(0);
@@ -1107,11 +1045,11 @@ int matt_send()
 	    //
 	    if(i32Check == -1)
 	    {
-	        printf("    Send Data Failed with code '%d'\n",i32Check);
+	        printf("    Send Data Faied with code '%d'\n",i32Check);
 	    }
 	    else
 	    {
-	        printf("    Send Data Success: sent %d bytes.\n", i32Check);
+	        printf("    Send Data Suces: sent %d bytes.\n", i32Check);
 	    }
 
 	    return(0);
@@ -1190,7 +1128,7 @@ int matt_recv()
                     printf("\n    ");
                 }
 
-                // Look for PM in the text. TODO Change this to capture what comes after PM and temperature. There are nice
+                // Looks for PM in the rec'd text. TODO Change this to capture what comes after PM and temperature. There are nice
                 // functions in the utils.c to compare strings
             	if(g_pui8CC3000_Rx_Buffer[ui32x] == 'P' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
             	{
@@ -2321,12 +2259,13 @@ main(void)
     g_ui32BindFlag = SENTINEL_EMPTY;
     g_ui32SmartConfigFinished = 0;
 
-	printf("UART is WORKING\n");
+	printf("UART is WORKING\n\r");
     //
     // Initialize all board specific components.
     //
     initDriver();
 
+	printf("Driver Init done!\n\r");
 
     // Matt - Removing CLI in favor of starting using CMD_connect then running
     //       the GET request over and over
@@ -2350,12 +2289,12 @@ main(void)
         	if(webConnected == 0)
         	{
         		// Open a TCP socket
-        		printf("Calling socket()\n\n");
+        		printf("socket()\n\n");
         		if(matt_socket() < 0)
 					exit(1);
 
         		// Bind to hard coded port
-        		printf("Calling bind()\n\n");
+        		printf("bind()\n\n");
         		if(matt_bind() < 0)
         			exit(1);
 
@@ -2384,7 +2323,7 @@ main(void)
         if(num_msg_sent == num_msg_to_send)
         {
         	// Close socket and thus connection
-        	printf("Calling close() to close connection and free socket\n\n");
+        	printf("close()\n\n");
         	matt_close();
         	return 0;
         }

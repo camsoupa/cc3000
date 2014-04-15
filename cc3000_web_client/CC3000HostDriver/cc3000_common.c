@@ -59,7 +59,7 @@
 void
 __error__(char *pcFilename, unsigned long ulLine)
 {
-    //TODO fill in function
+    //TODO fill in function. Only used in debug...
 }
 
 

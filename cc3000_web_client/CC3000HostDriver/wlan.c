@@ -107,6 +107,7 @@ static void SimpleLink_Init_Start(unsigned short usPatchesAvailableAtHost)
 
 	UINT8_TO_STREAM(args, ((usPatchesAvailableAtHost) ? SL_PATCHES_REQUEST_FORCE_HOST : SL_PATCHES_REQUEST_DEFAULT));
 	
+
 	// IRQ Line asserted - start the read buffer size command
 	hci_command_send(HCI_CMND_SIMPLE_LINK_START, ptr, WLAN_SL_INIT_START_PARAMS_LEN);
 	
@@ -260,11 +261,16 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 	//
 	SpiOpen(SpiReceiveHandler);
 
+
 	//
 	// Check the IRQ line
 	//
 	ulSpiIRQState = tSLInformation.ReadWlanInterruptPin();
 	
+	//printf("ulSpiIRQState: %d\n\r", ulSpiIRQState);
+
+
+
     //
     // ASIC 1273 chip enable: toggle WLAN EN line
     //
@@ -287,16 +293,19 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		while(tSLInformation.ReadWlanInterruptPin() == 0)
 		{
 		}
-
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
 		}
 	}
 	
+
+	printf("Got low IRQ line!\n\r");
 	SimpleLink_Init_Start(usPatchesAvailableAtHost);
 
+	printf("sending spi command\n\r");
 	// Read Buffer's size and finish
 	hci_command_send(HCI_CMND_READ_BUFFER_SIZE, tSLInformation.pucTxCommandBuffer, 0);
+	printf("Wait for Event\n\r");
 	SimpleLinkWaitEvent(HCI_CMND_READ_BUFFER_SIZE, 0);
 }
 

@@ -175,7 +175,7 @@ void pio_init()
     //
     // Clear interrupt status
     //
-    SpiCleanGPIOISR();  //TODO
+    SpiCleanGPIOISR();
 
 
     //MAP_IntEnable(INT_GPIO_SPI);  // same as enable_irq two lines above?
@@ -207,6 +207,7 @@ long ReadWlanInterruptPin(void)
     gpio_inputs = MSS_GPIO_get_inputs();
     spi_irq_status = gpio_inputs & MSS_GPIO_2_MASK; // this works according to
                                                     // where this mask is defined
+	//printf("returning interrupt status: %d!\n\r", spi_irq_status);
 	return spi_irq_status;
 }
 
@@ -260,6 +261,7 @@ void WriteWlanPin( unsigned char val )
 
     if(val)
     {
+    	printf("WRITING SPI_EN_PIN = 1\n\r");
         //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
     	MSS_GPIO_set_output(SPI_EN_PIN, 1);
     }

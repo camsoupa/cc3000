@@ -1721,6 +1721,7 @@ ustrcasecmp(const char *s1, const char *s2)
 //! than \e s2 and 1 if \e s1 is greater than \e s2.
 //
 //*****************************************************************************
+
 int
 ustrncmp(const char *s1, const char *s2, size_t n)
 {

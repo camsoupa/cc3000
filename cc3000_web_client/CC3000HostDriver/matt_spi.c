@@ -44,7 +44,7 @@
 
 #include "hci.h"
 #include "matt_spi.h"
-
+//#include "../utils/utils.c"
 #include   "../drivers/mss_uart/mss_uart.h"
 #include   "../drivers/mss_gpio/mss_gpio.h"
 #include   "../drivers/mss_pdma/mss_pdma.h"
@@ -203,8 +203,10 @@ static void SpiDisableInterrupts(void);
 
 bool SpiBusy()
 {
-   //TODO: how do we know if Spi is busy?
-	return (0);
+   //how do we know if Spi is busy?
+ return(!MSS_SPI_tx_done( &g_mss_spi1));
+	//return(0);
+
 }
 
 //*****************************************************************************
@@ -507,6 +509,7 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
     ASSERT(pui8UserBuffer);
     ASSERT(ui16Length);
 
+
     // Figure out the total length of the packet in order to determine if
     // there is padding or not.
     if(!(ui16Length & 0x0001))
@@ -524,11 +527,18 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 
     if (sSpiInformation.ui32SpiState == eSPI_STATE_POWERUP)
     {
+
         while (sSpiInformation.ui32SpiState != eSPI_STATE_INITIALIZED);
+        {
+
+        }
+
     }
+
 
     if (sSpiInformation.ui32SpiState == eSPI_STATE_INITIALIZED)
     {
+    	printf("First spi write\n\r");
         // This is the first SPI transmission so we need to use special timing.
         SpiFirstWrite(pui8UserBuffer, ui16Length);
     }
@@ -545,12 +555,12 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
         // Assert the CS line and wait till SSI IRQ line is active and then
         // initialize write operation.
         ASSERT_CS();
-
-        //TODO: something is missing here...
     }
 
+	//printf("got to while\n\r");
     // Wait for the transaction to complete before returning.
     while (eSPI_STATE_IDLE != sSpiInformation.ui32SpiState); // kill time
+	//printf("back from while\n\r");
 
     return(0);
 }
@@ -596,6 +606,8 @@ SpiEnableSSIDMAChannels()
 static void
 SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 {
+
+	MSS_SPI_disable(&g_mss_spi1);
     // Disable both the transmit and receive DMA channels before we mess with
     // their setup.
     SpiDisableSSIDMAChannels();
@@ -672,10 +684,12 @@ SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 {
+	printf("SpiWriteAsync\n\r");
 	MSS_SPI_disable(&g_mss_spi1);
 
 	// The DMA channels must be disabled.
     SpiDisableSSIDMAChannels();
+
 
     // The TI uDMA controller can only transfer 1024 bytes in a single transaction
     // when using basic mode.  If asked for more than 1024 bytes, we split the
@@ -716,9 +730,18 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 	 PDMA_DEFAULT_WRITE_ADJ
 	);
 
+
+
+
+
+
+	printf("Set_transfer_byte_count\n\r");
 	MSS_SPI_set_transfer_byte_count(&g_mss_spi1, ui16Size);
+	printf("back\n\r");
 	PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)g_pui8Dummy,16);
+	printf("back1\n\r");
 	PDMA_start(SPI_UDMA_TX_CHANNEL,PDMA_SPI1_TX_REGISTER,(uint32_t)pui8Data,ui16Size);
+	printf("back2\n\r");
 
     // Enable the SSI transmit and receive DMA channels.
 	MSS_SPI_enable(&g_mss_spi1);
@@ -996,7 +1019,7 @@ SpiTriggerRxProcessing(bool bBadPacket)
     SpiDisableInterrupts();
 
     //TODO: wait while spi is busy
-    //while(SpiBusy());
+    while(SpiBusy());
 
     DEASSERT_CS();
 

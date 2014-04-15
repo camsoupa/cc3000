@@ -99,8 +99,8 @@
 
 // OURS
 //#define SPI_INT                       this is on the FABINT
-#define SPI_RX_AVAIL                    MSS_GPIO_31 //TODO: what should this be now?
-#define SPI_TX_RFM                      MSS_GPIO_30 //TODO: what should this be now?
+//#define SPI_RX_AVAIL                    MSS_GPIO_31 //TODO: what should this be now?
+//#define SPI_TX_RFM                      MSS_GPIO_30 //TODO: what should this be now?
 
 
 // THEIRS

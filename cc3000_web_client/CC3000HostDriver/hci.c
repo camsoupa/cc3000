@@ -74,12 +74,13 @@ hci_command_send(unsigned short usOpcode, unsigned char *pucBuff,
 	stream = UINT16_TO_STREAM(stream, usOpcode);
 	UINT8_TO_STREAM(stream, ucArgsLength);
 
+
     //
 	// Update the opcode of the event we will be waiting for
 	//
     SpiWrite(pucBuff, ucArgsLength + SIMPLE_LINK_HCI_CMND_HEADER_SIZE);
 
-
+	printf("back from SpiWrite()\n\r");
     return(0);
 }
 

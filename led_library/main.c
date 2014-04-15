@@ -6,7 +6,7 @@
 // the fpga configured interrupts for the timer modules
 #define RED_GPIO_INT   MSS_GPIO_5
 #define GREEN_GPIO_INT MSS_GPIO_6
-#define BLUE_GPIO_INT  MSS_GPIO_8
+#define BLUE_GPIO_INT  MSS_GPIO_7
 #define PULSE_GPIO_INT MSS_GPIO_8
 
 void GPIO5_IRQHandler(void){
@@ -26,6 +26,7 @@ void GPIO8_IRQHandler(void){
 }
 
 // the fpga configured pins for led control
+// TODO: add these to SoftConsole
 #define RED_GPIO   MSS_GPIO_9
 #define GREEN_GPIO MSS_GPIO_10
 #define BLUE_GPIO  MSS_GPIO_11

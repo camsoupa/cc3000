@@ -1,26 +1,36 @@
 #include "fpga_timer.h"
 
-void MYTIMER_init()
+void timer_init()
 {
-    // we don't have to do anything.
+    cnt_timers = 0;
 }
 
-void MYTIMER_enable(uint8_t timer)
+uint8_t add_timer(mytimer_t * timer)
 {
-    (timers[timer])->control |= MYTIMER_ENABLE_MASK;
+	uint8_t timer_index = cnt_timers;
+	if(cnt_timers < TIMER_CAPACITY)
+	  timers[cnt_timers++] = timer;
+	  return timer_index;
+
+	return TIMER_CAPACITY;
 }
 
-void MYTIMER_disable(uint8_t timer)
+void timer_enable(uint8_t timer)
 {
-    (timers[timer])->control &= ~MYTIMER_ENABLE_MASK;
+    (timers[timer])->control |= TIMER_ENABLE_MASK;
 }
 
-void MYTIMER_setOverflowVal(uint8_t timer, uint32_t value)
+void timer_disable(uint8_t timer)
+{
+    (timers[timer])->control &= ~TIMER_ENABLE_MASK;
+}
+
+void timer_setOverflowVal(uint8_t timer, uint32_t value)
 {
     timers[timer]->overflow = value;
 }
 
-uint32_t MYTIMER_getCounterVal(uint8_t timer)
+uint32_t timer_getCounterVal(uint8_t timer)
 {
 	return timer[timers]->counter;
 }
@@ -28,7 +38,7 @@ uint32_t MYTIMER_getCounterVal(uint8_t timer)
 /**
  * Enable all interrupts
  */
-void MYTIMER_enable_allInterrupts(uint8_t timer)
+void timer_enable_allInterrupts(uint8_t timer)
 {
 	timers[timer]->control |= INTERRUPTS_ENABLE_MASK;
 }
@@ -36,7 +46,7 @@ void MYTIMER_enable_allInterrupts(uint8_t timer)
 /**
  * Disable all interrupts
  */
-void MYTIMER_disable_allInterrupts(uint8_t timer)
+void timer_disable_allInterrupts(uint8_t timer)
 {
 	timers[timer]->control &= ~INTERRUPTS_ENABLE_MASK;
 }
@@ -44,7 +54,7 @@ void MYTIMER_disable_allInterrupts(uint8_t timer)
 /**
  * Enable compare interrupt
  */
-void MYTIMER_enable_compareInt(uint8_t timer)
+void timer_enable_compareInt(uint8_t timer)
 {
 	timers[timer]->control |= COMPARE_ENABLE_MASK;
 }
@@ -52,7 +62,7 @@ void MYTIMER_enable_compareInt(uint8_t timer)
 /**
  * Disable compare interrupt
  */
-void MYTIMER_disable_compareInt(uint8_t timer)
+void timer_disable_compareInt(uint8_t timer)
 {
 	timers[timer]->control &= ~COMPARE_ENABLE_MASK;
 }
@@ -60,7 +70,7 @@ void MYTIMER_disable_compareInt(uint8_t timer)
 /**
  * Set Compare value
  */
-void MYTIMER_setCompareVal(uint8_t timer, uint32_t compare)
+void timer_setCompareVal(uint8_t timer, uint32_t compare)
 {
     timers[timer]->compare = compare;
 }
@@ -68,7 +78,7 @@ void MYTIMER_setCompareVal(uint8_t timer, uint32_t compare)
 /**
  * Enable overflow interrupt
  */
-void MYTIMER_enable_overflowInt(uint8_t timer)
+void timer_enable_overflowInt(uint8_t timer)
 {
 	timers[timer]->control |= OVERFLOW_ENABLE_MASK;
 }
@@ -76,7 +86,7 @@ void MYTIMER_enable_overflowInt(uint8_t timer)
 /**
  * Disable overflow interrupt
  */
-void MYTIMER_disable_overflowInt(uint8_t timer)
+void timer_disable_overflowInt(uint8_t timer)
 {
 	timers[timer]->control &= ~OVERFLOW_ENABLE_MASK;
 }
@@ -84,7 +94,7 @@ void MYTIMER_disable_overflowInt(uint8_t timer)
  /**
   * Interrupt status
   */
-uint32_t MYTIMER_getInterrupt_status(uint8_t timer)
+uint32_t timer_getInterrupt_status(uint8_t timer)
 {
     return timers[timer]->status;
 }

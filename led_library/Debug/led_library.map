@@ -10,11 +10,20 @@ c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/
 Allocating common symbols
 Common symbol       size              file
 
+gpio_b              0x1               ./drivers/rgb_led_driver/rgb_led.o
 pulse_direction     0x1               ./drivers/rgb_led_driver/rgb_led.o
+red_timer_id        0x1               ./drivers/rgb_led_driver/rgb_led.o
+gpio_g              0x1               ./drivers/rgb_led_driver/rgb_led.o
+pulse_timer_id      0x1               ./drivers/rgb_led_driver/rgb_led.o
+timers              0x50              ./drivers/rgb_led_driver/rgb_led.o
 blue                0x1               ./drivers/rgb_led_driver/rgb_led.o
 green               0x1               ./drivers/rgb_led_driver/rgb_led.o
 red                 0x1               ./drivers/rgb_led_driver/rgb_led.o
-rgb_gpio            0x1               ./drivers/rgb_led_driver/rgb_led.o
+gpio_i              0x1               ./drivers/rgb_led_driver/rgb_led.o
+cnt_timers          0x1               ./drivers/rgb_led_driver/rgb_led.o
+blue_timer_id       0x1               ./drivers/rgb_led_driver/rgb_led.o
+gpio_r              0x1               ./drivers/rgb_led_driver/rgb_led.o
+green_timer_id      0x1               ./drivers/rgb_led_driver/rgb_led.o
 
 Memory Configuration
 
@@ -57,7 +66,7 @@ END GROUP
                 0x20010000                PROVIDE (_estack, __main_stack_start)
                 0x00000000                PROVIDE (__mirrored_nvm, 0x0)
 
-.text           0x20000000     0x1540
+.text           0x20000000     0x19c4
  CREATE_OBJECT_SYMBOLS
                 0x20000000                __text_load = LOADADDR (.text)
                 0x20000000                __text_start = .
@@ -104,10 +113,6 @@ END GROUP
                 0x20000352                GPIO2_IRQHandler
                 0x20000354                GPIO3_IRQHandler
                 0x20000356                GPIO4_IRQHandler
-                0x20000358                GPIO5_IRQHandler
-                0x2000035a                GPIO6_IRQHandler
-                0x2000035c                GPIO7_IRQHandler
-                0x2000035e                GPIO8_IRQHandler
                 0x20000360                GPIO9_IRQHandler
                 0x20000362                GPIO10_IRQHandler
                 0x20000364                GPIO11_IRQHandler
@@ -220,91 +225,101 @@ END GROUP
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x20000470        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
  .text          0x20000470       0x30 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
- .text          0x200004a0        0xc ./main.o
-                0x200004a0                main
- .text          0x200004ac      0x12c ./drivers/rgb_led_driver/rgb_led.o
-                0x200004ac                init_rgb_led
-                0x200004d8                on_pulse
-                0x20000594                set_color
-                0x200005b0                set_brightness
-                0x200005c4                set_pulse_rate
- .text          0x200005d8      0x388 ./drivers/mss_gpio/mss_gpio.o
-                0x2000064c                MSS_GPIO_init
-                0x200006b8                MSS_GPIO_config
-                0x200006f4                MSS_GPIO_set_output
-                0x20000734                MSS_GPIO_drive_inout
-                0x2000085c                MSS_GPIO_enable_irq
-                0x200008c0                MSS_GPIO_disable_irq
-                0x20000910                MSS_GPIO_clear_irq
- .text          0x20000960      0x26c ./drivers/fpga_timer/fpga_timer.o
-                0x20000960                MYTIMER_init
-                0x2000096c                MYTIMER_enable
-                0x200009a4                MYTIMER_disable
-                0x200009dc                MYTIMER_setOverflowVal
-                0x20000a04                MYTIMER_getCounterVal
-                0x20000a2c                MYTIMER_enable_allInterrupts
-                0x20000a64                MYTIMER_disable_allInterrupts
-                0x20000a9c                MYTIMER_enable_compareInt
-                0x20000ad4                MYTIMER_disable_compareInt
-                0x20000b0c                MYTIMER_setCompareVal
-                0x20000b34                MYTIMER_enable_overflowInt
-                0x20000b6c                MYTIMER_disable_overflowInt
-                0x20000ba4                MYTIMER_getInterrupt_status
- .text          0x20000bcc       0xb0 ./CMSIS/brownout_isr.o
-                0x20000bcc                BrownOut_1_5V_IRQHandler
- .text          0x20000c7c      0x28c ./CMSIS/core_cm3.o
-                0x20000c7c                __get_PSP
-                0x20000c8c                __set_PSP
-                0x20000c94                __get_MSP
-                0x20000ca4                __set_MSP
-                0x20000cac                __get_BASEPRI
-                0x20000ccc                __set_BASEPRI
-                0x20000ce4                __get_PRIMASK
-                0x20000d04                __set_PRIMASK
-                0x20000d1c                __get_FAULTMASK
-                0x20000d3c                __set_FAULTMASK
-                0x20000d54                __get_CONTROL
-                0x20000d74                __set_CONTROL
-                0x20000d8c                __REV
-                0x20000db0                __REV16
-                0x20000dd4                __REVSH
-                0x20000df8                __RBIT
-                0x20000e1c                __LDREXB
-                0x20000e40                __LDREXH
-                0x20000e64                __LDREXW
-                0x20000e88                __STREXB
-                0x20000eb4                __STREXH
-                0x20000ee0                __STREXW
- .text          0x20000f08      0x244 ./CMSIS/system_a2fxxxm3.o
-                0x20000f08                SystemInit
-                0x20000f14                SystemCoreClockUpdate
- .text          0x2000114c      0x284 ./CMSIS/startup_gcc/newlib_stubs.o
-                0x2000114c                _close
-                0x20001164                _execve
-                0x2000118c                _exit
-                0x20001198                _fork
-                0x200011b0                _fstat
-                0x200011d4                _getpid
-                0x200011e4                _isatty
-                0x200011fc                _kill
-                0x20001220                _link
-                0x20001244                _lseek
-                0x20001260                _open
-                0x2000127c                _read
-                0x20001298                _write_r
-                0x200012b8                _sbrk
-                0x2000134c                _stat
-                0x20001370                _times
-                0x20001388                _unlink
-                0x200013ac                _wait
- .text          0x200013d0        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
- .text          0x200013d0        0xc c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
-                0x200013d0                __errno
- .text          0x200013dc        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
- .text          0x200013dc       0x50 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
-                0x200013dc                __libc_init_array
- .text          0x2000142c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
- .text          0x2000142c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+ .text          0x200004a0       0x78 ./main.o
+                0x200004a0                GPIO5_IRQHandler
+                0x200004ac                GPIO6_IRQHandler
+                0x200004b8                GPIO7_IRQHandler
+                0x200004c4                GPIO8_IRQHandler
+                0x200004d0                main
+ .text          0x20000518      0x4dc ./drivers/rgb_led_driver/rgb_led.o
+                0x20000518                init_rgb_pwm
+                0x20000688                init_rgb_led
+                0x20000704                on_pulse
+                0x20000798                pwm_red
+                0x200007bc                pwm_green
+                0x200007e0                pwm_blue
+                0x20000804                pwm_timer_handler
+                0x20000864                set_color
+                0x200008a4                set_brightness
+                0x200009a8                set_pulse_rate
+ .text          0x200009f4      0x388 ./drivers/mss_gpio/mss_gpio.o
+                0x20000a68                MSS_GPIO_init
+                0x20000ad4                MSS_GPIO_config
+                0x20000b10                MSS_GPIO_set_output
+                0x20000b50                MSS_GPIO_drive_inout
+                0x20000c78                MSS_GPIO_enable_irq
+                0x20000cdc                MSS_GPIO_disable_irq
+                0x20000d2c                MSS_GPIO_clear_irq
+ .text          0x20000d7c      0x2d4 ./drivers/fpga_timer/fpga_timer.o
+                0x20000d7c                timer_init
+                0x20000d94                add_timer
+                0x20000df0                timer_enable
+                0x20000e28                timer_disable
+                0x20000e60                timer_setOverflowVal
+                0x20000e88                timer_getCounterVal
+                0x20000eb0                timer_enable_allInterrupts
+                0x20000ee8                timer_disable_allInterrupts
+                0x20000f20                timer_enable_compareInt
+                0x20000f58                timer_disable_compareInt
+                0x20000f90                timer_setCompareVal
+                0x20000fb8                timer_enable_overflowInt
+                0x20000ff0                timer_disable_overflowInt
+                0x20001028                timer_getInterrupt_status
+ .text          0x20001050       0xb0 ./CMSIS/brownout_isr.o
+                0x20001050                BrownOut_1_5V_IRQHandler
+ .text          0x20001100      0x28c ./CMSIS/core_cm3.o
+                0x20001100                __get_PSP
+                0x20001110                __set_PSP
+                0x20001118                __get_MSP
+                0x20001128                __set_MSP
+                0x20001130                __get_BASEPRI
+                0x20001150                __set_BASEPRI
+                0x20001168                __get_PRIMASK
+                0x20001188                __set_PRIMASK
+                0x200011a0                __get_FAULTMASK
+                0x200011c0                __set_FAULTMASK
+                0x200011d8                __get_CONTROL
+                0x200011f8                __set_CONTROL
+                0x20001210                __REV
+                0x20001234                __REV16
+                0x20001258                __REVSH
+                0x2000127c                __RBIT
+                0x200012a0                __LDREXB
+                0x200012c4                __LDREXH
+                0x200012e8                __LDREXW
+                0x2000130c                __STREXB
+                0x20001338                __STREXH
+                0x20001364                __STREXW
+ .text          0x2000138c      0x244 ./CMSIS/system_a2fxxxm3.o
+                0x2000138c                SystemInit
+                0x20001398                SystemCoreClockUpdate
+ .text          0x200015d0      0x284 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x200015d0                _close
+                0x200015e8                _execve
+                0x20001610                _exit
+                0x2000161c                _fork
+                0x20001634                _fstat
+                0x20001658                _getpid
+                0x20001668                _isatty
+                0x20001680                _kill
+                0x200016a4                _link
+                0x200016c8                _lseek
+                0x200016e4                _open
+                0x20001700                _read
+                0x2000171c                _write_r
+                0x2000173c                _sbrk
+                0x200017d0                _stat
+                0x200017f4                _times
+                0x2000180c                _unlink
+                0x20001830                _wait
+ .text          0x20001854        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .text          0x20001854        0xc c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+                0x20001854                __errno
+ .text          0x20001860        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ .text          0x20001860       0x50 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+                0x20001860                __libc_init_array
+ .text          0x200018b0        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .text          0x200018b0        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -313,7 +328,7 @@ END GROUP
  .glue_7        0x00000000        0x0 linker stubs
  *(.vfp11_veneer)
  .vfp11_veneer  0x00000000        0x0 linker stubs
-                0x2000142c                . = ALIGN (0x4)
+                0x200018b0                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
@@ -323,140 +338,148 @@ END GROUP
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x2000142c       0xc0 ./drivers/mss_gpio/mss_gpio.o
- .rodata        0x200014ec       0x10 ./CMSIS/system_a2fxxxm3.o
- .rodata        0x200014fc       0x1c ./CMSIS/startup_gcc/newlib_stubs.o
- .rodata        0x20001518        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
-                0x20001518                _global_impure_ptr
+ .rodata        0x200018b0       0xc0 ./drivers/mss_gpio/mss_gpio.o
+ .rodata        0x20001970       0x10 ./CMSIS/system_a2fxxxm3.o
+ .rodata        0x20001980       0x1c ./CMSIS/startup_gcc/newlib_stubs.o
+ .rodata        0x2000199c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x2000199c                _global_impure_ptr
  .rodata.str1.4
-                0x2000151c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x200019a0        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
  *(.eh_frame_hdr)
  *(.eh_frame)
  *(.init)
- .init          0x20001520        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
-                0x20001520                _init
- .init          0x20001524        0x8 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+ .init          0x200019a4        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+                0x200019a4                _init
+ .init          0x200019a8        0x8 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
  *(.fini)
- .fini          0x2000152c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
-                0x2000152c                _fini
- .fini          0x20001530        0x8 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
-                0x20001538                PROVIDE (__preinit_array_start, .)
+ .fini          0x200019b0        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+                0x200019b0                _fini
+ .fini          0x200019b4        0x8 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+                0x200019bc                PROVIDE (__preinit_array_start, .)
  *(.preinit_array)
-                0x20001538                PROVIDE (__preinit_array_end, .)
-                0x20001538                PROVIDE (__init_array_start, .)
+                0x200019bc                PROVIDE (__preinit_array_end, .)
+                0x200019bc                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x20001538        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
-                0x2000153c                PROVIDE (__init_array_end, .)
-                0x2000153c                PROVIDE (__fini_array_start, .)
+ .init_array    0x200019bc        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+                0x200019c0                PROVIDE (__init_array_end, .)
+                0x200019c0                PROVIDE (__fini_array_start, .)
  *(.fini_array)
- .fini_array    0x2000153c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .fini_array    0x200019c0        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
  *(SORT(.fini_array.*))
-                0x20001540                PROVIDE (__fini_array_end, .)
-                0x20001540                __exidx_start = .
+                0x200019c4                PROVIDE (__fini_array_end, .)
+                0x200019c4                __exidx_start = .
 
-.v4_bx          0x20001540        0x0
+.v4_bx          0x200019c4        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x20001540                __exidx_end = .
-                0x20001540                _etext = .
-                0x20001540                PROVIDE (__text_end, .)
+                0x200019c4                __exidx_end = .
+                0x200019c4                _etext = .
+                0x200019c4                PROVIDE (__text_end, .)
 
-.data           0x20001540      0x12c
-                0x20001540                __data_load = LOADADDR (.data)
-                0x20001540                _sidata = LOADADDR (.data)
-                0x20001540                __data_start = .
-                0x20001540                _sdata = .
+.data           0x200019c4      0x11c
+                0x200019c4                __data_load = LOADADDR (.data)
+                0x200019c4                _sidata = LOADADDR (.data)
+                0x200019c4                __data_start = .
+                0x200019c4                _sdata = .
  *(.jcr)
- .jcr           0x20001540        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
- .jcr           0x20001540        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .jcr           0x200019c4        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .jcr           0x200019c4        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
  *(.got.plt)
  *(.got)
  *(.shdata)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x20001544        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
- .data          0x20001544        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
-                0x20001544                __dso_handle
- .data          0x20001548        0x0 ./main.o
- .data          0x20001548        0x2 ./drivers/rgb_led_driver/rgb_led.o
-                0x20001548                master_brightness
-                0x20001549                full_brightness
- .data          0x2000154a        0x0 ./drivers/mss_gpio/mss_gpio.o
- *fill*         0x2000154a        0x2 00
- .data          0x2000154c       0x10 ./drivers/fpga_timer/fpga_timer.o
-                0x2000154c                timers
- .data          0x2000155c        0x0 ./CMSIS/brownout_isr.o
- .data          0x2000155c        0x0 ./CMSIS/core_cm3.o
- .data          0x2000155c       0x18 ./CMSIS/system_a2fxxxm3.o
-                0x2000155c                SystemFrequency
-                0x20001560                SystemCoreClock
-                0x20001564                g_FrequencyPCLK0
-                0x20001568                g_FrequencyPCLK1
-                0x2000156c                g_FrequencyACE
-                0x20001570                g_FrequencyFPGA
- .data          0x20001574        0x4 ./CMSIS/startup_gcc/newlib_stubs.o
-                0x20001574                environ
- .data          0x20001578        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
- .data          0x20001578        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
- .data          0x20001578       0xf4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
-                0x20001578                _impure_ptr
- .data          0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
- .data          0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
- .data          0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
-                0x2000166c                . = ALIGN (0x4)
-                0x2000166c                _edata = .
+ .data          0x200019c8        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+ .data          0x200019c8        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+                0x200019c8                __dso_handle
+ .data          0x200019cc        0x0 ./main.o
+ .data          0x200019cc        0x2 ./drivers/rgb_led_driver/rgb_led.o
+                0x200019cc                master_brightness
+                0x200019cd                full_brightness
+ .data          0x200019ce        0x0 ./drivers/mss_gpio/mss_gpio.o
+ .data          0x200019ce        0x0 ./drivers/fpga_timer/fpga_timer.o
+ .data          0x200019ce        0x0 ./CMSIS/brownout_isr.o
+ .data          0x200019ce        0x0 ./CMSIS/core_cm3.o
+ *fill*         0x200019ce        0x2 00
+ .data          0x200019d0       0x18 ./CMSIS/system_a2fxxxm3.o
+                0x200019d0                SystemFrequency
+                0x200019d4                SystemCoreClock
+                0x200019d8                g_FrequencyPCLK0
+                0x200019dc                g_FrequencyPCLK1
+                0x200019e0                g_FrequencyACE
+                0x200019e4                g_FrequencyFPGA
+ .data          0x200019e8        0x4 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x200019e8                environ
+ .data          0x200019ec        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .data          0x200019ec        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .data          0x200019ec       0xf4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x200019ec                _impure_ptr
+ .data          0x20001ae0        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+ .data          0x20001ae0        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .data          0x20001ae0        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+                0x20001ae0                . = ALIGN (0x4)
+                0x20001ae0                _edata = .
 
-.bss            0x2000166c       0x14
-                0x2000166c                __bss_start__ = .
-                0x2000166c                _sbss = .
+.bss            0x20001ae0       0x70
+                0x20001ae0                __bss_start__ = .
+                0x20001ae0                _sbss = .
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
- .bss           0x2000166c        0x1 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
- .bss           0x2000166d        0x0 ./main.o
- .bss           0x2000166d        0x1 ./drivers/rgb_led_driver/rgb_led.o
-                0x2000166d                min_brightness
- .bss           0x2000166e        0x0 ./drivers/mss_gpio/mss_gpio.o
- .bss           0x2000166e        0x0 ./drivers/fpga_timer/fpga_timer.o
- .bss           0x2000166e        0x0 ./CMSIS/brownout_isr.o
- .bss           0x2000166e        0x0 ./CMSIS/core_cm3.o
- .bss           0x2000166e        0x0 ./CMSIS/system_a2fxxxm3.o
- *fill*         0x2000166e        0x2 00
- .bss           0x20001670        0x8 ./CMSIS/startup_gcc/newlib_stubs.o
-                0x20001670                __env
- .bss           0x20001678        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
- .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
- .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
- .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
- .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
- .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+ .bss           0x20001ae0        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+ .bss           0x20001ae0        0x1 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .bss           0x20001ae1        0x0 ./main.o
+ .bss           0x20001ae1        0x1 ./drivers/rgb_led_driver/rgb_led.o
+                0x20001ae1                min_brightness
+ .bss           0x20001ae2        0x0 ./drivers/mss_gpio/mss_gpio.o
+ .bss           0x20001ae2        0x0 ./drivers/fpga_timer/fpga_timer.o
+ .bss           0x20001ae2        0x0 ./CMSIS/brownout_isr.o
+ .bss           0x20001ae2        0x0 ./CMSIS/core_cm3.o
+ .bss           0x20001ae2        0x0 ./CMSIS/system_a2fxxxm3.o
+ *fill*         0x20001ae2        0x2 00
+ .bss           0x20001ae4        0x8 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x20001ae4                __env
+ .bss           0x20001aec        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .bss           0x20001aec        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .bss           0x20001aec        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ .bss           0x20001aec        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+ .bss           0x20001aec        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .bss           0x20001aec        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
  *(COMMON)
- COMMON         0x20001678        0x5 ./drivers/rgb_led_driver/rgb_led.o
-                0x20001678                pulse_direction
-                0x20001679                blue
-                0x2000167a                green
-                0x2000167b                red
-                0x2000167c                rgb_gpio
-                0x20001680                . = ALIGN (0x8)
- *fill*         0x2000167d        0x3 00
-                0x20001680                __bss_end__ = .
-                0x20001680                _end = .
-                0x20001680                __end = _end
-                0x20001680                _ebss = .
-                0x20001680                PROVIDE (end, .)
+ COMMON         0x20001aec       0x60 ./drivers/rgb_led_driver/rgb_led.o
+                0x20001aec                gpio_b
+                0x20001aed                pulse_direction
+                0x20001aee                red_timer_id
+                0x20001aef                gpio_g
+                0x20001af0                pulse_timer_id
+                0x20001af4                timers
+                0x20001b44                blue
+                0x20001b45                green
+                0x20001b46                red
+                0x20001b47                gpio_i
+                0x20001b48                cnt_timers
+                0x20001b49                blue_timer_id
+                0x20001b4a                gpio_r
+                0x20001b4b                green_timer_id
+                0x20001b50                . = ALIGN (0x8)
+ *fill*         0x20001b4c        0x4 00
+                0x20001b50                __bss_end__ = .
+                0x20001b50                _end = .
+                0x20001b50                __end = _end
+                0x20001b50                _ebss = .
+                0x20001b50                PROVIDE (end, .)
 
-.stack          0x20001680     0x3000
-                0x20001680                . = ALIGN (0x4)
-                0x20002680                . = (. + PROCESS_STACK_SIZE)
- *fill*         0x20001680     0x1000 00
-                0x20002680                . = ALIGN (0x4)
-                0x20004680                . = (. + MAIN_STACK_SIZE)
- *fill*         0x20002680     0x2000 00
-                0x20004680                . = ALIGN (0x4)
+.stack          0x20001b50     0x3000
+                0x20001b50                . = ALIGN (0x4)
+                0x20002b50                . = (. + PROCESS_STACK_SIZE)
+ *fill*         0x20001b50     0x1000 00
+                0x20002b50                . = ALIGN (0x4)
+                0x20004b50                . = (. + MAIN_STACK_SIZE)
+ *fill*         0x20002b50     0x2000 00
+                0x20004b50                . = ALIGN (0x4)
 
 .stab
  *(.stab)
@@ -506,118 +529,119 @@ END GROUP
                 0x000000e0       0x20 ./CMSIS/startup_gcc/newlib_stubs.o
 
 .debug_pubnames
-                0x00000000      0x653
+                0x00000000      0x77a
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x1b ./main.o
+                0x00000000       0x6f ./main.o
  .debug_pubnames
-                0x0000001b       0xdd ./drivers/rgb_led_driver/rgb_led.o
+                0x0000006f      0x1ad ./drivers/rgb_led_driver/rgb_led.o
  .debug_pubnames
-                0x000000f8       0xb1 ./drivers/mss_gpio/mss_gpio.o
+                0x0000021c       0xb1 ./drivers/mss_gpio/mss_gpio.o
  .debug_pubnames
-                0x000001a9      0x183 ./drivers/fpga_timer/fpga_timer.o
+                0x000002cd      0x186 ./drivers/fpga_timer/fpga_timer.o
  .debug_pubnames
-                0x0000032c       0x2f ./CMSIS/brownout_isr.o
+                0x00000453       0x2f ./CMSIS/brownout_isr.o
  .debug_pubnames
-                0x0000035b      0x159 ./CMSIS/core_cm3.o
+                0x00000482      0x159 ./CMSIS/core_cm3.o
  .debug_pubnames
-                0x000004b4       0xb4 ./CMSIS/system_a2fxxxm3.o
+                0x000005db       0xb4 ./CMSIS/system_a2fxxxm3.o
  .debug_pubnames
-                0x00000568       0xeb ./CMSIS/startup_gcc/newlib_stubs.o
+                0x0000068f       0xeb ./CMSIS/startup_gcc/newlib_stubs.o
 
-.debug_info     0x00000000     0x2cb9
+.debug_info     0x00000000     0x3089
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000       0x4a ./main.o
- .debug_info    0x0000004a      0x1ec ./drivers/rgb_led_driver/rgb_led.o
- .debug_info    0x00000236     0x1110 ./drivers/mss_gpio/mss_gpio.o
- .debug_info    0x00001346      0x336 ./drivers/fpga_timer/fpga_timer.o
- .debug_info    0x0000167c      0x502 ./CMSIS/brownout_isr.o
- .debug_info    0x00001b7e      0x548 ./CMSIS/core_cm3.o
- .debug_info    0x000020c6      0x538 ./CMSIS/system_a2fxxxm3.o
- .debug_info    0x000025fe      0x6bb ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_info    0x00000000      0x1c0 ./main.o
+ .debug_info    0x000001c0      0x3fa ./drivers/rgb_led_driver/rgb_led.o
+ .debug_info    0x000005ba     0x1110 ./drivers/mss_gpio/mss_gpio.o
+ .debug_info    0x000016ca      0x382 ./drivers/fpga_timer/fpga_timer.o
+ .debug_info    0x00001a4c      0x502 ./CMSIS/brownout_isr.o
+ .debug_info    0x00001f4e      0x548 ./CMSIS/core_cm3.o
+ .debug_info    0x00002496      0x538 ./CMSIS/system_a2fxxxm3.o
+ .debug_info    0x000029ce      0x6bb ./CMSIS/startup_gcc/newlib_stubs.o
 
-.debug_abbrev   0x00000000      0x765
+.debug_abbrev   0x00000000      0x813
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x38 ./main.o
- .debug_abbrev  0x00000038       0xc6 ./drivers/rgb_led_driver/rgb_led.o
- .debug_abbrev  0x000000fe      0x17f ./drivers/mss_gpio/mss_gpio.o
- .debug_abbrev  0x0000027d       0xf4 ./drivers/fpga_timer/fpga_timer.o
- .debug_abbrev  0x00000371       0xe0 ./CMSIS/brownout_isr.o
- .debug_abbrev  0x00000451       0xd7 ./CMSIS/core_cm3.o
- .debug_abbrev  0x00000528      0x10f ./CMSIS/system_a2fxxxm3.o
- .debug_abbrev  0x00000637      0x12e ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_abbrev  0x00000000       0x91 ./main.o
+ .debug_abbrev  0x00000091      0x10c ./drivers/rgb_led_driver/rgb_led.o
+ .debug_abbrev  0x0000019d      0x17f ./drivers/mss_gpio/mss_gpio.o
+ .debug_abbrev  0x0000031c      0x103 ./drivers/fpga_timer/fpga_timer.o
+ .debug_abbrev  0x0000041f       0xe0 ./CMSIS/brownout_isr.o
+ .debug_abbrev  0x000004ff       0xd7 ./CMSIS/core_cm3.o
+ .debug_abbrev  0x000005d6      0x10f ./CMSIS/system_a2fxxxm3.o
+ .debug_abbrev  0x000006e5      0x12e ./CMSIS/startup_gcc/newlib_stubs.o
 
-.debug_line     0x00000000      0xe71
+.debug_line     0x00000000     0x105b
  *(.debug_line)
- .debug_line    0x00000000       0x38 ./main.o
- .debug_line    0x00000038      0x1ab ./drivers/rgb_led_driver/rgb_led.o
- .debug_line    0x000001e3      0x2d7 ./drivers/mss_gpio/mss_gpio.o
- .debug_line    0x000004ba      0x164 ./drivers/fpga_timer/fpga_timer.o
- .debug_line    0x0000061e      0x109 ./CMSIS/brownout_isr.o
- .debug_line    0x00000727      0x153 ./CMSIS/core_cm3.o
- .debug_line    0x0000087a      0x277 ./CMSIS/system_a2fxxxm3.o
- .debug_line    0x00000af1      0x380 ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_line    0x00000000      0x169 ./main.o
+ .debug_line    0x00000169      0x25c ./drivers/rgb_led_driver/rgb_led.o
+ .debug_line    0x000003c5      0x2d7 ./drivers/mss_gpio/mss_gpio.o
+ .debug_line    0x0000069c      0x16c ./drivers/fpga_timer/fpga_timer.o
+ .debug_line    0x00000808      0x109 ./CMSIS/brownout_isr.o
+ .debug_line    0x00000911      0x153 ./CMSIS/core_cm3.o
+ .debug_line    0x00000a64      0x277 ./CMSIS/system_a2fxxxm3.o
+ .debug_line    0x00000cdb      0x380 ./CMSIS/startup_gcc/newlib_stubs.o
 
-.debug_frame    0x00000000      0x8a0
+.debug_frame    0x00000000      0x9cc
  *(.debug_frame)
- .debug_frame   0x00000000       0x28 ./main.o
- .debug_frame   0x00000028       0xa0 ./drivers/rgb_led_driver/rgb_led.o
- .debug_frame   0x000000c8      0x118 ./drivers/mss_gpio/mss_gpio.o
- .debug_frame   0x000001e0      0x178 ./drivers/fpga_timer/fpga_timer.o
- .debug_frame   0x00000358       0x34 ./CMSIS/brownout_isr.o
- .debug_frame   0x0000038c      0x248 ./CMSIS/core_cm3.o
- .debug_frame   0x000005d4       0x64 ./CMSIS/system_a2fxxxm3.o
- .debug_frame   0x00000638      0x21c ./CMSIS/startup_gcc/newlib_stubs.o
- .debug_frame   0x00000854       0x20 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
- .debug_frame   0x00000874       0x2c c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+ .debug_frame   0x00000000       0x9c ./main.o
+ .debug_frame   0x0000009c      0x13c ./drivers/rgb_led_driver/rgb_led.o
+ .debug_frame   0x000001d8      0x118 ./drivers/mss_gpio/mss_gpio.o
+ .debug_frame   0x000002f0      0x194 ./drivers/fpga_timer/fpga_timer.o
+ .debug_frame   0x00000484       0x34 ./CMSIS/brownout_isr.o
+ .debug_frame   0x000004b8      0x248 ./CMSIS/core_cm3.o
+ .debug_frame   0x00000700       0x64 ./CMSIS/system_a2fxxxm3.o
+ .debug_frame   0x00000764      0x21c ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_frame   0x00000980       0x20 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .debug_frame   0x000009a0       0x2c c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
 
-.debug_str      0x00000000     0x193b
+.debug_str      0x00000000     0x19fd
  *(.debug_str)
- .debug_str     0x00000000       0x5f ./main.o
- .debug_str     0x0000005f      0x11c ./drivers/rgb_led_driver/rgb_led.o
-                                0x1b5 (size before relaxing)
- .debug_str     0x0000017b     0x1151 ./drivers/mss_gpio/mss_gpio.o
+ .debug_str     0x00000000      0x286 ./main.o
+                                0x2ba (size before relaxing)
+ .debug_str     0x00000286      0x18e ./drivers/rgb_led_driver/rgb_led.o
+                                0x2b4 (size before relaxing)
+ .debug_str     0x00000414      0xfc2 ./drivers/mss_gpio/mss_gpio.o
                                0x126d (size before relaxing)
- .debug_str     0x000012cc      0x18d ./drivers/fpga_timer/fpga_timer.o
-                                0x28c (size before relaxing)
- .debug_str     0x00001459       0x92 ./CMSIS/brownout_isr.o
+ .debug_str     0x000013d6      0x145 ./drivers/fpga_timer/fpga_timer.o
+                                0x293 (size before relaxing)
+ .debug_str     0x0000151b       0x92 ./CMSIS/brownout_isr.o
                                 0x39d (size before relaxing)
- .debug_str     0x000014eb      0x148 ./CMSIS/core_cm3.o
+ .debug_str     0x000015ad      0x148 ./CMSIS/core_cm3.o
                                 0x24b (size before relaxing)
- .debug_str     0x00001633      0x119 ./CMSIS/system_a2fxxxm3.o
+ .debug_str     0x000016f5      0x119 ./CMSIS/system_a2fxxxm3.o
                                 0x438 (size before relaxing)
- .debug_str     0x0000174c      0x1ef ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_str     0x0000180e      0x1ef ./CMSIS/startup_gcc/newlib_stubs.o
                                 0x304 (size before relaxing)
 
-.debug_loc      0x00000000      0xe54
+.debug_loc      0x00000000     0x1026
  *(.debug_loc)
- .debug_loc     0x00000000       0x2b ./main.o
- .debug_loc     0x0000002b      0x107 ./drivers/rgb_led_driver/rgb_led.o
- .debug_loc     0x00000132      0x1ef ./drivers/mss_gpio/mss_gpio.o
- .debug_loc     0x00000321      0x2bf ./drivers/fpga_timer/fpga_timer.o
- .debug_loc     0x000005e0       0x37 ./CMSIS/brownout_isr.o
- .debug_loc     0x00000617      0x3de ./CMSIS/core_cm3.o
- .debug_loc     0x000009f5       0x99 ./CMSIS/system_a2fxxxm3.o
- .debug_loc     0x00000a8e      0x3c6 ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_loc     0x00000000       0xd7 ./main.o
+ .debug_loc     0x000000d7      0x1f6 ./drivers/rgb_led_driver/rgb_led.o
+ .debug_loc     0x000002cd      0x1ef ./drivers/mss_gpio/mss_gpio.o
+ .debug_loc     0x000004bc      0x2f6 ./drivers/fpga_timer/fpga_timer.o
+ .debug_loc     0x000007b2       0x37 ./CMSIS/brownout_isr.o
+ .debug_loc     0x000007e9      0x3de ./CMSIS/core_cm3.o
+ .debug_loc     0x00000bc7       0x99 ./CMSIS/system_a2fxxxm3.o
+ .debug_loc     0x00000c60      0x3c6 ./CMSIS/startup_gcc/newlib_stubs.o
 
-.debug_macinfo  0x00000000    0x22516
+.debug_macinfo  0x00000000    0x272bf
  *(.debug_macinfo)
  .debug_macinfo
-                0x00000000      0xc81 ./main.o
+                0x00000000     0x58ff ./main.o
  .debug_macinfo
-                0x00000c81     0x5863 ./drivers/rgb_led_driver/rgb_led.o
+                0x000058ff     0x59f4 ./drivers/rgb_led_driver/rgb_led.o
  .debug_macinfo
-                0x000064e4     0x5ce1 ./drivers/mss_gpio/mss_gpio.o
+                0x0000b2f3     0x5ce1 ./drivers/mss_gpio/mss_gpio.o
  .debug_macinfo
-                0x0000c1c5     0x53e1 ./drivers/fpga_timer/fpga_timer.o
+                0x00010fd4     0x537b ./drivers/fpga_timer/fpga_timer.o
  .debug_macinfo
-                0x000115a6     0x53ef ./CMSIS/brownout_isr.o
+                0x0001634f     0x53ef ./CMSIS/brownout_isr.o
  .debug_macinfo
-                0x00016995     0x1512 ./CMSIS/core_cm3.o
+                0x0001b73e     0x1512 ./CMSIS/core_cm3.o
  .debug_macinfo
-                0x00017ea7     0x5a7f ./CMSIS/system_a2fxxxm3.o
+                0x0001cc50     0x5a7f ./CMSIS/system_a2fxxxm3.o
  .debug_macinfo
-                0x0001d926     0x4bf0 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x000226cf     0x4bf0 ./CMSIS/startup_gcc/newlib_stubs.o
 
 .debug_weaknames
  *(.debug_weaknames)

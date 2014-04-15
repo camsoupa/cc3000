@@ -30,6 +30,6 @@ cc3000fpga/synthesis/
 cc3000fpga/simulation/
 
 # SoftConsole build files
-Debug/
+cc3000_web_client/Debug/
 
 

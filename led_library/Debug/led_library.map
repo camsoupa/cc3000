@@ -1,0 +1,676 @@
+Archive member included because of file (symbol)
+
+c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+                              ./CMSIS/startup_gcc/newlib_stubs.o (__errno)
+c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                              c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o) (_impure_ptr)
+c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+                              ./CMSIS/startup_gcc/startup_a2fxxxm3.o (__libc_init_array)
+
+Allocating common symbols
+Common symbol       size              file
+
+pulse_direction     0x1               ./drivers/rgb_led_driver/rgb_led.o
+blue                0x1               ./drivers/rgb_led_driver/rgb_led.o
+green               0x1               ./drivers/rgb_led_driver/rgb_led.o
+red                 0x1               ./drivers/rgb_led_driver/rgb_led.o
+rgb_gpio            0x1               ./drivers/rgb_led_driver/rgb_led.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x20000000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+LOAD ./main.o
+LOAD ./drivers/rgb_led_driver/rgb_led.o
+LOAD ./drivers/mss_gpio/mss_gpio.o
+LOAD ./drivers/fpga_timer/fpga_timer.o
+LOAD ./CMSIS/brownout_isr.o
+LOAD ./CMSIS/core_cm3.o
+LOAD ./CMSIS/system_a2fxxxm3.o
+LOAD ./CMSIS/startup_gcc/newlib_stubs.o
+LOAD ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+START GROUP
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2\libgcc.a
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2\libgcc.a
+END GROUP
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+START GROUP
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2\libgcc.a
+LOAD c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libm.a
+END GROUP
+                0x00000000                __DYNAMIC = 0x0
+                0x20000000                RAM_START_ADDRESS = 0x20000000
+                0x00010000                RAM_SIZE = 0x10000
+                0x00002000                MAIN_STACK_SIZE = 0x2000
+                0x00001000                PROCESS_STACK_SIZE = 0x1000
+                0x20010000                PROVIDE (__main_stack_start, (RAM_START_ADDRESS + RAM_SIZE))
+                0x2000e000                PROVIDE (__process_stack_start, (__main_stack_start - MAIN_STACK_SIZE))
+                0x20010000                PROVIDE (_estack, __main_stack_start)
+                0x00000000                PROVIDE (__mirrored_nvm, 0x0)
+
+.text           0x20000000     0x1540
+ CREATE_OBJECT_SYMBOLS
+                0x20000000                __text_load = LOADADDR (.text)
+                0x20000000                __text_start = .
+ *(.isr_vector)
+ .isr_vector    0x20000000      0x470 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+                0x20000000                g_pfnVectors
+                0x20000298                Reset_Handler
+                0x20000308                NMI_Handler
+                0x2000030a                HardFault_Handler
+                0x2000030c                MemManage_Handler
+                0x2000030e                BusFault_Handler
+                0x20000310                UsageFault_Handler
+                0x20000312                SVC_Handler
+                0x20000314                DebugMon_Handler
+                0x20000316                PendSV_Handler
+                0x20000318                SysTick_Handler
+                0x2000031a                WdogWakeup_IRQHandler
+                0x2000031e                BrownOut_3_3V_IRQHandler
+                0x20000320                RTC_Match_IRQHandler
+                0x20000322                RTCIF_Pub_IRQHandler
+                0x20000324                EthernetMAC_IRQHandler
+                0x20000326                IAP_IRQHandler
+                0x20000328                ENVM0_IRQHandler
+                0x2000032a                ENVM1_IRQHandler
+                0x2000032c                DMA_IRQHandler
+                0x2000032e                UART0_IRQHandler
+                0x20000330                UART1_IRQHandler
+                0x20000332                SPI0_IRQHandler
+                0x20000334                SPI1_IRQHandler
+                0x20000336                I2C0_IRQHandler
+                0x20000338                I2C0_SMBAlert_IRQHandler
+                0x2000033a                I2C0_SMBus_IRQHandler
+                0x2000033c                I2C1_IRQHandler
+                0x2000033e                I2C1_SMBAlert_IRQHandler
+                0x20000340                I2C1_SMBus_IRQHandler
+                0x20000342                Timer1_IRQHandler
+                0x20000344                Timer2_IRQHandler
+                0x20000346                PLL_Lock_IRQHandler
+                0x20000348                PLL_LockLost_IRQHandler
+                0x2000034a                CommError_IRQHandler
+                0x2000034c                Fabric_IRQHandler
+                0x2000034e                GPIO0_IRQHandler
+                0x20000350                GPIO1_IRQHandler
+                0x20000352                GPIO2_IRQHandler
+                0x20000354                GPIO3_IRQHandler
+                0x20000356                GPIO4_IRQHandler
+                0x20000358                GPIO5_IRQHandler
+                0x2000035a                GPIO6_IRQHandler
+                0x2000035c                GPIO7_IRQHandler
+                0x2000035e                GPIO8_IRQHandler
+                0x20000360                GPIO9_IRQHandler
+                0x20000362                GPIO10_IRQHandler
+                0x20000364                GPIO11_IRQHandler
+                0x20000366                GPIO12_IRQHandler
+                0x20000368                GPIO13_IRQHandler
+                0x2000036a                GPIO14_IRQHandler
+                0x2000036c                GPIO15_IRQHandler
+                0x2000036e                GPIO16_IRQHandler
+                0x20000370                GPIO17_IRQHandler
+                0x20000372                GPIO18_IRQHandler
+                0x20000374                GPIO19_IRQHandler
+                0x20000376                GPIO20_IRQHandler
+                0x20000378                GPIO21_IRQHandler
+                0x2000037a                GPIO22_IRQHandler
+                0x2000037c                GPIO23_IRQHandler
+                0x2000037e                GPIO24_IRQHandler
+                0x20000380                GPIO25_IRQHandler
+                0x20000382                GPIO26_IRQHandler
+                0x20000384                GPIO27_IRQHandler
+                0x20000386                GPIO28_IRQHandler
+                0x20000388                GPIO29_IRQHandler
+                0x2000038a                GPIO30_IRQHandler
+                0x2000038c                GPIO31_IRQHandler
+                0x2000038e                ACE_PC0_Flag0_IRQHandler
+                0x20000390                ACE_PC0_Flag1_IRQHandler
+                0x20000392                ACE_PC0_Flag2_IRQHandler
+                0x20000394                ACE_PC0_Flag3_IRQHandler
+                0x20000396                ACE_PC1_Flag0_IRQHandler
+                0x20000398                ACE_PC1_Flag1_IRQHandler
+                0x2000039a                ACE_PC1_Flag2_IRQHandler
+                0x2000039c                ACE_PC1_Flag3_IRQHandler
+                0x2000039e                ACE_PC2_Flag0_IRQHandler
+                0x200003a0                ACE_PC2_Flag1_IRQHandler
+                0x200003a2                ACE_PC2_Flag2_IRQHandler
+                0x200003a4                ACE_PC2_Flag3_IRQHandler
+                0x200003a6                ACE_ADC0_DataValid_IRQHandler
+                0x200003a8                ACE_ADC1_DataValid_IRQHandler
+                0x200003aa                ACE_ADC2_DataValid_IRQHandler
+                0x200003ac                ACE_ADC0_CalDone_IRQHandler
+                0x200003ae                ACE_ADC1_CalDone_IRQHandler
+                0x200003b0                ACE_ADC2_CalDone_IRQHandler
+                0x200003b2                ACE_ADC0_CalStart_IRQHandler
+                0x200003b4                ACE_ADC1_CalStart_IRQHandler
+                0x200003b6                ACE_ADC2_CalStart_IRQHandler
+                0x200003b8                ACE_Comp0_Fall_IRQHandler
+                0x200003ba                ACE_Comp1_Fall_IRQHandler
+                0x200003bc                ACE_Comp2_Fall_IRQHandler
+                0x200003be                ACE_Comp3_Fall_IRQHandler
+                0x200003c0                ACE_Comp4_Fall_IRQHandler
+                0x200003c2                ACE_Comp5_Fall_IRQHandler
+                0x200003c4                ACE_Comp6_Fall_IRQHandler
+                0x200003c6                ACE_Comp7_Fall_IRQHandler
+                0x200003c8                ACE_Comp8_Fall_IRQHandler
+                0x200003ca                ACE_Comp9_Fall_IRQHandler
+                0x200003cc                ACE_Comp10_Fall_IRQHandler
+                0x200003ce                ACE_Comp11_Fall_IRQHandler
+                0x200003d0                ACE_Comp0_Rise_IRQHandler
+                0x200003d2                ACE_Comp1_Rise_IRQHandler
+                0x200003d4                ACE_Comp2_Rise_IRQHandler
+                0x200003d6                ACE_Comp3_Rise_IRQHandler
+                0x200003d8                ACE_Comp4_Rise_IRQHandler
+                0x200003da                ACE_Comp5_Rise_IRQHandler
+                0x200003dc                ACE_Comp6_Rise_IRQHandler
+                0x200003de                ACE_Comp7_Rise_IRQHandler
+                0x200003e0                ACE_Comp8_Rise_IRQHandler
+                0x200003e2                ACE_Comp9_Rise_IRQHandler
+                0x200003e4                ACE_Comp10_Rise_IRQHandler
+                0x200003e6                ACE_Comp11_Rise_IRQHandler
+                0x200003e8                ACE_ADC0_FifoFull_IRQHandler
+                0x200003ea                ACE_ADC0_FifoAFull_IRQHandler
+                0x200003ec                ACE_ADC0_FifoEmpty_IRQHandler
+                0x200003ee                ACE_ADC1_FifoFull_IRQHandler
+                0x200003f0                ACE_ADC1_FifoAFull_IRQHandler
+                0x200003f2                ACE_ADC1_FifoEmpty_IRQHandler
+                0x200003f4                ACE_ADC2_FifoFull_IRQHandler
+                0x200003f6                ACE_ADC2_FifoAFull_IRQHandler
+                0x200003f8                ACE_ADC2_FifoEmpty_IRQHandler
+                0x200003fa                ACE_PPE_Flag0_IRQHandler
+                0x200003fc                ACE_PPE_Flag1_IRQHandler
+                0x200003fe                ACE_PPE_Flag2_IRQHandler
+                0x20000400                ACE_PPE_Flag3_IRQHandler
+                0x20000402                ACE_PPE_Flag4_IRQHandler
+                0x20000404                ACE_PPE_Flag5_IRQHandler
+                0x20000406                ACE_PPE_Flag6_IRQHandler
+                0x20000408                ACE_PPE_Flag7_IRQHandler
+                0x2000040a                ACE_PPE_Flag8_IRQHandler
+                0x2000040c                ACE_PPE_Flag9_IRQHandler
+                0x2000040e                ACE_PPE_Flag10_IRQHandler
+                0x20000410                ACE_PPE_Flag11_IRQHandler
+                0x20000412                ACE_PPE_Flag12_IRQHandler
+                0x20000414                ACE_PPE_Flag13_IRQHandler
+                0x20000416                ACE_PPE_Flag14_IRQHandler
+                0x20000418                ACE_PPE_Flag15_IRQHandler
+                0x2000041a                ACE_PPE_Flag16_IRQHandler
+                0x2000041c                ACE_PPE_Flag17_IRQHandler
+                0x2000041e                ACE_PPE_Flag18_IRQHandler
+                0x20000420                ACE_PPE_Flag19_IRQHandler
+                0x20000422                ACE_PPE_Flag20_IRQHandler
+                0x20000424                ACE_PPE_Flag21_IRQHandler
+                0x20000426                ACE_PPE_Flag22_IRQHandler
+                0x20000428                ACE_PPE_Flag23_IRQHandler
+                0x2000042a                ACE_PPE_Flag24_IRQHandler
+                0x2000042c                ACE_PPE_Flag25_IRQHandler
+                0x2000042e                ACE_PPE_Flag26_IRQHandler
+                0x20000430                ACE_PPE_Flag27_IRQHandler
+                0x20000432                ACE_PPE_Flag28_IRQHandler
+                0x20000434                ACE_PPE_Flag29_IRQHandler
+                0x20000436                ACE_PPE_Flag30_IRQHandler
+                0x20000438                ACE_PPE_Flag31_IRQHandler
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x20000470        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+ .text          0x20000470       0x30 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .text          0x200004a0        0xc ./main.o
+                0x200004a0                main
+ .text          0x200004ac      0x12c ./drivers/rgb_led_driver/rgb_led.o
+                0x200004ac                init_rgb_led
+                0x200004d8                on_pulse
+                0x20000594                set_color
+                0x200005b0                set_brightness
+                0x200005c4                set_pulse_rate
+ .text          0x200005d8      0x388 ./drivers/mss_gpio/mss_gpio.o
+                0x2000064c                MSS_GPIO_init
+                0x200006b8                MSS_GPIO_config
+                0x200006f4                MSS_GPIO_set_output
+                0x20000734                MSS_GPIO_drive_inout
+                0x2000085c                MSS_GPIO_enable_irq
+                0x200008c0                MSS_GPIO_disable_irq
+                0x20000910                MSS_GPIO_clear_irq
+ .text          0x20000960      0x26c ./drivers/fpga_timer/fpga_timer.o
+                0x20000960                MYTIMER_init
+                0x2000096c                MYTIMER_enable
+                0x200009a4                MYTIMER_disable
+                0x200009dc                MYTIMER_setOverflowVal
+                0x20000a04                MYTIMER_getCounterVal
+                0x20000a2c                MYTIMER_enable_allInterrupts
+                0x20000a64                MYTIMER_disable_allInterrupts
+                0x20000a9c                MYTIMER_enable_compareInt
+                0x20000ad4                MYTIMER_disable_compareInt
+                0x20000b0c                MYTIMER_setCompareVal
+                0x20000b34                MYTIMER_enable_overflowInt
+                0x20000b6c                MYTIMER_disable_overflowInt
+                0x20000ba4                MYTIMER_getInterrupt_status
+ .text          0x20000bcc       0xb0 ./CMSIS/brownout_isr.o
+                0x20000bcc                BrownOut_1_5V_IRQHandler
+ .text          0x20000c7c      0x28c ./CMSIS/core_cm3.o
+                0x20000c7c                __get_PSP
+                0x20000c8c                __set_PSP
+                0x20000c94                __get_MSP
+                0x20000ca4                __set_MSP
+                0x20000cac                __get_BASEPRI
+                0x20000ccc                __set_BASEPRI
+                0x20000ce4                __get_PRIMASK
+                0x20000d04                __set_PRIMASK
+                0x20000d1c                __get_FAULTMASK
+                0x20000d3c                __set_FAULTMASK
+                0x20000d54                __get_CONTROL
+                0x20000d74                __set_CONTROL
+                0x20000d8c                __REV
+                0x20000db0                __REV16
+                0x20000dd4                __REVSH
+                0x20000df8                __RBIT
+                0x20000e1c                __LDREXB
+                0x20000e40                __LDREXH
+                0x20000e64                __LDREXW
+                0x20000e88                __STREXB
+                0x20000eb4                __STREXH
+                0x20000ee0                __STREXW
+ .text          0x20000f08      0x244 ./CMSIS/system_a2fxxxm3.o
+                0x20000f08                SystemInit
+                0x20000f14                SystemCoreClockUpdate
+ .text          0x2000114c      0x284 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x2000114c                _close
+                0x20001164                _execve
+                0x2000118c                _exit
+                0x20001198                _fork
+                0x200011b0                _fstat
+                0x200011d4                _getpid
+                0x200011e4                _isatty
+                0x200011fc                _kill
+                0x20001220                _link
+                0x20001244                _lseek
+                0x20001260                _open
+                0x2000127c                _read
+                0x20001298                _write_r
+                0x200012b8                _sbrk
+                0x2000134c                _stat
+                0x20001370                _times
+                0x20001388                _unlink
+                0x200013ac                _wait
+ .text          0x200013d0        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .text          0x200013d0        0xc c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+                0x200013d0                __errno
+ .text          0x200013dc        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ .text          0x200013dc       0x50 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+                0x200013dc                __libc_init_array
+ .text          0x2000142c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .text          0x2000142c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+                0x2000142c                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x2000142c       0xc0 ./drivers/mss_gpio/mss_gpio.o
+ .rodata        0x200014ec       0x10 ./CMSIS/system_a2fxxxm3.o
+ .rodata        0x200014fc       0x1c ./CMSIS/startup_gcc/newlib_stubs.o
+ .rodata        0x20001518        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x20001518                _global_impure_ptr
+ .rodata.str1.4
+                0x2000151c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+ *(.eh_frame_hdr)
+ *(.eh_frame)
+ *(.init)
+ .init          0x20001520        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+                0x20001520                _init
+ .init          0x20001524        0x8 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+ *(.fini)
+ .fini          0x2000152c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+                0x2000152c                _fini
+ .fini          0x20001530        0x8 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+                0x20001538                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x20001538                PROVIDE (__preinit_array_end, .)
+                0x20001538                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x20001538        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+                0x2000153c                PROVIDE (__init_array_end, .)
+                0x2000153c                PROVIDE (__fini_array_start, .)
+ *(.fini_array)
+ .fini_array    0x2000153c        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x20001540                PROVIDE (__fini_array_end, .)
+                0x20001540                __exidx_start = .
+
+.v4_bx          0x20001540        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x20001540                __exidx_end = .
+                0x20001540                _etext = .
+                0x20001540                PROVIDE (__text_end, .)
+
+.data           0x20001540      0x12c
+                0x20001540                __data_load = LOADADDR (.data)
+                0x20001540                _sidata = LOADADDR (.data)
+                0x20001540                __data_start = .
+                0x20001540                _sdata = .
+ *(.jcr)
+ .jcr           0x20001540        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .jcr           0x20001540        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x20001544        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+ .data          0x20001544        0x4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+                0x20001544                __dso_handle
+ .data          0x20001548        0x0 ./main.o
+ .data          0x20001548        0x2 ./drivers/rgb_led_driver/rgb_led.o
+                0x20001548                master_brightness
+                0x20001549                full_brightness
+ .data          0x2000154a        0x0 ./drivers/mss_gpio/mss_gpio.o
+ *fill*         0x2000154a        0x2 00
+ .data          0x2000154c       0x10 ./drivers/fpga_timer/fpga_timer.o
+                0x2000154c                timers
+ .data          0x2000155c        0x0 ./CMSIS/brownout_isr.o
+ .data          0x2000155c        0x0 ./CMSIS/core_cm3.o
+ .data          0x2000155c       0x18 ./CMSIS/system_a2fxxxm3.o
+                0x2000155c                SystemFrequency
+                0x20001560                SystemCoreClock
+                0x20001564                g_FrequencyPCLK0
+                0x20001568                g_FrequencyPCLK1
+                0x2000156c                g_FrequencyACE
+                0x20001570                g_FrequencyFPGA
+ .data          0x20001574        0x4 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x20001574                environ
+ .data          0x20001578        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .data          0x20001578        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .data          0x20001578       0xf4 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x20001578                _impure_ptr
+ .data          0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+ .data          0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .data          0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+                0x2000166c                . = ALIGN (0x4)
+                0x2000166c                _edata = .
+
+.bss            0x2000166c       0x14
+                0x2000166c                __bss_start__ = .
+                0x2000166c                _sbss = .
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x2000166c        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+ .bss           0x2000166c        0x1 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .bss           0x2000166d        0x0 ./main.o
+ .bss           0x2000166d        0x1 ./drivers/rgb_led_driver/rgb_led.o
+                0x2000166d                min_brightness
+ .bss           0x2000166e        0x0 ./drivers/mss_gpio/mss_gpio.o
+ .bss           0x2000166e        0x0 ./drivers/fpga_timer/fpga_timer.o
+ .bss           0x2000166e        0x0 ./CMSIS/brownout_isr.o
+ .bss           0x2000166e        0x0 ./CMSIS/core_cm3.o
+ .bss           0x2000166e        0x0 ./CMSIS/system_a2fxxxm3.o
+ *fill*         0x2000166e        0x2 00
+ .bss           0x20001670        0x8 ./CMSIS/startup_gcc/newlib_stubs.o
+                0x20001670                __env
+ .bss           0x20001678        0x0 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+ .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .bss           0x20001678        0x0 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+ *(COMMON)
+ COMMON         0x20001678        0x5 ./drivers/rgb_led_driver/rgb_led.o
+                0x20001678                pulse_direction
+                0x20001679                blue
+                0x2000167a                green
+                0x2000167b                red
+                0x2000167c                rgb_gpio
+                0x20001680                . = ALIGN (0x8)
+ *fill*         0x2000167d        0x3 00
+                0x20001680                __bss_end__ = .
+                0x20001680                _end = .
+                0x20001680                __end = _end
+                0x20001680                _ebss = .
+                0x20001680                PROVIDE (end, .)
+
+.stack          0x20001680     0x3000
+                0x20001680                . = ALIGN (0x4)
+                0x20002680                . = (. + PROCESS_STACK_SIZE)
+ *fill*         0x20001680     0x1000 00
+                0x20002680                . = ALIGN (0x4)
+                0x20004680                . = (. + MAIN_STACK_SIZE)
+ *fill*         0x20002680     0x2000 00
+                0x20004680                . = ALIGN (0x4)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.comment        0x00000000      0x158
+ .comment       0x00000000       0x2b ./main.o
+ .comment       0x0000002b       0x2b ./drivers/rgb_led_driver/rgb_led.o
+ .comment       0x00000056       0x2b ./drivers/mss_gpio/mss_gpio.o
+ .comment       0x00000081       0x2b ./drivers/fpga_timer/fpga_timer.o
+ .comment       0x000000ac       0x2b ./CMSIS/brownout_isr.o
+ .comment       0x000000d7       0x2b ./CMSIS/core_cm3.o
+ .comment       0x00000102       0x2b ./CMSIS/system_a2fxxxm3.o
+ .comment       0x0000012d       0x2b ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_aranges  0x00000000      0x100
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 ./main.o
+ .debug_aranges
+                0x00000020       0x20 ./drivers/rgb_led_driver/rgb_led.o
+ .debug_aranges
+                0x00000040       0x20 ./drivers/mss_gpio/mss_gpio.o
+ .debug_aranges
+                0x00000060       0x20 ./drivers/fpga_timer/fpga_timer.o
+ .debug_aranges
+                0x00000080       0x20 ./CMSIS/brownout_isr.o
+ .debug_aranges
+                0x000000a0       0x20 ./CMSIS/core_cm3.o
+ .debug_aranges
+                0x000000c0       0x20 ./CMSIS/system_a2fxxxm3.o
+ .debug_aranges
+                0x000000e0       0x20 ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_pubnames
+                0x00000000      0x653
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x1b ./main.o
+ .debug_pubnames
+                0x0000001b       0xdd ./drivers/rgb_led_driver/rgb_led.o
+ .debug_pubnames
+                0x000000f8       0xb1 ./drivers/mss_gpio/mss_gpio.o
+ .debug_pubnames
+                0x000001a9      0x183 ./drivers/fpga_timer/fpga_timer.o
+ .debug_pubnames
+                0x0000032c       0x2f ./CMSIS/brownout_isr.o
+ .debug_pubnames
+                0x0000035b      0x159 ./CMSIS/core_cm3.o
+ .debug_pubnames
+                0x000004b4       0xb4 ./CMSIS/system_a2fxxxm3.o
+ .debug_pubnames
+                0x00000568       0xeb ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_info     0x00000000     0x2cb9
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000       0x4a ./main.o
+ .debug_info    0x0000004a      0x1ec ./drivers/rgb_led_driver/rgb_led.o
+ .debug_info    0x00000236     0x1110 ./drivers/mss_gpio/mss_gpio.o
+ .debug_info    0x00001346      0x336 ./drivers/fpga_timer/fpga_timer.o
+ .debug_info    0x0000167c      0x502 ./CMSIS/brownout_isr.o
+ .debug_info    0x00001b7e      0x548 ./CMSIS/core_cm3.o
+ .debug_info    0x000020c6      0x538 ./CMSIS/system_a2fxxxm3.o
+ .debug_info    0x000025fe      0x6bb ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_abbrev   0x00000000      0x765
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x38 ./main.o
+ .debug_abbrev  0x00000038       0xc6 ./drivers/rgb_led_driver/rgb_led.o
+ .debug_abbrev  0x000000fe      0x17f ./drivers/mss_gpio/mss_gpio.o
+ .debug_abbrev  0x0000027d       0xf4 ./drivers/fpga_timer/fpga_timer.o
+ .debug_abbrev  0x00000371       0xe0 ./CMSIS/brownout_isr.o
+ .debug_abbrev  0x00000451       0xd7 ./CMSIS/core_cm3.o
+ .debug_abbrev  0x00000528      0x10f ./CMSIS/system_a2fxxxm3.o
+ .debug_abbrev  0x00000637      0x12e ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_line     0x00000000      0xe71
+ *(.debug_line)
+ .debug_line    0x00000000       0x38 ./main.o
+ .debug_line    0x00000038      0x1ab ./drivers/rgb_led_driver/rgb_led.o
+ .debug_line    0x000001e3      0x2d7 ./drivers/mss_gpio/mss_gpio.o
+ .debug_line    0x000004ba      0x164 ./drivers/fpga_timer/fpga_timer.o
+ .debug_line    0x0000061e      0x109 ./CMSIS/brownout_isr.o
+ .debug_line    0x00000727      0x153 ./CMSIS/core_cm3.o
+ .debug_line    0x0000087a      0x277 ./CMSIS/system_a2fxxxm3.o
+ .debug_line    0x00000af1      0x380 ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_frame    0x00000000      0x8a0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x28 ./main.o
+ .debug_frame   0x00000028       0xa0 ./drivers/rgb_led_driver/rgb_led.o
+ .debug_frame   0x000000c8      0x118 ./drivers/mss_gpio/mss_gpio.o
+ .debug_frame   0x000001e0      0x178 ./drivers/fpga_timer/fpga_timer.o
+ .debug_frame   0x00000358       0x34 ./CMSIS/brownout_isr.o
+ .debug_frame   0x0000038c      0x248 ./CMSIS/core_cm3.o
+ .debug_frame   0x000005d4       0x64 ./CMSIS/system_a2fxxxm3.o
+ .debug_frame   0x00000638      0x21c ./CMSIS/startup_gcc/newlib_stubs.o
+ .debug_frame   0x00000854       0x20 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .debug_frame   0x00000874       0x2c c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+
+.debug_str      0x00000000     0x193b
+ *(.debug_str)
+ .debug_str     0x00000000       0x5f ./main.o
+ .debug_str     0x0000005f      0x11c ./drivers/rgb_led_driver/rgb_led.o
+                                0x1b5 (size before relaxing)
+ .debug_str     0x0000017b     0x1151 ./drivers/mss_gpio/mss_gpio.o
+                               0x126d (size before relaxing)
+ .debug_str     0x000012cc      0x18d ./drivers/fpga_timer/fpga_timer.o
+                                0x28c (size before relaxing)
+ .debug_str     0x00001459       0x92 ./CMSIS/brownout_isr.o
+                                0x39d (size before relaxing)
+ .debug_str     0x000014eb      0x148 ./CMSIS/core_cm3.o
+                                0x24b (size before relaxing)
+ .debug_str     0x00001633      0x119 ./CMSIS/system_a2fxxxm3.o
+                                0x438 (size before relaxing)
+ .debug_str     0x0000174c      0x1ef ./CMSIS/startup_gcc/newlib_stubs.o
+                                0x304 (size before relaxing)
+
+.debug_loc      0x00000000      0xe54
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x2b ./main.o
+ .debug_loc     0x0000002b      0x107 ./drivers/rgb_led_driver/rgb_led.o
+ .debug_loc     0x00000132      0x1ef ./drivers/mss_gpio/mss_gpio.o
+ .debug_loc     0x00000321      0x2bf ./drivers/fpga_timer/fpga_timer.o
+ .debug_loc     0x000005e0       0x37 ./CMSIS/brownout_isr.o
+ .debug_loc     0x00000617      0x3de ./CMSIS/core_cm3.o
+ .debug_loc     0x000009f5       0x99 ./CMSIS/system_a2fxxxm3.o
+ .debug_loc     0x00000a8e      0x3c6 ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_macinfo  0x00000000    0x22516
+ *(.debug_macinfo)
+ .debug_macinfo
+                0x00000000      0xc81 ./main.o
+ .debug_macinfo
+                0x00000c81     0x5863 ./drivers/rgb_led_driver/rgb_led.o
+ .debug_macinfo
+                0x000064e4     0x5ce1 ./drivers/mss_gpio/mss_gpio.o
+ .debug_macinfo
+                0x0000c1c5     0x53e1 ./drivers/fpga_timer/fpga_timer.o
+ .debug_macinfo
+                0x000115a6     0x53ef ./CMSIS/brownout_isr.o
+ .debug_macinfo
+                0x00016995     0x1512 ./CMSIS/core_cm3.o
+ .debug_macinfo
+                0x00017ea7     0x5a7f ./CMSIS/system_a2fxxxm3.o
+ .debug_macinfo
+                0x0001d926     0x4bf0 ./CMSIS/startup_gcc/newlib_stubs.o
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x25
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x19 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crti.o
+ .ARM.attributes
+                0x00000019       0x29 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtbegin.o
+ .ARM.attributes
+                0x00000042       0x31 ./main.o
+ .ARM.attributes
+                0x00000073       0x31 ./drivers/rgb_led_driver/rgb_led.o
+ .ARM.attributes
+                0x000000a4       0x31 ./drivers/mss_gpio/mss_gpio.o
+ .ARM.attributes
+                0x000000d5       0x31 ./drivers/fpga_timer/fpga_timer.o
+ .ARM.attributes
+                0x00000106       0x31 ./CMSIS/brownout_isr.o
+ .ARM.attributes
+                0x00000137       0x31 ./CMSIS/core_cm3.o
+ .ARM.attributes
+                0x00000168       0x31 ./CMSIS/system_a2fxxxm3.o
+ .ARM.attributes
+                0x00000199       0x31 ./CMSIS/startup_gcc/newlib_stubs.o
+ .ARM.attributes
+                0x000001ca       0x21 ./CMSIS/startup_gcc/startup_a2fxxxm3.o
+ .ARM.attributes
+                0x000001eb       0x29 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000214       0x29 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000023d       0x29 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000266       0x29 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtend.o
+ .ARM.attributes
+                0x0000028f       0x19 c:/microsemi/libero_v10.1/softconsole/sourcery-g++/bin/../lib/gcc/arm-none-eabi/4.4.1/thumb2/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.isr_vector)
+OUTPUT(led_library elf32-littlearm)

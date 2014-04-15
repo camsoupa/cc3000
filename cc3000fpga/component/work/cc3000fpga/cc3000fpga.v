@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Fri Apr 11 16:44:35 2014
+// Created by SmartDesign Tue Apr 15 11:58:29 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -248,9 +248,9 @@ cc3000fpga_MSS cc3000fpga_MSS_0(
         .M2F_GPO_12  ( LED_G_net_0 ),
         .M2F_GPO_11  ( LED_R_net_0 ),
         .GPIO_4_OUT  ( SPI_EN_PIN_0 ),
+        .M2F_GPO_9   ( SPI_SS_PIN_net_0 ),
         .MSSPADDR    ( cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR ),
         .MSSPWDATA   ( cc3000fpga_MSS_0_MSS_MASTER_APB_PWDATA ),
-        .M2F_GPO_9   ( SPI_SS_PIN_net_0 ),
         // Inouts
         .SPI_1_CLK   ( SPI_1_CLK ),
         .SPI_1_SS    ( SPI_1_SS ) 

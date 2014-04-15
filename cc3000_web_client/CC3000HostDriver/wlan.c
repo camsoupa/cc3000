@@ -278,34 +278,41 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 
 	if (ulSpiIRQState)
 	{
+
 		//
 		// wait till the IRQ line goes low
 		//
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
+			printf("While WLAN != 0");
 		}
 	}
 	else
 	{
+		//printf("GOT TO THIS STRANGE PLACE\r\n");
 		//
 		// wait till the IRQ line goes high and than low
 		//
 		while(tSLInformation.ReadWlanInterruptPin() == 0)
 		{
+			//printf("While WLAN == 0");
 		}
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
+			//printf("While WLAN != 0 after ==0");
 		}
+
+		//printf("LEAVING STRANGE PLACE\r\n");
 	}
 	
 
 	printf("Got low IRQ line!\n\r");
 	SimpleLink_Init_Start(usPatchesAvailableAtHost);
 
-	printf("sending spi command\n\r");
+
 	// Read Buffer's size and finish
 	hci_command_send(HCI_CMND_READ_BUFFER_SIZE, tSLInformation.pucTxCommandBuffer, 0);
-	printf("Wait for Event\n\r");
+
 	SimpleLinkWaitEvent(HCI_CMND_READ_BUFFER_SIZE, 0);
 }
 

@@ -204,6 +204,7 @@ static void SpiDisableInterrupts(void);
 bool SpiBusy()
 {
    //how do we know if Spi is busy?
+	//delay(200);
  return(!MSS_SPI_tx_done( &g_mss_spi1));
 	//return(0);
 
@@ -503,6 +504,8 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 long
 SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 {
+	printf("SpiWrite()\r\n");
+
     uint8_t ui8Pad = 0;
 
     // Parameter sanity check.
@@ -557,10 +560,10 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
         ASSERT_CS();
     }
 
-	//printf("got to while\n\r");
+
     // Wait for the transaction to complete before returning.
     while (eSPI_STATE_IDLE != sSpiInformation.ui32SpiState); // kill time
-	//printf("back from while\n\r");
+
 
     return(0);
 }
@@ -573,6 +576,8 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 void
 SpiDisableSSIDMAChannels()
 {
+	PDMA_disable_irq(SPI_UDMA_RX_CHANNEL);
+	PDMA_disable_irq(SPI_UDMA_TX_CHANNEL);
 	PDMA_pause(SPI_UDMA_RX_CHANNEL);
 	PDMA_pause(SPI_UDMA_TX_CHANNEL);
 }
@@ -585,6 +590,8 @@ SpiDisableSSIDMAChannels()
 void
 SpiEnableSSIDMAChannels()
 {
+	PDMA_enable_irq(SPI_UDMA_RX_CHANNEL);
+	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
 	PDMA_resume(SPI_UDMA_RX_CHANNEL);
 	PDMA_resume(SPI_UDMA_TX_CHANNEL);
 }
@@ -684,11 +691,11 @@ SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 {
-	printf("SpiWriteAsync\n\r");
+
 	MSS_SPI_disable(&g_mss_spi1);
 
 	// The DMA channels must be disabled.
-    SpiDisableSSIDMAChannels();
+    //SpiDisableSSIDMAChannels();
 
 
     // The TI uDMA controller can only transfer 1024 bytes in a single transaction
@@ -711,6 +718,8 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 
     // Configure:
 
+	MSS_SPI_set_transfer_byte_count(&g_mss_spi1, ui16Size);
+
 	// Transmit channel
 	PDMA_configure
 	(
@@ -731,21 +740,20 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 	);
 
 
-
-
-
-
-	printf("Set_transfer_byte_count\n\r");
-	MSS_SPI_set_transfer_byte_count(&g_mss_spi1, ui16Size);
-	printf("back\n\r");
+	//printf("PDMA_start RX\r\n");
 	PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)g_pui8Dummy,16);
-	printf("back1\n\r");
+	//printf("PDMA_start TX\r\n");
 	PDMA_start(SPI_UDMA_TX_CHANNEL,PDMA_SPI1_TX_REGISTER,(uint32_t)pui8Data,ui16Size);
-	printf("back2\n\r");
 
+    //printf ("MSS_SPI_ENABLE\r\n");
     // Enable the SSI transmit and receive DMA channels.
-	MSS_SPI_enable(&g_mss_spi1);
+
     SpiEnableSSIDMAChannels();
+	MSS_SPI_enable(&g_mss_spi1);
+    while ( !MSS_SPI_tx_done(&g_mss_spi1))
+     {
+         ;
+     }
 }
 
 //*****************************************************************************
@@ -1090,10 +1098,15 @@ SpiContReadOperation(void)
 __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
 	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
+
+	printf("IntSpiGPIOHandler: got SPI_IRQ_PIN interrupt for");
+
+
 	MSS_GPIO_clear_irq(SPI_IRQ_PIN);
 
 	if (sSpiInformation.ui32SpiState == eSPI_STATE_POWERUP)
 	{
+		printf(" INIT!\r\n");
 		// We received the first IRQ line edge after powering up the
 		// part.  This is part of the startup sequence so change the state
 		// to show that we received this.
@@ -1101,6 +1114,7 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_IDLE)
 	{
+		printf(" READ!\r\n");
 		// We're idle so an IRQ interrupt indicates that the CC3000 has
 		// data to send us.
 		sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ;
@@ -1114,6 +1128,7 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)
 	{
+		printf(" WRITE!\r\n");
 		// The CC3000 has responded to us lowering CS by handshaking with
 		// its IRQ.  This indicates that we can now start transmitting the
 		// command packet that we're waiting to send.

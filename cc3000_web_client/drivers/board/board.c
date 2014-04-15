@@ -149,33 +149,27 @@ void pio_init()
     //
     // Disable WLAN CS with pull up Resistor
     //
-    //MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI_PORT);
-    //MAP_GPIOPinTypeGPIOOutput(SPI_CS_PORT, SPI_CS_PIN);
-    //GPIOPadConfigSet(SPI_CS_PORT, SPI_CS_PIN, GPIO_STRENGTH_2MA,
-    //                            GPIO_PIN_TYPE_STD_WPU);
-
-
-
-    // Do this after spi is configured !!!
     // CS is low enabled!!!
     // CORE SPI is not doing this for us now... it is manual
 	MSS_GPIO_config( SPI_CS_PIN, MSS_GPIO_OUTPUT_MODE);
 
     //MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, PIN_HIGH);
-	// CS is low enabled so this is de-asserting it
-	MSS_GPIO_set_output(SPI_CS_PIN, 1);
+	// CS is low enabled so this is de-asserting it by making it high
+ 	MSS_GPIO_set_output(SPI_CS_PIN, 1);
 
 
     //
     // Enable interrupt for WLAN_IRQ pin
     //
     //MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
-    //MSS_GPIO_enable_irq( SPI_IRQ_PIN );
+    MSS_GPIO_enable_irq( SPI_IRQ_PIN );
+
 
     //
     // Clear interrupt status
     //
     SpiCleanGPIOISR();
+
 
 
     //MAP_IntEnable(INT_GPIO_SPI);  // same as enable_irq two lines above?
@@ -208,7 +202,12 @@ long ReadWlanInterruptPin(void)
     spi_irq_status = gpio_inputs & MSS_GPIO_2_MASK; // this works according to
                                                     // where this mask is defined
 	//printf("returning interrupt status: %d!\n\r", spi_irq_status);
-	return spi_irq_status;
+    if(spi_irq_status > 0)
+    	return 1;
+    else
+    	return 0;
+
+	//return spi_irq_status;
 }
 
 //*****************************************************************************
@@ -261,12 +260,13 @@ void WriteWlanPin( unsigned char val )
 
     if(val)
     {
-    	printf("WRITING SPI_EN_PIN = 1\n\r");
+        printf("Writing SPI_EN_PIN HIGH\r\n");
         //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
     	MSS_GPIO_set_output(SPI_EN_PIN, 1);
     }
     else
     {
+        printf("Writing SPI_EN_PIN low\r\n");
         //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
     	MSS_GPIO_set_output(SPI_EN_PIN, 0);
     }
@@ -380,7 +380,9 @@ void initLEDs()
     MSS_GPIO_config( MSS_GPIO_3, MSS_GPIO_OUTPUT_MODE);
 
     // Turn all of them off
-    MSS_GPIO_set_outputs(15);
+    MSS_GPIO_set_output(MSS_GPIO_0, 1);
+    MSS_GPIO_set_output(MSS_GPIO_1, 1);
+    MSS_GPIO_set_output(MSS_GPIO_3, 1);
 
     // Turn one on so we know we're at this point in code
     // MSS_GPIO_set_output(0, 0);

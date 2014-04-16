@@ -15,7 +15,7 @@
 #define ON 0
 #define OFF 1
 
-#define I 30
+#define I 4
 
 // timer status register reason for interrupt
 #define STATUS_OVERFLOW 0x01
@@ -36,8 +36,8 @@ uint8_t blue_timer_id;
 uint8_t pulse_timer_id;
 
 //0-100
-uint8_t master_brightness = 255 * I;
-uint8_t full_brightness = 255 * I;
+uint8_t master_brightness = 100;
+uint8_t full_brightness = 100;
 uint8_t min_brightness = 0;
 
 uint8_t pulse_direction;
@@ -159,20 +159,24 @@ void pwm_timer_handler(uint32_t gpio, uint32_t timer_index)
     }
 }
 
+void update_compare_values(){
+	timer_setCompareVal(red_timer_id, red*I*(master_brightness/full_brightness));
+	timer_setCompareVal(blue_timer_id, blue*I*(master_brightness/full_brightness));
+	timer_setCompareVal(green_timer_id, green*I*(master_brightness/full_brightness));
+
+	timer_enable(red_timer_id);
+	timer_enable(green_timer_id);
+	timer_enable(blue_timer_id);
+}
+
 void set_color(uint8_t r, uint8_t g, uint8_t b){
   red = r; green = g; blue = g;
+  update_compare_values();
 }
 
 void set_brightness(uint8_t brightness){
   master_brightness = brightness;
-
-  timer_setCompareVal(red_timer_id, red*I*(master_brightness/full_brightness));
-  timer_setCompareVal(blue_timer_id, blue*I*(master_brightness/full_brightness));
-  timer_setCompareVal(green_timer_id, green*I*(master_brightness/full_brightness));
-
-  timer_enable(red_timer_id);
-  timer_enable(green_timer_id);
-  timer_enable(blue_timer_id);
+  update_compare_values();
 }
 
 // We could reverse this to make it more intuitive

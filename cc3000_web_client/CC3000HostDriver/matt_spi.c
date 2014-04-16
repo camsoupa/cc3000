@@ -128,7 +128,7 @@ typedef struct
     uint8_t *pTxPacket;
     uint8_t *pRxPacket;
     uint32_t ulRxBufferSize;
-    tSpiHwConfiguration sHwSettings;
+    tSpiHwConfiguration sHwSettings; // do we need this TODO?
 }tSpiInformation;
 
 tSpiInformation sSpiInformation;
@@ -180,7 +180,7 @@ __no_init static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUC
 uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
 uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
 uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
-static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE] __attribute__ ((aligned(1024)));
+//static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE] __attribute__ ((aligned(1024)));
 //#endif
 
 //*****************************************************************************
@@ -220,6 +220,7 @@ bool SpiBusy()
 void
 SpiConfigureHwMapping(void)
 {
+	// Done elsewhere
 }
 
 //*****************************************************************************
@@ -233,6 +234,7 @@ SpiCleanGPIOISR(void)
 	// called from CC3000 GPIO interrupt handler
     // unlike TI, there is no status, so we just return 0;
     MSS_GPIO_clear_irq(SPI_IRQ_PIN);
+
     return 0;
 
 }
@@ -310,6 +312,12 @@ SpiClose(void)
     WlanInterruptDisable();
 
     NVIC_DisableIRQ(SPI1_IRQn);
+
+	//PDMA_disable_irq(SPI_UDMA_RX_CHANNEL); add these?
+	//PDMA_disable_irq(SPI_UDMA_TX_CHANNEL);
+
+
+
 }
 
 //*****************************************************************************
@@ -354,7 +362,7 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
 
     // Enable the IRQ and SPI interrupts in the NVIC.
     NVIC_EnableIRQ(SPI1_IRQn);
-    MSS_GPIO_enable_irq(SPI_IRQ_PIN);
+    WlanInterruptEnable();
 }
 
 //*****************************************************************************
@@ -385,6 +393,7 @@ int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 static uint32_t
 SpiCheckDMAStatus(uint32_t ui32Channel)
 {
+	// currently not called
 	// experimental, since I don't know what UDMA_MODE_STOP|DMA_MODE_BASIC
 	// are defined as...
 	return PDMA_status(ui32Channel);
@@ -400,7 +409,7 @@ SpiCheckDMAStatus(uint32_t ui32Channel)
 //*****************************************************************************
 static bool
 SpiIsDMAStopped(uint32_t ui32Channel)
-{
+{   // currently not called
 	// experimental
 	uint32_t BOTH_CHANNELS_COMPLETE = 0x0002;
     return(BOTH_CHANNELS_COMPLETE & PDMA_status(ui32Channel));
@@ -455,7 +464,7 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
     SpiWriteDataSynchronous(ui8Buf, 4);
 
     // Wait for the transmission to complete.
-    while(SpiBusy());
+    while(SpiBusy()); // maybe take care of waiting in the lowest level spi call
 
     // Generate an 80 microsecond gap between the last byte sent and the
     // remainder of the packet.

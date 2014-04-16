@@ -317,7 +317,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     if(lEventType == HCI_EVNT_WLAN_ASYNC_SIMPLE_CONFIG_DONE)
     {
 
-        printf("\r    Received Asynchrus Evnt dne "
+        printf("\r    Received Asynus Evnt dne "
                          "from CC30\n>");
 
         g_ui32SmartConfigFinished = 1;
@@ -340,7 +340,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     //
     if(lEventType == HCI_EVNT_WLAN_UNSOL_DISCONNECT)
     {
-        printf("\r    Rec Unsolicit Discnt CC3000\n>");
+        printf("\r    Rec Unsolicit Dist CC3000\n>");
         g_ui32CC3000Connected = 0;
         g_ui32CC3000DHCP = 0;
         g_ui32CC3000DHCP_configured = 0;
@@ -2259,7 +2259,7 @@ main(void)
     g_ui32BindFlag = SENTINEL_EMPTY;
     g_ui32SmartConfigFinished = 0;
 
-	printf("UART is WORKING\n\r");
+	printf("\n\n---------NEW RUN---------\n\r");
     //
     // Initialize all board specific components.
     //
@@ -2294,7 +2294,6 @@ main(void)
 					exit(1);
 
         		// Bind to hard coded port
-        		printf("bind()\n\n");
         		if(matt_bind() < 0)
         			exit(1);
 
@@ -2305,7 +2304,6 @@ main(void)
         	if(webConnected && (num_msg_sent < num_msg_to_send))
         	{
         	    // Send hard coded http request
-				printf("Calling send() to send HTTP GET\n\n");
 				matt_send();
 				num_msg_sent++;
 
@@ -2314,7 +2312,6 @@ main(void)
 				// server sends in reply arrives before the buffer is empty. As long as buffer isn't
 				// empty recv will keep pulling in data but returns once buff it is empty. Change to recv the
 				// page's size
-				printf("Calling recv()\n\n");
 				matt_recv();
         	}
 
@@ -2323,7 +2320,6 @@ main(void)
         if(num_msg_sent == num_msg_to_send)
         {
         	// Close socket and thus connection
-        	printf("close()\n\n");
         	matt_close();
         	return 0;
         }

@@ -2,7 +2,7 @@
 <device>
   <name>cc3000fpga</name>
   <version>1.0</version>
-  <description>CMSIS description for cc3000fpga.  Created by Actel SmartDesign on Wed Apr 16 15:53:58 2014</description>
+  <description>CMSIS description for cc3000fpga.  Created by Actel SmartDesign on Thu Apr 17 11:45:44 2014</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>

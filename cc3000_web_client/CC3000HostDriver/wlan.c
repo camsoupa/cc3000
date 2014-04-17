@@ -267,7 +267,7 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 	//
 	ulSpiIRQState = tSLInformation.ReadWlanInterruptPin();
 	
-	//printf("ulSpiIRQState: %d\n\r", ulSpiIRQState);
+	printf("ulSpiIRQState: %d\n\r", ulSpiIRQState);
 
 
 
@@ -284,7 +284,7 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		//
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
-			printf("While WLAN != 0");
+			//printf("While WLAN != 0");
 		}
 	}
 	else
@@ -295,18 +295,18 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		//
 		while(tSLInformation.ReadWlanInterruptPin() == 0)
 		{
-			//printf("While WLAN == 0");
+			//printf("WLAN == 0\r\n");
 		}
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
-			//printf("While WLAN != 0 after ==0");
+			//printf("WLAN != 0\r\n");
 		}
 
 		//printf("LEAVING STRANGE PLACE\r\n");
 	}
 	
 
-	printf("Got low IRQ line!\n\r");
+	printf("IRQ LOW\n\r");
 	SimpleLink_Init_Start(usPatchesAvailableAtHost);
 
 

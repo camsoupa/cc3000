@@ -258,15 +258,15 @@ void WlanInterruptDisable()
 void WriteWlanPin( unsigned char val )
 {
 
-    if(val)
+	printf("spi_en=%d\r\n", val);
+	if(val)
     {
-        printf("Writing SPI_EN_PIN HIGH\r\n");
+
         //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
     	MSS_GPIO_set_output(SPI_EN_PIN, 1);
     }
     else
     {
-        printf("Writing SPI_EN_PIN low\r\n");
         //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
     	MSS_GPIO_set_output(SPI_EN_PIN, 0);
     }

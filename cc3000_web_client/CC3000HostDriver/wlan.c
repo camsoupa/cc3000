@@ -284,7 +284,7 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		//
 		while(tSLInformation.ReadWlanInterruptPin() != 0)
 		{
-			printf("While WLAN != 0");
+			//printf("While WLAN != 0");
 		}
 	}
 	else
@@ -305,8 +305,6 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		//printf("LEAVING STRANGE PLACE\r\n");
 	}
 	
-
-	printf("Got low IRQ line!\n\r");
 	SimpleLink_Init_Start(usPatchesAvailableAtHost);
 
 

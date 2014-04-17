@@ -205,6 +205,7 @@ bool SpiBusy()
 {
    //how do we know if Spi is busy?
 	//delay(200);
+    printf("SPIBUSY\r\n");
  return(!MSS_SPI_tx_done( &g_mss_spi1));
 	//return(0);
 
@@ -233,6 +234,7 @@ SpiCleanGPIOISR(void)
 {
 	// called from CC3000 GPIO interrupt handler
     // unlike TI, there is no status, so we just return 0;
+    printf("clear SPI_IRQ int\r\n");
     MSS_GPIO_clear_irq(SPI_IRQ_PIN);
 
     return 0;
@@ -250,14 +252,75 @@ SpiCleanGPIOISR(void)
 void
 SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
+
+    printf("SSIConfigure\r\n");
 	MSS_SPI_init( &g_mss_spi1 );
 
 	// I think this is all right. I'm not sure if we want SPI_MODE2 or SPI_MODE1 though.
 	// Actually looking at http://www.totalphase.com/support/articles/200349236-SPI-Background I think mode 1 is right
+
 	MSS_SPI_configure_master_mode(&g_mss_spi1, MSS_SPI_SLAVE_0, MSS_SPI_MODE1, MSS_SPI_PCLK_DIV_64, MSS_SPI_BLOCK_TRANSFER_FRAME_SIZE);
+    NVIC_EnableIRQ(SPI1_IRQn);
 
-	MSS_SPI_enable( &g_mss_spi1 );
+	PDMA_init();
+	PDMA_configure
+	(
+	 SPI_UDMA_TX_CHANNEL,
+	 PDMA_TO_SPI_1,
+	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER | PDMA_INC_SRC_ONE_BYTE,
+	 PDMA_DEFAULT_WRITE_ADJ
+	);
 
+	PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler );
+  	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
+
+
+
+	/*
+    uint8_t master_tx_buffer[3] =
+    {
+        0xFF, 0xFF, 0xFF
+    };
+
+    uint8_t other_tx_buffer[10] =
+      {
+          0x31, 0x32, 0x33
+      };
+
+	      mss_spi_instance_t * this_spi = &g_mss_spi1;
+	      const uint8_t * cmd_buffer = &master_tx_buffer;
+	      uint16_t cmd_byte_size = 1;
+	      uint8_t * data_buffer = &other_tx_buffer;
+	      uint16_t data_byte_size = 2;
+
+	      uint32_t transfer_size;
+
+	      transfer_size = cmd_byte_size + data_byte_size;
+
+	      MSS_SPI_disable( this_spi );
+	      MSS_SPI_set_transfer_byte_count( this_spi, 1 );
+
+	//  	PDMA_set_irq_handler( SPI_UDMA_RX_CHANNEL, dma_rx_done_irq_handler );
+	  	PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler ); //needed?
+//	  	PDMA_enable_irq(SPI_UDMA_RX_CHANNEL);
+	  	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
+
+	      PDMA_start
+	          (
+	              PDMA_CHANNEL_0,
+	              (uint32_t)cmd_buffer,
+	              PDMA_SPI1_TX_REGISTER,
+	              cmd_byte_size
+	          );
+
+
+	      MSS_SPI_enable( this_spi );
+	      printf("end of init\r\n");
+
+	      //while (SpiBusy());
+*/
+
+	/*
 	// enable peripheral
 	PDMA_init();
 
@@ -279,18 +342,25 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 	 PDMA_DEFAULT_WRITE_ADJ
 	);
 
+	PDMA_set_priority_ratio( PDMA_ROUND_ROBIN ); // added just in case we need
+
 	PDMA_set_irq_handler( SPI_UDMA_RX_CHANNEL, dma_rx_done_irq_handler );
 	PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler ); //needed?
 	PDMA_enable_irq(SPI_UDMA_RX_CHANNEL);
 	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL); //needed?
+	*/
+
+
 }
 
 void dma_tx_done_irq_handler()
 {
+	PDMA_clear_irq(SPI_UDMA_TX_CHANNEL);
 	SpiIntHandler(true, false);
 }
 void dma_rx_done_irq_handler()
 {
+	PDMA_clear_irq(SPI_UDMA_RX_CHANNEL);
 	SpiIntHandler(false, true);
 }
 
@@ -300,9 +370,11 @@ void dma_rx_done_irq_handler()
 // the communication.
 //
 //*****************************************************************************
+
 void
 SpiClose(void)
 {
+    printf("SpiClose\r\n");
     if (sSpiInformation.pRxPacket)
     {
         sSpiInformation.pRxPacket = 0;
@@ -313,8 +385,8 @@ SpiClose(void)
 
     NVIC_DisableIRQ(SPI1_IRQn);
 
-	//PDMA_disable_irq(SPI_UDMA_RX_CHANNEL); add these?
-	//PDMA_disable_irq(SPI_UDMA_TX_CHANNEL);
+	PDMA_disable_irq(SPI_UDMA_RX_CHANNEL); //add these?
+	PDMA_disable_irq(SPI_UDMA_TX_CHANNEL);
 
 
 
@@ -330,6 +402,7 @@ SpiClose(void)
 void
 SpiOpen(tSpiHandleRx pfnRxHandler)
 {
+    printf("SpiOpen\r\n");
     //
     // Parameter sanity check.
     //
@@ -363,6 +436,9 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
     // Enable the IRQ and SPI interrupts in the NVIC.
     NVIC_EnableIRQ(SPI1_IRQn);
     WlanInterruptEnable();
+
+	//PDMA_enable_irq(SPI_UDMA_RX_CHANNEL); //add these?
+	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
 }
 
 //*****************************************************************************
@@ -393,6 +469,7 @@ int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 static uint32_t
 SpiCheckDMAStatus(uint32_t ui32Channel)
 {
+    printf("chk DMA STAT\r\n");
 	// currently not called
 	// experimental, since I don't know what UDMA_MODE_STOP|DMA_MODE_BASIC
 	// are defined as...
@@ -411,6 +488,7 @@ static bool
 SpiIsDMAStopped(uint32_t ui32Channel)
 {   // currently not called
 	// experimental
+    printf("DMAStd?\r\n");
 	uint32_t BOTH_CHANNELS_COMPLETE = 0x0002;
     return(BOTH_CHANNELS_COMPLETE & PDMA_status(ui32Channel));
 }
@@ -423,6 +501,7 @@ SpiIsDMAStopped(uint32_t ui32Channel)
 static void
 SpiFlushRxFifo(void)
 {
+    printf("flsh\r\n");
 	// TODO call MSS_SPI_transfer_frame() (which reads and writes) to get all the data
     uint32_t ui32Idx;
 
@@ -454,6 +533,7 @@ SpiFlushRxFifo(void)
 uint32_t
 SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 {
+    printf("1st Write\r\n");
     // Assert the chip select to CC3000.
     ASSERT_CS();
 
@@ -550,7 +630,7 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 
     if (sSpiInformation.ui32SpiState == eSPI_STATE_INITIALIZED)
     {
-    	printf("First spi write\n\r");
+
         // This is the first SPI transmission so we need to use special timing.
         SpiFirstWrite(pui8UserBuffer, ui16Length);
     }
@@ -585,6 +665,7 @@ SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 void
 SpiDisableSSIDMAChannels()
 {
+    printf("DisableChannels\r\n");
 	PDMA_disable_irq(SPI_UDMA_RX_CHANNEL);
 	PDMA_disable_irq(SPI_UDMA_TX_CHANNEL);
 	PDMA_pause(SPI_UDMA_RX_CHANNEL);
@@ -599,6 +680,7 @@ SpiDisableSSIDMAChannels()
 void
 SpiEnableSSIDMAChannels()
 {
+    printf("enableChannels\r\n");
 	PDMA_enable_irq(SPI_UDMA_RX_CHANNEL);
 	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
 	PDMA_resume(SPI_UDMA_RX_CHANNEL);
@@ -622,11 +704,11 @@ SpiEnableSSIDMAChannels()
 static void
 SpiReadData(uint8_t *pui8Data, uint16_t ui16Size)
 {
-
+  printf("SpiReadData\n");
 	MSS_SPI_disable(&g_mss_spi1);
     // Disable both the transmit and receive DMA channels before we mess with
     // their setup.
-    SpiDisableSSIDMAChannels();
+    //SpiDisableSSIDMAChannels();
 
     // Configure TX to generate the necessary clocks for read from the slave.
     // If we've been asked for 10 bytes or less, we set the transmit channel
@@ -701,10 +783,11 @@ static void
 SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 {
 
-	MSS_SPI_disable(&g_mss_spi1);
+    printf("write asynch\r\n");
 
 	// The DMA channels must be disabled.
     //SpiDisableSSIDMAChannels();
+
 
 
     // The TI uDMA controller can only transfer 1024 bytes in a single transaction
@@ -725,44 +808,52 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
         ui16Size = SPI_WINDOW_SIZE;
     }
 
-    // Configure:
+    uint8_t master_tx_buffer[3] =
+    {
+        0xAA, 0xAA, 0xAA
+    };
 
-	MSS_SPI_set_transfer_byte_count(&g_mss_spi1, ui16Size);
-
-	// Transmit channel
-	PDMA_configure
-	(
-	 SPI_UDMA_TX_CHANNEL,
-	 PDMA_TO_SPI_1,
-	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER | PDMA_INC_SRC_ONE_BYTE,
-	 PDMA_DEFAULT_WRITE_ADJ
-	);
-
-	// Set up a dummy RX DMA to keep the receive FIFO flushed.
-	// Receive channel
-	PDMA_configure
-	(
-	 SPI_UDMA_RX_CHANNEL,
-	 PDMA_FROM_SPI_1,
-	 PDMA_LOW_PRIORITY | PDMA_BYTE_TRANSFER,
-	 PDMA_DEFAULT_WRITE_ADJ
-	);
+    uint8_t other_tx_buffer[10] =
+      {
+          0x31, 0x32, 0x33
+      };
 
 
-	//printf("PDMA_start RX\r\n");
-	PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)g_pui8Dummy,16);
-	//printf("PDMA_start TX\r\n");
-	PDMA_start(SPI_UDMA_TX_CHANNEL,PDMA_SPI1_TX_REGISTER,(uint32_t)pui8Data,ui16Size);
+	      mss_spi_instance_t * this_spi = &g_mss_spi1;
+	      const uint8_t * cmd_buffer = &master_tx_buffer;
+	      uint16_t cmd_byte_size = 1;
+	      uint8_t * data_buffer = &other_tx_buffer;
+	      uint16_t data_byte_size = 2;
 
-    //printf ("MSS_SPI_ENABLE\r\n");
-    // Enable the SSI transmit and receive DMA channels.
+	      uint32_t transfer_size;
 
-    SpiEnableSSIDMAChannels();
-	MSS_SPI_enable(&g_mss_spi1);
-    while ( !MSS_SPI_tx_done(&g_mss_spi1))
-     {
-         ;
-     }
+	      transfer_size = cmd_byte_size + data_byte_size;
+
+	      MSS_SPI_disable( this_spi );
+	      MSS_SPI_set_transfer_byte_count( this_spi, 1 );
+
+	  //	PDMA_set_irq_handler( SPI_UDMA_RX_CHANNEL, dma_rx_done_irq_handler );
+	  	//PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler ); //needed?
+	 // 	PDMA_enable_irq(SPI_UDMA_RX_CHANNEL);
+	  	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
+
+	      PDMA_start
+	          (
+	              PDMA_CHANNEL_0,
+	              (uint32_t)cmd_buffer,
+	              PDMA_SPI1_TX_REGISTER,
+	              cmd_byte_size
+	          );
+
+
+	     // PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)g_pui8Dummy,16);
+
+	      printf("end of async\r\n");
+	      MSS_SPI_enable( this_spi );
+
+
+
+
 }
 
 //*****************************************************************************
@@ -778,6 +869,7 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 static void
 SpiWriteDataSynchronous(const uint8_t *pui8Data, uint16_t ui16Size)
 {
+	printf("SpiWriteDataSync start\r\n");
     // This is a synchronous, polled write so we disable all SSI-related interrupts.
 	NVIC_DisableIRQ(SPI1_IRQn);
 
@@ -795,6 +887,8 @@ SpiWriteDataSynchronous(const uint8_t *pui8Data, uint16_t ui16Size)
 
     // Re-enable the SSI interrupt
     NVIC_EnableIRQ(SPI1_IRQn);
+
+    printf("SpiWriteDataSync end\r\n");
 }
 
 //*****************************************************************************
@@ -812,6 +906,7 @@ SpiWriteDataSynchronous(const uint8_t *pui8Data, uint16_t ui16Size)
 void
 SpiReadHeader(void)
 {
+    printf("read header\r\n");
     sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ;
 
     SpiReadData(sSpiInformation.pRxPacket, 10);
@@ -841,6 +936,7 @@ SpiReadHeader(void)
 long
 SpiReadDataCont(bool *pbError)
 {
+    printf("readCont\r\n");
     uint32_t ui32Count;
     uint8_t *pui8Buff;
     uint8_t ui8Type;
@@ -1004,6 +1100,7 @@ SpiReadDataCont(bool *pbError)
 static void
 SpiDisableInterrupts(void)
 {
+    printf("disabelInt\r\n");
     MSS_GPIO_disable_irq(SPI_IRQ_PIN);
     NVIC_DisableIRQ(SPI1_IRQn);
 }
@@ -1016,6 +1113,7 @@ SpiDisableInterrupts(void)
 void
 SpiResumeSpi(void)
 {
+    printf("resumeSPi\r\n");
 	MSS_GPIO_enable_irq(SPI_IRQ_PIN);
 	NVIC_EnableIRQ(SPI1_IRQn);
 }
@@ -1032,6 +1130,7 @@ SpiResumeSpi(void)
 void
 SpiTriggerRxProcessing(bool bBadPacket)
 {
+    printf("trig RX\r\n");
     // Tidy up at the end of receiving a packet.
     SpiDisableInterrupts();
 
@@ -1069,6 +1168,8 @@ SpiTriggerRxProcessing(bool bBadPacket)
 static void
 SpiContReadOperation(void)
 {
+
+    printf("contRead\r\n");
     bool bError;
 
     //
@@ -1102,13 +1203,15 @@ SpiContReadOperation(void)
 // high) then the CC3000 handshakes this by pulling IRQ low.  When we detect
 // this transition, we start transmission of the command packet.
 //
+// WLAN (SPI_IRQ) handler
+//
 //*****************************************************************************
 //void IntSpiGPIOHandler(void)
 __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
 	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
 
-	printf("IntSpiGPIOHandler: got SPI_IRQ_PIN interrupt for");
+	printf("Got SPI_IRQ_PIN interrupt for");
 
 
 	MSS_GPIO_clear_irq(SPI_IRQ_PIN);
@@ -1154,6 +1257,8 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 // interrupt but the peripheral interrupt status register is not involved and
 // does not contain status bits indicating DMA interrupts.
 //
+// PDMA interrupt
+//
 //*****************************************************************************
 void
 SpiIntHandler(bool bTxFinished, bool bRxFinished)
@@ -1161,8 +1266,11 @@ SpiIntHandler(bool bTxFinished, bool bRxFinished)
     uint16_t ui16Count;
     uint8_t *pui8Buff;
 
+    printf("SpiIntHand\r\n");
     pui8Buff =  sSpiInformation.pRxPacket;
     ui16Count = 0;
+
+   // printf("sSpiInformation.ui32SpiState = %d\r\n", sSpiInformation.ui32SpiState);
 
     if (sSpiInformation.ui32SpiState == eSPI_STATE_READ_IRQ)
     {

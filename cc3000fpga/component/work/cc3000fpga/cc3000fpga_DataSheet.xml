@@ -12,7 +12,7 @@
     <project-description>
     </project-description>
     <location>C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga</location>
-    <state>GENERATED ( Tue Apr 15 11:58:32 2014 )</state>
+    <state>GENERATED ( Thu Apr 17 11:45:44 2014 )</state>
     <swide-toolchain>SoftConsole workspace generated to C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
   </project-settings>
   <site-map>
@@ -41,7 +41,7 @@
   </fileset>
   <fileset>
     <name>Flash Memory File(s)</name>
-    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga_MSS/MSS_ENVM_0/MSS_ENVM_0.efc</file>
+    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\./MSS_ENVM_0/MSS_ENVM_0.efc</file>
   </fileset>
   <io>
     <port-name>SPI_1_DI</port-name>

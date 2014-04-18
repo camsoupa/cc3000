@@ -480,7 +480,7 @@ initDriver(void)
 
     MSS_GPIO_enable_irq(SPI_IRQ_PIN); // Do this for each?
 
-
+	printf("Starting Wlan_init!\n\r");
     //
     // Initialize and enable WiFi on the CC3000.
     //
@@ -488,7 +488,7 @@ initDriver(void)
               sendBootLoaderPatch, ReadWlanInterruptPin,
               WlanInterruptEnable, WlanInterruptDisable, WriteWlanPin);
 
-
+	printf("Wlan_init done!\n\r");
 
     //
     // Start up the CC3000 stack.

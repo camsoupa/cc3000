@@ -205,7 +205,7 @@ bool SpiBusy()
 {
    //how do we know if Spi is busy?
 	//delay(200);
-    printf("SPIBUSY\r\n");
+   // printf("SPIBUSY\r\n");
  return(!MSS_SPI_tx_done( &g_mss_spi1));
 	//return(0);
 
@@ -275,11 +275,10 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
   	PDMA_enable_irq(SPI_UDMA_TX_CHANNEL);
 
 
-
-	/*
+/*
     uint8_t master_tx_buffer[3] =
     {
-        0xFF, 0xFF, 0xFF
+        0x1, 0x0, 0x5, 0x0
     };
 
     uint8_t other_tx_buffer[10] =
@@ -298,7 +297,7 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 	      transfer_size = cmd_byte_size + data_byte_size;
 
 	      MSS_SPI_disable( this_spi );
-	      MSS_SPI_set_transfer_byte_count( this_spi, 1 );
+	      MSS_SPI_set_transfer_byte_count( this_spi, 4 );
 
 	//  	PDMA_set_irq_handler( SPI_UDMA_RX_CHANNEL, dma_rx_done_irq_handler );
 	  	PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler ); //needed?
@@ -313,11 +312,11 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 	              cmd_byte_size
 	          );
 
-
+ASSERT_CS();
 	      MSS_SPI_enable( this_spi );
 	      printf("end of init\r\n");
 
-	      //while (SpiBusy());
+	      while (SpiBusy());
 */
 
 	/*
@@ -785,6 +784,9 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 
     printf("write asynch\r\n");
 
+    printf("size: %d\r\n",ui16Size);
+
+
 	// The DMA channels must be disabled.
     //SpiDisableSSIDMAChannels();
 
@@ -808,29 +810,8 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
         ui16Size = SPI_WINDOW_SIZE;
     }
 
-    uint8_t master_tx_buffer[3] =
-    {
-        0xAA, 0xAA, 0xAA
-    };
-
-    uint8_t other_tx_buffer[10] =
-      {
-          0x31, 0x32, 0x33
-      };
-
-
-	      mss_spi_instance_t * this_spi = &g_mss_spi1;
-	      const uint8_t * cmd_buffer = &master_tx_buffer;
-	      uint16_t cmd_byte_size = 1;
-	      uint8_t * data_buffer = &other_tx_buffer;
-	      uint16_t data_byte_size = 2;
-
-	      uint32_t transfer_size;
-
-	      transfer_size = cmd_byte_size + data_byte_size;
-
-	      MSS_SPI_disable( this_spi );
-	      MSS_SPI_set_transfer_byte_count( this_spi, 1 );
+	      MSS_SPI_disable( &g_mss_spi1 );
+	      MSS_SPI_set_transfer_byte_count( &g_mss_spi1, ui16Size );
 
 	  //	PDMA_set_irq_handler( SPI_UDMA_RX_CHANNEL, dma_rx_done_irq_handler );
 	  	//PDMA_set_irq_handler( SPI_UDMA_TX_CHANNEL, dma_tx_done_irq_handler ); //needed?
@@ -840,16 +821,16 @@ SpiWriteAsync(const uint8_t *pui8Data, uint16_t ui16Size)
 	      PDMA_start
 	          (
 	              PDMA_CHANNEL_0,
-	              (uint32_t)cmd_buffer,
+	              (uint32_t)pui8Data,
 	              PDMA_SPI1_TX_REGISTER,
-	              cmd_byte_size
+	              ui16Size
 	          );
 
 
 	     // PDMA_start(SPI_UDMA_RX_CHANNEL,PDMA_SPI1_RX_REGISTER,(uint32_t)g_pui8Dummy,16);
 
-	      printf("end of async\r\n");
-	      MSS_SPI_enable( this_spi );
+	      //printf("end of async\r\n");
+	      MSS_SPI_enable( &g_mss_spi1 );
 
 
 

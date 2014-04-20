@@ -506,6 +506,7 @@ initDriver(void)
     //
     // Mask out all non-required events from CC3000.
     //
+    // Matt - this is completing
     wlan_set_event_mask(HCI_EVNT_WLAN_KEEPALIVE | HCI_EVNT_WLAN_UNSOL_INIT);
 
     //
@@ -2258,6 +2259,7 @@ main(void)
     g_ui32Socket = SENTINEL_EMPTY;
     g_ui32BindFlag = SENTINEL_EMPTY;
     g_ui32SmartConfigFinished = 0;
+
 
 	printf("\n\n-------NEW RUN-------\n\r");
     //

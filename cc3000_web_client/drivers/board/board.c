@@ -302,7 +302,7 @@ InitSysTick(void)
     */
 
 	//SMARTFUSION METHOD
-	SysTick_Config(2); // 20ms between interrups i'm thinking is good? I think we have a 10ms tick
+	SysTick_Config((SysTick_LOAD_RELOAD_Msk -1)/2 ); // 500ms interrupt
 
 
 
@@ -316,7 +316,6 @@ InitSysTick(void)
 //*****************************************************************************
 __attribute__((__interrupt__)) void SysTick_Handler(void)
 {
-
 	// no call to SysTickIntRegister but this is set up in the TI code as the SysTick
 	// interrupt handler for the timer in startup_ccs.c
     // very similar to our NVIC thing in CMSIS/startup_gcc/startup_A2FXXXM3.s
@@ -342,6 +341,7 @@ __attribute__((__interrupt__)) void SysTick_Handler(void)
         hci_unsolicited_event_handler();
         ulTickCount = 0;
     }
+
 }
 
 //*****************************************************************************

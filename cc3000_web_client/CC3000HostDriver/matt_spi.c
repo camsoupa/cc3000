@@ -348,7 +348,7 @@ int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 uint32_t
 SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 {
-    printf("SpiFirstWrite\r\n");
+    //printf("SpiFirstWrite\r\n");
     // Assert the chip select to CC3000.
     ASSERT_CS();
 
@@ -402,7 +402,7 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
 long
 SpiWrite(uint8_t *pui8UserBuffer, uint16_t ui16Length)
 {
-	printf("SpiWrite()\r\n");
+	//printf("SpiWrite()\r\n");
 
     uint8_t ui8Pad = 0;
 
@@ -573,7 +573,7 @@ SpiReadData(uint8_t *data, uint16_t size)
 static void
 SpiWriteDataSynchronous(const uint8_t *data, uint16_t size)
 {
-	printf("WriteSynchronous\r\n");
+	//printf("WriteSynchronous\r\n");
 
     MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
     MSS_SPI_transfer_block
@@ -612,7 +612,9 @@ SpiReadHeader(void)
 	int i = 0;
 	printf("header rec'd: { ");
 	for (i; i < 10; i++)
+	{
 		printf("0x%x ", sSpiInformation.pRxPacket[i]);
+	}
     printf("}\r\n");
 
 }

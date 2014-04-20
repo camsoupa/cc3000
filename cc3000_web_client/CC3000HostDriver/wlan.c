@@ -304,19 +304,20 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 
 		//printf("LEAVING STRANGE PLACE\r\n");
 	}
-	printf("calling SimpleLink_init_Start\r\n");
+	//printf("calling SimpleLink_init_Start\r\n");
 	
 	SimpleLink_Init_Start(usPatchesAvailableAtHost);
 
-	printf("back from SimpleLink_init_start calling hci_command_send\r\n");
+	//printf("back from SimpleLink_init_start calling hci_command_send\r\n");
 	// Read Buffer's size and finish
 	hci_command_send(HCI_CMND_READ_BUFFER_SIZE, tSLInformation.pucTxCommandBuffer, 0);
 
-	printf("back from hci_command_send calling SImpleLinkWaitEvent\r\n");
+	//printf("back from hci_command_send calling SImpleLinkWaitEvent\r\n");
 
 	SimpleLinkWaitEvent(HCI_CMND_READ_BUFFER_SIZE, 0);
 
-	printf("back form simpleLinkWaitEvent\r\n");
+
+	//printf("back form simpleLinkWaitEvent\r\n");
 }
 
 /**

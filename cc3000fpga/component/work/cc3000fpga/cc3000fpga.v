@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Thu Apr 17 11:45:42 2014
+// Created by SmartDesign Sat Apr 19 21:05:30 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -70,14 +70,13 @@ wire          cc3000fpga_MSS_0_MSS_MASTER_APB_PSELx;
 wire          cc3000fpga_MSS_0_MSS_MASTER_APB_PSLVERR;
 wire   [31:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PWDATA;
 wire          cc3000fpga_MSS_0_MSS_MASTER_APB_PWRITE;
-wire          CoreAPB3_0_APBmslave0_PENABLE;
-wire          CoreAPB3_0_APBmslave0_PSELx;
-wire   [31:0] CoreAPB3_0_APBmslave0_PWDATA;
-wire          CoreAPB3_0_APBmslave0_PWRITE;
+wire          CoreAPB3_0_APBmslave1_PENABLE;
 wire   [31:0] CoreAPB3_0_APBmslave1_PRDATA;
 wire          CoreAPB3_0_APBmslave1_PREADY;
 wire          CoreAPB3_0_APBmslave1_PSELx;
 wire          CoreAPB3_0_APBmslave1_PSLVERR;
+wire   [31:0] CoreAPB3_0_APBmslave1_PWDATA;
+wire          CoreAPB3_0_APBmslave1_PWRITE;
 wire   [31:0] CoreAPB3_0_APBmslave2_PRDATA;
 wire          CoreAPB3_0_APBmslave2_PREADY;
 wire          CoreAPB3_0_APBmslave2_PSELx;
@@ -188,31 +187,31 @@ assign SPI_SS_PIN         = SPI_SS_PIN_net_1;
 //--------------------------------------------------------------------
 // Bus Interface Nets - Unequal Pin Widths
 //--------------------------------------------------------------------
+wire   [19:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR;
 wire   [31:20]cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20;
 wire   [19:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0;
 wire   [31:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0;
-wire   [19:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR;
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20 = 12'h0;
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0 = cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR[19:0];
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0 = { cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20, cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0 };
 
-wire   [31:0] CoreAPB3_0_APBmslave0_PADDR;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_3_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_3;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_2_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_2;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_1_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_1;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_0_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave0_PADDR_0;
-assign CoreAPB3_0_APBmslave0_PADDR_3_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
-assign CoreAPB3_0_APBmslave0_PADDR_3 = { CoreAPB3_0_APBmslave0_PADDR_3_7to0 };
-assign CoreAPB3_0_APBmslave0_PADDR_2_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
-assign CoreAPB3_0_APBmslave0_PADDR_2 = { CoreAPB3_0_APBmslave0_PADDR_2_7to0 };
-assign CoreAPB3_0_APBmslave0_PADDR_1_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
-assign CoreAPB3_0_APBmslave0_PADDR_1 = { CoreAPB3_0_APBmslave0_PADDR_1_7to0 };
-assign CoreAPB3_0_APBmslave0_PADDR_0_7to0 = CoreAPB3_0_APBmslave0_PADDR[7:0];
-assign CoreAPB3_0_APBmslave0_PADDR_0 = { CoreAPB3_0_APBmslave0_PADDR_0_7to0 };
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_3_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_3;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_1_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_1;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_0_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_2_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_2;
+wire   [31:0] CoreAPB3_0_APBmslave1_PADDR;
+assign CoreAPB3_0_APBmslave1_PADDR_3_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_3 = { CoreAPB3_0_APBmslave1_PADDR_3_7to0 };
+assign CoreAPB3_0_APBmslave1_PADDR_1_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_1 = { CoreAPB3_0_APBmslave1_PADDR_1_7to0 };
+assign CoreAPB3_0_APBmslave1_PADDR_0_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_0 = { CoreAPB3_0_APBmslave1_PADDR_0_7to0 };
+assign CoreAPB3_0_APBmslave1_PADDR_2_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_2 = { CoreAPB3_0_APBmslave1_PADDR_2_7to0 };
 
 //--------------------------------------------------------------------
 // Component instances
@@ -259,7 +258,7 @@ cc3000fpga_MSS cc3000fpga_MSS_0(
 //--------CoreAPB3   -   Actel:DirectCore:CoreAPB3:4.0.100
 CoreAPB3 #( 
         .APB_DWIDTH      ( 32 ),
-        .APBSLOT0ENABLE  ( 1 ),
+        .APBSLOT0ENABLE  ( 0 ),
         .APBSLOT1ENABLE  ( 1 ),
         .APBSLOT2ENABLE  ( 1 ),
         .APBSLOT3ENABLE  ( 1 ),
@@ -358,9 +357,9 @@ CoreAPB3_0(
         // Outputs
         .PREADY     ( cc3000fpga_MSS_0_MSS_MASTER_APB_PREADY ),
         .PSLVERR    ( cc3000fpga_MSS_0_MSS_MASTER_APB_PSLVERR ),
-        .PWRITES    ( CoreAPB3_0_APBmslave0_PWRITE ),
-        .PENABLES   ( CoreAPB3_0_APBmslave0_PENABLE ),
-        .PSELS0     ( CoreAPB3_0_APBmslave0_PSELx ),
+        .PWRITES    ( CoreAPB3_0_APBmslave1_PWRITE ),
+        .PENABLES   ( CoreAPB3_0_APBmslave1_PENABLE ),
+        .PSELS0     (  ),
         .PSELS1     ( CoreAPB3_0_APBmslave1_PSELx ),
         .PSELS2     ( CoreAPB3_0_APBmslave2_PSELx ),
         .PSELS3     ( CoreAPB3_0_APBmslave3_PSELx ),
@@ -378,20 +377,20 @@ CoreAPB3_0(
         .PSELS15    (  ),
         .PSELS16    (  ),
         .PRDATA     ( cc3000fpga_MSS_0_MSS_MASTER_APB_PRDATA ),
-        .PADDRS     ( CoreAPB3_0_APBmslave0_PADDR ),
-        .PWDATAS    ( CoreAPB3_0_APBmslave0_PWDATA ) 
+        .PADDRS     ( CoreAPB3_0_APBmslave1_PADDR ),
+        .PWDATAS    ( CoreAPB3_0_APBmslave1_PWDATA ) 
         );
 
 //--------timerWrapper
 timerWrapper Timer_1(
         // Inputs
         .PCLK    ( cc3000fpga_MSS_0_FAB_CLK ),
-        .PENABLE ( CoreAPB3_0_APBmslave0_PENABLE ),
+        .PENABLE ( CoreAPB3_0_APBmslave1_PENABLE ),
         .PSEL    ( CoreAPB3_0_APBmslave1_PSELx ),
         .PRESETN ( cc3000fpga_MSS_0_M2F_RESET_N ),
-        .PWRITE  ( CoreAPB3_0_APBmslave0_PWRITE ),
-        .PADDR   ( CoreAPB3_0_APBmslave0_PADDR_0 ),
-        .PWDATA  ( CoreAPB3_0_APBmslave0_PWDATA ),
+        .PWRITE  ( CoreAPB3_0_APBmslave1_PWRITE ),
+        .PADDR   ( CoreAPB3_0_APBmslave1_PADDR_0 ),
+        .PWDATA  ( CoreAPB3_0_APBmslave1_PWDATA ),
         // Outputs
         .PREADY  ( CoreAPB3_0_APBmslave1_PREADY ),
         .PSLVERR ( CoreAPB3_0_APBmslave1_PSLVERR ),
@@ -404,12 +403,12 @@ timerWrapper Timer_1(
 timerWrapper Timer_2(
         // Inputs
         .PCLK    ( cc3000fpga_MSS_0_FAB_CLK ),
-        .PENABLE ( CoreAPB3_0_APBmslave0_PENABLE ),
+        .PENABLE ( CoreAPB3_0_APBmslave1_PENABLE ),
         .PSEL    ( CoreAPB3_0_APBmslave2_PSELx ),
         .PRESETN ( cc3000fpga_MSS_0_M2F_RESET_N ),
-        .PWRITE  ( CoreAPB3_0_APBmslave0_PWRITE ),
-        .PADDR   ( CoreAPB3_0_APBmslave0_PADDR_1 ),
-        .PWDATA  ( CoreAPB3_0_APBmslave0_PWDATA ),
+        .PWRITE  ( CoreAPB3_0_APBmslave1_PWRITE ),
+        .PADDR   ( CoreAPB3_0_APBmslave1_PADDR_1 ),
+        .PWDATA  ( CoreAPB3_0_APBmslave1_PWDATA ),
         // Outputs
         .PREADY  ( CoreAPB3_0_APBmslave2_PREADY ),
         .PSLVERR ( CoreAPB3_0_APBmslave2_PSLVERR ),
@@ -422,12 +421,12 @@ timerWrapper Timer_2(
 timerWrapper Timer_3(
         // Inputs
         .PCLK    ( cc3000fpga_MSS_0_FAB_CLK ),
-        .PENABLE ( CoreAPB3_0_APBmslave0_PENABLE ),
+        .PENABLE ( CoreAPB3_0_APBmslave1_PENABLE ),
         .PSEL    ( CoreAPB3_0_APBmslave3_PSELx ),
         .PRESETN ( cc3000fpga_MSS_0_M2F_RESET_N ),
-        .PWRITE  ( CoreAPB3_0_APBmslave0_PWRITE ),
-        .PADDR   ( CoreAPB3_0_APBmslave0_PADDR_2 ),
-        .PWDATA  ( CoreAPB3_0_APBmslave0_PWDATA ),
+        .PWRITE  ( CoreAPB3_0_APBmslave1_PWRITE ),
+        .PADDR   ( CoreAPB3_0_APBmslave1_PADDR_2 ),
+        .PWDATA  ( CoreAPB3_0_APBmslave1_PWDATA ),
         // Outputs
         .PREADY  ( CoreAPB3_0_APBmslave3_PREADY ),
         .PSLVERR ( CoreAPB3_0_APBmslave3_PSLVERR ),
@@ -440,12 +439,12 @@ timerWrapper Timer_3(
 timerWrapper Timer_4(
         // Inputs
         .PCLK    ( cc3000fpga_MSS_0_FAB_CLK ),
-        .PENABLE ( CoreAPB3_0_APBmslave0_PENABLE ),
+        .PENABLE ( CoreAPB3_0_APBmslave1_PENABLE ),
         .PSEL    ( CoreAPB3_0_APBmslave4_PSELx ),
         .PRESETN ( cc3000fpga_MSS_0_M2F_RESET_N ),
-        .PWRITE  ( CoreAPB3_0_APBmslave0_PWRITE ),
-        .PADDR   ( CoreAPB3_0_APBmslave0_PADDR_3 ),
-        .PWDATA  ( CoreAPB3_0_APBmslave0_PWDATA ),
+        .PWRITE  ( CoreAPB3_0_APBmslave1_PWRITE ),
+        .PADDR   ( CoreAPB3_0_APBmslave1_PADDR_3 ),
+        .PWDATA  ( CoreAPB3_0_APBmslave1_PWDATA ),
         // Outputs
         .PREADY  ( CoreAPB3_0_APBmslave4_PREADY ),
         .PSLVERR ( CoreAPB3_0_APBmslave4_PSLVERR ),

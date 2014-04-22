@@ -74,13 +74,13 @@ hci_command_send(unsigned short usOpcode, unsigned char *pucBuff,
 	stream = UINT16_TO_STREAM(stream, usOpcode);
 	UINT8_TO_STREAM(stream, ucArgsLength);
 
-	int i = 0;
-	printf("command_send: { ");
-	for (i; i < ucArgsLength + SIMPLE_LINK_HCI_CMND_HEADER_SIZE ; i++)
-	{
-		printf("0x%x ", pucBuff[i]);
-	}
-    printf("}\r\n");
+	//int i = 0;
+	//printf("command_send: { ");
+	//for (i; i < ucArgsLength + SIMPLE_LINK_HCI_CMND_HEADER_SIZE ; i++)
+	//{
+	//	printf("0x%x ", pucBuff[i]);
+	//}
+    //printf("}\r\n");
 
     //
 	// Update the opcode of the event we will be waiting for

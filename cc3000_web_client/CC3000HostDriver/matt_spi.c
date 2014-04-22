@@ -524,13 +524,24 @@ SpiReadData(uint8_t *data, uint16_t size)
 
     MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
 
+
+
     int i = 0;
+    printf("SpiReadData doing a write: {");
     for (i = 0; i < size; i++)
     {
-
-      data[i] = MSS_SPI_transfer_frame( &g_mss_spi1, data_to_send[i]);
-
+        printf("0x%x ,", data_to_send[i]);
     }
+    printf(" }\r\n");
+
+    printf("SpiReadData: {");
+    for (i = 0; i < size; i++)
+    {
+      data[i] = MSS_SPI_transfer_frame( &g_mss_spi1, data_to_send[i]);
+      printf("0x%x ,", data[i]);
+    }
+    printf(" }\r\n");
+
 
  /*   MSS_SPI_transfer_block
       (
@@ -586,13 +597,14 @@ SpiWriteDataSynchronous(const uint8_t *data, uint16_t size)
     MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
 
     int i = 0;
+    printf("WriteSpiSynchro: {");
     for (i = 0; i < size; i++)
     {
-
+    printf("0x%x ,", data[i]);
      MSS_SPI_transfer_frame( &g_mss_spi1, data[i]);
 
     }
-
+    printf(" }\r\n");
 /*
     uint32_t dummy;
 
@@ -650,13 +662,13 @@ SpiReadHeader(void)
 
 	SpiReadData(sSpiInformation.pRxPacket, 10);
 
-	int i = 0;
-	printf("header rec'd: { ");
-	for (i; i < 10; i++)
-	{
-		printf("0x%x ", sSpiInformation.pRxPacket[i]);
-	}
-    printf("}\r\n");
+//	int i = 0;
+//	printf("header rec'd: { ");
+//	for (i; i < 10; i++)
+//	{
+//		printf("0x%x ", sSpiInformation.pRxPacket[i]);
+//	}
+ //   printf("}\r\n");
 
 }
 
@@ -767,7 +779,7 @@ SpiReadDataCont()
 void
 SpiPauseSpi(void)
 {
-    //printf("SpidisabelInt\r\n");
+    printf("SpiPauseSpi: disable spi IRQ\r\n");
 	MSS_GPIO_disable_irq(SPI_IRQ_PIN);
 }
 
@@ -843,7 +855,7 @@ SpiTriggerRxProcessing()
 static void
 SpiContReadOperation(void)
 {
-   printf("SpiContReadOperation: \r\n");
+   printf("SpiContReadOperation: calling SpiReadDataCont \r\n");
 	//
 	// The header was read - continue with  the payload read
 	//
@@ -883,7 +895,7 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
 	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
 
-	printf("Got SPI_IRQ_PIN interrupt for");
+	printf("IntSpiGPIOHandler: Got SPI_IRQ_PIN interrupt for");
 
 
 	MSS_GPIO_clear_irq(SPI_IRQ_PIN);
@@ -915,9 +927,9 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 		delay(100000);
 
 		sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
-        printf("SpiContReadOperation!!            Must do this for a rec\r\n");
+       // printf("SpiContReadOperation!!            Must do this for a rec\r\n");
 		SpiContReadOperation();
-        printf("Back from SpiContReadOperation\r\n");
+        printf("IntSpiGPIOHandler: Back from SpiContReadOperation\r\n");
 
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)

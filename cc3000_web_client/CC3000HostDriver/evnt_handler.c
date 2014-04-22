@@ -220,6 +220,8 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 	{
 		if (tSLInformation.usEventOrDataReceived != 0)
 		{				
+
+			printf("Event_Handler: in the got Event or data if\r\n");
 			pucReceivedData = (tSLInformation.pucReceivedData);
 			
 			if (*pucReceivedData == HCI_TYPE_EVNT)
@@ -475,6 +477,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 long
 hci_unsol_event_handler(char *event_hdr)
 {
+	printf("hci_unsol_event_handler: in here ");
     char * data = NULL;
     long event_type;
 
@@ -482,6 +485,8 @@ hci_unsol_event_handler(char *event_hdr)
 	
     if (event_type & HCI_EVNT_UNSOL_BASE)
     {
+    	printf("hci_unsol_event_handler: got HCI_EVENT_UNSOL_BASE event: 0x%x ", event_type);
+
         switch(event_type)
         {
             case HCI_EVNT_DATA_UNSOL_FREE_BUFF:
@@ -503,6 +508,7 @@ hci_unsol_event_handler(char *event_hdr)
 
     if(event_type & HCI_EVNT_WLAN_UNSOL_BASE)
     {           
+    	printf("hci_unsol_event_handler: got got WLAN_UNSOL_BASE: 0x%x ", event_type);
         switch(event_type)
         {
            case HCI_EVNT_WLAN_KEEPALIVE:
@@ -573,6 +579,8 @@ hci_unsol_event_handler(char *event_hdr)
 		// The only synchronous event that can come from SL device in form of command complete is
 		// "Command Complete" on data sent, in case SL device was unable to transmit
 		//
+
+    	printf("hci_unsol_event_handler, GOT COMMAND COMPLETE?");
 		STREAM_TO_UINT8(event_hdr, HCI_EVENT_LENGTH_OFFSET, tSLInformation.slTransmitDataError);
         update_socket_active_status(M_BSD_RESP_PARAMS_OFFSET(event_hdr));
 
@@ -597,6 +605,7 @@ hci_unsol_event_handler(char *event_hdr)
 long
 hci_unsolicited_event_handler(void)
 {
+	printf("hci_unsolicited_event_handler: in here ");
 	unsigned long   res = 0;
 	unsigned char *pucReceivedData;
 	
@@ -606,6 +615,7 @@ hci_unsolicited_event_handler(void)
 			
 		if (*pucReceivedData == HCI_TYPE_EVNT)
 		{			
+			printf("hci_unsolicited_event_handler: data is HCI_Type_EVNT ");
 			//
 			// In case unsolicited event received - here the handling finished
 			//
@@ -615,7 +625,7 @@ hci_unsolicited_event_handler(void)
 				// There was an un-solicited event received - we can release the buffer and clean the
 				// event received 
 				//
-				printf("Event_Handler: 1changing usEventOrDataReceived to 0!!\r\n");
+				printf("hci_unsolicited_event_handler: 1changing usEventOrDataReceived to 0!!\r\n");
 				tSLInformation.usEventOrDataReceived = 0;
 							
 				res = 1;

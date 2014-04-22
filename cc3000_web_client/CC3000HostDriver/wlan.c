@@ -207,7 +207,7 @@ void wlan_init(		tWlanCB	 	sWlanCB,
 //*****************************************************************************
 void SpiReceiveHandler(void *pvBuffer)
 {	
-	printf("Calling SpiReceiveHandler so data Received and usEventOrDataReceived = 1");
+	printf("Calling SpiReceiveHandler so data Received and usEventOrDataReceived = 1\r\n");
 	tSLInformation.usEventOrDataReceived = 1;
 	tSLInformation.pucReceivedData		 = (unsigned char 	*)pvBuffer;
 
@@ -248,6 +248,8 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 	tSLInformation.usRxDataPending = 0;
         
 	tSLInformation.slTransmitDataError = 0;
+
+	printf("Wlan_start: usEventOrDataReceived - 0");
 	tSLInformation.usEventOrDataReceived = 0;
         
         tSLInformation.pucReceivedData = 0;

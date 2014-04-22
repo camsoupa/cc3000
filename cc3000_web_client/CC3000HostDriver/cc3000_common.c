@@ -67,7 +67,7 @@ void
 SimpleLinkWaitEvent(unsigned short usOpcode, void *pRetParams)
 {
 
-	delay(10000000);
+	//delay(10000000);
 	//
 	// In the blocking implementation the control to caller will be returned only after the 
 	// end of current transaction
@@ -80,7 +80,7 @@ SimpleLinkWaitEvent(unsigned short usOpcode, void *pRetParams)
 void 
 SimpleLinkWaitData(unsigned char *pBuf, unsigned char *from, unsigned char *fromlen)
 {
-	delay(10000000);
+	//delay(10000000);
 	//
 	// In the blocking implementation the control to caller will be returned only after the 
 	// end of current transaction, i.e. only after data will be received

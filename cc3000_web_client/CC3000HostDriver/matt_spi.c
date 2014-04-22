@@ -224,7 +224,7 @@ uint32_t
 SpiCleanGPIOISR(void)
 {
 
-    printf("clear SPI_IRQ int\r\n");
+    printf("SpiCleanGPIOISR: clear SPI_IRQ int\r\n");
     MSS_GPIO_clear_irq(SPI_IRQ_PIN);  // TODO: get a status from this? Not used anywhere
 
     return 0;
@@ -259,7 +259,7 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 void
 SpiClose(void)
 {
-    printf("SpiClose\r\n");
+    printf("SpiClose: Closing spi\r\n");
     if (sSpiInformation.pRxPacket)
     {
         sSpiInformation.pRxPacket = 0;
@@ -280,7 +280,7 @@ SpiClose(void)
 void
 SpiOpen(tSpiHandleRx pfnRxHandler)
 {
-    printf("SpiOpen setting handler... check this?\r\n");
+    printf("SpiOpen: setting handler... check this?\r\n");
 
 
     //
@@ -323,7 +323,7 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
 int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
 
-    printf("init_spi\r\n");
+    printf("init_spi: inti spi now\r\n");
 	MSS_SPI_init( &g_mss_spi1 );
 
 	// I think this is all right. I'm not sure if we want SPI_MODE2 or SPI_MODE1 though.
@@ -645,7 +645,7 @@ void
 SpiReadHeader(void)
 {
 
-    printf("read header\r\n");
+    printf("SpiReadHeader: read header\r\n");
     //sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ; // TODO put this here?
 
 	SpiReadData(sSpiInformation.pRxPacket, 10);
@@ -684,7 +684,7 @@ SpiReadHeader(void)
 long
 SpiReadDataCont()
 {
-	printf("In SpiReadDataCont\r\n");
+	printf("SpiReadDataCont: keep reading\r\n");
 
 	  long data_to_recv;
 		unsigned char *evnt_buff, type;
@@ -701,7 +701,7 @@ SpiReadDataCont()
 	    {
 	        case HCI_TYPE_DATA:
 	        {
-	        	printf("in ReadDataCont: Case HCI_TYPE_DATA\r\n");
+	        	printf("SpiReadDataCont: Case HCI_TYPE_DATA\r\n");
 				//
 				// We need to read the rest of data..
 				//
@@ -715,12 +715,12 @@ SpiReadDataCont()
 				{
 	            	SpiReadData(evnt_buff + 10, data_to_recv);
 				}
-		       	printf("in ReadDataCont: data_to_recv: %d\r\n", data_to_recv);
+		       	printf("SpiReadDataCont: data_to_recv: %d\r\n", data_to_recv);
 	            break;
 	        }
 	        case HCI_TYPE_EVNT:
 	        {
-	        	printf("Case HCI_TYPE_EVNT\r\n");
+	        	printf("SpiReadDataCont: Case HCI_TYPE_EVNT\r\n");
 				//
 				// Calculate the rest length of the data
 				//
@@ -741,7 +741,7 @@ SpiReadDataCont()
 	            	SpiReadData(evnt_buff + 10, data_to_recv);
 				}
 
-	        	printf("data_to_recv: %d\r\n", data_to_recv);
+	        	printf("SpiReadDataCont: data_to_recv: %d\r\n", data_to_recv);
 				sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
 	            break;
 	        }
@@ -793,7 +793,7 @@ SpiDisableInterrupts(void)
 void
 SpiResumeSpi(void)
 {
-    printf("resumeSPi\r\n");
+    printf("SpiResumeSpi\r\n");
 	MSS_GPIO_enable_irq(SPI_IRQ_PIN);
 
 }
@@ -810,7 +810,7 @@ SpiResumeSpi(void)
 void
 SpiTriggerRxProcessing()
 {
-	printf("TriggerRxProcessing\r\n");
+	printf("SpiTriggerRxProcessing: trigger rx\r\n");
 	//
 	// Trigger Rx processing
 	//
@@ -843,7 +843,7 @@ SpiTriggerRxProcessing()
 static void
 SpiContReadOperation(void)
 {
-   printf("SpiContReadOperation\r\n");
+   printf("SpiContReadOperation: \r\n");
 	//
 	// The header was read - continue with  the payload read
 	//
@@ -855,6 +855,7 @@ SpiContReadOperation(void)
 		// All the data was read - finalize handling by switching to teh task
 		//	and calling from task Event Handler
 		//
+		  printf("SpiContReadOperation:calling SpiTriggerRxProcessing \r\n");
 		SpiTriggerRxProcessing();
 	}
 }
@@ -911,12 +912,12 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 		// msp430 has a comment here about DMA interrupt????????
 		SpiReadHeader();
 
-		//delay(1000);
+		delay(100000);
 
 		sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
-
+        printf("SpiContReadOperation!!            Must do this for a rec\r\n");
 		SpiContReadOperation();
-
+        printf("Back from SpiContReadOperation\r\n");
 
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)
@@ -944,5 +945,5 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 void
 SpiIntHandler(bool bTxFinished, bool bRxFinished)
 {
-
+printf("should not have got here?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?");
 }

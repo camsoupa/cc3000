@@ -207,6 +207,7 @@ void wlan_init(		tWlanCB	 	sWlanCB,
 //*****************************************************************************
 void SpiReceiveHandler(void *pvBuffer)
 {	
+	printf("Calling SpiReceiveHandler so data Received and usEventOrDataReceived = 1");
 	tSLInformation.usEventOrDataReceived = 1;
 	tSLInformation.pucReceivedData		 = (unsigned char 	*)pvBuffer;
 

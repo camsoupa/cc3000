@@ -210,6 +210,7 @@ void hci_unsol_handle_patch_request(char *event_hdr)
 unsigned char *
 hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 {
+	printf("Event_Handler: Welcome to hci event handler, stuck in while loop....\r\n");
 	unsigned char *pucReceivedData, ucArgsize;
         unsigned short usLength;
 	unsigned char *pucReceivedParams;
@@ -233,6 +234,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 				//
 				if (hci_unsol_event_handler((char *)pucReceivedData) == 0)
 				{
+					printf("Event_Handler: got event!!!!\r\n");
 					STREAM_TO_UINT8(pucReceivedData, HCI_DATA_LENGTH_OFFSET, usLength);
 					switch(usReceivedEventOpcode)
 				    {		
@@ -366,7 +368,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 							break;
 
 						case HCI_CMND_SIMPLE_LINK_START:
-							printf("	cc3000 says: completed simple link start!!!!\r\n");
+							printf("Event_Handler:	cc3000 says: completed simple link start!!!!\r\n");
 							break;
 
 						case HCI_NETAPP_IPCONFIG:
@@ -397,12 +399,13 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 
 				if (usReceivedEventOpcode == tSLInformation.usRxEventOpcode)
 				{
+					printf("Event_Handler: got here!!!!\r\n");
 					tSLInformation.usRxEventOpcode = 0;
 				}
-			}
+			} // end if got event
 			else
 			{
-                        
+				printf("Event_Handler: else got data!!!!\r\n");
                                 pucReceivedParams = pucReceivedData;
                                 STREAM_TO_UINT8((char *)pucReceivedData, HCI_PACKET_ARGSIZE_OFFSET, ucArgsize);
                                 
@@ -424,7 +427,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 				tSLInformation.usRxDataPending = 0;
 			}
 
-			
+			printf("Event_Handler: 2changing usEventOrDataReceived to 0!!\r\n");
 			tSLInformation.usEventOrDataReceived = 0;
                         
                         
@@ -435,6 +438,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 			// 
 			if ((*pucReceivedData == HCI_TYPE_EVNT) && (usReceivedEventOpcode == HCI_EVNT_PATCHES_REQ))
 			{
+				printf("Event_Handler: got HCI_TYPE_EVENT and it's patches!!!!\r\n");
 				hci_unsol_handle_patch_request((char *)pucReceivedData);
 			}
 
@@ -443,9 +447,12 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 				return NULL;
 			}
                         
-                   
-		}
-	}
+			printf("Event handler: end of if got a event or data!!!!\r\n");
+		}// end if got an event
+
+		//printf("Event handler: while loop!!!!\r\n");
+		//delay(10000);
+	}// end while
 
 }
 
@@ -608,6 +615,7 @@ hci_unsolicited_event_handler(void)
 				// There was an un-solicited event received - we can release the buffer and clean the
 				// event received 
 				//
+				printf("Event_Handler: 1changing usEventOrDataReceived to 0!!\r\n");
 				tSLInformation.usEventOrDataReceived = 0;
 							
 				res = 1;

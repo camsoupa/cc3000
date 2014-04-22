@@ -215,7 +215,6 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 	unsigned char *pucReceivedParams;
 	unsigned short usReceivedEventOpcode = 0;
 	unsigned long retValue32;
-	printf("just for breaking");
 	while (1)
 	{
 		if (tSLInformation.usEventOrDataReceived != 0)
@@ -367,7 +366,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 							break;
 
 						case HCI_CMND_SIMPLE_LINK_START:
-							printf("cc3000 says: completed simple link start!\r\n");
+							printf("	cc3000 says: completed simple link start!!!!\r\n");
 							break;
 
 						case HCI_NETAPP_IPCONFIG:

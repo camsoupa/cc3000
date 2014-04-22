@@ -321,7 +321,7 @@ __attribute__((__interrupt__)) void SysTick_Handler(void)
     // very similar to our NVIC thing in CMSIS/startup_gcc/startup_A2FXXXM3.s
 
     static unsigned long ulTickCount = 0;
-
+    static unsigned long on = 1;
     //
     // Increment the tick counter.
     //
@@ -333,7 +333,15 @@ __attribute__((__interrupt__)) void SysTick_Handler(void)
     if(ulTickCount >= (SYSTICK_PER_SECOND / 2))
     {
     	// maybe flash an led on and off to make sure this is happening
+    	if(on){
+    	turnLedOn(LED_2);
+    	on = 0;
+    	}
 
+    	else{
+    	turnLedOff(LED_2);
+    	on = 1;
+    	}
         //
         // Yes = call the unsolicited event handler.  We need to do this a
         // few times each second.

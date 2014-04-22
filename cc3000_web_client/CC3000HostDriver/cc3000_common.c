@@ -66,11 +66,12 @@ __error__(char *pcFilename, unsigned long ulLine)
 void 
 SimpleLinkWaitEvent(unsigned short usOpcode, void *pRetParams)
 {
+
+	delay(10000000);
 	//
 	// In the blocking implementation the control to caller will be returned only after the 
 	// end of current transaction
 	//
-	printf("!!!!!In the blocking implementation the control to caller...!!! ");
 	tSLInformation.usRxEventOpcode = usOpcode;
 	hci_event_handler(pRetParams, 0, 0);
 }
@@ -79,11 +80,11 @@ SimpleLinkWaitEvent(unsigned short usOpcode, void *pRetParams)
 void 
 SimpleLinkWaitData(unsigned char *pBuf, unsigned char *from, unsigned char *fromlen)
 {
+	delay(10000000);
 	//
 	// In the blocking implementation the control to caller will be returned only after the 
 	// end of current transaction, i.e. only after data will be received
 	//
-	printf("!!!!!In the blocking implementation the control to caller...!!! ");
 	tSLInformation.usRxDataPending = 1;
 	hci_event_handler(pBuf, from, fromlen);
 }

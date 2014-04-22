@@ -71,6 +71,14 @@
 #define eSPI_STATE_READ_FIRST_PORTION   (7)
 #define eSPI_STATE_READ_EOT             (8)
 
+
+#define TX_DONE_MASK            0x00000001u
+#define RX_DATA_READY_MASK      0x00000002u
+#define RX_OVERFLOW_MASK        0x00000004u
+#define RX_FIFO_EMPTY_MASK      0x00000040u
+#define TX_FIFO_FULL_MASK       0x00000100u
+#define TX_FIFO_EMPTY_MASK      0x00000400u
+
 //*****************************************************************************
 //
 // SPI interface hardware parameters.
@@ -576,6 +584,37 @@ SpiWriteDataSynchronous(const uint8_t *data, uint16_t size)
 	//printf("WriteSynchronous\r\n");
 
     MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
+
+    int i = 0;
+    for (i = 0; i < size; i++)
+    {
+
+     MSS_SPI_transfer_frame( &g_mss_spi1, data[i]);
+
+    }
+
+/*
+    uint32_t dummy;
+
+    int rx_fifo_empty = (int)&g_mss_spi1.hw_reg->STATUS & (int) RX_FIFO_EMPTY_MASK;
+    while(!rx_fifo_empty)
+    {
+        dummy = &g_mss_spi1.hw_reg->RX_DATA;
+        dummy = dummy;
+        rx_fifo_empty = (int)&g_mss_spi1.hw_reg->STATUS & (int)RX_FIFO_EMPTY_MASK;
+    }
+
+
+    int tx_done = (int)&g_mss_spi1.hw_reg->STATUS & (int)TX_FIFO_EMPTY_MASK;
+    while (!tx_done)
+    {
+        dummy = (int)&g_mss_spi1.hw_reg->TX_DATA;
+        dummy = dummy;
+        tx_done = (int)&g_mss_spi1.hw_reg->STATUS & (int)TX_FIFO_EMPTY_MASK;
+
+    }
+*/
+    /*
     MSS_SPI_transfer_block
       (
           &g_mss_spi1,
@@ -584,7 +623,9 @@ SpiWriteDataSynchronous(const uint8_t *data, uint16_t size)
           0,
           0
       );
+    */
     MSS_SPI_clear_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
+
 
 }
 
@@ -660,7 +701,7 @@ SpiReadDataCont()
 	    {
 	        case HCI_TYPE_DATA:
 	        {
-	        	printf("Case HCI_TYPE_DATA\r\n");
+	        	printf("in ReadDataCont: Case HCI_TYPE_DATA\r\n");
 				//
 				// We need to read the rest of data..
 				//
@@ -674,7 +715,7 @@ SpiReadDataCont()
 				{
 	            	SpiReadData(evnt_buff + 10, data_to_recv);
 				}
-		       	printf("data_to_recv: %d\r\n", data_to_recv);
+		       	printf("in ReadDataCont: data_to_recv: %d\r\n", data_to_recv);
 	            break;
 	        }
 	        case HCI_TYPE_EVNT:
@@ -726,7 +767,7 @@ SpiReadDataCont()
 void
 SpiPauseSpi(void)
 {
-    printf("SpidisabelInt\r\n");
+    //printf("SpidisabelInt\r\n");
 	MSS_GPIO_disable_irq(SPI_IRQ_PIN);
 }
 
@@ -739,7 +780,7 @@ SpiPauseSpi(void)
 static void
 SpiDisableInterrupts(void)
 {
-    printf("SpidisabelInt\r\n");
+    //printf("SpidisabelInt\r\n");
     MSS_GPIO_disable_irq(SPI_IRQ_PIN); // TODO might need to add one for SPI here?
 
 }
@@ -869,12 +910,13 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 
 		// msp430 has a comment here about DMA interrupt????????
 		SpiReadHeader();
-		printf("back from reading header\r\n");
+
+		//delay(1000);
 
 		sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
 
 		SpiContReadOperation();
-		printf(" back from ContReadOperation!\r\n");
+
 
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)

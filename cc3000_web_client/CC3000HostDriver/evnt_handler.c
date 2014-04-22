@@ -103,8 +103,6 @@ unsigned long socket_active_status = SOCKET_STATUS_INIT_VAL;
 
 
 
-
-
 //*****************************************************************************
 //
 // Prototypes for the static functions
@@ -210,16 +208,25 @@ void hci_unsol_handle_patch_request(char *event_hdr)
 unsigned char *
 hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 {
+    #ifdef VERBOSE
+	   printf("Event_Handler:hci_event_handler, stuck in while loop.. because usEventOrDataRecd = %d\r\n",tSLInformation.usEventOrDataReceived);
+    #endif
 	unsigned char *pucReceivedData, ucArgsize;
         unsigned short usLength;
 	unsigned char *pucReceivedParams;
 	unsigned short usReceivedEventOpcode = 0;
 	unsigned long retValue32;
-	printf("just for breaking");
 	while (1)
 	{
+#ifdef VERBOSE
+			printf("while(1) usEventOrDataRecd = %d\r\n",tSLInformation.usEventOrDataReceived);
+#endif
 		if (tSLInformation.usEventOrDataReceived != 0)
 		{				
+
+#ifdef VERBOSE
+			   printf("Event_Handler: in the got Event or data if\r\n");
+#endif
 			pucReceivedData = (tSLInformation.pucReceivedData);
 			
 			if (*pucReceivedData == HCI_TYPE_EVNT)
@@ -234,6 +241,9 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 				//
 				if (hci_unsol_event_handler((char *)pucReceivedData) == 0)
 				{
+#ifdef VERBOSE
+					   printf("Event_Handler: got event!!!!\r\n");
+#endif
 					STREAM_TO_UINT8(pucReceivedData, HCI_DATA_LENGTH_OFFSET, usLength);
 					switch(usReceivedEventOpcode)
 				    {		
@@ -367,7 +377,9 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 							break;
 
 						case HCI_CMND_SIMPLE_LINK_START:
-							printf("cc3000 says: completed simple link start!\r\n");
+#ifdef VERBOSE
+							   printf("Event_Handler:	cc3000 says: completed simple link start!!!!\r\n");
+#endif
 							break;
 
 						case HCI_NETAPP_IPCONFIG:
@@ -398,12 +410,17 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 
 				if (usReceivedEventOpcode == tSLInformation.usRxEventOpcode)
 				{
+#ifdef VERBOSE
+					   printf("Event_Handler: got here!!!!\r\n");
+#endif
 					tSLInformation.usRxEventOpcode = 0;
 				}
-			}
+			} // end if got event
 			else
 			{
-                        
+#ifdef VERBOSE
+				   printf("Event_Handler: else got data!!!!\r\n");
+#endif
                                 pucReceivedParams = pucReceivedData;
                                 STREAM_TO_UINT8((char *)pucReceivedData, HCI_PACKET_ARGSIZE_OFFSET, ucArgsize);
                                 
@@ -425,7 +442,9 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 				tSLInformation.usRxDataPending = 0;
 			}
 
-			
+#ifdef VERBOSE
+			   printf("Event_Handler: 2changing usEventOrDataReceived to 0!!\r\n");
+#endif
 			tSLInformation.usEventOrDataReceived = 0;
                         
                         
@@ -436,6 +455,9 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 			// 
 			if ((*pucReceivedData == HCI_TYPE_EVNT) && (usReceivedEventOpcode == HCI_EVNT_PATCHES_REQ))
 			{
+#ifdef VERBOSE
+				printf("Event_Handler: got HCI_TYPE_EVENT and it's patches!!!!\r\n");
+#endif
 				hci_unsol_handle_patch_request((char *)pucReceivedData);
 			}
 
@@ -443,10 +465,14 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 			{
 				return NULL;
 			}
-                        
-                   
-		}
-	}
+#ifdef VERBOSE
+			   printf("Event handler: end of if got a event or data!!!!\r\n");
+#endif
+		}// end if got an event
+
+		//printf("Event handler: while loop!!!!\r\n");
+		//delay(10000);
+	}// end while
 
 }
 
@@ -469,6 +495,9 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 long
 hci_unsol_event_handler(char *event_hdr)
 {
+#ifdef VERBOSE
+	printf("hci_unsol_event_handler: in here \r\n");
+#endif
     char * data = NULL;
     long event_type;
 
@@ -476,6 +505,10 @@ hci_unsol_event_handler(char *event_hdr)
 	
     if (event_type & HCI_EVNT_UNSOL_BASE)
     {
+#ifdef VERBOSE
+    	printf("hci_unsol_event_handler: got HCI_EVENT_UNSOL_BASE event: 0x%x \r\n", event_type);
+#endif
+
         switch(event_type)
         {
             case HCI_EVNT_DATA_UNSOL_FREE_BUFF:
@@ -496,7 +529,10 @@ hci_unsol_event_handler(char *event_hdr)
     }
 
     if(event_type & HCI_EVNT_WLAN_UNSOL_BASE)
-    {           
+    {
+#ifdef VERBOSE
+    	printf("hci_unsol_event_handler: got got WLAN_UNSOL_BASE: 0x%x \r\n", event_type);
+#endif
         switch(event_type)
         {
            case HCI_EVNT_WLAN_KEEPALIVE:
@@ -567,6 +603,9 @@ hci_unsol_event_handler(char *event_hdr)
 		// The only synchronous event that can come from SL device in form of command complete is
 		// "Command Complete" on data sent, in case SL device was unable to transmit
 		//
+#ifdef VERBOSE
+    	printf("hci_unsol_event_handler, GOT COMMAND COMPLETE?");
+#endif
 		STREAM_TO_UINT8(event_hdr, HCI_EVENT_LENGTH_OFFSET, tSLInformation.slTransmitDataError);
         update_socket_active_status(M_BSD_RESP_PARAMS_OFFSET(event_hdr));
 
@@ -591,6 +630,9 @@ hci_unsol_event_handler(char *event_hdr)
 long
 hci_unsolicited_event_handler(void)
 {
+#ifdef VERBOSE
+	printf(" hci_unsolicited_event_handler: in here\r\n");
+#endif
 	unsigned long   res = 0;
 	unsigned char *pucReceivedData;
 	
@@ -599,7 +641,10 @@ hci_unsolicited_event_handler(void)
 		pucReceivedData = (tSLInformation.pucReceivedData);
 			
 		if (*pucReceivedData == HCI_TYPE_EVNT)
-		{			
+		{
+#ifdef VERBOSE
+			printf(" hci_unsolicited_event_handler: data is HCI_Type_EVNT\r\n");
+#endif
 			//
 			// In case unsolicited event received - here the handling finished
 			//
@@ -609,6 +654,9 @@ hci_unsolicited_event_handler(void)
 				// There was an un-solicited event received - we can release the buffer and clean the
 				// event received 
 				//
+#ifdef VERBOSE
+				printf("hci_unsolicited_event_handler: 1changing usEventOrDataReceived to 0!!\r\n");
+#endif
 				tSLInformation.usEventOrDataReceived = 0;
 							
 				res = 1;

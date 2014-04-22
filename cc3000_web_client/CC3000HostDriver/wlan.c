@@ -47,7 +47,7 @@
 #include "evnt_handler.h"
 #include "os.h"
 
-sSimplLinkInformation tSLInformation;
+volatile sSimplLinkInformation tSLInformation;
 
 /* patches type */
 #define PATCHES_HOST_TYPE_WLAN_DRIVER   0x01
@@ -110,7 +110,9 @@ static void SimpleLink_Init_Start(unsigned short usPatchesAvailableAtHost)
 
 	// IRQ Line asserted - start the read buffer size command
 	hci_command_send(HCI_CMND_SIMPLE_LINK_START, ptr, WLAN_SL_INIT_START_PARAMS_LEN);
-	
+
+	// The interrupt should come in here while we wait on SimpleLinkWaitEvent
+
 	SimpleLinkWaitEvent(HCI_CMND_SIMPLE_LINK_START, 0);
 }
 
@@ -207,6 +209,7 @@ void wlan_init(		tWlanCB	 	sWlanCB,
 //*****************************************************************************
 void SpiReceiveHandler(void *pvBuffer)
 {	
+	printf("Calling SpiReceiveHandler so data Received and usEventOrDataReceived = 1\r\n");
 	tSLInformation.usEventOrDataReceived = 1;
 	tSLInformation.pucReceivedData		 = (unsigned char 	*)pvBuffer;
 
@@ -247,6 +250,8 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 	tSLInformation.usRxDataPending = 0;
         
 	tSLInformation.slTransmitDataError = 0;
+
+	printf("Wlan_start: usEventOrDataReceived - 0");
 	tSLInformation.usEventOrDataReceived = 0;
         
         tSLInformation.pucReceivedData = 0;
@@ -305,16 +310,19 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
 		//printf("LEAVING STRANGE PLACE\r\n");
 	}
 	//printf("calling SimpleLink_init_Start\r\n");
-	
+
 	SimpleLink_Init_Start(usPatchesAvailableAtHost);
 
 	//printf("back from SimpleLink_init_start calling hci_command_send\r\n");
 	// Read Buffer's size and finish
+
 	hci_command_send(HCI_CMND_READ_BUFFER_SIZE, tSLInformation.pucTxCommandBuffer, 0);
+	//delay(10000000);
 
 	//printf("back from hci_command_send calling SImpleLinkWaitEvent\r\n");
 
 	SimpleLinkWaitEvent(HCI_CMND_READ_BUFFER_SIZE, 0);
+
 
 
 	//printf("back form simpleLinkWaitEvent\r\n");
@@ -1003,6 +1011,7 @@ wlan_set_event_mask(unsigned long ulMask)
     hci_command_send(HCI_CMND_EVENT_MASK,
         ptr, WLAN_SET_MASK_PARAMS_LEN);
 
+    //delay(10000000);
    	//
 	// Wait for command complete event
 	//

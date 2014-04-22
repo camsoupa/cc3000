@@ -1262,7 +1262,6 @@ CMD_connect(char *ssid)
         // Delay 1ms
         //
         //ROM_SysCtlDelay(ROM_SysCtlClockGet() / 3000);
-    	delay(1000);
     }
     printf("    Connection Failed. Please check the network name.\n");
 
@@ -2286,7 +2285,6 @@ main(void)
     {
         // If wlan connect worked make connection with web server
         if(g_ui32CC3000DHCP == 1)
-
         {
         	if(webConnected == 0)
         	{

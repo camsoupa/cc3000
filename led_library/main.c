@@ -51,13 +51,13 @@ int main(void)
    init_rgb_led(RED_GPIO, GREEN_GPIO, BLUE_GPIO);
    set_color(255,255,255);
    set_brightness(100);
-   set_pulse_rate(100);
+   set_pulse_rate(000);
    uint8_t chan_red = 0;
    uint8_t chan_blue = 150;
    uint8_t chan_green = 255;
    while(1) {
-     set_color(chan_red, chan_green, chan_blue);
-     delay(100000);
+    // set_color(chan_red, chan_green, chan_blue);
+     //delay(100000);
 	 chan_red++; chan_green--;
    }
 }

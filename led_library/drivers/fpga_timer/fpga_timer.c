@@ -9,9 +9,10 @@ uint8_t add_timer(mytimer_t * timer)
 {
 	uint8_t timer_index = cnt_timers;
 	if(cnt_timers < TIMER_CAPACITY)
-	  timers[cnt_timers++] = timer;
-	  return timer_index;
-
+	{
+		timers[cnt_timers++] = timer;
+		return timer_index;
+	}
 	return TIMER_CAPACITY;
 }
 

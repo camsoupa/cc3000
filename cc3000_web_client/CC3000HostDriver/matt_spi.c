@@ -79,6 +79,7 @@
 #define TX_FIFO_FULL_MASK       0x00000100u
 #define TX_FIFO_EMPTY_MASK      0x00000400u
 
+
 //*****************************************************************************
 //
 // SPI interface hardware parameters.
@@ -223,8 +224,9 @@ uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
 uint32_t
 SpiCleanGPIOISR(void)
 {
-
+#ifdef VERBOSE
     printf("SpiCleanGPIOISR: clear SPI_IRQ int\r\n");
+#endif
     MSS_GPIO_clear_irq(SPI_IRQ_PIN);  // TODO: get a status from this? Not used anywhere
 
     return 0;
@@ -242,8 +244,9 @@ SpiCleanGPIOISR(void)
 void
 SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
-
+#ifdef VERBOSE
  printf("EMPTY\r\n");
+#endif
 
 
 }
@@ -259,7 +262,9 @@ SSIConfigure(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 void
 SpiClose(void)
 {
+#ifdef VERBOSE
     printf("SpiClose: Closing spi\r\n");
+#endif
     if (sSpiInformation.pRxPacket)
     {
         sSpiInformation.pRxPacket = 0;
@@ -280,7 +285,9 @@ SpiClose(void)
 void
 SpiOpen(tSpiHandleRx pfnRxHandler)
 {
+#ifdef VERBOSE
     printf("SpiOpen: setting handler... check this?\r\n");
+#endif
 
 
     //
@@ -323,7 +330,9 @@ SpiOpen(tSpiHandleRx pfnRxHandler)
 int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 {
 
+#ifdef VERBOSE
     printf("init_spi: inti spi now\r\n");
+#endif
 	MSS_SPI_init( &g_mss_spi1 );
 
 	// I think this is all right. I'm not sure if we want SPI_MODE2 or SPI_MODE1 though.
@@ -361,14 +370,16 @@ SpiFirstWrite(uint8_t *ui8Buf, uint16_t ui16Length)
     ASSERT_CS();
 
     // Wait 80 microseconds or so.
-    delay((DELAY_50_MICROSECONDS * 8) / 5); // TODO is this enough time?
+    delay(10000000);
+    //delay((DELAY_50_MICROSECONDS * 8) / 5 + 100); // TODO is this enough time?
 
     // Write the first 4 bytes of the packet we have been provided.
     SpiWriteDataSynchronous(ui8Buf, 4);
 
     // Generate an 80 microsecond gap between the last byte sent and the
     // remainder of the packet.
-    delay((DELAY_50_MICROSECONDS * 8) / 5);
+    delay(10000000);
+    //delay((DELAY_50_MICROSECONDS * 8) / 5 + 100);
 
     // Send the remaining bytes in the packet.
     SpiWriteDataSynchronous(ui8Buf + 4, ui16Length - 4);
@@ -518,7 +529,9 @@ static void
 SpiReadData(uint8_t *data, uint16_t size)
 {
 
+#ifdef VERBOSE
 	printf("SpiReadData: read %d bytes\r\n", size);
+#endif
     unsigned char *data_to_send = tSpiReadHeader;
 
 
@@ -527,20 +540,28 @@ SpiReadData(uint8_t *data, uint16_t size)
 
 
     int i = 0;
+#ifdef VERBOSE
     printf("SpiReadData doing a write: {");
+#endif
     for (i = 0; i < size; i++)
     {
         printf("0x%x ,", data_to_send[i]);
     }
     printf(" }\r\n");
 
+#ifdef VERBOSE
     printf("SpiReadData: {");
+#endif
     for (i = 0; i < size; i++)
     {
       data[i] = MSS_SPI_transfer_frame( &g_mss_spi1, data_to_send[i]);
+#ifdef VERBOSE
       printf("0x%x ,", data[i]);
+#endif
     }
+#ifdef VERBOSE
     printf(" }\r\n");
+#endif
 
 
  /*   MSS_SPI_transfer_block
@@ -597,14 +618,20 @@ SpiWriteDataSynchronous(const uint8_t *data, uint16_t size)
     MSS_SPI_set_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
 
     int i = 0;
+#ifdef VERBOSE
     printf("WriteSpiSynchro: {");
+#endif
     for (i = 0; i < size; i++)
     {
+#ifdef VERBOSE
     printf("0x%x ,", data[i]);
+#endif
      MSS_SPI_transfer_frame( &g_mss_spi1, data[i]);
 
     }
+#ifdef VERBOSE
     printf(" }\r\n");
+#endif
 /*
     uint32_t dummy;
 
@@ -656,8 +683,9 @@ SpiWriteDataSynchronous(const uint8_t *data, uint16_t size)
 void
 SpiReadHeader(void)
 {
-
+#ifdef VERBOSE
     printf("SpiReadHeader: read header\r\n");
+#endif
     //sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ; // TODO put this here?
 
 	SpiReadData(sSpiInformation.pRxPacket, 10);
@@ -696,7 +724,9 @@ SpiReadHeader(void)
 long
 SpiReadDataCont()
 {
+#ifdef VERBOSE
 	printf("SpiReadDataCont: keep reading\r\n");
+#endif
 
 	  long data_to_recv;
 		unsigned char *evnt_buff, type;
@@ -713,7 +743,9 @@ SpiReadDataCont()
 	    {
 	        case HCI_TYPE_DATA:
 	        {
+#ifdef VERBOSE
 	        	printf("SpiReadDataCont: Case HCI_TYPE_DATA\r\n");
+#endif
 				//
 				// We need to read the rest of data..
 				//
@@ -727,12 +759,16 @@ SpiReadDataCont()
 				{
 	            	SpiReadData(evnt_buff + 10, data_to_recv);
 				}
+#ifdef VERBOSE
 		       	printf("SpiReadDataCont: data_to_recv: %d\r\n", data_to_recv);
+#endif
 	            break;
 	        }
 	        case HCI_TYPE_EVNT:
 	        {
+#ifdef VERBOSE
 	        	printf("SpiReadDataCont: Case HCI_TYPE_EVNT\r\n");
+#endif
 				//
 				// Calculate the rest length of the data
 				//
@@ -752,8 +788,9 @@ SpiReadDataCont()
 				{
 	            	SpiReadData(evnt_buff + 10, data_to_recv);
 				}
-
+#ifdef VERBOSE
 	        	printf("SpiReadDataCont: data_to_recv: %d\r\n", data_to_recv);
+#endif
 				sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
 	            break;
 	        }
@@ -779,7 +816,9 @@ SpiReadDataCont()
 void
 SpiPauseSpi(void)
 {
+#ifdef VERBOSE
     printf("SpiPauseSpi: disable spi IRQ\r\n");
+#endif
 	MSS_GPIO_disable_irq(SPI_IRQ_PIN);
 }
 
@@ -805,7 +844,9 @@ SpiDisableInterrupts(void)
 void
 SpiResumeSpi(void)
 {
+#ifdef VERBOSE
     printf("SpiResumeSpi\r\n");
+#endif
 	MSS_GPIO_enable_irq(SPI_IRQ_PIN);
 
 }
@@ -822,7 +863,9 @@ SpiResumeSpi(void)
 void
 SpiTriggerRxProcessing()
 {
+#ifdef VERBOSE
 	printf("SpiTriggerRxProcessing: trigger rx\r\n");
+#endif
 	//
 	// Trigger Rx processing
 	//
@@ -855,7 +898,9 @@ SpiTriggerRxProcessing()
 static void
 SpiContReadOperation(void)
 {
+#ifdef VERBOSE
    printf("SpiContReadOperation: calling SpiReadDataCont \r\n");
+#endif
 	//
 	// The header was read - continue with  the payload read
 	//
@@ -867,7 +912,9 @@ SpiContReadOperation(void)
 		// All the data was read - finalize handling by switching to teh task
 		//	and calling from task Event Handler
 		//
+#ifdef VERBOSE
 		  printf("SpiContReadOperation:calling SpiTriggerRxProcessing \r\n");
+#endif
 		SpiTriggerRxProcessing();
 	}
 }
@@ -894,23 +941,31 @@ SpiContReadOperation(void)
 __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
 	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
-
+#ifdef VERBOSE
 	printf("IntSpiGPIOHandler: Got SPI_IRQ_PIN interrupt for");
-
+#endif
 
 	MSS_GPIO_clear_irq(SPI_IRQ_PIN);
 
 	if (sSpiInformation.ui32SpiState == eSPI_STATE_POWERUP)
 	{
+#ifdef VERBOSE
 		printf(" INIT!\r\n");
+#endif
 		// We received the first IRQ line edge after powering up the
 		// part.  This is part of the startup sequence so change the state
 		// to show that we received this.
 		sSpiInformation.ui32SpiState = eSPI_STATE_INITIALIZED;
+#ifdef VERBOSE
+        printf("IntSpiGPIOHandler: Done with INIT\r\n");
+#endif
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_IDLE)
 	{
+#ifdef VERBOSE
 		printf(" READ!\r\n");
+#endif
+
 		// We're idle so an IRQ interrupt indicates that the CC3000 has
 		// data to send us.
 		sSpiInformation.ui32SpiState = eSPI_STATE_READ_IRQ;
@@ -924,22 +979,27 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 		// msp430 has a comment here about DMA interrupt????????
 		SpiReadHeader();
 
-		delay(100000);
-
 		sSpiInformation.ui32SpiState = eSPI_STATE_READ_EOT;
        // printf("SpiContReadOperation!!            Must do this for a rec\r\n");
 		SpiContReadOperation();
-        printf("IntSpiGPIOHandler: Back from SpiContReadOperation\r\n");
+#ifdef VERBOSE
+        printf("IntSpiGPIOHandler: Done with the read\r\n");
+#endif
 
 	}
 	else if (sSpiInformation.ui32SpiState == eSPI_STATE_WRITE_IRQ)
 	{
+#ifdef VERBOSE
 		printf(" WRITE!\r\n");
+#endif
 		SpiWriteDataSynchronous(sSpiInformation.pTxPacket, sSpiInformation.ui16TxPacketLength);
 
 		sSpiInformation.ui32SpiState = eSPI_STATE_IDLE;
 
 		DEASSERT_CS();
+#ifdef VERBOSE
+        printf("IntSpiGPIOHandler: Done with the write\r\n");
+#endif
 	}
 }
 
@@ -958,4 +1018,5 @@ void
 SpiIntHandler(bool bTxFinished, bool bRxFinished)
 {
 printf("should not have got here?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?");
+
 }

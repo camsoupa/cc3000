@@ -161,7 +161,7 @@ typedef void (*tWriteWlanPin)(unsigned char val);
 typedef struct
 {
 	unsigned short	 usRxEventOpcode;
-	unsigned short	 usEventOrDataReceived;
+	volatile unsigned short	 usEventOrDataReceived;
 	unsigned char 	*pucReceivedData;
 	unsigned char 	*pucTxCommandBuffer;
 
@@ -188,7 +188,7 @@ typedef struct
 
 
 
-extern sSimplLinkInformation tSLInformation;
+extern volatile sSimplLinkInformation tSLInformation;
 
 
 //*****************************************************************************

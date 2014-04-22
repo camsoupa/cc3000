@@ -47,7 +47,7 @@
 #include "evnt_handler.h"
 #include "os.h"
 
-sSimplLinkInformation tSLInformation;
+volatile sSimplLinkInformation tSLInformation;
 
 /* patches type */
 #define PATCHES_HOST_TYPE_WLAN_DRIVER   0x01
@@ -110,7 +110,9 @@ static void SimpleLink_Init_Start(unsigned short usPatchesAvailableAtHost)
 
 	// IRQ Line asserted - start the read buffer size command
 	hci_command_send(HCI_CMND_SIMPLE_LINK_START, ptr, WLAN_SL_INIT_START_PARAMS_LEN);
-    //delay(10000000);
+
+	// The interrupt should come in here while we wait on SimpleLinkWaitEvent
+
 	SimpleLinkWaitEvent(HCI_CMND_SIMPLE_LINK_START, 0);
 }
 

@@ -11,11 +11,11 @@
 #define DIMMER  0
 #define BRIGHTER  1
 
-// gpio led value (active low)
-#define ON 0
-#define OFF 1
+//
+#define ON 1
+#define OFF 0
 
-#define HzPerColorDivision (1000000/255)
+#define HZ_PER_COLOR_DIVISION (1000000/255)
 
 // timer status register reason for interrupt
 #define STATUS_OVERFLOW 0x01
@@ -28,6 +28,8 @@
 #define TIMER_BLUE  ((mytimer_t *)0x40050300)
 #define TIMER_PULSE ((mytimer_t *)0x40050400)
 
+//
+#define HZ_PER_MILLI_SEC 1000
 // the id of the timer returned by add_timer()
 // allows access to compare value, status, overflow, etc.
 uint8_t red_timer_id;
@@ -38,7 +40,7 @@ uint8_t pulse_timer_id;
 //0-100
 uint8_t master_brightness = 100;
 uint8_t full_brightness = 100;
-uint8_t min_brightness = 0;
+uint8_t min_brightness = 1;
 
 uint8_t pulse_direction;
 
@@ -84,7 +86,7 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	timer_setOverflowVal(green_timer_id, 1000000);
 
 	// pulse uses overflow only
-	timer_enable_allInterrupts(pulse_timer_id);
+	//timer_enable_allInterrupts(pulse_timer_id);
 	timer_enable_overflowInt(pulse_timer_id);
 	timer_disable_compareInt(pulse_timer_id);
 
@@ -104,7 +106,7 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	timer_enable(red_timer_id);
 	timer_enable(green_timer_id);
 	timer_enable(blue_timer_id);
-	timer_enable(pulse_timer_id);
+	//timer_enable(pulse_timer_id);
 
 
 	// don't start the colors until set_brightness is called
@@ -165,13 +167,13 @@ void pwm_timer_handler(uint32_t gpio, uint32_t timer_index)
 }
 
 void update_compare_values(){
-	timer_setCompareVal(red_timer_id, (red*HzPerColorDivision*master_brightness)/full_brightness);
-	timer_setCompareVal(blue_timer_id, (blue*HzPerColorDivision*master_brightness)/full_brightness);
-	timer_setCompareVal(green_timer_id, (green*HzPerColorDivision*master_brightness)/full_brightness);
+	timer_setCompareVal(red_timer_id, (red*HZ_PER_COLOR_DIVISION*master_brightness)/full_brightness);
+	timer_setCompareVal(blue_timer_id, (blue*HZ_PER_COLOR_DIVISION*master_brightness)/full_brightness);
+	timer_setCompareVal(green_timer_id, (green*HZ_PER_COLOR_DIVISION*master_brightness)/full_brightness);
 }
 
 void set_color(uint8_t r, uint8_t g, uint8_t b){
-  red = r; green = g; blue = g;
+  red = r; green = g; blue = b;
   update_compare_values();
 }
 
@@ -184,11 +186,13 @@ void set_brightness(uint8_t brightness){
 // pulse rate oscillates the led brightness between max_brightness and min_brightness
 // param: rate - the number of cycles to wait before interrupting (which changes master_brightness)
 // (0 = no pulse, 1=fast pulse 1-2^32=slower pulse)
-void set_pulse_rate(uint32_t rate){
-   timer_setOverflowVal(pulse_timer_id, 1000000);
-   if(rate > 0) {
+void set_pulse_rate(uint32_t ms){
+   timer_setOverflowVal(pulse_timer_id, ms*HZ_PER_MILLI_SEC);
+   if(ms > 0) {
      timer_enable_allInterrupts(pulse_timer_id);
+     timer_enable(pulse_timer_id);
    } else {
 	 timer_disable_allInterrupts(pulse_timer_id);
+	 timer_disable(pulse_timer_id);
    }
 }

@@ -209,7 +209,9 @@ void wlan_init(		tWlanCB	 	sWlanCB,
 //*****************************************************************************
 void SpiReceiveHandler(void *pvBuffer)
 {	
+#ifdef VERBOSE
 	printf("Calling SpiReceiveHandler so data Received and usEventOrDataReceived = 1\r\n");
+#endif
 	tSLInformation.usEventOrDataReceived = 1;
 	tSLInformation.pucReceivedData		 = (unsigned char 	*)pvBuffer;
 
@@ -251,7 +253,9 @@ wlan_start(unsigned short usPatchesAvailableAtHost)
         
 	tSLInformation.slTransmitDataError = 0;
 
-	printf("Wlan_start: usEventOrDataReceived - 0");
+#ifdef VERBOSE
+	printf("  !!!!!!!!Wlan_start: usEventOrDataReceived = 0!!!!!!!!!!!!!\r\n");
+#endif
 	tSLInformation.usEventOrDataReceived = 0;
         
         tSLInformation.pucReceivedData = 0;
@@ -1019,6 +1023,7 @@ wlan_set_event_mask(unsigned long ulMask)
 	
 	return(ret);
 }
+
 
 /**
  * \brief get wlan status

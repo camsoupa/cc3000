@@ -479,8 +479,9 @@ initDriver(void)
     //MAP_IntMasterEnable();
 
     MSS_GPIO_enable_irq(SPI_IRQ_PIN); // Do this for each?
-
+#ifdef VERBOSE
 	printf("Starting Wlan_init!\n\r");
+#endif
     //
     // Initialize and enable WiFi on the CC3000.
     //
@@ -494,9 +495,9 @@ initDriver(void)
     // Start up the CC3000 stack.
     //
     wlan_start(0);
-
+#ifdef VERBOSE
 	printf("Done starting wlan!\n\r");
-
+#endif
     //
     // Turn on the the red LED to indicate that we are active and initiated
     // WLAN successfully.

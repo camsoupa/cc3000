@@ -328,9 +328,9 @@ init_pwm(void)
     PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, ulPeriod);
 
     //Set PWM duty-50% (Period /2)
-    PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod/4);
-    PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,ulPeriod/4);
-    PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod/4);
+    PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod/2);  //whole period is off
+    PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,ulPeriod/2);
+    PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod/2);
 
     // Enable the PWM generator
     PWMGenEnable(PWM1_BASE, PWM_GEN_2);
@@ -1239,9 +1239,6 @@ float matt_recv()
             i32ReturnValue = recv(g_ui32Socket, g_pui8CC3000_Rx_Buffer,
                                 CC3000_APP_BUFFER_SIZE, 0);
 
-            //UARTprintf("Before wait\n");
-            ROM_SysCtlDelay(1000000);
-            //UARTprintf("After wait\n");
             //
             // Check Data Validity
             //
@@ -1259,8 +1256,10 @@ float matt_recv()
             //
                 UARTprintf("    Received %d bytes of data. %d time\n",
                             i32ReturnValue, count);
-
+            if(i32ReturnValue > 0)
+            {
                 count++;
+            }
 
             for(ui32x = 0; ui32x < i32ReturnValue; ui32x++, ui32Count++)
             {
@@ -1278,12 +1277,17 @@ float matt_recv()
             	if(g_pui8CC3000_Rx_Buffer[ui32x] == '\'' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M' && g_pui8CC3000_Rx_Buffer[ui32x +2] == 'i') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
             	{
             		UARTprintf("GOT ONE! PM\r\n");
-            		UARTprintf("%c%c%c%c\r\n" ,
-            				g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],g_pui8CC3000_Rx_Buffer[ui32x-18],g_pui8CC3000_Rx_Buffer[ui32x-217]);
-            		char pol[3] = {g_pui8CC3000_Rx_Buffer[ui32x-20], g_pui8CC3000_Rx_Buffer[ui32x-19], g_pui8CC3000_Rx_Buffer[ui32x-18]};
-            //         char * polstring = pol;
-            //  		pollution = ustrtof(polstring, polstring[19]);
-           //         UARTprintf("%s",pollution);
+            		UARTprintf("(1)%c (2)%c (3)%c (4)%c (5)%c\r\n" , g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
+            				g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17]);
+
+
+
+
+                     char polstring[7] = { g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
+             				g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17], '\0'};
+                     char **safe = &polstring;
+             		pollution = ustrtof(polstring, safe);
+                    UARTprintf("Pollution is: %d",pollution);
 
             	}
 
@@ -1292,12 +1296,12 @@ float matt_recv()
 
             UARTFlushTx(false);
 
-        }while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0); //while(i32ReturnValue == CC3000_APP_BUFFER_SIZE);
+        }while(count < 30);//while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0);
     }
 
     UARTprintf("Leaving Recv\n\n");
 
-    return(0);
+    return(pollution);
 
 }
 
@@ -2571,7 +2575,8 @@ main(void)
     int32_t webConnected = 0;
     int32_t num_msg_sent = 0;
     int32_t num_msg_to_send = 1;
-    float pollution;
+    volatile float pollution = 0.1;
+    volatile float old_pollution = 1.1;
 
     g_ui32CC3000DHCP = 0;
     g_ui32CC3000Connected = 0;
@@ -2588,17 +2593,15 @@ main(void)
     initDriver();
 
 
-    // Matt - Removing CLI in favor of starting using CMD_connect then running
-    //       the GET request over and over
-
-
-    // Block on SmartConfig until app has allowed connection
-    //StartSmartConfig();
+    // Try to connect to wifi
     if(CMD_connect1("dd-wrt") < 0)
+    {
     	printf("Connect Failed\n");
-
-
-    init_pwm();
+    }
+    else
+    {
+	    init_pwm();
+    }
 
     //
     // Loop forever
@@ -2613,80 +2616,91 @@ main(void)
         		// Open a TCP socket
         		UARTprintf("Calling socket()\n\n");
         		if(matt_socket() < 0)
+        		{
 					exit(1);
+        		}
 
         		// Bind to hard coded port
         		UARTprintf("Calling bind()\n\n");
         		if(matt_bind() < 0)
+        		{
         			exit(1);
+        		}
 
         		webConnected = 1;
-
-
         	}
 
-        	// If we're connected to web and haven't sent num_msg_to_send yet send a http get
-        	printf("break");
+        	// If we're connected and it is time to send a HTTP GET
         	if((webConnected && (first || again)))
         	{
-        		first = 0;
-        		again = 0;
+        		first = 0; // never use first again
+        		again = 0; // reset again for next time
+
         	    // Send hard coded http request
 				UARTprintf("Calling send() to send HTTP GET\n\n");
 				matt_send();
 				num_msg_sent++;
 
-				// recv reply
-				// TODO remove the sleeps in recv. Currently the sleeps are there so every tcp packet the
-				// server sends in reply arrives before the buffer is empty. As long as buffer isn't
-				// empty recv will keep pulling in data but returns once buff it is empty. Change to recv the
-				// page's size
+				// bind on recv until we get our data
 				UARTprintf("Calling recv()\n\n");
 				pollution = matt_recv();
         	}
 
         }
 
-        pollution = 10;
+        // for manual pollution changing in testing
+       //pollution = 200;
 
+       if(pollution != old_pollution)
+       {
+    	   old_pollution = pollution;
+
+           if(pollution <= 12.0)
+           {
+        	   // Green full blast
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod); //R
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,ulPeriod);   // B
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod - 1);   //G range is ulPeriod -1 to 0
+           }
+           else if((pollution > 12.0) && (pollution <= 35.4))
+           {
+        	   // Yellow full blast
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod -1); //R
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, 0);   // B
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod -1);   //G range is ulPeriod -1 to 0
+           }
+           else if((pollution > 35.4) && (pollution <= 150.4))
+           {
+        	   // Red full blast
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod -1); //R
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, 0);   // B
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,0);   //G range is ulPeriod -1 to 0
+           }
+           else if((pollution > 150.4))
+           {
+        	   // Red and blue full blast
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod -1); //R
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, ulPeriod -1);   // B
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,0);   //G range is ulPeriod -1 to 0
+           }
+       }
+
+        // Wait about 30 seconds between hitting the server again
         if(myTick >= 60)
         {
-        	UARTprintf("MYTICK OVER\n");
+        	UARTprintf("Request Again\n");
             again = 1;
-
-            if(pollution < 15.4)
-            {
-                PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod); //R
-                PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,ulPeriod);   // B
-                PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod/2);   //G
-            }
-            else
-            {
-                PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod/2); //R
-                PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,ulPeriod);   // B
-                PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod);   //G
-
-            }
+            myTick = 0;
         }
 
+        // If we are webconnected and we need to do another HTTP GET
+        // we must start another connection so close this one
         if ((webConnected == 1) && (again))
         {
       	matt_close();
     	UARTprintf("Calling close() to close connection and free socket\n\n");
     	webConnected = 0;
         }
-
-
-
-       // if(num_msg_sent == num_msg_to_send)
-       // {
-        	// Close socket and thus connection
-
-        	//return 0;
-       // }
-
-
-
 
     } //end while(1)
 } // end main

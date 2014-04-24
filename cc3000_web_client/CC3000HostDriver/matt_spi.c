@@ -545,7 +545,9 @@ SpiReadData(uint8_t *data, uint16_t size)
 #endif
     for (i = 0; i < size; i++)
     {
+#ifdef VERBOSE
         printf("0x%x ,", data_to_send[i]);
+#endif
     }
     printf(" }\r\n");
 

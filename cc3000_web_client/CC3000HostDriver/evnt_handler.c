@@ -50,6 +50,7 @@
 
 
 unsigned long socket_active_status = SOCKET_STATUS_INIT_VAL;  
+int wlan_connect_test = 0;
 
 #define FLOW_CONTROL_EVENT_HANDLE_OFFSET		(0)
 #define FLOW_CONTROL_EVENT_BLOCK_MODE_OFFSET	(1)
@@ -270,6 +271,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 							
 						case HCI_CMND_SETSOCKOPT:
 						case HCI_CMND_WLAN_CONNECT:
+							//wlan_connect_test = 1;
 						case HCI_CMND_WLAN_IOCTL_STATUSGET:
 						case HCI_EVNT_WLAN_IOCTL_ADD_PROFILE:
 						case HCI_CMND_WLAN_IOCTL_DEL_PROFILE:
@@ -287,7 +289,7 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
                                                 case HCI_EVNT_CONNECT:
 												case HCI_EVNT_NVMEM_WRITE:
 
-							STREAM_TO_UINT32((char *)pucReceivedParams,0,*(unsigned long *)pRetParams);
+							STREAM_TO_UINT32((char *)pucReceivedParams,0,*(unsigned long *)pRetParams); //memcpy puc -> p
 							break;
 						case HCI_EVNT_READ_SP_VERSION:
 							STREAM_TO_UINT8(pucReceivedData, HCI_EVENT_STATUS_OFFSET,*(unsigned char *)pRetParams);
@@ -406,6 +408,11 @@ hci_event_handler(void *pRetParams, unsigned char *from, unsigned char *fromlen)
 							
 														
 					}
+				}
+
+				if(wlan_connect_test == 1)
+				{
+					//printf("Event_Handler: got here!!!!\r\n");
 				}
 
 				if (usReceivedEventOpcode == tSLInformation.usRxEventOpcode)

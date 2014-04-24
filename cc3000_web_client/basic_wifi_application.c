@@ -340,7 +340,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     //
     if(lEventType == HCI_EVNT_WLAN_UNSOL_DISCONNECT)
     {
-        printf("\r    Rec Unsot Dist CC30\n>");
+        printf("\r    Received Unsot Disconnect from CC3000\n>");
         g_ui32CC3000Connected = 0;
         g_ui32CC3000DHCP = 0;
         g_ui32CC3000DHCP_configured = 0;
@@ -372,9 +372,24 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         // Only if status is OK, the flag is set to 1 and the addresses are
         // valid
         //
-        if( *(pcData + NETAPP_IPCONFIG_MAC_OFFSET) == 0)
+
+    	/*
+    	printf("GOT the UNSOL_DHCP need to check its value is: 0x%x,\r\n",  *(pcData + NETAPP_IPCONFIG_MAC_OFFSET));
+    	int i = 0;
+    	printf("pcData { ");
+    	for (i; i < ucLength; i++)
+    	{
+    		printf("0x%x, ", *(pcData + i));
+
+    	}
+    	printf("}\r\n");
+*/
+
+    	// the this is *pcData+ 20
+        //if( *(pcData + NETAPP_IPCONFIG_MAC_OFFSET) == 0)
+    	if( *(pcData + 4) == 0)
         {
-            printf("\r    DHCP DoIP: %d.%d.%d.%d\n",
+            printf("\r    DHCP DoIP: %d.%d.%d.%d\r\n",
                         pcData[3],pcData[2],pcData[1],pcData[0]);
 
             //
@@ -406,7 +421,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         psPingData = (netapp_pingreport_args_t *)pcData;
 #ifdef DEBUG
-        printf("Data Rec'd='\n");
+        printf("Data Rec'd='\r\n");
         for(lEventType = 0; lEventType < ucLength; lEventType++)
         {
             printf("%d,",pcData[lEventType]);
@@ -419,7 +434,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         if(psPingData->min_round_time == -1)
         {
-            printf("\r    Ping Fa\n>");
+            printf("\r    Ping Failed\r\n>");
         }
         else
         {
@@ -480,7 +495,7 @@ initDriver(void)
 
     MSS_GPIO_enable_irq(SPI_IRQ_PIN); // Do this for each?
 #ifdef VERBOSE
-	printf("Starting Wlan_init!\n\r");
+	printf("Starting Wlan_init!\r\n");
 #endif
     //
     // Initialize and enable WiFi on the CC3000.
@@ -496,7 +511,7 @@ initDriver(void)
     //
     wlan_start(0);
 #ifdef VERBOSE
-	printf("Done starting wlan!\n\r");
+	printf("Done starting wlan!\r\n");
 #endif
     //
     // Turn on the the red LED to indicate that we are active and initiated
@@ -819,26 +834,26 @@ int matt_socket()
            //
            // Inform user of the socket being opened.
            //
-           printf("    Socket  TCP\n");
+           //printf("    Socket Type: TCP\r\n");
 
        //
        // Error checking.
        //
        if(i32Check >= 0)
        {
-           printf("    Socket Handle '%d'\n",i32Check);
+           //printf("    Socket Handle is '%d'\r\n",i32Check);
            g_ui32Socket = i32Check;
            //return(0);
        }
        else
        {
            printf("    Socket Function error."
-                       "    Error code %d.\n",i32Check);
+                       "    Error code %d.\r\n",i32Check);
            g_ui32SocketType = 0;
            return(-1);
        }
 
-       printf("\n");
+       printf("\r\n");
 
        return(0);
 }
@@ -856,7 +871,7 @@ int matt_bind()
 
            if(g_ui32Socket == SENTINEL_EMPTY)
            {
-               printf("    Socket: runsn.\n");
+               printf("    Socket: run socket() before bind.\r\n");
                return(1);
            }
 
@@ -884,9 +899,8 @@ int matt_bind()
 
            if(i8Check == 0)
            {
-               printf("    Bind Suct %d, 0x%x\n",
-                          (g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1],
-                          (g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1]);
+              // printf("    Bind Success on port: %d\r\n",
+                          //(g_tSocketAddr.sa_data[0] << 8) + g_tSocketAddr.sa_data[1]);
 
                //
                // Set global flag variable to indicate the socket has been bound.
@@ -895,7 +909,7 @@ int matt_bind()
            }
            else
            {
-               printf("    Bd. '%d'\n",i8Check);
+               printf("    Bad bind. '%d'\r\n",i8Check);
 
                //
                // Set global flag variable to indicate the socket is not bound.
@@ -926,13 +940,13 @@ int matt_close()
        //
        if(COMMAND_SUCCESS == ui32Check)
        {
-           printf("    Sockully.\n");
+           printf("    Closing Socket.\r\n");
            g_ui32Socket = SENTINEL_EMPTY;
            return(COMMAND_SUCCESS);
        }
        else
        {
-           printf("    Socked.\n");
+           printf("    Socked.\r\n");
        }
 
     printf("\n");
@@ -960,7 +974,7 @@ int matt_send()
 	    //
 	    if(g_ui32Socket == SENTINEL_EMPTY)
 	    {
-	        printf("    Please et.\n");
+	        printf("    Please call socket().\r\n");
 	        return(1);
 	    }
 
@@ -1018,27 +1032,27 @@ int matt_send()
 	        //
 	        if(g_bSocketConnected == false)
 	        {
-	            printf("    Connr...\n");
+	            //printf("    Calling Connect...\r\n");
 	            i32Check = connect(g_ui32Socket, &g_tSocketAddr, sizeof(sockaddr));
-	            if(i32Check != 0)
+	            if(i32Check == 0)
 	            {
-	                printf("    Connect failed  '%d'\n", i32Check);
-	                printf("    Please maver with the "
-	                           "specifct to\n");
-	                return(0);
+	                //printf("    Socket Connection Success!\r\n");
+	                g_bSocketConnected = true;
+
 	            }
 	            else
 	            {
 	                //
-	                // Socket connected successfully
+	                // Socket not connected
 	                //
-	                g_bSocketConnected = true;
+	                //printf("    Connect failed  '%d'\r\n", i32Check);
+	                return(0);
 	            }
 	        }
 	        //
 	        // Send TCP Packet.
 	        //
-	        printf("    Sendit...\n");
+	        //printf("    Send the HTTP GET\r\n");
 	        i32Check = send(g_ui32Socket, pui8Data, ui32DataLength, 0);
 	    }
 
@@ -1047,11 +1061,11 @@ int matt_send()
 	    //
 	    if(i32Check == -1)
 	    {
-	        printf("    Send ode '%d'\n",i32Check);
+	        //printf("    Send ode '%d'\n",i32Check);
 	    }
 	    else
 	    {
-	        printf("    Send Datt %d bytes.\n", i32Check);
+	        //printf("    Sent Data: %d bytes.\r\n", i32Check);
 	    }
 
 	    return(0);
@@ -1081,7 +1095,7 @@ int matt_recv()
         //
         // We've been asked to receive a TCP packet.
         //
-        printf("    Looking for TCP Packets...\n");
+        //printf("    Looking for TCP Packets...\r\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -1092,13 +1106,13 @@ int matt_recv()
             //
             // Get Data
             //
-
+        	//printf("calling recv\r\n");
             i32ReturnValue = recv(g_ui32Socket, g_pui8CC3000_Rx_Buffer,
                                 CC3000_APP_BUFFER_SIZE, 0);
 
 
             //ROM_SysCtlDelay(10000000);     // TODO not urgent but change receive so it does not need to wait
-            delay(10000000);				 // or so it waits until the whole http request is sent
+            //delay(10000000);				 // or so it waits until the whole http request is sent
 
             //
             // Check Data Validity
@@ -1244,18 +1258,19 @@ CMD_connect(char *ssid)
     //
     // Tell user what we're doing.
     //
-    printf("    Attempting to connect (5 second timeout)...\n");
+    printf("    Attempting to connect (5 second timeout)...\r\n");
 
     //
     // Wait for connect message for 5 seconds,
     //
-    for(ui32x = 0; ui32x < 5000; ui32x++)
+    for(ui32x = 0; ui32x < 100000000; ui32x++)
     {
         //
         // Check to see if we're connected to a network yet.
         //
         if(g_ui32CC3000DHCP == 1)
         {
+        	printf("DHCP Connected!\r\n");
             return(0);
         }
 
@@ -2267,7 +2282,7 @@ main(void)
     //
     initDriver();
 
-	printf("Drver Init done!\n\r");
+	//printf("Drver Init done!\n\r");
 
     // Matt - Removing CLI in favor of starting using CMD_connect then running
     //       the GET request over and over
@@ -2276,7 +2291,9 @@ main(void)
     // Block on SmartConfig until app has allowed connection
     //StartSmartConfig();
     if(CMD_connect("dd-wrt") < 0)
-    	printf("Connt Fail\n");
+    	printf("Connection Failed\r\n");
+    else
+    	//printf("Connection Success\r\n");
 
 
     //
@@ -2290,11 +2307,12 @@ main(void)
         	if(webConnected == 0)
         	{
         		// Open a TCP socket
-        		printf("socket()\n\n");
+        		//printf("socket()\r\n\n");
         		if(matt_socket() < 0)
 					exit(1);
 
         		// Bind to hard coded port
+        		//printf("bind() \r\n\n");
         		if(matt_bind() < 0)
         			exit(1);
 
@@ -2305,6 +2323,7 @@ main(void)
         	if(webConnected && (num_msg_sent < num_msg_to_send))
         	{
         	    // Send hard coded http request
+        		//printf("send() \r\n\n");
 				matt_send();
 				num_msg_sent++;
 
@@ -2313,6 +2332,7 @@ main(void)
 				// server sends in reply arrives before the buffer is empty. As long as buffer isn't
 				// empty recv will keep pulling in data but returns once buff it is empty. Change to recv the
 				// page's size
+        		//printf("recv() \r\n\n");
 				matt_recv();
         	}
 

@@ -64,6 +64,15 @@
 
 extern int myTick;
 
+#define BUTTONS_GPIO_PERIPH     SYSCTL_PERIPH_GPIOF
+#define BUTTONS_GPIO_BASE       GPIO_PORTF_BASE
+
+#define NUM_BUTTONS             2
+#define LEFT_BUTTON             GPIO_PIN_4
+#define RIGHT_BUTTON            GPIO_PIN_0
+
+#define ALL_BUTTONS             (LEFT_BUTTON | RIGHT_BUTTON)
+
 //*****************************************************************************
 //! \addtogroup example_list
 //! <h1>CC3000 Basic WiFi Example (cc3000_basic_wifi_application)</h1>
@@ -341,8 +350,29 @@ init_pwm(void)
 return 0;
 }
 
+void PWMEnable()
+{
+    // Enable the PWM generator
+    PWMGenEnable(PWM1_BASE, PWM_GEN_2);
+    PWMGenEnable(PWM1_BASE, PWM_GEN_3);
+
+    // Turn on the Output pins
+    PWMOutputState(PWM1_BASE, PWM_OUT_5_BIT |PWM_OUT_6_BIT|PWM_OUT_7_BIT, true);
+}
+
+void PWMDisable()
+{
 
 
+    // Enable the PWM generator
+    PWMGenDisable(PWM1_BASE, PWM_GEN_2);
+    PWMGenDisable(PWM1_BASE, PWM_GEN_3);
+
+    // Turn on the Output pins
+    PWMOutputState(PWM1_BASE, PWM_OUT_5_BIT |PWM_OUT_6_BIT|PWM_OUT_7_BIT, false);
+
+
+}
 
 //*****************************************************************************
 //
@@ -1116,7 +1146,11 @@ int matt_send()
 
 	    //char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nConnection: keep-alive\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36\r\nAccept-Encoding: gzip,deflate,sdch\r\nAccept-Language: en-US,en;q=0.8\r\n";
 	    //char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHost: www.airquality.utah.gov\r\nConnection: keep-alive\r\n";
-	    char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
+
+	    //char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
+	    char message[] = "GET /aqp/currentconditions.php?id=l4 HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
+
+
 	    //
 	    // Data pointer.
 	    //
@@ -1198,9 +1232,10 @@ int matt_send()
 
 }
 
-float matt_recv()
+float matt_recv(int *temp)
 {
 
+	*temp = 10;
     int32_t i32ReturnValue;
     uint32_t ui32x = 0, ui32Count = 0;
     volatile int count = 0;
@@ -1239,6 +1274,10 @@ float matt_recv()
             i32ReturnValue = recv(g_ui32Socket, g_pui8CC3000_Rx_Buffer,
                                 CC3000_APP_BUFFER_SIZE, 0);
 
+           // volatile int i = 1000000;
+           // while(i !=0)
+           // i--;
+
             //
             // Check Data Validity
             //
@@ -1276,15 +1315,27 @@ float matt_recv()
                 //
             	if(g_pui8CC3000_Rx_Buffer[ui32x] == '\'' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M' && g_pui8CC3000_Rx_Buffer[ui32x +2] == 'i') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
             	{
-            		UARTprintf("GOT ONE! PM\r\n");
-            		UARTprintf("(1)%c (2)%c (3)%c (4)%c (5)%c\r\n" , g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
+            		UARTprintf("GOT ONE! \"Micrograms\" starts at RxBuff[%d]\r\n", g_pui8CC3000_Rx_Buffer[ui32x + 1]);
+            		UARTprintf("Pollution data digits to scan: (%c) (%c) (%c) (%c) (%c)\r\n" , g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
             				g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17]);
 
+                    int i = 0;
+                    int floatPointIndex = -1;
+                    for (i; i < 21; i++)
+                    {
+                    	if(g_pui8CC3000_Rx_Buffer[ui32x - i] == '.')
+                    		floatPointIndex = ui32x - i;
+                    }
 
+                    if (floatPointIndex == 1)
+                    {
+                    	UARTprintf("PARSE ERROR!!!!!!!!!!!!!!!!!!!!!\r\n");
+                    }
 
+                    char polstring[7] = { g_pui8CC3000_Rx_Buffer[floatPointIndex-1], g_pui8CC3000_Rx_Buffer[floatPointIndex] ,g_pui8CC3000_Rx_Buffer[floatPointIndex+1], '\0'};
 
-                     char polstring[7] = { g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
-             				g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17], '\0'};
+                     //char polstring[7] = { g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
+             		//		g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17], '\0'};
                      char **safe = &polstring;
              		pollution = ustrtof(polstring, safe);
                     UARTprintf("Pollution is: %d",pollution);
@@ -1296,7 +1347,7 @@ float matt_recv()
 
             UARTFlushTx(false);
 
-        }while(count < 30);//while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0);
+        }while(count < 34);//while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0);
     }
 
     UARTprintf("Leaving Recv\n\n");
@@ -2576,7 +2627,9 @@ main(void)
     int32_t num_msg_sent = 0;
     int32_t num_msg_to_send = 1;
     volatile float pollution = 0.1;
-    volatile float old_pollution = 1.1;
+    volatile float old_pollution = 0.1;
+    volatile int temp = 0;
+    volatile int *temperature = &temp;
 
     g_ui32CC3000DHCP = 0;
     g_ui32CC3000Connected = 0;
@@ -2586,12 +2639,41 @@ main(void)
     unsigned long ulPeriod = SysCtlClockGet() / 200;
     volatile int first = 1;
     volatile int again = 0;
+
+
 	printf("UART is WORKING\n");
     //
     // Initialize all board specific components.
     //
     initDriver();
 
+
+        //
+        // Enable the GPIO port to which the pushbuttons are connected.
+        //
+        ROM_SysCtlPeripheralEnable(BUTTONS_GPIO_PERIPH);
+
+        //
+        // Unlock PF0 so we can change it to a GPIO input
+        // Once we have enabled (unlocked) the commit register then re-lock it
+        // to prevent further changes.  PF0 is muxed with NMI thus a special case.
+        //
+        HWREG(BUTTONS_GPIO_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+        HWREG(BUTTONS_GPIO_BASE + GPIO_O_CR) |= 0x01;
+        HWREG(BUTTONS_GPIO_BASE + GPIO_O_LOCK) = 0;
+
+        //
+        // Set each of the button GPIO pins as an input with a pull-up.
+        //
+        ROM_GPIODirModeSet(BUTTONS_GPIO_BASE, ALL_BUTTONS, GPIO_DIR_MODE_IN);
+        ROM_GPIOPadConfigSet(BUTTONS_GPIO_BASE, ALL_BUTTONS,
+                             GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);
+
+        //
+        // Initialize the debounced button state with the current state read from
+        // the GPIO bank.
+        //
+        int state = ROM_GPIOPinRead(BUTTONS_GPIO_BASE, ALL_BUTTONS);
 
     // Try to connect to wifi
     if(CMD_connect1("dd-wrt") < 0)
@@ -2606,11 +2688,9 @@ main(void)
     //
     // Loop forever
     //
-    while(1)
+    while(g_ui32CC3000DHCP == 1)
     {
         // If wlan connect worked make connection with web server
-        if(g_ui32CC3000DHCP == 1)
-        {
         	if(webConnected == 0)
         	{
         		// Open a TCP socket
@@ -2643,46 +2723,66 @@ main(void)
 
 				// bind on recv until we get our data
 				UARTprintf("Calling recv()\n\n");
-				pollution = matt_recv();
+				pollution = matt_recv(temperature);
         	}
 
-        }
 
         // for manual pollution changing in testing
        //pollution = 200;
 
-       if(pollution != old_pollution)
+       if(GPIOPinRead(GPIO_PORTF_BASE, LEFT_BUTTON))
        {
+         if(pollution != old_pollution)
+         {
     	   old_pollution = pollution;
 
            if(pollution <= 12.0)
            {
         	   // Green full blast
-   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod); //R
-   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,ulPeriod);   // B
-   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod - 1);   //G range is ulPeriod -1 to 0
+           	PWMDisable();
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,0); //R
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6,0);   // B
+   	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod -1);   //G range is ulPeriod -1 to 0
+        	PWMEnable();
            }
            else if((pollution > 12.0) && (pollution <= 35.4))
            {
         	   // Yellow full blast
+           	PWMDisable();
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod -1); //R
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, 0);   // B
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,ulPeriod -1);   //G range is ulPeriod -1 to 0
+        	PWMEnable();
            }
            else if((pollution > 35.4) && (pollution <= 150.4))
            {
         	   // Red full blast
+           	PWMDisable();
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod -1); //R
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, 0);   // B
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,0);   //G range is ulPeriod -1 to 0
+        	PWMEnable();
            }
-           else if((pollution > 150.4))
+           else
            {
-        	   // Red and blue full blast
+
+        	PWMDisable();
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,ulPeriod -1); //R
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, ulPeriod -1);   // B
    	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,0);   //G range is ulPeriod -1 to 0
+        	PWMEnable();
            }
+         }
+       }
+       else
+       {
+    	   // Add temp change here once temp is being parsed.
+       	    PWMDisable();
+	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5,0); //R
+	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, ulPeriod /2);   // B
+	        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7,0);   //G range is ulPeriod -1 to 0
+        	PWMEnable();
+	        old_pollution = -1;
        }
 
         // Wait about 30 seconds between hitting the server again

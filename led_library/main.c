@@ -75,7 +75,7 @@ int main(void)
 
    // circularly linked-list intentional!
    // toggle between weather and air
-   insert_led_state(display_weather, display_air);
+   insert_led_state(display_weather, 0);
    insert_led_state(display_air, display_weather);
 
    start_led_sequence();

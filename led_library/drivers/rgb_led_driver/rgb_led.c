@@ -103,8 +103,10 @@ void insert_led_state(led_state * state, led_state * after) {
 }
 
 void start_led_sequence() {
-	if(head)
+	if(head) {
+		set_led_state(head);
 		start_led_state_timer(head);
+	}
 }
 
 void start_led_state_timer(led_state * ls) {
@@ -130,12 +132,14 @@ void transition_to_next_state() {
 			led_state * prev = head;
 
 			head = head->next;
+			set_led_state(head);
 			start_led_state_timer(head);
 
 			if(prev->mode & FREE_WHEN_DONE) {
 				free((void*)prev);
 			}
 		}
+
 	}
 }
 

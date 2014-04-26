@@ -28,13 +28,14 @@ int main(void)
 	2000, //pulse rate
 	4000, //duration
 	TRANS_ON_MIN, //mode
-	display_weather //next
+	(led_state*)0  //next
    );
 
    // circularly linked-list intentional!
    // toggle between weather and air
    insert_led_state(display_weather, 0);
    insert_led_state(display_air, display_weather);
+   display_air->next = display_weather;
 
    start_led_sequence();
 

@@ -28,9 +28,8 @@
 #define TIMER_PULSE ((mytimer_t *)0x40050400)
 #define TIMER_LED_STATE_DURATION ((mytimer_t *)0x40050500)
 
-#define LED_STATE_GPIO_INT MSS_GPIO_14
+extern void* g_pfnVectors;
 
-#define HZ_PER_MS 1000
 // the id of the timer returned by add_timer()
 // allows access to compare value, status, overflow, etc.
 uint8_t red_timer_id;
@@ -290,7 +289,25 @@ void set_pulse_rate(uint32_t ms){
    }
 }
 
+__attribute__ ((interrupt)) void GPIO5_IRQHandler(void){
+	pwm_red();
+}
 
+__attribute__ ((interrupt)) void GPIO6_IRQHandler(void){
+	pwm_green();
+}
+
+__attribute__ ((interrupt)) void GPIO7_IRQHandler(void){
+	pwm_blue();
+}
+
+__attribute__ ((interrupt)) void GPIO8_IRQHandler(void){
+	on_pulse();
+}
+
+__attribute__ ((interrupt)) void GPIO14_IRQHandler(void){
+	on_led_state_duration_reached();
+}
 
 
 

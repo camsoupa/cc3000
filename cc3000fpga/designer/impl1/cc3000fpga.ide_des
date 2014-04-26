@@ -1,4 +1,4 @@
-KEY IDE_DES_TOOL "Designer"
+KEY IDE_DES_TOOL "Ide"
 KEY IDE_DES_FAMILY "SmartFusion"
 KEY IDE_DES_DIE "IP4X3M1"
 KEY IDE_DES_PACKAGE "fg484"
@@ -20,10 +20,9 @@ KEY IDE_DES_BLOCK_PUBLISH "FALSE"
 KEY IDE_DES_BA_EXPORTED "FALSE"
 KEY IDE_DES_INTERACTIVE "FALSE"
 KEY IDE_DES_ERROR_FOUND "FALSE"
-KEY IDE_DES_ADB_PATH "C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb"
+KEY IDE_DES_ADB_PATH "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb"
 LIST SOURCE_FILES
-VALUE "C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\synthesis\cc3000fpga.edn;edn"
-VALUE "C:\Users\Gnewt\Documents\GitHub\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc;pdc"
+VALUE "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn;edn"
 ENDLIST
 LIST OPTIONAL_FILES
 ENDLIST

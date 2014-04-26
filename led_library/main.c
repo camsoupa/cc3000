@@ -11,20 +11,25 @@
 #define PULSE_GPIO_INT MSS_GPIO_8
 
 __attribute__ ((interrupt)) void GPIO5_IRQHandler(void){
-  pwm_red();
+	pwm_red();
 }
 
 __attribute__ ((interrupt)) void GPIO6_IRQHandler(void){
-  pwm_green();
+	pwm_green();
 }
 
 __attribute__ ((interrupt)) void GPIO7_IRQHandler(void){
-  pwm_blue();
+	pwm_blue();
 }
 
 __attribute__ ((interrupt)) void GPIO8_IRQHandler(void){
-  on_pulse();
+	on_pulse();
 }
+
+__attribute__ ((interrupt)) void GPIO14_IRQHandler(void){
+	on_led_state_duration_reached();
+}
+
 
 // the fpga configured pins for led control
 // TODO: add these to SoftConsole
@@ -42,22 +47,38 @@ void delay(uint32_t cnt){
 
 int main(void)
 {
-   MSS_GPIO_init();
+	led_state * display_weather;
+	led_state * display_air;
 
-
-   printf("hello world! %d\r\n", (uint32_t)g_pfnVectors);
+	MSS_GPIO_init();
 
    init_rgb_pwm(RED_GPIO_INT, GREEN_GPIO_INT, BLUE_GPIO_INT, PULSE_GPIO_INT);
    init_rgb_led(RED_GPIO, GREEN_GPIO, BLUE_GPIO);
-   set_color(255,255,255);
-   set_brightness(100);
-   set_pulse_rate(000);
-   uint8_t chan_red = 0;
-   uint8_t chan_blue = 150;
-   uint8_t chan_green = 255;
-   while(1) {
-    // set_color(chan_red, chan_green, chan_blue);
-     //delay(100000);
-	 chan_red++; chan_green--;
-   }
+
+   display_weather = create_led_state(
+	0, 0, 255, //rgb
+	0, //start brightness
+	1000, //pulse rate
+	8000, //duration
+	TRANS_ON_MIN, //mode
+	(led_state*)0 //next
+   );
+
+   display_air = create_led_state(
+	0, 255, 0, //rgb
+	0, //start brightness
+	2000, //pulse rate
+	4000, //duration
+	TRANS_ON_MIN, //mode
+	display_weather //next
+   );
+
+   // circularly linked-list intentional!
+   // toggle between weather and air
+   insert_led_state(display_weather, display_air);
+   insert_led_state(display_air, display_weather);
+
+   start_led_sequence();
+
+   while(1) {}
 }

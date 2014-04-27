@@ -28,9 +28,8 @@
 #define TIMER_PULSE ((mytimer_t *)0x40050400)
 #define TIMER_LED_STATE_DURATION ((mytimer_t *)0x40050500)
 
-#define LED_STATE_GPIO_INT MSS_GPIO_14
+extern void* g_pfnVectors;
 
-#define HZ_PER_MS 1000
 // the id of the timer returned by add_timer()
 // allows access to compare value, status, overflow, etc.
 uint8_t red_timer_id;
@@ -78,8 +77,7 @@ create_led_state(
 	uint8_t  brightness,
 	uint32_t pulse_rate_ms,
 	uint32_t duration_ms,
-	uint8_t  mode,
-	led_state * next)
+	uint8_t  mode)
 {
 	led_state * new_state = malloc(sizeof(led_state));
 	new_state->r = r;
@@ -89,7 +87,7 @@ create_led_state(
 	new_state->mode = mode;
 	new_state->pulse_rate_ms = pulse_rate_ms;
 	new_state->duration_ms = duration_ms;
-	new_state->next = next;
+	new_state->next = 0;
 	return new_state;
 }
 
@@ -104,8 +102,10 @@ void insert_led_state(led_state * state, led_state * after) {
 }
 
 void start_led_sequence() {
-	if(head)
+	if(head) {
+		set_led_state(head);
 		start_led_state_timer(head);
+	}
 }
 
 void start_led_state_timer(led_state * ls) {
@@ -131,12 +131,14 @@ void transition_to_next_state() {
 			led_state * prev = head;
 
 			head = head->next;
+			set_led_state(head);
 			start_led_state_timer(head);
 
 			if(prev->mode & FREE_WHEN_DONE) {
 				free((void*)prev);
 			}
 		}
+
 	}
 }
 
@@ -290,7 +292,25 @@ void set_pulse_rate(uint32_t ms){
    }
 }
 
+__attribute__ ((interrupt)) void GPIO5_IRQHandler(void){
+	pwm_red();
+}
 
+__attribute__ ((interrupt)) void GPIO6_IRQHandler(void){
+	pwm_green();
+}
+
+__attribute__ ((interrupt)) void GPIO7_IRQHandler(void){
+	pwm_blue();
+}
+
+__attribute__ ((interrupt)) void GPIO8_IRQHandler(void){
+	on_pulse();
+}
+
+__attribute__ ((interrupt)) void GPIO14_IRQHandler(void){
+	on_led_state_duration_reached();
+}
 
 
 

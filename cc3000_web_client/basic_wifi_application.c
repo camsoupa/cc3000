@@ -41,7 +41,8 @@
 #include "CC3000HostDriver/hci.h"
 #include "application_commands.h"
 
-
+int after_rec = 0;
+//extern tSpiInformation sSpiInformation;
 
 //*****************************************************************************
 //! \addtogroup example_list
@@ -1076,6 +1077,7 @@ int matt_recv()
     int32_t i32ReturnValue;
     uint32_t ui32x = 0, ui32Count = 0;
     volatile int count = 0;
+    //after_rec = 1;
 
     //
     // Validate Input.
@@ -2333,6 +2335,7 @@ main(void)
 				// empty recv will keep pulling in data but returns once buff it is empty. Change to recv the
 				// page's size
         		//printf("recv() \r\n\n");
+				//delay(1000000);
 				matt_recv();
         	}
 

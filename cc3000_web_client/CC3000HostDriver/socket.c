@@ -47,6 +47,7 @@
 #include "socket.h"
 #include "evnt_handler.h"
 
+extern int after_rec;
 
 //Enable this flag if and only if you must comply with BSD socket close() function
 #ifdef _API_USE_BSD_CLOSE
@@ -932,8 +933,12 @@ simple_link_recv(long sd, void *buf, long len, long flags, sockaddr *from,
     //
     // Since we are in blocking state - wait for event complete
     //
+
+
     SimpleLinkWaitEvent(opcode, &tSocketReadEvent);
 
+
+    after_rec = 1;
     //
     // In case the number of bytes is more then zero - read data
     //

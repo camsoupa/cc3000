@@ -43,6 +43,8 @@
 #include "../CC3000HostDriver/matt_spi.h"
 #include "../CC3000HostDriver/hci.h"
 
+extern int after_rec;
+
 //*****************************************************************************
 //
 // The size of the DMA channel control structure we need in bytes.
@@ -338,7 +340,7 @@ int init_spi(uint32_t ui32SSIFreq, uint32_t ui32SysClck)
 	// I think this is all right. I'm not sure if we want SPI_MODE2 or SPI_MODE1 though.
 	// Actually looking at http://www.totalphase.com/support/articles/200349236-SPI-Background I think mode 1 is right
 
-	MSS_SPI_configure_master_mode(&g_mss_spi1, MSS_SPI_SLAVE_0, MSS_SPI_MODE1, MSS_SPI_PCLK_DIV_64, MSS_SPI_BLOCK_TRANSFER_FRAME_SIZE);
+	MSS_SPI_configure_master_mode(&g_mss_spi1, MSS_SPI_SLAVE_0, MSS_SPI_MODE1, MSS_SPI_PCLK_DIV_32, MSS_SPI_BLOCK_TRANSFER_FRAME_SIZE);
 
 
     return(ESUCCESS);
@@ -944,6 +946,13 @@ SpiContReadOperation(void)
 //void IntSpiGPIOHandler(void)
 __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 {
+
+   if (after_rec == 1)
+   {
+	   //check STATE!!!! must be IDLE
+	   //printf("Got Interrupt after recv()\r\n");
+   }
+
 	// this is the interrupt handler for SPI_IRQ_PIN (MSS_GPIO_2)
 #ifdef VERBOSE
 	printf("IntSpiGPIOHandler: Got SPI_IRQ_PIN interrupt for");
@@ -1005,6 +1014,9 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
         printf("IntSpiGPIOHandler: Done with the write\r\n");
 #endif
 	}
+
+
+
 }
 
 //*****************************************************************************

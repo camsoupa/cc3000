@@ -77,8 +77,7 @@ create_led_state(
 	uint8_t  brightness,
 	uint32_t pulse_rate_ms,
 	uint32_t duration_ms,
-	uint8_t  mode,
-	led_state * next)
+	uint8_t  mode)
 {
 	led_state * new_state = malloc(sizeof(led_state));
 	new_state->r = r;
@@ -88,7 +87,7 @@ create_led_state(
 	new_state->mode = mode;
 	new_state->pulse_rate_ms = pulse_rate_ms;
 	new_state->duration_ms = duration_ms;
-	new_state->next = next;
+	new_state->next = 0;
 	return new_state;
 }
 

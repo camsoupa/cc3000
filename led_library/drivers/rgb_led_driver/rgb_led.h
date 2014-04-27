@@ -64,8 +64,7 @@ create_led_state(
 	uint8_t  brightness,
 	uint32_t pulse_rate_ms,
 	uint32_t duration_ms,
-	uint8_t  mode,
-	led_state * next);
+	uint8_t  mode);
 
 void insert_led_state(led_state * state, led_state * after);
 

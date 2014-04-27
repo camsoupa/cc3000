@@ -18,8 +18,7 @@ int main(void)
 	0, //start brightness
 	1000, //pulse rate
 	8000, //duration
-	TRANS_ON_MIN, //mode
-	(led_state*)0 //next
+	TRANS_ON_MIN //mode
    );
 
    display_air = create_led_state(
@@ -27,8 +26,7 @@ int main(void)
 	0, //start brightness
 	2000, //pulse rate
 	4000, //duration
-	TRANS_ON_MIN, //mode
-	(led_state*)0  //next
+	TRANS_ON_MIN //mode
    );
 
    // circularly linked-list intentional!

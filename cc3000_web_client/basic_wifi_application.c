@@ -1174,7 +1174,7 @@ float matt_recv(int *temp)
 	                    	printf("PARSE ERROR!!!!!!!!!!!!!!!!!!!!!\r\n");
 	                    }
 
-	                    char polstring[7] = { g_pui8CC3000_Rx_Buffer[floatPointIndex-1], g_pui8CC3000_Rx_Buffer[floatPointIndex] ,g_pui8CC3000_Rx_Buffer[floatPointIndex+1], '\0'};
+	                    char polstring[4] = { g_pui8CC3000_Rx_Buffer[floatPointIndex-1], g_pui8CC3000_Rx_Buffer[floatPointIndex] ,g_pui8CC3000_Rx_Buffer[floatPointIndex+1], '\0'};
 
 	                     //char polstring[7] = { g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
 	             		//		g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17], '\0'};

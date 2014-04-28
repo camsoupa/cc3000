@@ -32,9 +32,9 @@
 
 
 // led state modes
-#define	FREE_WHEN_DONE  0x2
-#define	TRANS_ON_MAX    0x4
-#define TRANS_ON_MIN    0x8
+#define	FREE_WHEN_DONE  (uint8_t)0x2
+#define	TRANS_ON_MAX    (uint8_t)0x4
+#define TRANS_ON_MIN    (uint8_t)0x8
 
 typedef struct led_state {
 	uint8_t  r, g, b, brightness, mode;

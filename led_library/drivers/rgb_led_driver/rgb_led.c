@@ -190,10 +190,11 @@ void on_pulse(void){
 			set_brightness(master_brightness+1);
 		} else {
 			pulse_direction = DIMMER;
-			uint32_t trans_on_max = (head->mode & TRANS_ON_MAX);
-			if(trans_on_max) {
-				transition_to_next_state();
-			}
+			//uint8_t mode = head->mode;
+			//uint32_t trans_on_max = (head->mode & TRANS_ON_MAX);
+			//if(trans_on_max) {
+			//	transition_to_next_state();
+			//}
 		}
 	} else {
 		if(master_brightness > min_brightness) {
@@ -234,6 +235,8 @@ void pwm_timer_handler(uint32_t gpio, uint32_t timer_index)
     {
     	MSS_GPIO_set_output(gpio, OFF);
     }
+
+
 }
 
 void update_compare_values(){
@@ -243,8 +246,37 @@ void update_compare_values(){
 }
 
 void set_color(uint8_t r, uint8_t g, uint8_t b){
+	MSS_GPIO_disable_irq(gpio_r_i);
+	MSS_GPIO_disable_irq(gpio_g_i);
+	MSS_GPIO_disable_irq(gpio_b_i);
+
+	if(!r){
+		timer_disable(red_timer_id);
+		MSS_GPIO_set_output(gpio_r, OFF);
+	}
+	else if(!red) {
+		timer_enable(red_timer_id);
+	}
+
+	if(!g){
+		timer_disable(green_timer_id);
+		MSS_GPIO_set_output(gpio_g, OFF);
+	}
+	else if(!green) {
+		timer_enable(green_timer_id);
+	}
+
+	if(!b){
+		timer_disable(blue_timer_id);
+		MSS_GPIO_set_output(gpio_b, OFF);
+	}
+	else if(!blue) {
+		timer_enable(blue_timer_id);
+	}
+
 	red = r; green = g; blue = b;
 	update_compare_values();
+
 }
 
 void set_brightness(uint8_t brightness){

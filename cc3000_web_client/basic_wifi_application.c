@@ -40,6 +40,7 @@
 #include "CC3000HostDriver/matt_spi.h"
 #include "CC3000HostDriver/hci.h"
 #include "application_commands.h"
+#include "utils/utils.h"
 
 int after_rec = 0;
 extern int myTick;
@@ -920,7 +921,7 @@ int matt_bind()
            }
 
 
-           printf("\n");
+           printf("\r\n");
 
            return(0);
 }
@@ -951,7 +952,7 @@ int matt_close()
            printf("    Socked.\r\n");
        }
 
-    printf("\n");
+    printf("\r\n");
 
     return(0);
 }
@@ -1081,7 +1082,8 @@ float matt_recv(int *temp)
 	    int32_t i32ReturnValue;
 	    uint32_t ui32x = 0, ui32Count = 0;
 	    volatile int count = 0;
-	    float pollution = 0;
+	    float pollution1 = 0;
+        char *safe;
 
 	    //
 	    // Validate Input.
@@ -1089,7 +1091,7 @@ float matt_recv(int *temp)
 	    if((g_ui32Socket == SENTINEL_EMPTY) || (g_ui32BindFlag == SENTINEL_EMPTY))
 	    {
 	        printf("    Please Open a socket and Bind it to a port before "
-	                   "receiving data.\n");
+	                   "receiving data.\r\n");
 	        return(-1);
 	    }
 
@@ -1101,7 +1103,7 @@ float matt_recv(int *temp)
 	        //
 	        // We've been asked to receive a TCP packet.
 	        //
-	        printf("    Looking for TCP Packets...\n");
+	        printf("    Looking for TCP Packets...\r\n");
 
 	        //
 	        // Get all data received.  This may require multiple calls.
@@ -1128,14 +1130,14 @@ float matt_recv(int *temp)
 	                //
 	                // No data received on first try
 	                //
-	                printf("    No data received: %d.\n", i32ReturnValue);
+	                printf("    No data received: %d.\r\n", i32ReturnValue);
 	                return(0);
 	            }
 
 	            //
 	            // Print data to screen
 	            //
-	                printf("    Received %d bytes of data. %d time\n",
+	                printf("    Received %d bytes of data. %d time\r\n",
 	                            i32ReturnValue, count);
 	            if(i32ReturnValue > 0)
 	            {
@@ -1147,18 +1149,18 @@ float matt_recv(int *temp)
 	                //
 	                // Add column wrapping to make output pretty.
 	                //
-	                if( ((ui32Count % 60) == 0) && (ui32Count > 0))
-	                {
-	                    printf("\n    ");
-	                }
+	               // if( ((ui32Count % 60) == 0) && (ui32Count > 0))
+	               // {
+	               //     printf("\r\n    ");
+	               // }
 
 	                //
 	                // Print text to screen
 	                //
 	            	if(g_pui8CC3000_Rx_Buffer[ui32x] == '\'' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M' && g_pui8CC3000_Rx_Buffer[ui32x +2] == 'i') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
 	            	{
-	            		printf("GOT ONE! \"Micrograms\" starts at RxBuff[%d]\r\n", g_pui8CC3000_Rx_Buffer[ui32x + 1]);
-	            		printf("Pollution data digits to scan: (%c) (%c) (%c) (%c) (%c)\r\n" , g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
+	            		printf("GOT ONE! \"Micrograms\" starts at RxBuff[%d]\r\n", ui32x + 1);
+	            		printf("Pollution data digits to scan: [-21](%c) [-20](%c) [-19](%c) [-18](%c) [-17](%c)\r\n" , g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
 	            				g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17]);
 
 	                    int i = 0;
@@ -1167,6 +1169,7 @@ float matt_recv(int *temp)
 	                    {
 	                    	if(g_pui8CC3000_Rx_Buffer[ui32x - i] == '.')
 	                    		floatPointIndex = ui32x - i;
+	                    	//printf("FloatPointIndex: %d, i: %d \r\n", floatPointIndex, i);
 	                    }
 
 	                    if (floatPointIndex == 1)
@@ -1175,12 +1178,13 @@ float matt_recv(int *temp)
 	                    }
 
 	                    char polstring[4] = { g_pui8CC3000_Rx_Buffer[floatPointIndex-1], g_pui8CC3000_Rx_Buffer[floatPointIndex] ,g_pui8CC3000_Rx_Buffer[floatPointIndex+1], '\0'};
-
+	                    safe = NULL;
+	                    printf("Polstring: %c %c %c %c\r\n", polstring[0], polstring[1], polstring[2], polstring[3]);
 	                     //char polstring[7] = { g_pui8CC3000_Rx_Buffer[ui32x-21], g_pui8CC3000_Rx_Buffer[ui32x-20] ,g_pui8CC3000_Rx_Buffer[ui32x-19],
 	             		//		g_pui8CC3000_Rx_Buffer[ui32x-18], g_pui8CC3000_Rx_Buffer[ui32x-17], '\0'};
-	                     char **safe = &polstring;
-	             		pollution = ustrtof(polstring, safe);
-	                    printf("Pollution is: %d",pollution);
+
+	             		pollution1 = ustrtof(polstring, &safe);
+	                    printf("Pollution is: %f\r\n", pollution1);
 
 	            	}
 
@@ -1189,12 +1193,12 @@ float matt_recv(int *temp)
 
 
 
-	        }while(count < 34);//while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0);
+	        }while(count < 34);   //while(i32ReturnValue == CC3000_APP_BUFFER_SIZE); //while(found == 0);
 	    }
 
-	    printf("Leaving Recv\n\n");
-
-	    return(pollution);
+        //	    printf("Leaving Recv\r\n\n");
+       // printf("Pollution right before return: %f\r\n", pollution1);
+	    return(pollution1);
 
 
 
@@ -2417,7 +2421,7 @@ main(void)
 	    // Try to connect to wifi
 	    if(CMD_connect("dd-wrt") < 0)
 	    {
-	    	printf("Connect Failed\n");
+	    	printf("Connect Failed\r\n");
 	    }
 	    else
 	    {
@@ -2433,14 +2437,14 @@ main(void)
 	        	if(webConnected == 0)
 	        	{
 	        		// Open a TCP socket
-	        		printf("Calling socket()\n\n");
+	        		printf("Calling socket()\r\n\n");
 	        		if(matt_socket() < 0)
 	        		{
 						exit(1);
 	        		}
 
 	        		// Bind to hard coded port
-	        		printf("Calling bind()\n\n");
+	        		printf("Calling bind()\r\n\n");
 	        		if(matt_bind() < 0)
 	        		{
 	        			exit(1);
@@ -2456,13 +2460,14 @@ main(void)
 	        		again = 0; // reset again for next time
 
 	        	    // Send hard coded http request
-					printf("Calling send() to send HTTP GET\n\n");
+					printf("Calling send() to send HTTP GET\r\n\n");
 					matt_send();
 					num_msg_sent++;
 
 					// bind on recv until we get our data
-					printf("Calling recv()\n\n");
+					printf("Calling recv()\r\n\n");
 					pollution = matt_recv(temperature);
+			        printf("Pollution in main: %f\r\n", pollution);
 	        	}
 
 
@@ -2477,9 +2482,9 @@ main(void)
 	         }
 
 	        // Wait about 45 seconds before hitting the server again
-	        if(myTick >= 60)
+	        if(myTick >= 10)
 	        {
-	        	printf("Request Again\n");
+	        	printf("Request Again\r\n");
 	            again = 1;
 	            myTick = 0;
 	        }
@@ -2489,7 +2494,7 @@ main(void)
 	        if ((webConnected == 1) && (again))
 	        {
 	      	matt_close();
-	    	printf("Calling close() to close connection and free socket\n\n");
+	    	printf("Calling close() to close connection and free socket\r\n\n");
 	    	webConnected = 0;
 	        }
 

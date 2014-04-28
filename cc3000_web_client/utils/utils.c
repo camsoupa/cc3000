@@ -55,22 +55,7 @@
 //*****************************************************************************
 static const char * const g_pcHex = "0123456789abcdef";
 
-//*****************************************************************************
-//
-// An array of the value of ten raised to the power-of-two exponents.  This is
-// used for converting the decimal exponent into the floating-point value of
-// 10^exp.
-//
-//*****************************************************************************
-static const float g_pfExponents[] =
-{
-    1.0e+01,
-    1.0e+02,
-    1.0e+04,
-    1.0e+08,
-    1.0e+16,
-    1.0e+32,
-};
+
 
 //*****************************************************************************
 //
@@ -1320,7 +1305,7 @@ ustrtoul(const char * nptr, const char ** endptr, int base)
 // 10^exp.
 //
 //*****************************************************************************
-/*
+
 static const float g_pfExponents[] =
 {
     1.0e+01,
@@ -1330,7 +1315,7 @@ static const float g_pfExponents[] =
     1.0e+16,
     1.0e+32,
 };
-*/
+
 //*****************************************************************************
 //
 //! Converts a string into its floating-point equivalent.
@@ -1350,7 +1335,7 @@ static const float g_pfExponents[] =
 //*****************************************************************************
 
 float
-ustrtof(const char *nptr, const char **endptr)
+ustrtof(char *nptr, char **endptr)
 {
     unsigned long ulNeg, ulExp, ulExpNeg, ulValid, ulIdx;
     float fRet, fDigit, fExp;
@@ -1518,6 +1503,7 @@ ustrtof(const char *nptr, const char **endptr)
     //
     // Return the converted value.
     //
+    //printf("fret: %f\r\n", fRet);
     return(ulNeg ? (0 - fRet) : fRet);
 }
 

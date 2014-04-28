@@ -63,8 +63,8 @@ extern int ustrncasecmp(const char *s1, const char *s2, size_t n);
 extern int ustrncmp(const char *s1, const char *s2, size_t n);
 extern char *ustrncpy(char *s1, const char *s2, size_t n);
 extern char *ustrstr(const char *s1, const char *s2);
-extern float ustrtof(const char *nptr,
-                     const char **endptr);
+extern float ustrtof(char *nptr,
+                     char **endptr);
 extern unsigned long int ustrtoul(const char * nptr,
                                   const char **endptr, int base);
 extern int uvsnprintf(char *s, size_t n,

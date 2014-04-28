@@ -41,6 +41,7 @@
 #include "CC3000HostDriver/hci.h"
 #include "application_commands.h"
 #include "utils/utils.h"
+#include "drivers/air_weather_display/air_weather_display.h"
 
 int after_rec = 0;
 extern int myTick;
@@ -2407,6 +2408,9 @@ CMD_ping(int argc, char **argv)
 // main loop
 //
 //*****************************************************************************
+
+
+
 int
 main(void)
 {
@@ -2430,6 +2434,9 @@ main(void)
 	    // Initialize all board specific components.
 	    //
 	    initDriver();
+
+	    //setup the output
+	    init_weather_air_display();
 
 	    // Try to connect to wifi
 	    if(CMD_connect("dd-wrt") < 0)
@@ -2481,6 +2488,7 @@ main(void)
 					printf("Calling recv()\r\n\n");
 					pollution = matt_recv(temperature);
 			        printf("Pollution in main: %f\r\n", pollution);
+
 	        	}
 
 
@@ -2491,6 +2499,7 @@ main(void)
 	         if(pollution != old_pollution)
 	         {
 	    	   old_pollution = pollution;
+	    	   update_air_quality(pollution);
 
 	         }
 

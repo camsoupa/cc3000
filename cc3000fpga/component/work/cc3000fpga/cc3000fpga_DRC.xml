@@ -6,6 +6,13 @@
     <status>C:\Microsemi\Libero_v10.1\Designer/data/drcreport\warn.png</status>
     <StatusMessage>Warning</StatusMessage>
     <message>Floating Driver</message>
+    <detail>Floating output bus pin Timer_0:TPS[4:0]</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/cc3000fpga/pins/Timer_0:TPS</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_v10.1\Designer/data/drcreport\warn.png</status>
+    <StatusMessage>Warning</StatusMessage>
+    <message>Floating Driver</message>
     <detail>Floating output bus pin Timer_1:TPS[4:0]</detail>
     <crossprobe>liberoaction://cross_probe/smartdesign/cc3000fpga/pins/Timer_1:TPS</crossprobe>
   </drc>

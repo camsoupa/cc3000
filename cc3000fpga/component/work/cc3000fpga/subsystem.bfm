@@ -1,5 +1,5 @@
 #===========================================================
-# Created by Actel SmartDesign Sat Apr 19 21:05:30 2014
+# Created by Actel SmartDesign Mon Apr 28 10:22:15 2014
 #
 # Syntax: 
 # ------- 
@@ -21,3 +21,4 @@ memmap Timer_1 0x40050100;
 memmap Timer_2 0x40050200;
 memmap Timer_3 0x40050300;
 memmap Timer_4 0x40050400;
+memmap Timer_0 0x40050500;

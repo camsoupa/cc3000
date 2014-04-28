@@ -1,6 +1,7 @@
 /*
  * rgb_led.h
  *
+ * Version 2
  */
 
 
@@ -11,7 +12,7 @@
 #include <stdint.h>
 #include "../mss_gpio/mss_gpio.h"
 
-#define LED_STATE_GPIO_INT MSS_GPIO_14
+
 
 // pwm interrupts
 // the fpga configured interrupts for the timer modules
@@ -19,6 +20,7 @@
 #define GREEN_GPIO_INT MSS_GPIO_6
 #define BLUE_GPIO_INT  MSS_GPIO_7
 #define PULSE_GPIO_INT MSS_GPIO_8
+#define LED_STATE_GPIO_INT MSS_GPIO_14
 
 // the fpga configured pins for led control
 // TODO: add these to SoftConsole

@@ -51,7 +51,7 @@
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry excluding="drivers/mss_pdma|drivers/fpga_timer|hal" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="drivers/mss_pdma|hal" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 </sourceEntries>
 </configuration>
 </storageModule>
@@ -461,7 +461,7 @@
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry excluding="drivers/mss_pdma|drivers/fpga_timer|hal" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="drivers/mss_pdma|hal" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 </sourceEntries>
 </configuration>
 </storageModule>

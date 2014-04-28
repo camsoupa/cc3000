@@ -3,6 +3,7 @@
  *
  */
 
+#include <stdio.h>
 #include "./rgb_led.h"
 #include "../mss_gpio/mss_gpio.h"
 #include "../fpga_timer/fpga_timer.h"
@@ -71,32 +72,11 @@ void set_led_state(led_state * ls) {
 	set_color(ls->r,ls->g,ls->b); set_brightness(ls->brightness); set_pulse_rate(ls->pulse_rate_ms);
 }
 
-led_state *
-create_led_state(
-	uint8_t  r, uint8_t g, uint8_t b,
-	uint8_t  brightness,
-	uint32_t pulse_rate_ms,
-	uint32_t duration_ms,
-	uint8_t  mode)
-{
-	led_state * new_state = malloc(sizeof(led_state));
-	new_state->r = r;
-	new_state->g = g;
-	new_state->b = b;
-	new_state->brightness = brightness;
-	new_state->mode = mode;
-	new_state->pulse_rate_ms = pulse_rate_ms;
-	new_state->duration_ms = duration_ms;
-	new_state->next = 0;
-	return new_state;
-}
-
 void insert_led_state(led_state * state, led_state * after) {
 	if(after) {
 		state->next = after->next;
 		after->next = state;
-	}
-	else {
+	} else {
 		head = state;
 	}
 }
@@ -105,19 +85,21 @@ void start_led_sequence() {
 	if(head) {
 		set_led_state(head);
 		start_led_state_timer(head);
+		timer_enable(led_state_duration_timer_id);
+		timer_enable(red_timer_id);
+		timer_enable(green_timer_id);
+		timer_enable(blue_timer_id);
 	}
 }
 
 void start_led_state_timer(led_state * ls) {
 	timer_setOverflowVal(led_state_duration_timer_id, head->duration_ms*HZ_PER_MS);
-	timer_enable(led_state_duration_timer_id);
 	timer_enable_allInterrupts(led_state_duration_timer_id);
 	timer_enable_overflowInt(led_state_duration_timer_id);
 }
 
 void transition_to_next_state() {
 	if(duration_reached) {
-		//TODO disable pulse interrupt?
 
 		//clear the flag
 		duration_reached = 0;
@@ -126,19 +108,11 @@ void transition_to_next_state() {
 		// the last state will continue until a new state is queued
 		if(!head) return;
 
-		// if it is the last state, let it repeat
 		if(head->next != 0) {
-			led_state * prev = head;
-
 			head = head->next;
 			set_led_state(head);
-			start_led_state_timer(head);
-
-			if(prev->mode & FREE_WHEN_DONE) {
-				free((void*)prev);
-			}
 		}
-
+		start_led_state_timer(head);
 	}
 }
 
@@ -192,10 +166,6 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	timer_enable_overflowInt(red_timer_id);
 	timer_enable_overflowInt(blue_timer_id);
 	timer_enable_overflowInt(green_timer_id);
-
-	timer_enable(red_timer_id);
-	timer_enable(green_timer_id);
-	timer_enable(blue_timer_id);
 	//timer_enable(pulse_timer_id);
 
 	// don't start the colors until set_brightness is called
@@ -207,6 +177,9 @@ void init_rgb_led(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b){
 	MSS_GPIO_config((gpio_r = _gpio_r), MSS_GPIO_OUTPUT_MODE);
 	MSS_GPIO_config((gpio_g = _gpio_g), MSS_GPIO_OUTPUT_MODE);
 	MSS_GPIO_config((gpio_b = _gpio_b), MSS_GPIO_OUTPUT_MODE);
+	MSS_GPIO_set_output(gpio_r, OFF);
+	MSS_GPIO_set_output(gpio_g, OFF);
+	MSS_GPIO_set_output(gpio_b, OFF);
 }
 
 void on_pulse(void){
@@ -216,7 +189,8 @@ void on_pulse(void){
 			set_brightness(master_brightness+1);
 		} else {
 			pulse_direction = DIMMER;
-			if(head->mode & TRANS_ON_MAX) {
+			uint32_t trans_on_max = (head->mode & TRANS_ON_MAX);
+			if(trans_on_max) {
 				transition_to_next_state();
 			}
 		}
@@ -225,7 +199,7 @@ void on_pulse(void){
 			set_brightness(master_brightness-1);
 		} else {
 			pulse_direction = BRIGHTER;
-			if(head->mode & TRANS_ON_MIN) {
+			if((head->mode & TRANS_ON_MIN)) {
 				transition_to_next_state();
 			}
 		}

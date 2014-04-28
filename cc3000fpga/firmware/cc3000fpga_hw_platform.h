@@ -2,7 +2,7 @@
 #define cc3000fpga_HW_PLATFORM_H_
 /*****************************************************************************
 *
-*Created by Actel SmartDesign  Sat Apr 19 21:05:31 2014
+*Created by Actel SmartDesign  Mon Apr 28 10:22:20 2014
 *
 *Memory map specification for peripherals in cc3000fpga
 */
@@ -15,6 +15,7 @@
 #define TIMER_2                         0x40050200U
 #define TIMER_3                         0x40050300U
 #define TIMER_4                         0x40050400U
+#define TIMER_0                         0x40050500U
 
 
 #endif /* cc3000fpga_HW_PLATFORM_H_*/

@@ -60,7 +60,7 @@
 #include "../../CC3000HostDriver/netapp.h"
 #include "../../CC3000HostDriver/matt_spi.h"
 #include "../../CC3000HostDriver/hci.h"
-
+int myTick = 0;
 
 /* Function for delay taken from our lab 6
  * trying to replace  ROM_SysCtlDelay(100); not sure if this will do it*/
@@ -326,6 +326,7 @@ __attribute__((__interrupt__)) void SysTick_Handler(void)
     // Increment the tick counter.
     //
     ulTickCount++;
+    myTick++;
 
     //
     // Has half a second passed since we last called the event handler?

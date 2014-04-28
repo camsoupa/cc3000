@@ -55,6 +55,8 @@
 //*****************************************************************************
 static const char * const g_pcHex = "0123456789abcdef";
 
+
+
 //*****************************************************************************
 //
 //! Copies a certain number of characters from one string to another.
@@ -1303,7 +1305,7 @@ ustrtoul(const char * nptr, const char ** endptr, int base)
 // 10^exp.
 //
 //*****************************************************************************
-/*
+
 static const float g_pfExponents[] =
 {
     1.0e+01,
@@ -1313,7 +1315,7 @@ static const float g_pfExponents[] =
     1.0e+16,
     1.0e+32,
 };
-*/
+
 //*****************************************************************************
 //
 //! Converts a string into its floating-point equivalent.
@@ -1331,9 +1333,9 @@ static const float g_pfExponents[] =
 //! \return Returns the result of the conversion.
 //
 //*****************************************************************************
-/* We don't need this
+
 float
-ustrtof(const char *nptr, const char **endptr)
+ustrtof(char *nptr, char **endptr)
 {
     unsigned long ulNeg, ulExp, ulExpNeg, ulValid, ulIdx;
     float fRet, fDigit, fExp;
@@ -1501,9 +1503,10 @@ ustrtof(const char *nptr, const char **endptr)
     //
     // Return the converted value.
     //
+    //printf("fret: %f\r\n", fRet);
     return(ulNeg ? (0 - fRet) : fRet);
 }
-*/
+
 //*****************************************************************************
 //
 //! Returns the length of a null-terminated string.

@@ -1084,6 +1084,8 @@ float matt_recv(int *temp)
 	    volatile int count = 0;
 	    float pollution1 = 0;
         char *safe;
+        char parseBuffer[300];
+        int parseCounter = 0;
 
 	    //
 	    // Validate Input.
@@ -1144,6 +1146,9 @@ float matt_recv(int *temp)
 	                count++;
 	            }
 
+
+
+
 	            for(ui32x = 0; ui32x < i32ReturnValue; ui32x++, ui32Count++)
 	            {
 	                //
@@ -1157,6 +1162,14 @@ float matt_recv(int *temp)
 	                //
 	                // Print text to screen
 	                //
+
+	             	//if(g_pui8CC3000_Rx_Buffer[ui32x] == '2' && g_pui8CC3000_Rx_Buffer[ui32x +1] == '.' && g_pui8CC3000_Rx_Buffer[ui32x +2] == '5') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
+	            	//{
+	                    //parseBuffer[parseCounter] = g_pui8CC3000_Rx_Buffer[ui32x +2];
+	                    //parseCounter++;
+
+	            	//}
+
 	            	if(g_pui8CC3000_Rx_Buffer[ui32x] == '\'' && g_pui8CC3000_Rx_Buffer[ui32x +1] == 'M' && g_pui8CC3000_Rx_Buffer[ui32x +2] == 'i') //&& g_pui8CC3000_Rx_Buffer[ui32x+2] == 'D')
 	            	{
 	            		printf("GOT ONE! \"Micrograms\" starts at RxBuff[%d]\r\n", ui32x + 1);
@@ -2493,8 +2506,8 @@ main(void)
 	        // we must start another connection so close this one
 	        if ((webConnected == 1) && (again))
 	        {
-	      	matt_close();
-	    	printf("Calling close() to close connection and free socket\r\n\n");
+		    printf("Calling close() to close connection and free socket\r\n\n");
+	        matt_close();
 	    	webConnected = 0;
 	        }
 

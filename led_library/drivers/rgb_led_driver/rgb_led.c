@@ -9,6 +9,9 @@
 #include "../mss_gpio/mss_gpio.h"
 #include "../fpga_timer/fpga_timer.h"
 
+#define update_color(prefix, color) if(!prefix) { timer_disable(color ## _timer_id); MSS_GPIO_set_output(gpio_ ## prefix, OFF); } else if(!color) {	timer_enable(color ## _timer_id); }
+
+
 // pulse direction
 #define DIMMER  0
 #define BRIGHTER  1
@@ -93,6 +96,12 @@ void start_led_sequence() {
 	}
 }
 
+void update_led_state() {
+	if(head) {
+		set_led_state(head);
+	}
+}
+
 void start_led_state_timer(led_state * ls) {
 	timer_setOverflowVal(led_state_duration_timer_id, head->duration_ms*HZ_PER_MS);
 	timer_enable_allInterrupts(led_state_duration_timer_id);
@@ -119,6 +128,7 @@ void transition_to_next_state() {
 
 void on_led_state_duration_reached() {
 	// calling this clears the interrupt
+	MSS_GPIO_clear_irq(LED_STATE_GPIO_INT);
 	timer_getInterrupt_status(led_state_duration_timer_id);
 	duration_reached = 1;
 }
@@ -245,38 +255,16 @@ void update_compare_values(){
 	timer_setCompareVal(green_timer_id, (green*HZ_PER_COLOR_DIVISION*master_brightness)/full_brightness);
 }
 
+
+
+
 void set_color(uint8_t r, uint8_t g, uint8_t b){
-	MSS_GPIO_disable_irq(gpio_r_i);
-	MSS_GPIO_disable_irq(gpio_g_i);
-	MSS_GPIO_disable_irq(gpio_b_i);
-
-	if(!r){
-		timer_disable(red_timer_id);
-		MSS_GPIO_set_output(gpio_r, OFF);
-	}
-	else if(!red) {
-		timer_enable(red_timer_id);
-	}
-
-	if(!g){
-		timer_disable(green_timer_id);
-		MSS_GPIO_set_output(gpio_g, OFF);
-	}
-	else if(!green) {
-		timer_enable(green_timer_id);
-	}
-
-	if(!b){
-		timer_disable(blue_timer_id);
-		MSS_GPIO_set_output(gpio_b, OFF);
-	}
-	else if(!blue) {
-		timer_enable(blue_timer_id);
-	}
-
 	red = r; green = g; blue = b;
 	update_compare_values();
 
+	update_color(r, red);
+	update_color(g, green);
+	update_color(b, blue);
 }
 
 void set_brightness(uint8_t brightness){

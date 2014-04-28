@@ -43,6 +43,7 @@ typedef struct led_state {
 	struct led_state * next;
 } led_state;
 
+void update_led_state(void);
 
 void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gpio_i);
 
@@ -60,13 +61,7 @@ void pwm_blue(void);
 
 void pwm_red(void);
 
-led_state *
-create_led_state(
-	uint8_t  r, uint8_t g, uint8_t b,
-	uint8_t  brightness,
-	uint32_t pulse_rate_ms,
-	uint32_t duration_ms,
-	uint8_t  mode);
+void set_led_state(led_state * led_state);
 
 void insert_led_state(led_state * state, led_state * after);
 

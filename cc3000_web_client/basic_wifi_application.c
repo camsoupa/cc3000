@@ -474,10 +474,6 @@ int
 initDriver(void)
 {
 
-    // Initialize use of GPIOs
-	MSS_GPIO_init();
-
-
 
     //
     // Initialize device pin configuration and the system clock.
@@ -1106,7 +1102,7 @@ float matt_recv(int *temp)
 	        //
 	        // We've been asked to receive a TCP packet.
 	        //
-	        printf("    Looking for TCP Packets...\r\n");
+	        printf("    Waiting for TCP Packets...\r\n");
 
 	        //
 	        // Get all data received.  This may require multiple calls.
@@ -1241,7 +1237,7 @@ float matt_recv(int *temp)
         //
         // We've been asked to receive a TCP packet.
         //
-        //printf("    Looking for TCP Packets...\r\n");
+        //printf("    Waiting for TCP Packets...\r\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -1770,7 +1766,7 @@ CMD_receiveData (int argc, char **argv)
         //
         // Tell user what we're doing.
         //
-        printf("    Looking for UDP Packets...\n");
+        printf("    Waiting for UDP Packets...\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -1831,7 +1827,7 @@ CMD_receiveData (int argc, char **argv)
         //
         // We've been asked to receive a TCP packet.
         //
-        printf("    Looking for TCP Packets...\n");
+        printf("    Waiting for TCP Packets...\n");
 
         //
         // Get all data received.  This may require multiple calls.
@@ -2430,6 +2426,14 @@ main(void)
 	    volatile int first = 1;
 	    volatile int again = 0;
 
+	    // Initialize use of GPIOs
+		MSS_GPIO_init();
+
+	    init_weather_air_display();
+    	insert_default_states();
+    	start_air_weather_display();
+    	demo_air_quality_colors();
+
 	    //
 	    // Initialize all board specific components.
 	    //
@@ -2445,9 +2449,7 @@ main(void)
 	    }
 	    else
 	    {
-	    	init_weather_air_display();
-	    	insert_default_states();
-	    	start_air_weather_display();
+
 	    	//init_pwm(); // do whatever we need to do for the led library here
 	    }
 

@@ -10,8 +10,35 @@
 
 #define IN_RANGE(val, lower, upper) (val >= lower && val < upper)
 
+#define RANGE_CNT 7
+
 led_state * air_state;
 led_state * next_state;
+
+void delay1(volatile int cnt){
+	while(cnt){
+		--cnt;
+	}
+}
+
+void demo_air_quality_colors(){
+	int i;
+	float air_ranges[RANGE_CNT] = {
+		0,
+		15.0,
+		30.0,
+		50.0,
+		70.0,
+		160.0,
+		250.0
+	};
+
+	for(i=0; i < RANGE_CNT; i++){
+		update_air_quality(air_ranges[i]);
+		delay1(10000000);
+	}
+	update_air_quality(0);
+}
 
 void insert_default_states()
 {
@@ -22,8 +49,8 @@ void insert_default_states()
 	air_state->b = 0;
 	air_state->brightness = 1;
 	air_state->mode = TRANS_ON_MIN;
-	air_state->pulse_rate_ms = 1000;
-	air_state->duration_ms = 2000;
+	air_state->pulse_rate_ms = 500;
+	air_state->duration_ms = 1000;
 	air_state->next = 0;
 
 	next_state = (led_state *)malloc(sizeof(led_state));

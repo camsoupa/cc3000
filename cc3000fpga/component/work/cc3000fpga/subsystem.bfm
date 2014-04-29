@@ -1,5 +1,5 @@
 #===========================================================
-# Created by Actel SmartDesign Mon Apr 28 10:22:15 2014
+# Created by Actel SmartDesign Tue Apr 29 04:30:25 2014
 #
 # Syntax: 
 # ------- 
@@ -17,8 +17,4 @@
 # Define name and base address of each resource.
 #-----------------------------------------------------------
 
-memmap Timer_1 0x40050100;
-memmap Timer_2 0x40050200;
-memmap Timer_3 0x40050300;
-memmap Timer_4 0x40050400;
-memmap Timer_0 0x40050500;
+memmap rgb_led_pwm 0x40050000;

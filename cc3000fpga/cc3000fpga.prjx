@@ -44,101 +44,6 @@ ALIAS=CORESPI_LIB
 COMPILE_OPTION=COMPILE
 ENDLIST
 LIST FileManager
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf,actgen_cxf"
-STATE="utd"
-TIME="1398702134"
-SIZE="2783"
-PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
-STATE="utd"
-TIME="1398702134"
-SIZE="1256"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-IS_INCLUDED="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\mti\scripts\wave_user.do,do"
-STATE="utd"
-TIME="1391015905"
-SIZE="912"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="4636"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="9073"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="25129"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="36275"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="122456"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v,hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="32421"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v,hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="3312"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v,hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="6738"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
-STATE="utd"
-TIME="1391015905"
-SIZE="23627"
-LIBRARY="COREAPB3_LIB"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-MODULE_UNDER_TEST="testbench"
-SIMULATION_TIME="-all"
-IS_READONLY="TRUE"
-ENDFILE
 VALUE "<project>\component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v,hdl"
 STATE="utd"
 TIME="1396987820"
@@ -190,7 +95,7 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\MSS.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701935"
+TIME="1398767381"
 SIZE="945"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
@@ -208,109 +113,109 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_CCC\2.0.106\MSS_CCC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701887"
+TIME="1398767369"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_CM3\1.0.200\MSS_CM3.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701887"
+TIME="1398767369"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_COM\1.0.200\MSS_COM.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701887"
+TIME="1398767369"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_DMA\1.0.101\MSS_DMA.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701887"
+TIME="1398767369"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_ENVM\2.3.102\MSS_ENVM.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_FIC\1.0.101\MSS_FIC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_FIO\1.0.203\MSS_FIO.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_GPIO\1.0.101\MSS_GPIO.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_INTR\1.0.101\MSS_INTR.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_RESET\1.0.101\MSS_RESET.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="254"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_RTC\1.0.100\MSS_RTC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_SPI\1.0.102\MSS_SPI.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767374"
 SIZE="252"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_TIMER\1.0.100\MSS_TIMER.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767375"
 SIZE="254"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_UART\1.0.101\MSS_UART.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767375"
 SIZE="253"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_UFROM\1.0.100\MSS_UFROM.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767375"
 SIZE="254"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\Actel\SmartFusionMSS\MSS_WATCHDOG\1.0.101\MSS_WATCHDOG.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767375"
 SIZE="257"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398702141"
-SIZE="7549"
+TIME="1398781591"
+SIZE="6967"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
 STATE="utd"
-TIME="1398702132"
-SIZE="4008"
+TIME="1398767424"
+SIZE="4825"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 BEGIN_USE_CONSTRAINT
 TOOL_CONSTRAINT_TYPE="ideDESIGNER"
@@ -318,28 +223,14 @@ END_USE_CONSTRAINT
 USE_FOR_ANY_TOOL="FALSE"
 IS_READONLY="TRUE"
 ENDFILE
-VALUE "<project>\component\work\cc3000fpga\cc3000fpga.v,hdl"
-STATE="utd"
-TIME="1398702135"
-SIZE="20423"
-PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
-IS_READONLY="TRUE"
-ENDFILE
-VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
-STATE="utd"
-TIME="1398702136"
-SIZE="1793"
-PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
-IS_READONLY="TRUE"
-ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701935"
-SIZE="17139"
+TIME="1398767382"
+SIZE="15886"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc,pdc"
 STATE="utd"
-TIME="1398701880"
+TIME="1398767363"
 SIZE="3324"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -350,34 +241,34 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.v,hdl"
 STATE="utd"
-TIME="1398701935"
-SIZE="27397"
+TIME="1398767381"
+SIZE="24617"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.cxf,actgen_cxf"
 STATE="utd"
-TIME="1398701887"
+TIME="1398767369"
 SIZE="495"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v,hdl"
 STATE="utd"
-TIME="1398701887"
+TIME="1398767369"
 SIZE="2890"
 PARENT="<project>\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_ENVM_0\MSS_ENVM_0.efc,efc"
 STATE="utd"
-TIME="1398701891"
+TIME="1398767374"
 SIZE="16172"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell.v,hdl"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767375"
 SIZE="12226"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -389,7 +280,7 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
 STATE="utd"
-TIME="1398701892"
+TIME="1398767375"
 SIZE="200"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 BEGIN_USE_CONSTRAINT
@@ -401,8 +292,8 @@ IS_READONLY="TRUE"
 ENDFILE
 VALUE "<project>\component\work\cc3000fpga_MSS\testbench.v,tb_hdl"
 STATE="utd"
-TIME="1398701935"
-SIZE="2195"
+TIME="1398767381"
+SIZE="1991"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 IS_READONLY="TRUE"
 ENDFILE
@@ -417,53 +308,58 @@ TIME="1396975881"
 SIZE="413"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.adb,adb"
-STATE="utd"
-TIME="1398098086"
-SIZE="2423808"
+STATE="ood"
+TIME="1398702755"
+SIZE="2831872"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.fdb,fdb"
-STATE="utd"
-TIME="1398702755"
-SIZE="115799"
+STATE="ood"
+TIME="1398768793"
+SIZE="120935"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga.ide_des,ide_des"
 STATE="utd"
-TIME="1398479820"
-SIZE="1030"
+TIME="1398702756"
+SIZE="1158"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_compile_log.rpt,log"
 STATE="utd"
-TIME="1398702416"
-SIZE="31950"
+TIME="1398768215"
+SIZE="32977"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pdb,pdb"
 STATE="ood"
-TIME="1398098086"
-SIZE="114688"
+TIME="1398702793"
+SIZE="124928"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_fp\cc3000fpga.pro,pro"
 STATE="utd"
-TIME="1398479559"
+TIME="1398702839"
 SIZE="2091"
+ENDFILE
+VALUE "<project>\designer\impl1\cc3000fpga_fp\projectData\cc3000fpga.pdb,pdb"
+STATE="utd"
+TIME="1398769054"
+SIZE="130048"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_MSS.ide_des,ide_des"
 STATE="utd"
-TIME="1398480025"
-SIZE="234"
+TIME="1398701936"
+SIZE="365"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_placeroute_log.rpt,log"
 STATE="utd"
-TIME="1398702696"
+TIME="1398768661"
 SIZE="2483"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_prgdata_log.rpt,log"
 STATE="utd"
-TIME="1398702757"
+TIME="1398768795"
 SIZE="815"
 ENDFILE
 VALUE "<project>\designer\impl1\cc3000fpga_verifytiming_log.rpt,log"
 STATE="utd"
-TIME="1398702728"
+TIME="1398768765"
 SIZE="1233"
 ENDFILE
 VALUE "<project>\designer\impl1\MSS_XTLOSC.ide_des,ide_des"
@@ -486,6 +382,21 @@ STATE="utd"
 TIME="1396981072"
 SIZE="104"
 ENDFILE
+VALUE "<project>\hdl\pwm.v,hdl"
+STATE="utd"
+TIME="1398757343"
+SIZE="729"
+ENDFILE
+VALUE "<project>\hdl\rgb_led.v,hdl"
+STATE="utd"
+TIME="1398783501"
+SIZE="3849"
+ENDFILE
+VALUE "<project>\hdl\rgb_led_wrapper.v,hdl"
+STATE="utd"
+TIME="1398766513"
+SIZE="987"
+ENDFILE
 VALUE "<project>\hdl\spi2fabric.v,hdl"
 STATE="utd"
 TIME="1397172407"
@@ -498,14 +409,8 @@ SIZE="4589"
 ENDFILE
 VALUE "<project>\hdl\timerWrapper.v,hdl"
 STATE="utd"
-TIME="1396998006"
-SIZE="995"
-ENDFILE
-VALUE "<project>\simulation\bfmtovec_compile.tcl,sim"
-STATE="utd"
-TIME="1391015905"
-SIZE="1229"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
+TIME="1398766526"
+SIZE="957"
 ENDFILE
 VALUE "<project>\simulation\CompileDssBfm.tcl,sim"
 STATE="utd"
@@ -513,21 +418,15 @@ TIME="1390695309"
 SIZE="41"
 PARENT="<project>\component\Actel\SmartFusionMSS\MSS\2.5.106\MSS.cxf"
 ENDFILE
-VALUE "<project>\simulation\coreapb3_usertb_master.bfm,sim"
-STATE="utd"
-TIME="1391015905"
-SIZE="8016"
-PARENT="<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\CoreAPB3.cxf"
-ENDFILE
 VALUE "<project>\simulation\subsystem.bfm,sim"
 STATE="utd"
-TIME="1398702135"
-SIZE="738"
+TIME="1398767425"
+SIZE="630"
 PARENT="<project>\component\work\cc3000fpga\cc3000fpga.cxf"
 ENDFILE
 VALUE "<project>\simulation\test.bfm,sim"
 STATE="utd"
-TIME="1398701889"
+TIME="1398767370"
 SIZE="5496"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
@@ -538,55 +437,38 @@ SIZE="670"
 PARENT="<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.cxf"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.edn,syn_edn"
-STATE="utd"
-TIME="1397756806"
-SIZE="1724038"
+STATE="ood"
+TIME="1398702317"
+SIZE="2119236"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga.so,so"
 STATE="utd"
-TIME="1397756806"
+TIME="1398702317"
 SIZE="258"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga_sdc.sdc,sdc"
 STATE="utd"
-TIME="1397756806"
+TIME="1398702317"
 SIZE="546"
 ENDFILE
 VALUE "<project>\synthesis\cc3000fpga_syn.prj,prj"
 STATE="utd"
-TIME="1398479559"
+TIME="1398702320"
 SIZE="3077"
+ENDFILE
+VALUE "<project>\synthesis\synwork\cc3000fpga_compiler.so,so"
+STATE="utd"
+TIME="1398767163"
+SIZE="159"
 ENDFILE
 ENDLIST
 LIST UsedFile
 ENDLIST
 LIST NewModulesInfo
 LIST "cc3000fpga::work"
-FILE "<project>\component\work\cc3000fpga\cc3000fpga.v,hdl"
-LIST Other_Association
-VALUE "<project>\simulation\subsystem.bfm,sim"
-VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
-VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
-ENDLIST
-LIST AssociatedStimulus
-VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
-ENDLIST
+FILE "<project>\component\work\cc3000fpga\cc3000fpga.cxf,actgen_cxf"
 LIST SynthesisConstraints
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
-ENDLIST
-LIST ProjectState5.1
-LIST Impl1
-LiberoState=Post_Layout
-ideSTIMULUS=StateSuccess
-ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
-ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
-LIST FlowOptions
-UsePhySynth=FALSE
-UseSynth=TRUE
-ENDLIST
-Used_File_List
-ENDUsed_File_List
-ENDLIST
 ENDLIST
 ENDLIST
 LIST "cc3000fpga_MSS::work"
@@ -602,41 +484,6 @@ VALUE "<project>\simulation\CompileDssBfm.tcl,sim"
 ENDLIST
 LIST AssociatedStimulus
 VALUE "<project>\component\work\cc3000fpga_MSS\testbench.v,tb_hdl"
-ENDLIST
-LIST ProjectState5.1
-LIST Impl1
-ideSTIMULUS=StateSuccess
-LIST FlowOptions
-UsePhySynth=FALSE
-UseSynth=TRUE
-ENDLIST
-Used_File_List
-ENDUsed_File_List
-ENDLIST
-ENDLIST
-ENDLIST
-LIST "CoreAPB3::COREAPB3_LIB"
-FILE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v,hdl"
-LIST Other_Association
-VALUE "<project>\simulation\bfmtovec_compile.tcl,sim"
-VALUE "<project>\simulation\coreapb3_usertb_master.bfm,sim"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\mti\scripts\wave_user.do,do"
-ENDLIST
-LIST AssociatedStimulus
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
 ENDLIST
 LIST ProjectState5.1
 LIST Impl1
@@ -666,28 +513,11 @@ ENDLIST
 ENDLIST
 ENDLIST
 LIST AssociatedStimulus
-LIST cc3000fpga
-VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
-ENDLIST
 LIST cc3000fpga_MSS
 VALUE "<project>\component\work\cc3000fpga_MSS\testbench.v,tb_hdl"
 ENDLIST
-LIST CoreAPB3
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
-ENDLIST
 ENDLIST
 LIST Other_Association
-LIST cc3000fpga
-VALUE "<project>\simulation\subsystem.bfm,sim"
-VALUE "<project>\component\work\cc3000fpga\testbench.v,tb_hdl"
-VALUE "<project>\component\work\cc3000fpga\cc3000fpga.pdc,pdc"
-ENDLIST
 LIST cc3000fpga_MSS
 VALUE "<project>\component\work\cc3000fpga_MSS\mss_tshell_syn.sdc,sdc"
 VALUE "<project>\simulation\user.bfm,sim"
@@ -696,18 +526,6 @@ VALUE "<project>\component\work\cc3000fpga_MSS\testbench.v,tb_hdl"
 VALUE "<project>\component\work\cc3000fpga_MSS\cc3000fpga_MSS.pdc,pdc"
 VALUE "<project>\component\work\cc3000fpga_MSS\MSS_ENVM_0\MSS_ENVM_0.efc,efc"
 VALUE "<project>\simulation\CompileDssBfm.tcl,sim"
-ENDLIST
-LIST CoreAPB3
-VALUE "<project>\simulation\bfmtovec_compile.tcl,sim"
-VALUE "<project>\simulation\coreapb3_usertb_master.bfm,sim"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\coreparameters.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreAPB3\4.0.100\mti\scripts\wave_user.do,do"
 ENDLIST
 ENDLIST
 LIST SimulationOptions
@@ -787,32 +605,7 @@ BATCH=0
 EndProfile
 ENDLIST
 LIST ProjectState5.1
-LIST "cc3000fpga::work"
-LIST Impl1
-LiberoState=Post_Layout
-ideSTIMULUS=StateSuccess
-ideSYNTHESIS(<project>\synthesis\cc3000fpga.edn,syn_edn)=StateSuccess
-ideDESIGNER(<project>\designer\impl1\cc3000fpga.adb,adb)=StateSuccess
-LIST FlowOptions
-UsePhySynth=FALSE
-UseSynth=TRUE
-ENDLIST
-Used_File_List
-ENDUsed_File_List
-ENDLIST
-ENDLIST
 LIST "cc3000fpga_MSS::work"
-LIST Impl1
-ideSTIMULUS=StateSuccess
-LIST FlowOptions
-UsePhySynth=FALSE
-UseSynth=TRUE
-ENDLIST
-Used_File_List
-ENDUsed_File_List
-ENDLIST
-ENDLIST
-LIST "CoreAPB3::COREAPB3_LIB"
 LIST Impl1
 ideSTIMULUS=StateSuccess
 LIST FlowOptions
@@ -838,18 +631,21 @@ LIST OpenedFileList
 StartPage;StartPage
 SmartDesign;cc3000fpga_MSS
 SmartDesign;cc3000fpga
+HDL;hdl\rgb_led_wrapper.v
+HDL;hdl\timerWrapper.v
+HDL;hdl\rgb_led.v
 Reports;Reports
-ACTIVEVIEW;Reports
+ACTIVEVIEW;hdl\rgb_led.v
 ENDLIST
 LIST ModuleSubBlockList
 LIST "BIBUF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"
 ENDLIST
 LIST "BIBUF_OPEND_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"
 ENDLIST
-LIST "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.v","TRUE","FALSE"
+LIST "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.cxf","TRUE","FALSE"
+SUBBLOCK "CoreAPB3::work","","FALSE","FALSE"
 SUBBLOCK "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.v","TRUE","FALSE"
-SUBBLOCK "timerWrapper::work","hdl\timerWrapper.v","FALSE","FALSE"
-SUBBLOCK "CoreAPB3::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v","FALSE","FALSE"
+SUBBLOCK "rgb_led_wrapper::work","hdl\rgb_led_wrapper.v","FALSE","FALSE"
 ENDLIST
 LIST "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.v","TRUE","FALSE"
 SUBBLOCK "MSS_APB::work","component\work\cc3000fpga_MSS\mss_tshell.v","FALSE","FALSE"
@@ -862,6 +658,8 @@ SUBBLOCK "MSSINT::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v"
 ENDLIST
 LIST "cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC::work","component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v","FALSE","FALSE"
 SUBBLOCK "MSS_CCC::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"
+ENDLIST
+LIST "CoreAPB3::work","","FALSE","FALSE"
 ENDLIST
 LIST "DESIGN_FIRMWARE::work","component\work\DESIGN_FIRMWARE\DESIGN_FIRMWARE.cxf","TRUE","FALSE"
 SUBBLOCK "HAL::work","","FALSE","FALSE"
@@ -922,6 +720,13 @@ LIST "MSSINT::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FA
 ENDLIST
 LIST "OUTBUF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"
 ENDLIST
+LIST "pwm::work","hdl\pwm.v","FALSE","FALSE"
+ENDLIST
+LIST "rgb_led::work","hdl\rgb_led.v","FALSE","FALSE"
+ENDLIST
+LIST "rgb_led_wrapper::work","hdl\rgb_led_wrapper.v","FALSE","FALSE"
+SUBBLOCK "rgb_led::work","hdl\rgb_led.v","FALSE","FALSE"
+ENDLIST
 LIST "SmartFusion_CMSIS_PAL::work","","FALSE","FALSE"
 ENDLIST
 LIST "spi2fabric::work","hdl\spi2fabric.v","FALSE","FALSE"
@@ -933,37 +738,8 @@ SUBBLOCK "timer::work","hdl\timer.v","FALSE","FALSE"
 ENDLIST
 LIST "TRIBUFF_MSS::work","component\Actel\SmartFusionMSS\MSS\2.5.106\mss_comps.v","FALSE","FALSE"
 ENDLIST
-LIST "testbench::work","component\work\cc3000fpga\testbench.v","FALSE","TRUE"
-SUBBLOCK "cc3000fpga::work","component\work\cc3000fpga\cc3000fpga.v","TRUE","FALSE"
-ENDLIST
 LIST "testbench::work","component\work\cc3000fpga_MSS\testbench.v","FALSE","TRUE"
 SUBBLOCK "cc3000fpga_MSS::work","component\work\cc3000fpga_MSS\cc3000fpga_MSS.v","TRUE","FALSE"
-ENDLIST
-LIST "CAPB3l::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v","FALSE","FALSE"
-ENDLIST
-LIST "CAPB3O::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v","FALSE","FALSE"
-ENDLIST
-LIST "CoreAPB3::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v","FALSE","FALSE"
-SUBBLOCK "CAPB3l::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_muxptob3.v","FALSE","FALSE"
-SUBBLOCK "CAPB3O::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3_iaddr_reg.v","FALSE","FALSE"
-ENDLIST
-LIST "BFM_APB::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v","FALSE","TRUE"
-SUBBLOCK "BFM_MAIN::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v","FALSE","TRUE"
-SUBBLOCK "BFMA1l1OII::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v","FALSE","TRUE"
-ENDLIST
-LIST "BFM_APBSLAVE::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v","FALSE","TRUE"
-SUBBLOCK "BFM_APBSLAVEEXT::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v","FALSE","TRUE"
-ENDLIST
-LIST "BFM_APBSLAVEEXT::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslaveext.v","FALSE","TRUE"
-ENDLIST
-LIST "BFM_MAIN::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_main.v","FALSE","TRUE"
-ENDLIST
-LIST "BFMA1l1OII::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_ahbtoapb.v","FALSE","TRUE"
-ENDLIST
-LIST "testbench::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\test\user\testbench.v","FALSE","TRUE"
-SUBBLOCK "CoreAPB3::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\core_obfuscated\coreapb3.v","FALSE","FALSE"
-SUBBLOCK "BFM_APB::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apb.v","FALSE","TRUE"
-SUBBLOCK "BFM_APBSLAVE::COREAPB3_LIB","component\Actel\DirectCore\CoreAPB3\4.0.100\rtl\vlog\amba_bfm\bfm_apbslave.v","FALSE","TRUE"
 ENDLIST
 LIST "CORESPI::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\corespi.v","FALSE","FALSE"
 SUBBLOCK "spi::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\core\spi.v","FALSE","FALSE"
@@ -987,7 +763,4 @@ LIST "spi_rf::CORESPI_LIB","component\Actel\DirectCore\CORESPI\4.2.116\rtl\vlog\
 ENDLIST
 ENDLIST
 LIST ActiveTestBenchList
-LIST "cc3000fpga::work"
-ACTIVETESTBENCH "","","FALSE"
-ENDLIST
 ENDLIST

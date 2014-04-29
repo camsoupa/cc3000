@@ -12,7 +12,7 @@
     <project-description>
     </project-description>
     <location>C:/Users/camsoupa/Documents/embedded_final_project/cc3000/cc3000fpga/component/work/cc3000fpga</location>
-    <state>GENERATED ( Mon Apr 28 10:22:20 2014 )</state>
+    <state>GENERATED ( Tue Apr 29 04:30:28 2014 )</state>
     <swide-toolchain>SoftConsole workspace generated to C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\SoftConsole</swide-toolchain>
   </project-settings>
   <site-map>
@@ -35,6 +35,9 @@
     <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\MSS_CCC_0\cc3000fpga_MSS_tmp_MSS_CCC_0_MSS_CCC.v</file>
     <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga_MSS\mss_tshell.v</file>
     <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\inverter.v</file>
+    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\pwm.v</file>
+    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\rgb_led.v</file>
+    <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\rgb_led_wrapper.v</file>
     <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\spi2fabric.v</file>
     <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\timer.v</file>
     <file>C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\hdl\timerWrapper.v</file>
@@ -68,19 +71,7 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>LED_R</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
     <port-name>LED_0</port-name>
-    <direction>OUT</direction>
-    <pin-number>-</pin-number>
-    <io-standard>LVTTL</io-standard>
-  </io>
-  <io>
-    <port-name>LED_B</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -92,7 +83,7 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>LED_G</port-name>
+    <port-name>SPI_SS_PIN</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -110,6 +101,12 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
+    <port-name>PWM_G</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
     <port-name>SPI_EN_PIN</port-name>
     <direction>OUT</direction>
     <pin-number>AA1</pin-number>
@@ -122,13 +119,19 @@
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
+    <port-name>PWM_B</port-name>
+    <direction>OUT</direction>
+    <pin-number>-</pin-number>
+    <io-standard>LVTTL</io-standard>
+  </io>
+  <io>
     <port-name>UART_0_RXD</port-name>
     <direction>IN</direction>
     <pin-number>U18</pin-number>
     <io-standard>LVTTL</io-standard>
   </io>
   <io>
-    <port-name>SPI_SS_PIN</port-name>
+    <port-name>PWM_R</port-name>
     <direction>OUT</direction>
     <pin-number>-</pin-number>
     <io-standard>LVTTL</io-standard>
@@ -179,44 +182,44 @@ There is one APB3 Master interface.
     </core-param>
     <core-param>
       <param-name>Slot 0:</param-name>
-      <param-value>false</param-value>
+      <param-value>true</param-value>
       <param-hdlname>APBSLOT0ENABLE</param-hdlname>
-      <param-hdlvalue>0</param-hdlvalue>
+      <param-hdlvalue>1</param-hdlvalue>
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-param>
       <param-name>Slot 1:</param-name>
-      <param-value>true</param-value>
+      <param-value>false</param-value>
       <param-hdlname>APBSLOT1ENABLE</param-hdlname>
-      <param-hdlvalue>1</param-hdlvalue>
+      <param-hdlvalue>0</param-hdlvalue>
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-param>
       <param-name>Slot 2:</param-name>
-      <param-value>true</param-value>
+      <param-value>false</param-value>
       <param-hdlname>APBSLOT2ENABLE</param-hdlname>
-      <param-hdlvalue>1</param-hdlvalue>
+      <param-hdlvalue>0</param-hdlvalue>
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-param>
       <param-name>Slot 3:</param-name>
-      <param-value>true</param-value>
+      <param-value>false</param-value>
       <param-hdlname>APBSLOT3ENABLE</param-hdlname>
-      <param-hdlvalue>1</param-hdlvalue>
+      <param-hdlvalue>0</param-hdlvalue>
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-param>
       <param-name>Slot 4:</param-name>
-      <param-value>true</param-value>
+      <param-value>false</param-value>
       <param-hdlname>APBSLOT4ENABLE</param-hdlname>
-      <param-hdlvalue>1</param-hdlvalue>
+      <param-hdlvalue>0</param-hdlvalue>
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-param>
       <param-name>Slot 5:</param-name>
-      <param-value>true</param-value>
+      <param-value>false</param-value>
       <param-hdlname>APBSLOT5ENABLE</param-hdlname>
-      <param-hdlvalue>1</param-hdlvalue>
+      <param-hdlvalue>0</param-hdlvalue>
       <param-tag>spirit:hwParameter</param-tag>
     </core-param>
     <core-param>
@@ -425,19 +428,7 @@ There is one APB3 Master interface.
     <core-name>CoreAPB3_0</core-name>
   </core>
   <core>
-    <core-name>Timer_0</core-name>
-  </core>
-  <core>
-    <core-name>Timer_1</core-name>
-  </core>
-  <core>
-    <core-name>Timer_2</core-name>
-  </core>
-  <core>
-    <core-name>Timer_3</core-name>
-  </core>
-  <core>
-    <core-name>Timer_4</core-name>
+    <core-name>rgb_led_pwm</core-name>
   </core>
   <firmware_core type="FirmWareModule">
     <core-exttype>IP</core-exttype>
@@ -2474,33 +2465,9 @@ These files are required by the SmartFusion bare metal peripheral drivers to bui
           <range>0x80000</range>
         </slave>
         <slave>
-          <name>Timer_1</name>
-          <remapAddress>0x40050100</remapAddress>
-          <fullAddressSpace>0x40050100 - 0x400501FF</fullAddressSpace>
-          <range>0x00000100</range>
-        </slave>
-        <slave>
-          <name>Timer_2</name>
-          <remapAddress>0x40050200</remapAddress>
-          <fullAddressSpace>0x40050200 - 0x400502FF</fullAddressSpace>
-          <range>0x00000100</range>
-        </slave>
-        <slave>
-          <name>Timer_3</name>
-          <remapAddress>0x40050300</remapAddress>
-          <fullAddressSpace>0x40050300 - 0x400503FF</fullAddressSpace>
-          <range>0x00000100</range>
-        </slave>
-        <slave>
-          <name>Timer_4</name>
-          <remapAddress>0x40050400</remapAddress>
-          <fullAddressSpace>0x40050400 - 0x400504FF</fullAddressSpace>
-          <range>0x00000100</range>
-        </slave>
-        <slave>
-          <name>Timer_0</name>
-          <remapAddress>0x40050500</remapAddress>
-          <fullAddressSpace>0x40050500 - 0x400505FF</fullAddressSpace>
+          <name>rgb_led_pwm</name>
+          <remapAddress>0x40050000</remapAddress>
+          <fullAddressSpace>0x40050000 - 0x400500FF</fullAddressSpace>
           <range>0x00000100</range>
         </slave>
         <slave>

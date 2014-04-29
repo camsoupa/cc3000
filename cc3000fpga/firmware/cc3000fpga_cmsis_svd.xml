@@ -2,7 +2,7 @@
 <device>
   <name>cc3000fpga</name>
   <version>1.0</version>
-  <description>CMSIS description for cc3000fpga.  Created by Actel SmartDesign on Mon Apr 28 10:22:20 2014</description>
+  <description>CMSIS description for cc3000fpga.  Created by Actel SmartDesign on Tue Apr 29 04:30:27 2014</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>
@@ -1851,24 +1851,8 @@
       <baseAddress>0x60000000</baseAddress>
     </peripheral>
     <peripheral>
-      <name>Timer_1</name>
-      <baseAddress>0x40050100</baseAddress>
-    </peripheral>
-    <peripheral>
-      <name>Timer_2</name>
-      <baseAddress>0x40050200</baseAddress>
-    </peripheral>
-    <peripheral>
-      <name>Timer_3</name>
-      <baseAddress>0x40050300</baseAddress>
-    </peripheral>
-    <peripheral>
-      <name>Timer_4</name>
-      <baseAddress>0x40050400</baseAddress>
-    </peripheral>
-    <peripheral>
-      <name>Timer_0</name>
-      <baseAddress>0x40050500</baseAddress>
+      <name>rgb_led_pwm</name>
+      <baseAddress>0x40050000</baseAddress>
     </peripheral>
     <peripheral>
       <name>FPGA_FABRIC_BACKDOOR</name>

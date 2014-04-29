@@ -74,10 +74,10 @@ g_pfnVectors:
     .word  GPIO2_IRQHandler
     .word  GPIO3_IRQHandler
     .word  GPIO4_IRQHandler
-    .word  GPIO5_IRQHandler
-    .word  GPIO6_IRQHandler
-    .word  GPIO7_IRQHandler
-    .word  GPIO8_IRQHandler
+    .word  pwm_red
+    .word  pwm_green
+    .word  pwm_blue
+    .word  on_pulse
     .word  GPIO9_IRQHandler
     .word  GPIO10_IRQHandler
     .word  GPIO11_IRQHandler
@@ -603,33 +603,33 @@ GPIO4_IRQHandler:
 /*==============================================================================
  * GPIO5_IRQHandler
  */
-    .weak   GPIO5_IRQHandler
-    .type   GPIO5_IRQHandler, %function
-GPIO5_IRQHandler:
+    .weak   pwm_red
+    .type   pwm_red, %function
+pwm_red:
     B .
 
 /*==============================================================================
  * GPIO6_IRQHandler
  */
-    .weak   GPIO6_IRQHandler
-    .type   GPIO6_IRQHandler, %function
-GPIO6_IRQHandler:
+    .weak   pwm_green
+    .type   pwm_green, %function
+pwm_green:
     B .
 
 /*==============================================================================
  * GPIO7_IRQHandler
  */
-    .weak   GPIO7_IRQHandler
-    .type   GPIO7_IRQHandler, %function
-GPIO7_IRQHandler:
+    .weak   pwm_blue
+    .type   pwm_blue, %function
+pwm_blue:
     B .
 
 /*==============================================================================
  * GPIO8_IRQHandler
  */
-    .weak   GPIO8_IRQHandler
-    .type   GPIO8_IRQHandler, %function
-GPIO8_IRQHandler:
+    .weak   on_pulse
+    .type   on_pulse, %function
+on_pulse:
     B .
 
 /*==============================================================================

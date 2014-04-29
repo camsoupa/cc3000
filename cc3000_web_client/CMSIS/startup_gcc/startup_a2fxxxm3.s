@@ -74,10 +74,10 @@ g_pfnVectors:
     .word  IntSpiGPIOHandler
     .word  GPIO3_IRQHandler
     .word  GPIO4_IRQHandler
-    .word  GPIO5_IRQHandler
-    .word  GPIO6_IRQHandler
-    .word  GPIO7_IRQHandler
-    .word  GPIO8_IRQHandler
+    .word  pwm_red
+    .word  pwm_green
+    .word  pwm_blue
+    .word  on_pulse
     .word  GPIO9_IRQHandler
     .word  GPIO10_IRQHandler
     .word  GPIO11_IRQHandler

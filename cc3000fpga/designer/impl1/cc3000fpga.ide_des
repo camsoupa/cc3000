@@ -1,4 +1,4 @@
-KEY IDE_DES_TOOL "Designer"
+KEY IDE_DES_TOOL "Ide"
 KEY IDE_DES_FAMILY "SmartFusion"
 KEY IDE_DES_DIE "IP4X3M1"
 KEY IDE_DES_PACKAGE "fg484"
@@ -23,7 +23,6 @@ KEY IDE_DES_ERROR_FOUND "FALSE"
 KEY IDE_DES_ADB_PATH "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\designer\impl1\cc3000fpga.adb"
 LIST SOURCE_FILES
 VALUE "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\synthesis\cc3000fpga.edn;edn"
-VALUE "C:\Users\camsoupa\Documents\embedded_final_project\cc3000\cc3000fpga\component\work\cc3000fpga\cc3000fpga.pdc;pdc"
 ENDLIST
 LIST OPTIONAL_FILES
 ENDLIST

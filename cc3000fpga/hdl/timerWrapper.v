@@ -1,5 +1,3 @@
-// timerIntWrapper.v
-// timerWrap.v
 module timerWrapper(
 					PCLK,
 					PENABLE,

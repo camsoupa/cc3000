@@ -24,29 +24,6 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-/*
-#include "inc/hw_types.h"
-#include "driverlib/timer.h"
-#include "driverlib/rom_map.h"
-#include "driverlib/systick.h"
-#include "driverlib/fpu.h"
-#include "driverlib/debug.h"
-#include "utils/uartstdio.h"
-#include "driverlib/uart.h"
-#include "driverlib/ssi.h"
-#include "wlan.h"
-#include "evnt_handler.h"
-#include "nvmem.h"
-#include "socket.h"
-#include "cc3000_common.h"
-#include "netapp.h"
-#include "spi.h"
-#include "hci.h"
-#include "dispatcher.h"
-#include "spi_version.h"
-#include "board.h"
-*/
-
 #include   "../mss_uart/mss_uart.h"
 #include   "../mss_gpio/mss_gpio.h"
 #include   "../mss_spi/mss_spi.h"
@@ -87,35 +64,10 @@ int delay ( volatile uint32_t n)
 void pio_init()
 {
     //
-    // Initialize the system clock.
-    //
-    //initClk(); // I don't think we need to do this.
-
-    //
-    // Configure the system peripheral bus that IRQ & EN pin are mapped to.
-    //
-    //MAP_SysCtlPeripheralEnable( SYSCTL_PERIPH_IRQ_PORT); // I don't think we do this for our board
-    //MAP_SysCtlPeripheralEnable( SYSCTL_PERIPH_SW_EN_PORT); // the actual interrupt config is below
-
-
-    //
     // Disable all the interrupts before configuring the lines.
     //
     //MAP_GPIOIntDisable(SPI_GPIO_IRQ_BASE, 0xFF);
 	MSS_GPIO_disable_irq(SPI_IRQ_PIN);
-
-
-    //
-    // Configure the WLAN_IRQ pin as an input.
-    //
-    //MAP_GPIOPinTypeGPIOInput(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
-    //GPIOPadConfigSet(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN, GPIO_STRENGTH_2MA,
-    //                    GPIO_PIN_TYPE_STD_WPU);
-    //
-    // Setup the GPIO interrupt for this pin
-    //
-    //MAP_GPIOIntTypeSet(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN, GPIO_FALLING_EDGE);
-
 
     // This single call takes care of the configure as input and as negative edge interrupt
     // handler for this interrupt is IntSpiGPIOHandler()
@@ -127,10 +79,6 @@ void pio_init()
     //
     // Configure the pins for the enable signal to the CC3000.
     //
-    //MAP_GPIOPinTypeGPIOOutput(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN);
-    //MAP_GPIODirModeSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_DIR_MODE_OUT );
-    //MAP_GPIOPadConfigSet( SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPD );
-
 	MSS_GPIO_config( SPI_EN_PIN, MSS_GPIO_OUTPUT_MODE);
 
     //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
@@ -138,10 +86,6 @@ void pio_init()
 
     //see Ti's SysCtlDelay in tivaware driverlib/sysctl.c
 	// it is an asm loop of 3 instructions doing what delay is doing
-
-    //SysCtlDelay(600000);
-    //SysCtlDelay(600000);
-    //SysCtlDelay(600000);
     delay(600000);
     delay(600000);
     delay(600000);
@@ -153,7 +97,6 @@ void pio_init()
     // CORE SPI is not doing this for us now... it is manual
 	MSS_GPIO_config( SPI_CS_PIN, MSS_GPIO_OUTPUT_MODE);
 
-    //MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, PIN_HIGH);
 	// CS is low enabled so this is de-asserting it by making it high
  	MSS_GPIO_set_output(SPI_CS_PIN, 1);
 
@@ -161,7 +104,6 @@ void pio_init()
     //
     // Enable interrupt for WLAN_IRQ pin
     //
-    //MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
     MSS_GPIO_enable_irq( SPI_IRQ_PIN );
 
 
@@ -169,10 +111,6 @@ void pio_init()
     // Clear interrupt status
     //
     SpiCleanGPIOISR();
-
-
-
-    //MAP_IntEnable(INT_GPIO_SPI);  // same as enable_irq two lines above?
 
     //
     // Initialize LED Pins and state.
@@ -193,8 +131,6 @@ void pio_init()
 //*****************************************************************************
 long ReadWlanInterruptPin(void)
 {
-    //return MAP_GPIOPinRead(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
-
     uint32_t gpio_inputs;
     long spi_irq_status = 0;
 
@@ -206,8 +142,6 @@ long ReadWlanInterruptPin(void)
     	return 1;
     else
     	return 0;
-
-	//return spi_irq_status;
 }
 
 //*****************************************************************************
@@ -223,7 +157,6 @@ long ReadWlanInterruptPin(void)
 //*****************************************************************************
 void WlanInterruptEnable()
 {
-    //MAP_GPIOIntEnable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
     MSS_GPIO_enable_irq( SPI_IRQ_PIN );
 }
 
@@ -240,7 +173,6 @@ void WlanInterruptEnable()
 //*****************************************************************************
 void WlanInterruptDisable()
 {
-    // MAP_GPIOIntDisable(SPI_GPIO_IRQ_BASE, SPI_IRQ_PIN);
     MSS_GPIO_disable_irq( SPI_IRQ_PIN );
 }
 
@@ -261,13 +193,11 @@ void WriteWlanPin( unsigned char val )
     if(val)
     {
         //printf("Writing SPI_EN_PIN HIGH\r\n");
-        //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN,PIN_HIGH);
     	MSS_GPIO_set_output(SPI_EN_PIN, 1);
     }
     else
     {
         //printf("Writing SPI_EN_PIN low\r\n");
-        //MAP_GPIOPinWrite(SPI_GPIO_SW_EN_BASE, SPI_EN_PIN, PIN_LOW);
     	MSS_GPIO_set_output(SPI_EN_PIN, 0);
     }
 

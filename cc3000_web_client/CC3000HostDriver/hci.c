@@ -194,12 +194,9 @@ hci_patch_send(unsigned char ucOpcode, unsigned char *pucBuff, char *patch, unsi
 	{
 		UINT16_TO_STREAM(stream, usDataLength);
 		stream = UINT16_TO_STREAM(stream, usDataLength);
-		
-		
-		
+
 		memcpy((pucBuff + SPI_HEADER_SIZE) + HCI_PATCH_HEADER_SIZE, patch, usDataLength);
 
-		
 		//
 		// Update the opcode of the event we will be waiting for
 		//
@@ -207,11 +204,9 @@ hci_patch_send(unsigned char ucOpcode, unsigned char *pucBuff, char *patch, unsi
 	}
 	else
 	{
-		
         usTransLength = (usDataLength/SL_PATCH_PORTION_SIZE);
 		UINT16_TO_STREAM(stream, usDataLength + SIMPLE_LINK_HCI_PATCH_HEADER_SIZE + usTransLength*SIMPLE_LINK_HCI_PATCH_HEADER_SIZE);
 	    stream = UINT16_TO_STREAM(stream, SL_PATCH_PORTION_SIZE);
-		
 		
 		memcpy(pucBuff + SPI_HEADER_SIZE + HCI_PATCH_HEADER_SIZE, patch, SL_PATCH_PORTION_SIZE);
 		usDataLength -= SL_PATCH_PORTION_SIZE;

@@ -66,61 +66,35 @@
 //
 // CC3000 Board specific Macros
 //
-//#define ASSERT_CS()          (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0))
+
 #define ASSERT_CS()            (MSS_GPIO_set_output(SPI_CS_PIN, 0))
-//#define DEASSERT_CS()        (MAP_GPIOPinWrite(SPI_CS_PORT, SPI_CS_PIN, 0xFF))
+
 #define DEASSERT_CS()          (MSS_GPIO_set_output(SPI_CS_PIN, 1))
 
 #define ASSERT(a)               if(!a) exit(1);
 //
 // IRQ settings
 //
-//#define SYSCTL_PERIPH_IRQ_PORT          SYSCTL_PERIPH_GPIOB   // matt- I think this is a TI thing we don't need to do
-//#define SPI_GPIO_IRQ_BASE               GPIO_PORTB_BASE       // matt- I think this is a TI thing we don't need to do
 #define SPI_IRQ_PIN                     MSS_GPIO_2      // was GPIO_PIN_2 but MSS_GPIO_2 is our board's method
-//#define INT_GPIO_SPI                    INT_GPIOB
-//#define INT_SPI                         INT_SSI2
 
 //
 // SW EN settings
 //
-//#define SYSCTL_PERIPH_SW_EN_PORT        SYSCTL_PERIPH_GPIOB  // matt- I think this is a TI thing we don't need to do
-//#define SPI_GPIO_SW_EN_BASE             GPIO_PORTB_BASE      // matt- I think this is a TI thing we don't need to do
 #define SPI_EN_PIN                      MSS_GPIO_4  // We have the pass through pin config thing that comes directly
                                                       // from the spi core so I don't think we need to set this up
 //
 // CS settings  PE0
 //
-//#define SPI_CS_PORT                     GPIO_PORTE_BASE      // matt- TI thing
 #define SPI_CS_PIN                      MSS_GPIO_9
-//#define SYSCTL_PERIPH_SPI_PORT          SYSCTL_PERIPH_GPIOE  // Ti thing
 
 //
 // SPI Hardware Abstraction layer
 //
 
-// OURS
-//#define SPI_INT                       this is on the FABINT
-//#define SPI_RX_AVAIL                    MSS_GPIO_31 //TODO: what should this be now?
-//#define SPI_TX_RFM                      MSS_GPIO_30 //TODO: what should this be now?
-
-
-// THEIRS
-#define SPI_BASE                        SSI2_BASE
 #define SPI_CLK_PIN                     GPIO_PIN_4
 #define SPI_RX_PIN                      GPIO_PIN_6
 #define SPI_TX_PIN                      GPIO_PIN_7
 
-#define SYSCTL_PERIPH_SPI               SYSCTL_PERIPH_SSI2
-#define SYSCTL_PERIPH_SPI_BASE          SYSCTL_PERIPH_GPIOB
-
-#define SPI_PORT                        GPIO_PORTB_BASE
-#define SPI_CLK_MUX_SEL                 GPIO_PB4_SSI2CLK
-#define SPI_RX_MUX_SEL                  GPIO_PB6_SSI2RX
-#define SPI_TX_MUX_SEL                  GPIO_PB7_SSI2TX
-
-#define SPI_UDMA_RX_CHANNEL             PDMA_CHANNEL_0
-#define SPI_UDMA_TX_CHANNEL             PDMA_CHANNEL_1
 
 //*****************************************************************************
 //

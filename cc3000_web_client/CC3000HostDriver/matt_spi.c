@@ -30,7 +30,6 @@
 //#include "../utils/utils.c"
 #include   "../drivers/mss_uart/mss_uart.h"
 #include   "../drivers/mss_gpio/mss_gpio.h"
-#include   "../drivers/mss_pdma/mss_pdma.h"
 #include   "../drivers/mss_spi/mss_spi.h"
 #include   "../drivers/mss_timer/mss_timer.h"
 #include   "../drivers/board/board.h"
@@ -81,33 +80,6 @@ extern int after_rec;
 #define TX_FIFO_FULL_MASK       0x00000100u
 #define TX_FIFO_EMPTY_MASK      0x00000400u
 
-
-//*****************************************************************************
-//
-// SPI interface hardware parameters.
-//
-//*****************************************************************************
-/*
-typedef struct
-{
-    uint32_t ui32PioPortAddress;
-    uint32_t ui32PioSpiPort;
-    uint32_t ui32PioSpiCs;
-    uint32_t ui32PortInt;
-    uint32_t ui32PioSlEnable;
-
-    uint32_t ui32DMAPort;
-    uint32_t ui32DMARxChannel;
-    uint32_t ui32DMATxChannel;
-
-    uint32_t ui32SsiPort;
-    uint32_t ui32SsiPortAddress;
-    uint32_t ui32SsiTx;
-    uint32_t ui32SsiRx;
-    uint32_t ui32SsiClck;
-    uint32_t ui32SsiPortInt;
-}tSpiHwConfiguration;
-*/
 //*****************************************************************************
 //
 // SPI connection and transaction state information.
@@ -127,76 +99,14 @@ typedef struct
 tSpiInformation sSpiInformation;
 
 
-
-
-//*****************************************************************************
-//
-// A couple of bytes used as a dummy source when receiving SSI data from the
-// CC3000 or as a dummy destination when transmitting to the CC3000.
-//
-//*****************************************************************************
-//uint8_t g_pui8Dummy[2] = {0, 0x5A};
-
-//*****************************************************************************
-//
-// Define the transmit and receive buffers along with the control structure
-// table for the DMA engine.  Unfortunately, C99 doesn't provide us with a
-// standard method of dictating the alignment of variables or indicating that
-// an array should not be initialized so we need some compiler-specific
-// syntax here.
-//
-//*****************************************************************************
-
-//
-// Case for Code Composer Studio.
-//
-/*
-#if defined(__CCS__) || defined(ccs)
-uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
-uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
-uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
-#pragma DATA_ALIGN(ui8DMAChannelControlStructure, 1024);
-static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE];
-*/
-//
-// Case for IAR Embedded Workbench for ARM (ewarm).
-//
-/*
-#elif defined(__IAR_SYSTEMS_ICC__) || defined(ewarm)
-__no_init uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
-__no_init uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
-__no_init uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
-#pragma data_alignment=1024
-__no_init static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE];
-*/
-//
-// Case for Sourcery CodeBench, GCC, and Keil RVMDK.
-//
-//#else
-//uint8_t wlan_rx_buffer[CC3000_RX_BUFFER_SIZE];
-//uint8_t wlan_tx_buffer[CC3000_TX_BUFFER_SIZE];
-//uint8_t chBuffer[CC3000_RX_BUFFER_SIZE];
-//static uint8_t ui8DMAChannelControlStructure[DMA_CHANNEL_CONTROL_STRUCTURE_SIZE] __attribute__ ((aligned(1024)));
-//#endif
-
 //*****************************************************************************
 //
 // An array containing the 10 bytes we need to send to the CC3000 when reading
 // a response header from it.
 //
 //*****************************************************************************
-//uint8_t tSpiReadHeader[] = {READ, READ, READ, READ, READ, READ, READ, READ, READ, READ};
 
-//uint8_t tSpiReadHeader[100] = {READ};
-
-//uint8_t tSpiReadHeader[100] = { [ 0 ... 99 ] = READ };
 uint8_t tSpiReadHeader[100] = { [ 0 ] = READ, [1 ... 99] = 0 };
-
-//
-// Static buffer for 5 bytes of SPI HEADER
-//
-//unsigned char tSpiReadHeader[] = {READ, 0, 0, 0, 0}; //TODO is it this one or the one above?
-
 
 //*****************************************************************************
 //
@@ -204,12 +114,10 @@ uint8_t tSpiReadHeader[100] = { [ 0 ] = READ, [1 ... 99] = 0 };
 //
 //*****************************************************************************
 static void SpiWriteDataSynchronous(const uint8_t *data, uint16_t size);
-//static void SpiReadData(uint8_t *data, uint16_t size);
+
 void SpiPauseSpi(void);
 void SpiResumeSpi(void);
 static void SpiContReadOperation(void);
-
-//static void SpiDisableInterrupts(void);
 
 #define CC3000_BUFFER_MAGIC_NUMBER (0xDE)
 
@@ -569,38 +477,6 @@ SpiReadData(uint8_t *data, uint16_t size)
     printf(" }\r\n");
 #endif
 
-
- /*   MSS_SPI_transfer_block
-      (
-          &g_mss_spi1,
-          data_to_send,
-          size,
-          data,
-          size
-      );
-
-      */
-/*
-    MSS_SPI_transfer_block
-        (
-            &g_mss_spi1,
-            data_to_send,
-            size,
-            0,
-            0
-        );
-        */
-
-/*
-    MSS_SPI_transfer_block
-        (
-            &g_mss_spi1,
-            0,
-            0,
-            data,
-            size
-        );
-        */
     MSS_SPI_clear_slave_select( &g_mss_spi1, MSS_SPI_SLAVE_0 );
 
 }
@@ -1033,6 +909,5 @@ __attribute__((__interrupt__)) void IntSpiGPIOHandler(void)
 void
 SpiIntHandler(bool bTxFinished, bool bRxFinished)
 {
-printf("should not have got here?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?");
-
+	printf("should not have got here?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?");
 }

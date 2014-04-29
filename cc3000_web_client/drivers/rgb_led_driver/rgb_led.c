@@ -86,22 +86,6 @@ uint8_t gpio_i_i;
 
 led_state * head;
 
-led_state * add_led_state(uint8_t r, uint8_t g, uint8_t b, uint8_t brightness, uint32_t pulse_ms, uint32_t duration_ms)
-{
-	led_state * new_state = (led_state *)malloc(sizeof(led_state));
-	new_state->r = r;
-	new_state->g = g;
-	new_state->b = b;
-	new_state->brightness = brightness;
-	new_state->mode = TRANS_ON_MIN;
-	new_state->pulse_rate_ms = pulse_ms;
-	new_state->duration_ms = duration_ms;
-	new_state->next = 0;
-
-	insert_led_state(new_state, 0);
-	return new_state;
-}
-
 void set_led_state(led_state * ls) {
 	set_color(ls->r,ls->g,ls->b); set_brightness(ls->brightness); set_pulse_rate(ls->pulse_rate_ms);
 }
@@ -137,21 +121,6 @@ void start_led_sequence() {
 	}
 }
 
-void led_state_values_changed() {
-	if(head) {
-		set_led_state(head);
-	}
-}
-
-void start_led_state_timer(led_state * ls) {
-	timer_disable(led_state_duration_timer_id);
-	timer_setOverflowVal(led_state_duration_timer_id, head->duration_ms*HZ_PER_MS);
-	timer_enable_allInterrupts(led_state_duration_timer_id);
-	timer_enable_overflowInt(led_state_duration_timer_id);
-	timer_enable(led_state_duration_timer_id);
-}
-
-
 void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gpio_i){
 	timer_init();
 
@@ -159,20 +128,17 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	MSS_GPIO_config((gpio_g_i = _gpio_g), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
 	MSS_GPIO_config((gpio_b_i = _gpio_b), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
 	MSS_GPIO_config((gpio_i_i = _gpio_i), MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
-	MSS_GPIO_config(LED_STATE_GPIO_INT, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE);
 
 	MSS_GPIO_enable_irq(_gpio_r);
 	MSS_GPIO_enable_irq(_gpio_g);
 	MSS_GPIO_enable_irq(_gpio_b);
 	MSS_GPIO_enable_irq(_gpio_i);
-	//MSS_GPIO_enable_irq(LED_STATE_GPIO_INT);
 
 	// add the timer peripherals to the timer module
 	red_timer_id   = add_timer(TIMER_RED);
 	green_timer_id = add_timer(TIMER_GREEN);
 	blue_timer_id  = add_timer(TIMER_BLUE);
 	pulse_timer_id = add_timer(TIMER_PULSE);
-	//led_state_duration_timer_id = add_timer(TIMER_LED_STATE_DURATION);
 
 	// all colors overflow at their max pwm value
 	timer_setOverflowVal(red_timer_id, 1000000);
@@ -196,9 +162,6 @@ void init_rgb_pwm(uint8_t _gpio_r, uint8_t _gpio_g, uint8_t _gpio_b, uint8_t _gp
 	timer_enable_overflowInt(red_timer_id);
 	timer_enable_overflowInt(blue_timer_id);
 	timer_enable_overflowInt(green_timer_id);
-	//timer_enable(pulse_timer_id);
-
-	// don't start the colors until set_brightness is called
 }
 
 // caller must have called MSS_GPIO_init();
@@ -219,11 +182,6 @@ void on_pulse(void){
 			set_brightness(master_brightness+1);
 		} else {
 			pulse_direction = DIMMER;
-			//uint8_t mode = head->mode;
-			//uint32_t trans_on_max = (head->mode & TRANS_ON_MAX);
-			//if(trans_on_max) {
-			//	transition_to_next_state();
-			//}
 		}
 	} else {
 		if(master_brightness > min_brightness) {
@@ -234,14 +192,15 @@ void on_pulse(void){
 			timer_setOverflowVal(red_timer_id, 1000000);
 			timer_setOverflowVal(blue_timer_id, 1000000);
 			timer_setOverflowVal(green_timer_id, 1000000);
+
+			// for now, we only update the led color state
+			// when brightness reaches min
+			// update the current values with the pending values
 			head->b = head->next->b;
 			head->r = head->next->r;
 			head->g = head->next->g;
 			head->pulse_rate_ms = head->next->pulse_rate_ms;
 			set_led_state(head);
-			//timer_enable(red_timer_id);
-			//timer_enable(blue_timer_id);
-			//timer_enable(green_timer_id);
 		}
 	}
 }
@@ -273,8 +232,6 @@ void pwm_timer_handler(uint32_t gpio, uint32_t timer_index)
     {
     	MSS_GPIO_set_output(gpio, OFF);
     }
-    //if(!head->pulse_ms && duration_reached)
-    //    transition_to_next_state();
 }
 
 void update_compare_values(){
@@ -299,8 +256,7 @@ void set_brightness(uint8_t brightness){
 
 
 // pulse rate oscillates the led brightness between max_brightness and min_brightness
-// param: rate - the number of cycles to wait before interrupting (which changes master_brightness)
-// (0 = no pulse, 1=fast pulse 1-2^32=slower pulse)
+// ms: the desired duration from min to max brightness
 void set_pulse_rate(uint32_t ms){
    timer_setOverflowVal(pulse_timer_id, ms*HZ_PER_MS);
    if(ms > 0) {
@@ -327,40 +283,4 @@ __attribute__ ((interrupt)) void GPIO7_IRQHandler(void){
 __attribute__ ((interrupt)) void GPIO8_IRQHandler(void){
 	on_pulse();
 }
-
-__attribute__ ((interrupt)) void GPIO14_IRQHandler(void){
-	//on_led_state_duration_reached();
-}
-
-/*
-void transition_to_next_state() {
-	if(duration_reached) {
-
-		//clear the flag
-		duration_reached = 0;
-
-		// if there are no queued states or it is the last state do nothing
-		// the last state will continue until a new state is queued
-		if(!head) return;
-
-		if(head->next != 0) {
-			head = head->next;
-		}
-
-		set_led_state(head);
-		show_color(red);
-		show_color(green);
-		show_color(blue);
-		start_led_state_timer(head);
-	}
-}*/
-
-//void on_led_state_duration_reached() {
-//	// calling this clears the interrupt
-//	MSS_GPIO_clear_irq(LED_STATE_GPIO_INT);
-//	timer_getInterrupt_status(led_state_duration_timer_id);
-//	duration_reached = 1;
-//}
-
-
 

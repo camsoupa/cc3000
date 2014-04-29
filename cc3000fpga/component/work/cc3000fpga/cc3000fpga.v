@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////
-// Created by SmartDesign Mon Apr 28 10:22:15 2014
+// Created by SmartDesign Tue Apr 29 09:39:24 2014
 // Version: 10.1 SP3 10.1.3.1
 //////////////////////////////////////////////////////////////////////
 
@@ -190,35 +190,35 @@ assign SPI_SS_PIN         = SPI_SS_PIN_net_1;
 //--------------------------------------------------------------------
 // Bus Interface Nets - Unequal Pin Widths
 //--------------------------------------------------------------------
-wire   [19:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR;
 wire   [31:20]cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20;
 wire   [19:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0;
 wire   [31:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0;
+wire   [19:0] cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR;
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20 = 12'h0;
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0 = cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR[19:0];
 assign cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0 = { cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_31to20, cc3000fpga_MSS_0_MSS_MASTER_APB_PADDR_0_19to0 };
 
+wire   [31:0] CoreAPB3_0_APBmslave1_PADDR;
 wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_4_7to0;
 wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_4;
-wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_0_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_0;
-wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_1_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_1;
-wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_2_7to0;
-wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_2;
 wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_3_7to0;
 wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_3;
-wire   [31:0] CoreAPB3_0_APBmslave1_PADDR;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_2_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_2;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_1_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_1;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_0_7to0;
+wire   [7:0]  CoreAPB3_0_APBmslave1_PADDR_0;
 assign CoreAPB3_0_APBmslave1_PADDR_4_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
 assign CoreAPB3_0_APBmslave1_PADDR_4 = { CoreAPB3_0_APBmslave1_PADDR_4_7to0 };
-assign CoreAPB3_0_APBmslave1_PADDR_0_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
-assign CoreAPB3_0_APBmslave1_PADDR_0 = { CoreAPB3_0_APBmslave1_PADDR_0_7to0 };
-assign CoreAPB3_0_APBmslave1_PADDR_1_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
-assign CoreAPB3_0_APBmslave1_PADDR_1 = { CoreAPB3_0_APBmslave1_PADDR_1_7to0 };
-assign CoreAPB3_0_APBmslave1_PADDR_2_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
-assign CoreAPB3_0_APBmslave1_PADDR_2 = { CoreAPB3_0_APBmslave1_PADDR_2_7to0 };
 assign CoreAPB3_0_APBmslave1_PADDR_3_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
 assign CoreAPB3_0_APBmslave1_PADDR_3 = { CoreAPB3_0_APBmslave1_PADDR_3_7to0 };
+assign CoreAPB3_0_APBmslave1_PADDR_2_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_2 = { CoreAPB3_0_APBmslave1_PADDR_2_7to0 };
+assign CoreAPB3_0_APBmslave1_PADDR_1_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_1 = { CoreAPB3_0_APBmslave1_PADDR_1_7to0 };
+assign CoreAPB3_0_APBmslave1_PADDR_0_7to0 = CoreAPB3_0_APBmslave1_PADDR[7:0];
+assign CoreAPB3_0_APBmslave1_PADDR_0 = { CoreAPB3_0_APBmslave1_PADDR_0_7to0 };
 
 //--------------------------------------------------------------------
 // Component instances

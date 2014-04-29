@@ -27,11 +27,8 @@ int main(void)
 		add_led_state(colors[i][0], colors[i][1], colors[i][2], 1, 1000, 2000);
 	}
 
-	// add a 2 second blank state after the colors
-	led_state * wait_state = add_led_state(0, 0, 0, 1, 500, 1000);
-
 	// make it start over when it ends
-	wait_state->next = first;
+	//wait_state->next = first;
 
 	// start the show!
 	start_air_weather_display();

@@ -151,7 +151,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
     //
     // Tell the user about the error reported.
     //
-    printf("Runtime error at line %d of file %s!\n", ui32Line, pcFilename);
+    //printf("Runtime error at line %d of file %s!\n", ui32Line, pcFilename);
 
     while(1)
     {
@@ -321,8 +321,8 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     if(lEventType == HCI_EVNT_WLAN_ASYNC_SIMPLE_CONFIG_DONE)
     {
 
-        printf("\r    Rece'd Asynus Evnt dne "
-                         "from CC30\n>");
+        //printf("\r    Rece'd Asynus Evnt dne "
+        //                 "from CC30\n>");
 
         g_ui32SmartConfigFinished = 1;
         g_ui8StopSmartConfig = 1;
@@ -344,7 +344,7 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
     //
     if(lEventType == HCI_EVNT_WLAN_UNSOL_DISCONNECT)
     {
-        printf("\r    Received Unsot Disconnect from CC3000\n>");
+        //printf("\r    Received Unsot Disconnect from CC3000\n>");
         g_ui32CC3000Connected = 0;
         g_ui32CC3000DHCP = 0;
         g_ui32CC3000DHCP_configured = 0;
@@ -393,8 +393,8 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //if( *(pcData + NETAPP_IPCONFIG_MAC_OFFSET) == 0)
     	if( *(pcData + 4) == 0)
         {
-            printf("\r    DHCP DoIP: %d.%d.%d.%d\r\n",
-                        pcData[3],pcData[2],pcData[1],pcData[0]);
+            //printf("\r    DHCP DoIP: %d.%d.%d.%d\r\n",
+            //            pcData[3],pcData[2],pcData[1],pcData[0]);
 
             //
             // DHCP success, set global accordingly.
@@ -436,19 +436,19 @@ CC3000_UsynchCallback(long lEventType, char *pcData, unsigned char ucLength)
         //
         // Test for ping failure
         //
-        if(psPingData->min_round_time == -1)
-        {
-            printf("\r    Ping Failed\r\n>");
-        }
-        else
-        {
-            printf("\r    Ping Rests:\n"
-                       "    snt: %d, rec'd: %d, min time: %dms,"
-                       " mx tme: %dms, avg time: %dms\n>",
-                       psPingData->packets_sent, psPingData->packets_received,
-                       psPingData->min_round_time, psPingData->max_round_time,
-                       psPingData->avg_round_time);
-        }
+        //if(psPingData->min_round_time == -1)
+        //{
+            //printf("\r    Ping Failed\r\n>");
+        //}
+        //else
+        //{
+        //    printf("\r    Ping Rests:\n"
+        //               "    snt: %d, rec'd: %d, min time: %dms,"
+        //               " mx tme: %dms, avg time: %dms\n>",
+        //               psPingData->packets_sent, psPingData->packets_received,
+        //               psPingData->min_round_time, psPingData->max_round_time,
+        //               psPingData->avg_round_time);
+        //}
 
     }
 
@@ -2436,7 +2436,7 @@ main(void)
 	    initDriver();
 
 	    //setup the output
-	    init_weather_air_display();
+
 
 	    // Try to connect to wifi
 	    if(CMD_connect("dd-wrt") < 0)
@@ -2445,7 +2445,10 @@ main(void)
 	    }
 	    else
 	    {
-		    //init_pwm(); // do whatever we need to do for the led library here
+	    	init_weather_air_display();
+	    	insert_default_states();
+	    	start_air_weather_display();
+	    	//init_pwm(); // do whatever we need to do for the led library here
 	    }
 
 	    //

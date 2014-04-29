@@ -12,5 +12,8 @@ void init_weather_air_display(void);
 void update_air_quality(float air_quality);
 void update_temperature(int temp);
 void update_precipitation(uint8_t precipitation);
+void insert_default_states(void);
+void start_air_weather_display(void);
+
 
 #endif /* AIR_WEATHER_DISPLAY_H_ */

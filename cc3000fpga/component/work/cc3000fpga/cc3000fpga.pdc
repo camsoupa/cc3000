@@ -3,7 +3,7 @@
 
 # Version: 10.1 SP3 10.1.3.1
 # Family: SmartFusion , Die: A2F200M3F , Package: 484 FBGA
-# Date generated: Mon Apr 28 10:22:12 2014 
+# Date generated: Tue Apr 29 09:39:23 2014 
 
 
 # 
@@ -155,14 +155,14 @@ set_io SPI_1_SS             \
 # Old IO constraints, commented out for reference
 #
 
-# set_io MSS_RESET_N -pinname R1 -fixed yes -DIRECTION Input 
-# set_io SPI_EN_PIN -pinname AA1 -fixed yes -DIRECTION Output 
-# set_io UART_0_RXD -pinname U18 -fixed yes -DIRECTION Input 
-# set_io UART_0_TXD -pinname Y22 -fixed yes -DIRECTION Output 
-# set_io UART_1_RXD -pinname W22 -fixed yes -DIRECTION Input 
-# set_io UART_1_TXD -pinname V20 -fixed yes -DIRECTION Output 
-# set_io cc3000_IRQ -pinname W1 -fixed yes -DIRECTION Input 
-# set_io SPI_1_CLK -pinname AA22 -fixed yes -GROUP_NAME SPI_1_PADs -DIRECTION Inout 
-# set_io SPI_1_DI -pinname V19 -fixed yes -GROUP_NAME SPI_1_PADs -DIRECTION Input 
-# set_io SPI_1_DO -pinname T17 -fixed yes -GROUP_NAME SPI_1_PADs -DIRECTION Output 
-# set_io SPI_1_SS -pinname W21 -fixed yes -GROUP_NAME SPI_1_PADs -DIRECTION Inout 
+# set_io MSS_RESET_N -pinname R1 -fixed yes -iostd LVTTL -RES_PULL None -SCHMITT_TRIGGER Off -DIRECTION Input 
+# set_io SPI_EN_PIN -pinname AA1 -fixed yes -iostd LVTTL -OUT_LOAD 35 -RES_PULL None -SKEW Off -SLEW High -DIRECTION Output 
+# set_io UART_0_RXD -pinname U18 -fixed yes -iostd LVTTL -RES_PULL None -SCHMITT_TRIGGER Off -DIRECTION Input 
+# set_io UART_0_TXD -pinname Y22 -fixed yes -iostd LVTTL -OUT_LOAD 35 -RES_PULL None -SKEW Off -SLEW High -DIRECTION Output 
+# set_io UART_1_RXD -pinname W22 -fixed yes -iostd LVTTL -RES_PULL None -SCHMITT_TRIGGER Off -DIRECTION Input 
+# set_io UART_1_TXD -pinname V20 -fixed yes -iostd LVTTL -OUT_LOAD 35 -RES_PULL None -SKEW Off -SLEW High -DIRECTION Output 
+# set_io cc3000_IRQ -pinname W1 -fixed yes -iostd LVTTL -RES_PULL None -SCHMITT_TRIGGER Off -DIRECTION Input 
+# set_io SPI_1_CLK -pinname AA22 -fixed yes -iostd LVTTL -OUT_LOAD 35 -RES_PULL None -SCHMITT_TRIGGER Off -SKEW Off -SLEW High -GROUP_NAME SPI_1_PADs -DIRECTION Inout 
+# set_io SPI_1_DI -pinname V19 -fixed yes -iostd LVTTL -RES_PULL None -SCHMITT_TRIGGER Off -GROUP_NAME SPI_1_PADs -DIRECTION Input 
+# set_io SPI_1_DO -pinname T17 -fixed yes -iostd LVTTL -OUT_LOAD 35 -RES_PULL None -SKEW Off -SLEW High -GROUP_NAME SPI_1_PADs -DIRECTION Output 
+# set_io SPI_1_SS -pinname W21 -fixed yes -iostd LVTTL -OUT_LOAD 35 -RES_PULL None -SCHMITT_TRIGGER Off -SKEW Off -SLEW High -GROUP_NAME SPI_1_PADs -DIRECTION Inout 

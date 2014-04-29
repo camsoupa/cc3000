@@ -5,11 +5,25 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "./rgb_led.h"
 #include "../mss_gpio/mss_gpio.h"
 #include "../fpga_timer/fpga_timer.h"
 
-#define update_color(prefix, color) if(!prefix) { timer_disable(color ## _timer_id); MSS_GPIO_set_output(gpio_ ## prefix, OFF); } else if(!color) {	timer_enable(color ## _timer_id); }
+#define show_color(color) \
+	if(color) \
+		timer_enable(color ## _timer_id);
+
+//TODO: standardize naming scheme
+
+#define update_color(old, new, enable) \
+	if(!new) { \
+		timer_disable(old ## _timer_id); \
+		MSS_GPIO_set_output(gpio_ ## new, OFF); \
+	} else { \
+		if(!old && enable) \
+			timer_enable(old ## _timer_id); \
+	}
 
 
 // pulse direction
@@ -72,6 +86,22 @@ uint8_t gpio_i_i;
 
 led_state * head;
 
+led_state * add_led_state(uint8_t r, uint8_t g, uint8_t b, uint8_t brightness, uint32_t pulse_ms, uint32_t duration_ms)
+{
+	led_state * new_state = (led_state *)malloc(sizeof(led_state));
+	new_state->r = r;
+	new_state->g = g;
+	new_state->b = b;
+	new_state->brightness = brightness;
+	new_state->mode = TRANS_ON_MIN;
+	new_state->pulse_rate_ms = pulse_ms;
+	new_state->duration_ms = duration_ms;
+	new_state->next = 0;
+
+	insert_led_state(new_state, 0);
+	return new_state;
+}
+
 void set_led_state(led_state * ls) {
 	set_color(ls->r,ls->g,ls->b); set_brightness(ls->brightness); set_pulse_rate(ls->pulse_rate_ms);
 }
@@ -80,7 +110,20 @@ void insert_led_state(led_state * state, led_state * after) {
 	if(after) {
 		state->next = after->next;
 		after->next = state;
+	} else if(head){
+		// insert at end
+		led_state * curr = head;
+		led_state * prev = 0;
+
+		do {
+			prev = curr;
+			curr = curr->next;
+		} while(curr != 0 && curr != head);
+
+		state->next = prev->next;
+		prev->next = state;
 	} else {
+		// the first one
 		head = state;
 	}
 }
@@ -88,24 +131,25 @@ void insert_led_state(led_state * state, led_state * after) {
 void start_led_sequence() {
 	if(head) {
 		set_led_state(head);
+		show_color(red);
+		show_color(green);
+		show_color(blue);
 		start_led_state_timer(head);
-		timer_enable(led_state_duration_timer_id);
-		timer_enable(red_timer_id);
-		timer_enable(green_timer_id);
-		timer_enable(blue_timer_id);
 	}
 }
 
-void update_led_state() {
+void led_state_values_changed() {
 	if(head) {
 		set_led_state(head);
 	}
 }
 
 void start_led_state_timer(led_state * ls) {
+	timer_disable(led_state_duration_timer_id);
 	timer_setOverflowVal(led_state_duration_timer_id, head->duration_ms*HZ_PER_MS);
 	timer_enable_allInterrupts(led_state_duration_timer_id);
 	timer_enable_overflowInt(led_state_duration_timer_id);
+	timer_enable(led_state_duration_timer_id);
 }
 
 void transition_to_next_state() {
@@ -120,8 +164,12 @@ void transition_to_next_state() {
 
 		if(head->next != 0) {
 			head = head->next;
-			set_led_state(head);
 		}
+
+		set_led_state(head);
+		show_color(red);
+		show_color(green);
+		show_color(blue);
 		start_led_state_timer(head);
 	}
 }
@@ -245,8 +293,8 @@ void pwm_timer_handler(uint32_t gpio, uint32_t timer_index)
     {
     	MSS_GPIO_set_output(gpio, OFF);
     }
-
-
+    //if(!head->pulse_ms && duration_reached)
+    //    transition_to_next_state();
 }
 
 void update_compare_values(){
@@ -262,9 +310,9 @@ void set_color(uint8_t r, uint8_t g, uint8_t b){
 	red = r; green = g; blue = b;
 	update_compare_values();
 
-	update_color(r, red);
-	update_color(g, green);
-	update_color(b, blue);
+	update_color(red, r, 0);
+	update_color(green, g, 0);
+	update_color(blue, b, 0);
 }
 
 void set_brightness(uint8_t brightness){

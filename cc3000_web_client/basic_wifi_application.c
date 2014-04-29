@@ -993,7 +993,8 @@ int matt_send()
 	    //}
 
 	    // The data we want to send to the connected server
-	    char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
+	    //char message[] = "GET /aqp/currentconditions.php?id=slc HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
+	    char message[] = "GET /aqp/currentconditions.php?id=l4 HTTP/1.1\r\nHOST: www.airquality.utah.gov\r\n\n";
 
 	    //
 	    // Data pointer.
@@ -1106,7 +1107,7 @@ float matt_recv(int *temp)
 	        //
 	        // We've been asked to receive a TCP packet.
 	        //
-	        printf("    Looking for TCP Packets...\r\n");
+	        printf("    Waiting for next request...\r\n");
 
 	        //
 	        // Get all data received.  This may require multiple calls.

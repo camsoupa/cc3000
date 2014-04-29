@@ -68,17 +68,35 @@ void update_air_quality(float air_quality)
 
 	//good rgb(0,228,0);
 	if(IN_RANGE(air_quality, 0, 12.0))
-	{	_r = 0; _g=228; _b=0; }
+	{
+		printf("GREEN!\r\n");
+		_r = 0; _g=228; _b=0;
+	}
 	else if(IN_RANGE(air_quality, 12.0, 35.5))
-	{	_r = 255; _g=255; _b=0; }
+	{
+		printf("GREEN!\r\n");
+		_r = 255; _g=255; _b=0;
+	}
 	else if(IN_RANGE(air_quality, 35.5, 55.5 ))
-	{	_r = 255; _g=126; _b=0; }
+	{
+		printf("GREEN!\r\n");
+		_r = 255; _g=126; _b=0;
+	}
 	else if(IN_RANGE(air_quality, 55.5, 150.5))
-	{	_r = 255; _g=0; _b=0; }
+	{
+		printf("GREEN!\r\n");
+		_r = 255; _g=0; _b=0;
+	}
 	else if(IN_RANGE(air_quality, 150.5, 250.4))
-	{	_r = 153; _g=0; _b=76; }
+	{
+		printf("GREEN!\r\n");
+		_r = 153; _g=0; _b=76;
+	}
 	else
-	{	_r = 126; _g=0; _b=150; }
+	{
+		printf("GREEN!\r\n");
+		_r = 126; _g=0; _b=150;
+	}
 
 	set_color(_r,_g,_b);
 	set_pulse_rate(1000);

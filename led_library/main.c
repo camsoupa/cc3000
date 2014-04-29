@@ -27,7 +27,7 @@ int main(void)
 	start_air_weather_display();
 	for(i=0; i < RANGE_CNT; i++){
 		delay(500000);
-		update_air_quality(air_ranges[RANGE_CNT]);
+		update_air_quality(air_ranges[i]);
 	}
 	while(1){}
 }
